@@ -85,6 +85,7 @@ const googleSecretManagerSecret = `{
         "block": {
           "attributes": {
             "automatic": {
+              "deprecated": true,
               "description": "The Secret will automatically be replicated without any restrictions.",
               "description_kind": "plain",
               "optional": true,
@@ -92,6 +93,32 @@ const googleSecretManagerSecret = `{
             }
           },
           "block_types": {
+            "auto": {
+              "block": {
+                "block_types": {
+                  "customer_managed_encryption": {
+                    "block": {
+                      "attributes": {
+                        "kms_key_name": {
+                          "description": "The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "The customer-managed encryption configuration of the Secret.\nIf no configuration is provided, Google-managed default\nencryption is used.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "The Secret will automatically be replicated without any restrictions.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "user_managed": {
               "block": {
                 "block_types": {

@@ -53,7 +53,7 @@ const googleBigqueryDataTransferConfig = `{
       },
       "name": {
         "computed": true,
-        "description": "The resource name of the transfer config. Transfer config names have the\nform projects/{projectId}/locations/{location}/transferConfigs/{configId}.\nWhere configId is usually a uuid, but this is not required.\nThe name is ignored when creating a transfer config.",
+        "description": "The resource name of the transfer config. Transfer config names have the\nform projects/{projectId}/locations/{location}/transferConfigs/{configId}\nor projects/{projectId}/transferConfigs/{configId},\nwhere configId is usually a uuid, but this is not required.\nThe name is ignored when creating a transfer config.",
         "description_kind": "plain",
         "type": "string"
       },

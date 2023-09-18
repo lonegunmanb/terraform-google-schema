@@ -27,6 +27,15 @@ const googleGkeHubMembershipBinding = `{
         "optional": true,
         "type": "string"
       },
+      "labels": {
+        "description": "Labels for this Membership binding.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": [
+          "map",
+          "string"
+        ]
+      },
       "location": {
         "description": "Location of the membership",
         "description_kind": "plain",

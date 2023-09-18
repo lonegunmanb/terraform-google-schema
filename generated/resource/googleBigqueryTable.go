@@ -409,6 +409,12 @@ const googleBigqueryTable = `{
       "materialized_view": {
         "block": {
           "attributes": {
+            "allow_non_incremental_definition": {
+              "description": "Allow non incremental materialized view definition. The default value is false.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
             "enable_refresh": {
               "description": "Specifies if BigQuery should automatically refresh materialized view when the base table is updated. The default is true.",
               "description_kind": "plain",
@@ -476,6 +482,104 @@ const googleBigqueryTable = `{
             }
           },
           "description": "If specified, configures range-based partitioning for this table.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "table_constraints": {
+        "block": {
+          "block_types": {
+            "foreign_keys": {
+              "block": {
+                "attributes": {
+                  "name": {
+                    "description": "Set only if the foreign key constraint is named.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "block_types": {
+                  "column_references": {
+                    "block": {
+                      "attributes": {
+                        "referenced_column": {
+                          "description": "The column in the primary key that are referenced by the referencingColumn.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        },
+                        "referencing_column": {
+                          "description": "The column that composes the foreign key.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "The pair of the foreign key column and primary key column.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "min_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "referenced_table": {
+                    "block": {
+                      "attributes": {
+                        "dataset_id": {
+                          "description": "The ID of the dataset containing this table.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        },
+                        "project_id": {
+                          "description": "The ID of the project containing this table.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        },
+                        "table_id": {
+                          "description": "The ID of the table. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters. Certain operations allow suffixing of the table ID with a partition decorator, such as sample_table$20190123.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "The table that holds the primary key and is referenced by this foreign key.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "min_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "Present only if the table has a foreign key. The foreign key is not enforced.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            },
+            "primary_key": {
+              "block": {
+                "attributes": {
+                  "columns": {
+                    "description": "The columns that are composed of the primary key constraint.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": [
+                      "list",
+                      "string"
+                    ]
+                  }
+                },
+                "description": "Represents a primary key constraint on a table's columns. Present only if the table has a primary key. The primary key is not enforced.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Defines the primary key and foreign keys.",
           "description_kind": "plain"
         },
         "max_items": 1,

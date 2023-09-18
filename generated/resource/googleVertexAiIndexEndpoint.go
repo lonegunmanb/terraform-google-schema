@@ -66,6 +66,18 @@ const googleVertexAiIndexEndpoint = `{
         "optional": true,
         "type": "string"
       },
+      "public_endpoint_domain_name": {
+        "computed": true,
+        "description": "If publicEndpointEnabled is true, this field will be populated with the domain name to use for this index endpoint.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "public_endpoint_enabled": {
+        "description": "If true, the deployed index will be accessible through public endpoint.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "region": {
         "description": "The region of the index endpoint. eg us-central1",
         "description_kind": "plain",

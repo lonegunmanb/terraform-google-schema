@@ -27,6 +27,15 @@ const googleGkeHubScope = `{
         "optional": true,
         "type": "string"
       },
+      "labels": {
+        "description": "Labels for this Scope.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": [
+          "map",
+          "string"
+        ]
+      },
       "name": {
         "computed": true,
         "description": "The unique identifier of the scope",
@@ -82,6 +91,11 @@ const googleGkeHubScope = `{
               "type": "string"
             },
             "delete": {
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "update": {
               "description_kind": "plain",
               "optional": true,
               "type": "string"

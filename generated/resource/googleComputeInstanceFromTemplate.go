@@ -461,10 +461,24 @@ const googleComputeInstanceFromTemplate = `{
                 ]
               ]
             },
+            "internal_ipv6_prefix_length": {
+              "computed": true,
+              "description": "The prefix length of the primary internal IPv6 range.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "number"
+            },
             "ipv6_access_type": {
               "computed": true,
               "description": "One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.",
               "description_kind": "plain",
+              "type": "string"
+            },
+            "ipv6_address": {
+              "computed": true,
+              "description": "An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.",
+              "description_kind": "plain",
+              "optional": true,
               "type": "string"
             },
             "name": {

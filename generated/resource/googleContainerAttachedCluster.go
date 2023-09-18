@@ -159,6 +159,22 @@ const googleContainerAttachedCluster = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "binary_authorization": {
+        "block": {
+          "attributes": {
+            "evaluation_mode": {
+              "description": "Configure Binary Authorization evaluation mode. Possible values: [\"DISABLED\", \"PROJECT_SINGLETON_POLICY_ENFORCE\"]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description": "Binary Authorization configuration.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "fleet": {
         "block": {
           "attributes": {

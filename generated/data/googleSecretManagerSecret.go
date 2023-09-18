@@ -65,6 +65,23 @@ const googleSecretManagerSecret = `{
           [
             "object",
             {
+              "auto": [
+                "list",
+                [
+                  "object",
+                  {
+                    "customer_managed_encryption": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "kms_key_name": "string"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              ],
               "automatic": "bool",
               "user_managed": [
                 "list",

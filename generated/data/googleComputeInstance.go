@@ -262,6 +262,7 @@ const googleComputeInstance = `{
                   }
                 ]
               ],
+              "internal_ipv6_prefix_length": "number",
               "ipv6_access_config": [
                 "list",
                 [
@@ -276,6 +277,7 @@ const googleComputeInstance = `{
                 ]
               ],
               "ipv6_access_type": "string",
+              "ipv6_address": "string",
               "name": "string",
               "network": "string",
               "network_ip": "string",

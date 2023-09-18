@@ -27,11 +27,29 @@ const googleGkeHubNamespace = `{
         "optional": true,
         "type": "string"
       },
+      "labels": {
+        "description": "Labels for this Namespace.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": [
+          "map",
+          "string"
+        ]
+      },
       "name": {
         "computed": true,
         "description": "The resource name for the namespace",
         "description_kind": "plain",
         "type": "string"
+      },
+      "namespace_labels": {
+        "description": "Namespace-level cluster namespace labels. These labels are applied\nto the related namespace of the member clusters bound to the parent\nScope. Scope-level labels ('namespace_labels' in the Fleet Scope\nresource) take precedence over Namespace-level labels if they share\na key. Keys and values must be Kubernetes-conformant.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": [
+          "map",
+          "string"
+        ]
       },
       "project": {
         "computed": true,
@@ -94,6 +112,11 @@ const googleGkeHubNamespace = `{
               "type": "string"
             },
             "delete": {
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "update": {
               "description_kind": "plain",
               "optional": true,
               "type": "string"

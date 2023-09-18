@@ -15,6 +15,12 @@ const googleSecretManagerSecretVersion = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "deletion_policy": {
+        "description": "The deletion policy for the secret version. Setting 'ABANDON' allows the resource\nto be abandoned rather than deleted. Setting 'DISABLE' allows the resource to be\ndisabled rather than deleted. Default is 'DELETE'. Possible values are:\n  * DELETE\n  * DISABLE\n  * ABANDON",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "destroy_time": {
         "computed": true,
         "description": "The time at which the Secret was destroyed. Only present if state is DESTROYED.",
