@@ -763,6 +763,15 @@ const googleContainerCluster = `{
                   }
                 ]
               ],
+              "fast_socket": [
+                "list",
+                [
+                  "object",
+                  {
+                    "enabled": "bool"
+                  }
+                ]
+              ],
               "gcfs_config": [
                 "list",
                 [
@@ -1061,6 +1070,15 @@ const googleContainerCluster = `{
                         }
                       ]
                     ],
+                    "fast_socket": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "enabled": "bool"
+                        }
+                      ]
+                    ],
                     "gcfs_config": [
                       "list",
                       [
@@ -1260,6 +1278,7 @@ const googleContainerCluster = `{
                   "object",
                   {
                     "policy_name": "string",
+                    "tpu_topology": "string",
                     "type": "string"
                   }
                 ]
@@ -1296,6 +1315,31 @@ const googleContainerCluster = `{
                 ]
               ],
               "version": "string"
+            }
+          ]
+        ]
+      },
+      "node_pool_auto_config": {
+        "computed": true,
+        "description": "Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "network_tags": [
+                "list",
+                [
+                  "object",
+                  {
+                    "tags": [
+                      "list",
+                      "string"
+                    ]
+                  }
+                ]
+              ]
             }
           ]
         ]

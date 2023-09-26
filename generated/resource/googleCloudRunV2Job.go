@@ -745,10 +745,45 @@ const googleCloudRunV2Job = `{
                           "type": "string"
                         },
                         "egress": {
+                          "computed": true,
                           "description": "Traffic VPC egress settings. Possible values: [\"ALL_TRAFFIC\", \"PRIVATE_RANGES_ONLY\"]",
                           "description_kind": "plain",
                           "optional": true,
                           "type": "string"
+                        }
+                      },
+                      "block_types": {
+                        "network_interfaces": {
+                          "block": {
+                            "attributes": {
+                              "network": {
+                                "computed": true,
+                                "description": "The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both\nnetwork and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be\nlooked up from the subnetwork.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "subnetwork": {
+                                "computed": true,
+                                "description": "The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both\nnetwork and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the\nsubnetwork with the same name with the network will be used.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "tags": {
+                                "description": "Network tags applied to this Cloud Run job.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": [
+                                  "list",
+                                  "string"
+                                ]
+                              }
+                            },
+                            "description": "Direct VPC egress settings. Currently only single network interface is supported.",
+                            "description_kind": "plain"
+                          },
+                          "nesting_mode": "list"
                         }
                       },
                       "description": "VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.",

@@ -75,6 +75,12 @@ const googleComputeTargetHttpsProxy = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "server_tls_policy": {
+        "description": "A URL referring to a networksecurity.ServerTlsPolicy\nresource that describes how the proxy should authenticate inbound\ntraffic. serverTlsPolicy only applies to a global TargetHttpsProxy\nattached to globalForwardingRules with the loadBalancingScheme\nset to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED.\nFor details which ServerTlsPolicy resources are accepted with\nINTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED\nloadBalancingScheme consult ServerTlsPolicy documentation.\nIf left blank, communications are not encrypted.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "ssl_certificates": {
         "description": "A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate\nconnections between users and the load balancer. At least one resource must be specified.",
         "description_kind": "plain",

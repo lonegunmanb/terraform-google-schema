@@ -29,6 +29,13 @@ const googleFirestoreDatabase = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "delete_protection_state": {
+        "computed": true,
+        "description": "State of delete protection for the database. Possible values: [\"DELETE_PROTECTION_STATE_UNSPECIFIED\", \"DELETE_PROTECTION_ENABLED\", \"DELETE_PROTECTION_DISABLED\"]",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "earliest_version_time": {
         "computed": true,
         "description": "Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.\nThis value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.\nA timestamp in RFC3339 UTC \"Zulu\" format, with nanosecond resolution and up to nine fractional digits. Examples: \"2014-10-02T15:01:23Z\" and \"2014-10-02T15:01:23.045123456Z\".",
@@ -54,7 +61,7 @@ const googleFirestoreDatabase = `{
         "type": "string"
       },
       "location_id": {
-        "description": "The location of the database. Available databases are listed at\nhttps://cloud.google.com/firestore/docs/locations.",
+        "description": "The location of the database. Available locations are listed at\nhttps://cloud.google.com/firestore/docs/locations.",
         "description_kind": "plain",
         "required": true,
         "type": "string"

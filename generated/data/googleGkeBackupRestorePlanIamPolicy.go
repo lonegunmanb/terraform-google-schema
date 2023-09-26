@@ -6,15 +6,10 @@ import (
 	tfjson "github.com/hashicorp/terraform-json"
 )
 
-const googleComputeDefaultServiceAccount = `{
+const googleGkeBackupRestorePlanIamPolicy = `{
   "block": {
     "attributes": {
-      "display_name": {
-        "computed": true,
-        "description_kind": "plain",
-        "type": "string"
-      },
-      "email": {
+      "etag": {
         "computed": true,
         "description_kind": "plain",
         "type": "string"
@@ -25,12 +20,18 @@ const googleComputeDefaultServiceAccount = `{
         "optional": true,
         "type": "string"
       },
-      "member": {
+      "location": {
         "computed": true,
         "description_kind": "plain",
+        "optional": true,
         "type": "string"
       },
       "name": {
+        "description_kind": "plain",
+        "required": true,
+        "type": "string"
+      },
+      "policy_data": {
         "computed": true,
         "description_kind": "plain",
         "type": "string"
@@ -40,11 +41,6 @@ const googleComputeDefaultServiceAccount = `{
         "description_kind": "plain",
         "optional": true,
         "type": "string"
-      },
-      "unique_id": {
-        "computed": true,
-        "description_kind": "plain",
-        "type": "string"
       }
     },
     "description_kind": "plain"
@@ -52,8 +48,8 @@ const googleComputeDefaultServiceAccount = `{
   "version": 0
 }`
 
-func GoogleComputeDefaultServiceAccountSchema() *tfjson.Schema {
+func GoogleGkeBackupRestorePlanIamPolicySchema() *tfjson.Schema {
 	var result tfjson.Schema
-	_ = json.Unmarshal([]byte(googleComputeDefaultServiceAccount), &result)
+	_ = json.Unmarshal([]byte(googleGkeBackupRestorePlanIamPolicy), &result)
 	return &result
 }

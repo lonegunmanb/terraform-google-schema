@@ -462,6 +462,22 @@ const googleContainerNodePool = `{
               "max_items": 1,
               "nesting_mode": "list"
             },
+            "fast_socket": {
+              "block": {
+                "attributes": {
+                  "enabled": {
+                    "description": "Whether or not NCCL Fast Socket is enabled",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "bool"
+                  }
+                },
+                "description": "Enable or disable NCCL Fast Socket in the node pool.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "gcfs_config": {
               "block": {
                 "attributes": {
@@ -701,6 +717,12 @@ const googleContainerNodePool = `{
           "attributes": {
             "policy_name": {
               "description": "If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "tpu_topology": {
+              "description": "TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies",
               "description_kind": "plain",
               "optional": true,
               "type": "string"

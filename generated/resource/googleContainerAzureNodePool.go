@@ -214,6 +214,23 @@ const googleContainerAzureNodePool = `{
         "min_items": 1,
         "nesting_mode": "list"
       },
+      "management": {
+        "block": {
+          "attributes": {
+            "auto_repair": {
+              "computed": true,
+              "description": "Optional. Whether or not the nodes will be automatically repaired.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            }
+          },
+          "description": "The Management configuration for this node pool.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "max_pods_constraint": {
         "block": {
           "attributes": {

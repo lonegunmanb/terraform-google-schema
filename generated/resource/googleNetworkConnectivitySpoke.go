@@ -146,6 +146,31 @@ const googleNetworkConnectivitySpoke = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "linked_vpc_network": {
+        "block": {
+          "attributes": {
+            "exclude_export_ranges": {
+              "description": "IP ranges encompassing the subnets to be excluded from peering.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
+            },
+            "uri": {
+              "description": "The URI of the VPC network resource.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "VPC network that is associated with the spoke.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "linked_vpn_tunnels": {
         "block": {
           "attributes": {

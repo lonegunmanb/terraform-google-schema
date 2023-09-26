@@ -39,6 +39,12 @@ const googleSecretManagerSecretVersion = `{
         "optional": true,
         "type": "string"
       },
+      "is_secret_data_base64": {
+        "description": "If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "name": {
         "computed": true,
         "description": "The resource name of the SecretVersion. Format:\n'projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}'",

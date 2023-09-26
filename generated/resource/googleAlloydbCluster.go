@@ -135,9 +135,11 @@ const googleAlloydbCluster = `{
         "type": "string"
       },
       "network": {
+        "computed": true,
+        "deprecated": true,
         "description": "The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:\n\n\"projects/{projectNumber}/global/networks/{network_id}\".",
         "description_kind": "plain",
-        "required": true,
+        "optional": true,
         "type": "string"
       },
       "project": {
@@ -374,6 +376,28 @@ const googleAlloydbCluster = `{
             }
           },
           "description": "Initial user to setup during cluster creation.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "network_config": {
+        "block": {
+          "attributes": {
+            "allocated_ip_range": {
+              "description": "The name of the allocated IP range for the private IP AlloyDB cluster. For example: \"google-managed-services-default\".\nIf set, the instance IPs for this cluster will be created in the allocated range.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "network": {
+              "description": "The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.\nIt is specified in the form: \"projects/{projectNumber}/global/networks/{network_id}\".",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description": "Metadata related to network configuration.",
           "description_kind": "plain"
         },
         "max_items": 1,

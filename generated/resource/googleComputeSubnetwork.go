@@ -46,6 +46,12 @@ const googleComputeSubnetwork = `{
         "optional": true,
         "type": "string"
       },
+      "internal_ipv6_prefix": {
+        "computed": true,
+        "description": "The internal IPv6 address range that is assigned to this subnetwork.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "ip_cidr_range": {
         "description": "The range of internal addresses that are owned by this subnetwork.\nProvide this property when you create the subnetwork. For example,\n10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and\nnon-overlapping within a network. Only IPv4 is supported.",
         "description_kind": "plain",

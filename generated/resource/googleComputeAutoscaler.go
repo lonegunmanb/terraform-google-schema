@@ -81,7 +81,7 @@ const googleComputeAutoscaler = `{
               "type": "number"
             },
             "mode": {
-              "description": "Defines operating mode for this policy. Default value: \"ON\" Possible values: [\"OFF\", \"ONLY_UP\", \"ON\"]",
+              "description": "Defines operating mode for this policy.",
               "description_kind": "plain",
               "optional": true,
               "type": "string"

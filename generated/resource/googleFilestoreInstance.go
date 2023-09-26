@@ -68,7 +68,7 @@ const googleFilestoreInstance = `{
         "type": "string"
       },
       "tier": {
-        "description": "The service tier of the instance.\nPossible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE",
+        "description": "The service tier of the instance.\nPossible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE",
         "description_kind": "plain",
         "required": true,
         "type": "string"

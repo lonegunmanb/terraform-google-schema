@@ -1445,6 +1445,22 @@ const googleContainerCluster = `{
               "max_items": 1,
               "nesting_mode": "list"
             },
+            "fast_socket": {
+              "block": {
+                "attributes": {
+                  "enabled": {
+                    "description": "Whether or not NCCL Fast Socket is enabled",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "bool"
+                  }
+                },
+                "description": "Enable or disable NCCL Fast Socket in the node pool.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "gcfs_config": {
               "block": {
                 "attributes": {
@@ -2104,6 +2120,22 @@ const googleContainerCluster = `{
                     "max_items": 1,
                     "nesting_mode": "list"
                   },
+                  "fast_socket": {
+                    "block": {
+                      "attributes": {
+                        "enabled": {
+                          "description": "Whether or not NCCL Fast Socket is enabled",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "bool"
+                        }
+                      },
+                      "description": "Enable or disable NCCL Fast Socket in the node pool.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
                   "gcfs_config": {
                     "block": {
                       "attributes": {
@@ -2347,6 +2379,12 @@ const googleContainerCluster = `{
                     "optional": true,
                     "type": "string"
                   },
+                  "tpu_topology": {
+                    "description": "TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
                   "type": {
                     "description": "Type defines the type of placement policy",
                     "description_kind": "plain",
@@ -2447,6 +2485,35 @@ const googleContainerCluster = `{
           "description": "List of node pools associated with this cluster. See google_container_node_pool for schema. Warning: node pools defined inside a cluster can't be changed (or added/removed) after cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability to say \"these are the only node pools associated with this cluster\", use the google_container_node_pool resource instead of this property.",
           "description_kind": "plain"
         },
+        "nesting_mode": "list"
+      },
+      "node_pool_auto_config": {
+        "block": {
+          "block_types": {
+            "network_tags": {
+              "block": {
+                "attributes": {
+                  "tags": {
+                    "description": "List of network tags applied to auto-provisioned node pools.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": [
+                      "list",
+                      "string"
+                    ]
+                  }
+                },
+                "description": "Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
         "nesting_mode": "list"
       },
       "node_pool_defaults": {
