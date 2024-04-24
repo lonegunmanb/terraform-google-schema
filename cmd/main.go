@@ -4,13 +4,13 @@ import (
 	"context"
 	"flag"
 	"fmt"
+	"github.com/go-git/go-git/v5"
 	"log"
 	"net/http"
 	"os"
 	"strings"
 	"time"
 
-	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/config"
 	"github.com/go-git/go-git/v5/plumbing"
 	"github.com/go-git/go-git/v5/plumbing/object"
@@ -18,7 +18,7 @@ import (
 	githttp "github.com/go-git/go-git/v5/plumbing/transport/http"
 	"github.com/google/go-github/v51/github"
 	"github.com/hashicorp/go-version"
-	"github.com/lonegunmanb/terraform-google-schema/v4/schema"
+	"github.com/lonegunmanb/terraform-google-schema/v5/schema"
 	"golang.org/x/oauth2"
 )
 
