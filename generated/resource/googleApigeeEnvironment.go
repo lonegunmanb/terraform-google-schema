@@ -35,6 +35,12 @@ const googleApigeeEnvironment = `{
         "optional": true,
         "type": "string"
       },
+      "forward_proxy_uri": {
+        "description": "Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of \"http\" or \"https\", and the port must be supplied.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",

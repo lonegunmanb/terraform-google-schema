@@ -90,6 +90,15 @@ const googlePrivatecaCertificateAuthority = `{
                   }
                 ]
               ],
+              "subject_key_id": [
+                "list",
+                [
+                  "object",
+                  {
+                    "key_id": "string"
+                  }
+                ]
+              ],
               "x509_config": [
                 "list",
                 [

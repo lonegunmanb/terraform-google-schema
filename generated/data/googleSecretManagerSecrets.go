@@ -134,7 +134,8 @@ const googleSecretManagerSecrets = `{
               "version_aliases": [
                 "map",
                 "string"
-              ]
+              ],
+              "version_destroy_ttl": "string"
             }
           ]
         ]

@@ -188,6 +188,12 @@ const googleSecretManagerSecret = `{
           "map",
           "string"
         ]
+      },
+      "version_destroy_ttl": {
+        "computed": true,
+        "description": "Secret Version TTL after destruction request.\nThis is a part of the delayed delete feature on Secret Version.\nFor secret with versionDestroyTtl\u003e0, version destruction doesn't happen immediately\non calling destroy instead the version goes to a disabled state and\nthe actual destruction happens after this TTL expires.",
+        "description_kind": "plain",
+        "type": "string"
       }
     },
     "description_kind": "plain"

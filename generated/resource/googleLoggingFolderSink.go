@@ -51,6 +51,12 @@ const googleLoggingFolderSink = `{
         "optional": true,
         "type": "bool"
       },
+      "intercept_children": {
+        "description": "Whether or not to intercept logs from child projects. If true, matching logs will not match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "name": {
         "description": "The name of the logging sink.",
         "description_kind": "plain",

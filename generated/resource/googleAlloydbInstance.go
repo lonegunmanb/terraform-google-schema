@@ -116,6 +116,12 @@ const googleAlloydbInstance = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "public_ip_address": {
+        "computed": true,
+        "description": "The public IP addresses for the Instance. This is available ONLY when\nnetworkConfig.enablePublicIp is set to true. This is the connection\nendpoint for an end-user application.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "reconciling": {
         "computed": true,
         "description": "Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.",
@@ -198,6 +204,39 @@ const googleAlloydbInstance = `{
             }
           },
           "description": "Configurations for the machines that host the underlying database engine.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "network_config": {
+        "block": {
+          "attributes": {
+            "enable_public_ip": {
+              "description": "Enabling public ip for the instance. If a user wishes to disable this,\nplease also clear the list of the authorized external networks set on\nthe same instance.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            }
+          },
+          "block_types": {
+            "authorized_external_networks": {
+              "block": {
+                "attributes": {
+                  "cidr_range": {
+                    "description": "CIDR range for one authorized network of the instance.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "A list of external networks authorized to access this instance. This\nfield is only allowed to be set when 'enable_public_ip' is set to\ntrue.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Instance level network configuration.",
           "description_kind": "plain"
         },
         "max_items": 1,

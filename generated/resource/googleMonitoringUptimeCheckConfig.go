@@ -231,7 +231,7 @@ const googleMonitoringUptimeCheckConfig = `{
                     "type": "string"
                   }
                 },
-                "description": "The authentication information. Optional when creating an HTTP check; defaults to empty.",
+                "description": "The authentication information using username and password. Optional when creating an HTTP check; defaults to empty. Do not use with other authentication fields.",
                 "description_kind": "plain"
               },
               "max_items": 1,
@@ -248,6 +248,22 @@ const googleMonitoringUptimeCheckConfig = `{
                   }
                 },
                 "description": "Contains information needed to add pings to an HTTP check.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "service_agent_authentication": {
+              "block": {
+                "attributes": {
+                  "type": {
+                    "description": "The type of authentication to use. Possible values: [\"SERVICE_AGENT_AUTHENTICATION_TYPE_UNSPECIFIED\", \"OIDC_TOKEN\"]",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "The authentication information using the Monitoring Service Agent. Optional when creating an HTTPS check; defaults to empty. Do not use with other authentication fields.",
                 "description_kind": "plain"
               },
               "max_items": 1,

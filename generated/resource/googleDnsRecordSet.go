@@ -324,7 +324,7 @@ const googleDnsRecordSet = `{
                     "nesting_mode": "list"
                   }
                 },
-                "description": "The configuration for a primary-backup policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.",
+                "description": "The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.",
                 "description_kind": "plain"
               },
               "max_items": 1,
