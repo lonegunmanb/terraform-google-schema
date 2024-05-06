@@ -306,6 +306,28 @@ const googleBigqueryDataset = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "external_dataset_reference": {
+        "block": {
+          "attributes": {
+            "connection": {
+              "description": "The connection id that is used to access the externalSource.\nFormat: projects/{projectId}/locations/{locationId}/connections/{connectionId}",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            },
+            "external_source": {
+              "description": "External source that backs this dataset.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "Information about the external metadata storage where the dataset is defined.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {

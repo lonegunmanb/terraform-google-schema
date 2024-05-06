@@ -1040,6 +1040,7 @@ func init() {
 	dataSources["google_storage_bucket_object"] = data.GoogleStorageBucketObjectSchema()  
 	dataSources["google_storage_bucket_object_content"] = data.GoogleStorageBucketObjectContentSchema()  
 	dataSources["google_storage_bucket_objects"] = data.GoogleStorageBucketObjectsSchema()  
+	dataSources["google_storage_buckets"] = data.GoogleStorageBucketsSchema()  
 	dataSources["google_storage_object_signed_url"] = data.GoogleStorageObjectSignedUrlSchema()  
 	dataSources["google_storage_project_service_account"] = data.GoogleStorageProjectServiceAccountSchema()  
 	dataSources["google_storage_transfer_project_service_account"] = data.GoogleStorageTransferProjectServiceAccountSchema()  

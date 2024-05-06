@@ -143,6 +143,21 @@ const googleBigqueryDataset = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "external_dataset_reference": {
+        "computed": true,
+        "description": "Information about the external metadata storage where the dataset is defined.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "connection": "string",
+              "external_source": "string"
+            }
+          ]
+        ]
+      },
       "friendly_name": {
         "computed": true,
         "description": "A descriptive name for the dataset",

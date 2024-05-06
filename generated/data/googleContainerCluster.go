@@ -965,6 +965,16 @@ const googleContainerCluster = `{
                 "map",
                 "string"
               ],
+              "secondary_boot_disks": [
+                "list",
+                [
+                  "object",
+                  {
+                    "disk_image": "string",
+                    "mode": "string"
+                  }
+                ]
+              ],
               "service_account": "string",
               "shielded_instance_config": [
                 "list",
@@ -1297,6 +1307,16 @@ const googleContainerCluster = `{
                     "resource_manager_tags": [
                       "map",
                       "string"
+                    ],
+                    "secondary_boot_disks": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "disk_image": "string",
+                          "mode": "string"
+                        }
+                      ]
                     ],
                     "service_account": "string",
                     "shielded_instance_config": [

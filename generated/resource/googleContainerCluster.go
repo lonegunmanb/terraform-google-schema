@@ -1721,6 +1721,28 @@ const googleContainerCluster = `{
               "max_items": 1,
               "nesting_mode": "list"
             },
+            "secondary_boot_disks": {
+              "block": {
+                "attributes": {
+                  "disk_image": {
+                    "description": "Disk image to create the secondary boot disk from",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "mode": {
+                    "description": "Mode for how the secondary boot disk is used.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Secondary boot disks for preloading data or container images.",
+                "description_kind": "plain"
+              },
+              "max_items": 127,
+              "nesting_mode": "list"
+            },
             "shielded_instance_config": {
               "block": {
                 "attributes": {
@@ -2459,6 +2481,28 @@ const googleContainerCluster = `{
                       "description_kind": "plain"
                     },
                     "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "secondary_boot_disks": {
+                    "block": {
+                      "attributes": {
+                        "disk_image": {
+                          "description": "Disk image to create the secondary boot disk from",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        },
+                        "mode": {
+                          "description": "Mode for how the secondary boot disk is used.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Secondary boot disks for preloading data or container images.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 127,
                     "nesting_mode": "list"
                   },
                   "shielded_instance_config": {

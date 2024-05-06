@@ -9,7 +9,14 @@ import (
 const googleIntegrationsClient = `{
   "block": {
     "attributes": {
+      "create_sample_integrations": {
+        "description": "Indicates if sample integrations should be created along with provisioning.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "create_sample_workflows": {
+        "deprecated": true,
         "description": "Indicates if sample workflow should be created along with provisioning.",
         "description_kind": "plain",
         "optional": true,
@@ -34,6 +41,7 @@ const googleIntegrationsClient = `{
         "type": "string"
       },
       "provision_gmek": {
+        "deprecated": true,
         "description": "Indicates provision with GMEK or CMEK.",
         "description_kind": "plain",
         "optional": true,

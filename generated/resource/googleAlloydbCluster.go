@@ -448,6 +448,68 @@ const googleAlloydbCluster = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "maintenance_update_policy": {
+        "block": {
+          "block_types": {
+            "maintenance_windows": {
+              "block": {
+                "attributes": {
+                  "day": {
+                    "description": "Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc. Possible values: [\"MONDAY\", \"TUESDAY\", \"WEDNESDAY\", \"THURSDAY\", \"FRIDAY\", \"SATURDAY\", \"SUNDAY\"]",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "block_types": {
+                  "start_time": {
+                    "block": {
+                      "attributes": {
+                        "hours": {
+                          "description": "Hours of day in 24 hour format. Should be from 0 to 23.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "number"
+                        },
+                        "minutes": {
+                          "description": "Minutes of hour of day. Currently, only the value 0 is supported.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "nanos": {
+                          "description": "Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "seconds": {
+                          "description": "Seconds of minutes of the time. Currently, only the value 0 is supported.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        }
+                      },
+                      "description": "Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour of this time.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "min_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "Preferred windows to perform maintenance. Currently limited to 1.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            }
+          },
+          "description": "MaintenanceUpdatePolicy defines the policy for system updates.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "network_config": {
         "block": {
           "attributes": {

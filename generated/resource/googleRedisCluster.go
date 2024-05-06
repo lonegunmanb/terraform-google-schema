@@ -95,6 +95,15 @@ const googleRedisCluster = `{
           ]
         ]
       },
+      "redis_configs": {
+        "description": "Configure Redis Cluster behavior using a subset of native Redis configuration parameters.\nPlease check Memorystore documentation for the list of supported parameters:\nhttps://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations",
+        "description_kind": "plain",
+        "optional": true,
+        "type": [
+          "map",
+          "string"
+        ]
+      },
       "region": {
         "computed": true,
         "description": "The name of the region of the Redis cluster.",
