@@ -123,7 +123,7 @@ const googleClouddeployDeliveryPipeline = `{
         "type": "string"
       },
       "name": {
-        "description": "Name of the ` + "`" + `DeliveryPipeline` + "`" + `. Format is [a-z][a-z0-9\\-]{0,62}.",
+        "description": "Name of the ` + "`" + `DeliveryPipeline` + "`" + `. Format is ` + "`" + `[a-z]([a-z0-9-]{0,61}[a-z0-9])?` + "`" + `.",
         "description_kind": "plain",
         "required": true,
         "type": "string"

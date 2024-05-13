@@ -80,6 +80,85 @@ const googleIamWorkforcePoolProvider = `{
       }
     },
     "block_types": {
+      "extra_attributes_oauth2_client": {
+        "block": {
+          "attributes": {
+            "attributes_type": {
+              "description": "Represents the IdP and type of claims that should be fetched.\n* AZURE_AD_GROUPS_MAIL: Used to get the user's group claims from the Azure AD identity provider using configuration provided\nin ExtraAttributesOAuth2Client and 'mail' property of the 'microsoft.graph.group' object is used for claim mapping.\nSee https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on\n'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'. Possible values: [\"AZURE_AD_GROUPS_MAIL\"]",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            },
+            "client_id": {
+              "description": "The OAuth 2.0 client ID for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            },
+            "issuer_uri": {
+              "description": "The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "block_types": {
+            "client_secret": {
+              "block": {
+                "block_types": {
+                  "value": {
+                    "block": {
+                      "attributes": {
+                        "plain_text": {
+                          "description": "The plain text of the client secret value.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        },
+                        "thumbprint": {
+                          "computed": true,
+                          "description": "A thumbprint to represent the current client secret value.",
+                          "description_kind": "plain",
+                          "type": "string"
+                        }
+                      },
+                      "description": "The value of the client secret.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "The OAuth 2.0 client secret for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "min_items": 1,
+              "nesting_mode": "list"
+            },
+            "query_parameters": {
+              "block": {
+                "attributes": {
+                  "filter": {
+                    "description": "The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL, it represents the\nfilter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The\ngroups should be mail enabled and security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Represents the parameters to control which claims are fetched from an IdP.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "The configuration for OAuth 2.0 client used to get the additional user\nattributes. This should be used when users can't get the desired claims\nin authentication credentials. Currently this configuration is only\nsupported with OIDC protocol.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "oidc": {
         "block": {
           "attributes": {

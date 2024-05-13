@@ -175,6 +175,34 @@ const googleClouddeployCustomTargetType = `{
                     "max_items": 1,
                     "nesting_mode": "list"
                   },
+                  "google_cloud_build_repo": {
+                    "block": {
+                      "attributes": {
+                        "path": {
+                          "description": "Relative path from the repository root to the Skaffold file.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "ref": {
+                          "description": "Branch or tag to use when cloning the repository.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "repository": {
+                          "description": "Cloud Build 2nd gen repository in the format of 'projects/\u003cproject\u003e/locations/\u003clocation\u003e/connections/\u003cconnection\u003e/repositories/\u003crepository\u003e'.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Cloud Build 2nd gen repository containing the Skaffold Config modules.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
                   "google_cloud_storage": {
                     "block": {
                       "attributes": {

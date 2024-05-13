@@ -1505,6 +1505,12 @@ const googleContainerCluster = `{
             "advanced_machine_features": {
               "block": {
                 "attributes": {
+                  "enable_nested_virtualization": {
+                    "description": "Whether the node should have nested virtualization enabled.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  },
                   "threads_per_core": {
                     "description": "The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.",
                     "description_kind": "plain",
@@ -2267,6 +2273,12 @@ const googleContainerCluster = `{
                   "advanced_machine_features": {
                     "block": {
                       "attributes": {
+                        "enable_nested_virtualization": {
+                          "description": "Whether the node should have nested virtualization enabled.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "bool"
+                        },
                         "threads_per_core": {
                           "description": "The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.",
                           "description_kind": "plain",

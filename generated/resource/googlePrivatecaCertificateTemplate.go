@@ -51,6 +51,12 @@ const googlePrivatecaCertificateTemplate = `{
         "required": true,
         "type": "string"
       },
+      "maximum_lifetime": {
+        "description": "Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "name": {
         "description": "The resource name for this CertificateTemplate in the format ` + "`" + `projects/*/locations/*/certificateTemplates/*` + "`" + `.",
         "description_kind": "plain",

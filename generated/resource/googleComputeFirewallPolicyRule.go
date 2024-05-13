@@ -10,7 +10,7 @@ const googleComputeFirewallPolicyRule = `{
   "block": {
     "attributes": {
       "action": {
-        "description": "The Action to perform when the client connection triggers the rule. Valid actions are \"allow\", \"deny\" and \"goto_next\".",
+        "description": "The Action to perform when the client connection triggers the rule. Valid actions are \"allow\", \"deny\", \"goto_next\" and \"apply_security_profile_group\".",
         "description_kind": "plain",
         "required": true,
         "type": "string"
@@ -69,6 +69,12 @@ const googleComputeFirewallPolicyRule = `{
         "description_kind": "plain",
         "type": "number"
       },
+      "security_profile_group": {
+        "description": "A fully-qualified URL of a SecurityProfileGroup resource. Example: https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group. It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "target_resources": {
         "description": "A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.",
         "description_kind": "plain",
@@ -86,6 +92,12 @@ const googleComputeFirewallPolicyRule = `{
           "list",
           "string"
         ]
+      },
+      "tls_inspect": {
+        "description": "Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
       }
     },
     "block_types": {

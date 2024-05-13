@@ -85,7 +85,7 @@ const googleClouddeployTarget = `{
         "type": "string"
       },
       "name": {
-        "description": "Name of the ` + "`" + `Target` + "`" + `. Format is [a-z][a-z0-9\\-]{0,62}.",
+        "description": "Name of the ` + "`" + `Target` + "`" + `. Format is ` + "`" + `[a-z]([a-z0-9-]{0,61}[a-z0-9])?` + "`" + `.",
         "description_kind": "plain",
         "required": true,
         "type": "string"
@@ -143,6 +143,22 @@ const googleClouddeployTarget = `{
             }
           },
           "description": "Information specifying an Anthos Cluster.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "custom_target": {
+        "block": {
+          "attributes": {
+            "custom_target_type": {
+              "description": "Required. The name of the CustomTargetType. Format must be ` + "`" + `projects/{project}/locations/{location}/customTargetTypes/{custom_target_type}` + "`" + `.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "Optional. Information specifying a Custom Target.",
           "description_kind": "plain"
         },
         "max_items": 1,
