@@ -54,10 +54,9 @@ const googleComputeSubnetwork = `{
         "type": "string"
       },
       "ip_cidr_range": {
-        "computed": true,
-        "description": "The range of internal addresses that are owned by this subnetwork.\nProvide this property when you create the subnetwork. For example,\n10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and\nnon-overlapping within a network. Only IPv4 is supported.\nField is optional when 'reserved_internal_range' is defined, otherwise required.",
+        "description": "The range of internal addresses that are owned by this subnetwork.\nProvide this property when you create the subnetwork. For example,\n10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and\nnon-overlapping within a network. Only IPv4 is supported.",
         "description_kind": "plain",
-        "optional": true,
+        "required": true,
         "type": "string"
       },
       "ipv6_access_type": {
@@ -118,12 +117,6 @@ const googleComputeSubnetwork = `{
         "optional": true,
         "type": "string"
       },
-      "reserved_internal_range": {
-        "description": "The ID of the reserved internal range. Must be prefixed with 'networkconnectivity.googleapis.com'\nE.g. 'networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}'",
-        "description_kind": "plain",
-        "optional": true,
-        "type": "string"
-      },
       "role": {
         "description": "The role of subnetwork.\nCurrently, this field is only used when 'purpose' is 'REGIONAL_MANAGED_PROXY'.\nThe value can be set to 'ACTIVE' or 'BACKUP'.\nAn 'ACTIVE' subnetwork is one that is currently being used for Envoy-based load balancers in a region.\nA 'BACKUP' subnetwork is one that is ready to be promoted to 'ACTIVE' or is currently draining. Possible values: [\"ACTIVE\", \"BACKUP\"]",
         "description_kind": "plain",
@@ -141,8 +134,7 @@ const googleComputeSubnetwork = `{
             "object",
             {
               "ip_cidr_range": "string",
-              "range_name": "string",
-              "reserved_internal_range": "string"
+              "range_name": "string"
             }
           ]
         ]
