@@ -94,7 +94,7 @@ const googleNetappStoragePool = `{
         "type": "string"
       },
       "service_level": {
-        "description": "Service level of the storage pool. Possible values: [\"PREMIUM\", \"EXTREME\", \"STANDARD\"]",
+        "description": "Service level of the storage pool. Possible values: [\"PREMIUM\", \"EXTREME\", \"STANDARD\", \"FLEX\"]",
         "description_kind": "plain",
         "required": true,
         "type": "string"

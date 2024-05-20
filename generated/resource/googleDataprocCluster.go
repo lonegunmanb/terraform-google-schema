@@ -213,6 +213,12 @@ const googleDataprocCluster = `{
                                       "optional": true,
                                       "type": "string"
                                     },
+                                    "local_ssd_interface": {
+                                      "description": "Interface type of local SSDs (default is \"scsi\"). Valid values: \"scsi\" (Small Computer System Interface), \"nvme\" (Non-Volatile Memory Express).",
+                                      "description_kind": "plain",
+                                      "optional": true,
+                                      "type": "string"
+                                    },
                                     "num_local_ssds": {
                                       "computed": true,
                                       "description": "The amount of local SSD disks that will be attached to each master cluster node. Defaults to 0.",
@@ -598,6 +604,12 @@ const googleDataprocCluster = `{
                           "optional": true,
                           "type": "string"
                         },
+                        "local_ssd_interface": {
+                          "description": "Interface type of local SSDs (default is \"scsi\"). Valid values: \"scsi\" (Small Computer System Interface), \"nvme\" (Non-Volatile Memory Express).",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
                         "num_local_ssds": {
                           "computed": true,
                           "description": "The amount of local SSD disks that will be attached to each master cluster node. Defaults to 0.",
@@ -674,6 +686,12 @@ const googleDataprocCluster = `{
                         },
                         "boot_disk_type": {
                           "description": "The disk type of the primary disk attached to each preemptible worker node. Such as \"pd-ssd\" or \"pd-standard\". Defaults to \"pd-standard\".",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "local_ssd_interface": {
+                          "description": "Interface type of local SSDs (default is \"scsi\"). Valid values: \"scsi\" (Small Computer System Interface), \"nvme\" (Non-Volatile Memory Express).",
                           "description_kind": "plain",
                           "optional": true,
                           "type": "string"
@@ -989,6 +1007,12 @@ const googleDataprocCluster = `{
                         },
                         "boot_disk_type": {
                           "description": "The disk type of the primary disk attached to each node. Such as \"pd-ssd\" or \"pd-standard\". Defaults to \"pd-standard\".",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "local_ssd_interface": {
+                          "description": "Interface type of local SSDs (default is \"scsi\"). Valid values: \"scsi\" (Small Computer System Interface), \"nvme\" (Non-Volatile Memory Express).",
                           "description_kind": "plain",
                           "optional": true,
                           "type": "string"

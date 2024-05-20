@@ -36,6 +36,13 @@ const googleComputeRouterPeer = `{
         "optional": true,
         "type": "bool"
       },
+      "enable_ipv4": {
+        "computed": true,
+        "description": "Enable IPv4 traffic over BGP Peer. It is enabled by default if the peerIpAddress is version 4.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "enable_ipv6": {
         "description": "Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.",
         "description_kind": "plain",
@@ -57,6 +64,13 @@ const googleComputeRouterPeer = `{
       "ip_address": {
         "computed": true,
         "description": "IP address of the interface inside Google Cloud Platform.\nOnly IPv4 is supported.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
+      "ipv4_nexthop_address": {
+        "computed": true,
+        "description": "IPv4 address of the interface inside Google Cloud Platform.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -89,6 +103,13 @@ const googleComputeRouterPeer = `{
       "peer_ip_address": {
         "computed": true,
         "description": "IP address of the BGP interface outside Google Cloud Platform.\nOnly IPv4 is supported. Required if 'ip_address' is set.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
+      "peer_ipv4_nexthop_address": {
+        "computed": true,
+        "description": "IPv4 address of the BGP interface outside Google Cloud Platform.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"

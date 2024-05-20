@@ -481,6 +481,167 @@ const googleDataLossPreventionDiscoveryConfig = `{
               },
               "max_items": 1,
               "nesting_mode": "list"
+            },
+            "cloud_sql_target": {
+              "block": {
+                "block_types": {
+                  "conditions": {
+                    "block": {
+                      "attributes": {
+                        "database_engines": {
+                          "description": "Database engines that should be profiled. Optional. Defaults to ALL_SUPPORTED_DATABASE_ENGINES if unspecified. Possible values: [\"ALL_SUPPORTED_DATABASE_ENGINES\", \"MYSQL\", \"POSTGRES\"]",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
+                            "string"
+                          ]
+                        },
+                        "types": {
+                          "description": "Data profiles will only be generated for the database resource types specified in this field. If not specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES]. Possible values: [\"DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES\", \"DATABASE_RESOURCE_TYPE_TABLE\"]",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
+                            "string"
+                          ]
+                        }
+                      },
+                      "description": "In addition to matching the filter, these conditions must be true before a profile is generated.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "disabled": {
+                    "block": {
+                      "description": "Disable profiling for database resources that match this filter.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "filter": {
+                    "block": {
+                      "block_types": {
+                        "collection": {
+                          "block": {
+                            "block_types": {
+                              "include_regexes": {
+                                "block": {
+                                  "block_types": {
+                                    "patterns": {
+                                      "block": {
+                                        "attributes": {
+                                          "database_regex": {
+                                            "description": "Regex to test the database name against. If empty, all databases match.",
+                                            "description_kind": "plain",
+                                            "optional": true,
+                                            "type": "string"
+                                          },
+                                          "database_resource_name_regex": {
+                                            "description": "Regex to test the database resource's name against. An example of a database resource name is a table's name. Other database resource names like view names could be included in the future. If empty, all database resources match.'",
+                                            "description_kind": "plain",
+                                            "optional": true,
+                                            "type": "string"
+                                          },
+                                          "instance_regex": {
+                                            "description": "Regex to test the instance name against. If empty, all instances match.",
+                                            "description_kind": "plain",
+                                            "optional": true,
+                                            "type": "string"
+                                          },
+                                          "project_id_regex": {
+                                            "description": "For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.",
+                                            "description_kind": "plain",
+                                            "optional": true,
+                                            "type": "string"
+                                          }
+                                        },
+                                        "description": "A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expressions' length can't exceed 10 KiB.",
+                                        "description_kind": "plain"
+                                      },
+                                      "nesting_mode": "list"
+                                    }
+                                  },
+                                  "description": "A collection of regular expressions to match a database resource against.",
+                                  "description_kind": "plain"
+                                },
+                                "max_items": 1,
+                                "nesting_mode": "list"
+                              }
+                            },
+                            "description": "A specific set of database resources for this filter to apply to.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
+                        "others": {
+                          "block": {
+                            "description": "Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "Required. The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "min_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "generation_cadence": {
+                    "block": {
+                      "attributes": {
+                        "refresh_frequency": {
+                          "description": "Data changes (non-schema changes) in Cloud SQL tables can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying tables have changes. Defaults to never. Possible values: [\"UPDATE_FREQUENCY_NEVER\", \"UPDATE_FREQUENCY_DAILY\", \"UPDATE_FREQUENCY_MONTHLY\"]",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "block_types": {
+                        "schema_modified_cadence": {
+                          "block": {
+                            "attributes": {
+                              "frequency": {
+                                "description": "Frequency to regenerate data profiles when the schema is modified. Defaults to monthly. Possible values: [\"UPDATE_FREQUENCY_NEVER\", \"UPDATE_FREQUENCY_DAILY\", \"UPDATE_FREQUENCY_MONTHLY\"]",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "types": {
+                                "description": "The types of schema modifications to consider. Defaults to NEW_COLUMNS. Possible values: [\"NEW_COLUMNS\", \"REMOVED_COLUMNS\"]",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": [
+                                  "list",
+                                  "string"
+                                ]
+                              }
+                            },
+                            "description": "Governs when to update data profiles when a schema is modified",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "How often and when to update profiles. New tables that match both the filter and conditions are scanned as quickly as possible depending on system capacity.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "Cloud SQL target for Discovery. The first target to match a table will be the one applied.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
             }
           },
           "description": "Target to match against for determining what to scan and how frequently",

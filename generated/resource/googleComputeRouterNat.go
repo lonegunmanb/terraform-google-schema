@@ -9,6 +9,13 @@ import (
 const googleComputeRouterNat = `{
   "block": {
     "attributes": {
+      "auto_network_tier": {
+        "computed": true,
+        "description": "The network tier to use when automatically reserving NAT IP addresses.\nMust be one of: PREMIUM, STANDARD. If not specified, then the current\nproject-level default tier is used. Possible values: [\"PREMIUM\", \"STANDARD\"]",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "drain_nat_ips": {
         "description": "A list of URLs of the IP resources to be drained. These IPs must be\nvalid static external IPs that have been assigned to the NAT.",
         "description_kind": "plain",

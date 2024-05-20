@@ -40,6 +40,12 @@ const googleBigqueryConnection = `{
         "optional": true,
         "type": "string"
       },
+      "kms_key_name": {
+        "description": "Optional. The Cloud KMS key that is used for encryption.\n\nExample: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "location": {
         "description": "The geographic location where the connection should reside.\nCloud SQL instance must be in the same location as the connection\nwith following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.\nExamples: US, EU, asia-northeast1, us-central1, europe-west1.\nSpanner Connections same as spanner region\nAWS allowed regions are aws-us-east-1\nAzure allowed regions are azure-eastus2",
         "description_kind": "plain",

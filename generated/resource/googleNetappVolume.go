@@ -167,7 +167,7 @@ const googleNetappVolume = `{
       },
       "service_level": {
         "computed": true,
-        "description": "Service level of the volume. Inherited from storage pool.",
+        "description": "Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.",
         "description_kind": "plain",
         "type": "string"
       },

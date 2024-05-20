@@ -83,7 +83,7 @@ const googleProject = `{
       },
       "terraform_labels": {
         "computed": true,
-        "description": "The combination of labels configured directly on the resource and default labels configured on the provider.",
+        "description": "(ReadOnly) The combination of labels configured directly on the resource and default labels configured on the provider.",
         "description_kind": "plain",
         "type": [
           "map",

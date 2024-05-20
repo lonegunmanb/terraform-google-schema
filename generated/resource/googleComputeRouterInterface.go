@@ -28,6 +28,13 @@ const googleComputeRouterInterface = `{
         "optional": true,
         "type": "string"
       },
+      "ip_version": {
+        "computed": true,
+        "description": "IP version of this interface.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "name": {
         "description": "A unique name for the interface, required by GCE. Changing this forces a new interface to be created.",
         "description_kind": "plain",

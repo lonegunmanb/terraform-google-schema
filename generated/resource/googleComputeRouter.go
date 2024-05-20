@@ -89,6 +89,13 @@ const googleComputeRouter = `{
               "required": true,
               "type": "number"
             },
+            "identifier_range": {
+              "computed": true,
+              "description": "Explicitly specifies a range of valid BGP Identifiers for this Router.\nIt is provided as a link-local IPv4 range (from 169.254.0.0/16), of\nsize at least /30, even if the BGP sessions are over IPv6. It must\nnot overlap with any IPv4 BGP session ranges. Other vendors commonly\ncall this router ID.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "keepalive_interval": {
               "description": "The interval in seconds between BGP keepalive messages that are sent\nto the peer. Hold time is three times the interval at which keepalive\nmessages are sent, and the hold time is the maximum number of seconds\nallowed to elapse between successive keepalive messages that BGP\nreceives from a peer.\n\nBGP will use the smaller of either the local hold time value or the\npeer's hold time value as the hold time for the BGP connection\nbetween the two peers. If set, this value must be between 20 and 60.\nThe default is 20.",
               "description_kind": "plain",

@@ -34,6 +34,7 @@ const googleComputeRouter = `{
                 ]
               ],
               "asn": "number",
+              "identifier_range": "string",
               "keepalive_interval": "number"
             }
           ]
