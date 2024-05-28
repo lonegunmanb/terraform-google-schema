@@ -226,6 +226,135 @@ const googleComputeSecurityPolicyRule = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "rate_limit_options": {
+        "block": {
+          "attributes": {
+            "ban_duration_sec": {
+              "description": "Can only be specified if the action for the rule is \"rate_based_ban\".\nIf specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "number"
+            },
+            "conform_action": {
+              "description": "Action to take for requests that are under the configured rate limit threshold.\nValid option is \"allow\" only.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "enforce_on_key": {
+              "description": "Determines the key to enforce the rateLimitThreshold on. Possible values are:\n* ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if \"enforceOnKey\" is not configured.\n* IP: The source IP address of the request is the key. Each IP has this limit enforced separately.\n* HTTP_HEADER: The value of the HTTP header whose name is configured under \"enforceOnKeyName\". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.\n* XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.\n* HTTP_COOKIE: The value of the HTTP cookie whose name is configured under \"enforceOnKeyName\". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.\n* HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.\n* SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.\n* REGION_CODE: The country/region from which the request originates.\n* TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.\n* USER_IP: The IP address of the originating client, which is resolved based on \"userIpRequestHeaders\" configured with the security policy. If there is no \"userIpRequestHeaders\" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: [\"ALL\", \"IP\", \"HTTP_HEADER\", \"XFF_IP\", \"HTTP_COOKIE\", \"HTTP_PATH\", \"SNI\", \"REGION_CODE\", \"TLS_JA3_FINGERPRINT\", \"USER_IP\"]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "enforce_on_key_name": {
+              "description": "Rate limit key name applicable only for the following key types:\nHTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.\nHTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "exceed_action": {
+              "description": "Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint.\nValid options are deny(STATUS), where valid values for STATUS are 403, 404, 429, and 502.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "block_types": {
+            "ban_threshold": {
+              "block": {
+                "attributes": {
+                  "count": {
+                    "description": "Number of HTTP(S) requests for calculating the threshold.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "number"
+                  },
+                  "interval_sec": {
+                    "description": "Interval over which the threshold is computed.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "number"
+                  }
+                },
+                "description": "Can only be specified if the action for the rule is \"rate_based_ban\".\nIf specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "enforce_on_key_configs": {
+              "block": {
+                "attributes": {
+                  "enforce_on_key_name": {
+                    "description": "Rate limit key name applicable only for the following key types:\nHTTP_HEADER -- Name of the HTTP header whose value is taken as the key value.\nHTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "enforce_on_key_type": {
+                    "description": "Determines the key to enforce the rateLimitThreshold on. Possible values are:\n* ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if \"enforceOnKeyConfigs\" is not configured.\n* IP: The source IP address of the request is the key. Each IP has this limit enforced separately.\n* HTTP_HEADER: The value of the HTTP header whose name is configured under \"enforceOnKeyName\". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.\n* XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP.\n* HTTP_COOKIE: The value of the HTTP cookie whose name is configured under \"enforceOnKeyName\". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.\n* HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes.\n* SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.\n* REGION_CODE: The country/region from which the request originates.\n* TLS_JA3_FINGERPRINT: JA3 TLS/SSL fingerprint if the client connects using HTTPS, HTTP/2 or HTTP/3. If not available, the key type defaults to ALL.\n* USER_IP: The IP address of the originating client, which is resolved based on \"userIpRequestHeaders\" configured with the security policy. If there is no \"userIpRequestHeaders\" configuration or an IP address cannot be resolved from it, the key type defaults to IP. Possible values: [\"ALL\", \"IP\", \"HTTP_HEADER\", \"XFF_IP\", \"HTTP_COOKIE\", \"HTTP_PATH\", \"SNI\", \"REGION_CODE\", \"TLS_JA3_FINGERPRINT\", \"USER_IP\"]",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "If specified, any combination of values of enforceOnKeyType/enforceOnKeyName is treated as the key on which ratelimit threshold/action is enforced.\nYou can specify up to 3 enforceOnKeyConfigs.\nIf enforceOnKeyConfigs is specified, enforceOnKey must not be specified.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            },
+            "exceed_redirect_options": {
+              "block": {
+                "attributes": {
+                  "target": {
+                    "description": "Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "type": {
+                    "description": "Type of the redirect action.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "rate_limit_threshold": {
+              "block": {
+                "attributes": {
+                  "count": {
+                    "description": "Number of HTTP(S) requests for calculating the threshold.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "number"
+                  },
+                  "interval_sec": {
+                    "description": "Interval over which the threshold is computed.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "number"
+                  }
+                },
+                "description": "Threshold at which to begin ratelimiting.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Must be specified if the action is \"rate_based_ban\" or \"throttle\". Cannot be specified for any other actions.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {

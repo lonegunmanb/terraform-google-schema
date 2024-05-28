@@ -75,7 +75,7 @@ const googleComputeInterconnectAttachment = `{
         "type": "string"
       },
       "encryption": {
-        "description": "Indicates the user-supplied encryption option of this interconnect\nattachment. Can only be specified at attachment creation for PARTNER or\nDEDICATED attachments.\n\n* NONE - This is the default value, which means that the VLAN attachment\ncarries unencrypted traffic. VMs are able to send traffic to, or receive\ntraffic from, such a VLAN attachment.\n\n* IPSEC - The VLAN attachment carries only encrypted traffic that is\nencrypted by an IPsec device, such as an HA VPN gateway or third-party\nIPsec VPN. VMs cannot directly send traffic to, or receive traffic from,\nsuch a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN\nattachment must be created with this option. Default value: \"NONE\" Possible values: [\"NONE\", \"IPSEC\"]",
+        "description": "Indicates the user-supplied encryption option of this interconnect\nattachment. Can only be specified at attachment creation for PARTNER or\nDEDICATED attachments.\n* NONE - This is the default value, which means that the VLAN attachment\ncarries unencrypted traffic. VMs are able to send traffic to, or receive\ntraffic from, such a VLAN attachment.\n* IPSEC - The VLAN attachment carries only encrypted traffic that is\nencrypted by an IPsec device, such as an HA VPN gateway or third-party\nIPsec VPN. VMs cannot directly send traffic to, or receive traffic from,\nsuch a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN\nattachment must be created with this option. Default value: \"NONE\" Possible values: [\"NONE\", \"IPSEC\"]",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -99,7 +99,7 @@ const googleComputeInterconnectAttachment = `{
         "type": "string"
       },
       "ipsec_internal_addresses": {
-        "description": "URL of addresses that have been reserved for the interconnect attachment,\nUsed only for interconnect attachment that has the encryption option as\nIPSEC.\n\nThe addresses must be RFC 1918 IP address ranges. When creating HA VPN\ngateway over the interconnect attachment, if the attachment is configured\nto use an RFC 1918 IP address, then the VPN gateway's IP address will be\nallocated from the IP address range specified here.\n\nFor example, if the HA VPN gateway's interface 0 is paired to this\ninterconnect attachment, then an RFC 1918 IP address for the VPN gateway\ninterface 0 will be allocated from the IP address specified for this\ninterconnect attachment.\n\nIf this field is not specified for interconnect attachment that has\nencryption option as IPSEC, later on when creating HA VPN gateway on this\ninterconnect attachment, the HA VPN gateway's IP address will be\nallocated from regional external IP address pool.",
+        "description": "URL of addresses that have been reserved for the interconnect attachment,\nUsed only for interconnect attachment that has the encryption option as\nIPSEC.\nThe addresses must be RFC 1918 IP address ranges. When creating HA VPN\ngateway over the interconnect attachment, if the attachment is configured\nto use an RFC 1918 IP address, then the VPN gateway's IP address will be\nallocated from the IP address range specified here.\nFor example, if the HA VPN gateway's interface 0 is paired to this\ninterconnect attachment, then an RFC 1918 IP address for the VPN gateway\ninterface 0 will be allocated from the IP address specified for this\ninterconnect attachment.\nIf this field is not specified for interconnect attachment that has\nencryption option as IPSEC, later on when creating HA VPN gateway on this\ninterconnect attachment, the HA VPN gateway's IP address will be\nallocated from regional external IP address pool.",
         "description_kind": "plain",
         "optional": true,
         "type": [
@@ -172,7 +172,7 @@ const googleComputeInterconnectAttachment = `{
       },
       "stack_type": {
         "computed": true,
-        "description": "The stack type for this interconnect attachment to identify whether the IPv6\nfeature is enabled or not. If not specified, IPV4_ONLY will be used.\n\nThis field can be both set at interconnect attachments creation and update\ninterconnect attachment operations. Possible values: [\"IPV4_IPV6\", \"IPV4_ONLY\"]",
+        "description": "The stack type for this interconnect attachment to identify whether the IPv6\nfeature is enabled or not. If not specified, IPV4_ONLY will be used.\nThis field can be both set at interconnect attachments creation and update\ninterconnect attachment operations. Possible values: [\"IPV4_IPV6\", \"IPV4_ONLY\"]",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -182,6 +182,12 @@ const googleComputeInterconnectAttachment = `{
         "description": "[Output Only] The current state of this attachment's functionality.",
         "description_kind": "plain",
         "type": "string"
+      },
+      "subnet_length": {
+        "description": "Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,\nexcept for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a\nconstraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure\nremote location fall into this category. In these cases, the default value is 30, and\nrequesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it\ngives Google Cloud Support more debugging visibility.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "number"
       },
       "type": {
         "computed": true,

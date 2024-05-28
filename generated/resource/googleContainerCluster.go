@@ -1540,6 +1540,71 @@ const googleContainerCluster = `{
               "max_items": 1,
               "nesting_mode": "list"
             },
+            "containerd_config": {
+              "block": {
+                "block_types": {
+                  "private_registry_access_config": {
+                    "block": {
+                      "attributes": {
+                        "enabled": {
+                          "description": "Whether or not private registries are configured.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "bool"
+                        }
+                      },
+                      "block_types": {
+                        "certificate_authority_domain_config": {
+                          "block": {
+                            "attributes": {
+                              "fqdns": {
+                                "description": "List of fully-qualified-domain-names. IPv4s and port specification are supported.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": [
+                                  "list",
+                                  "string"
+                                ]
+                              }
+                            },
+                            "block_types": {
+                              "gcp_secret_manager_certificate_config": {
+                                "block": {
+                                  "attributes": {
+                                    "secret_uri": {
+                                      "description": "URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.",
+                                      "description_kind": "plain",
+                                      "required": true,
+                                      "type": "string"
+                                    }
+                                  },
+                                  "description": "Parameters for configuring a certificate hosted in GCP SecretManager.",
+                                  "description_kind": "plain"
+                                },
+                                "max_items": 1,
+                                "min_items": 1,
+                                "nesting_mode": "list"
+                              }
+                            },
+                            "description": "Parameters for configuring CA certificate and domains.",
+                            "description_kind": "plain"
+                          },
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "Parameters for private container registries configuration.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "Parameters for containerd configuration.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "ephemeral_storage_local_ssd_config": {
               "block": {
                 "attributes": {
@@ -2308,6 +2373,71 @@ const googleContainerCluster = `{
                     "max_items": 1,
                     "nesting_mode": "list"
                   },
+                  "containerd_config": {
+                    "block": {
+                      "block_types": {
+                        "private_registry_access_config": {
+                          "block": {
+                            "attributes": {
+                              "enabled": {
+                                "description": "Whether or not private registries are configured.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "bool"
+                              }
+                            },
+                            "block_types": {
+                              "certificate_authority_domain_config": {
+                                "block": {
+                                  "attributes": {
+                                    "fqdns": {
+                                      "description": "List of fully-qualified-domain-names. IPv4s and port specification are supported.",
+                                      "description_kind": "plain",
+                                      "required": true,
+                                      "type": [
+                                        "list",
+                                        "string"
+                                      ]
+                                    }
+                                  },
+                                  "block_types": {
+                                    "gcp_secret_manager_certificate_config": {
+                                      "block": {
+                                        "attributes": {
+                                          "secret_uri": {
+                                            "description": "URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.",
+                                            "description_kind": "plain",
+                                            "required": true,
+                                            "type": "string"
+                                          }
+                                        },
+                                        "description": "Parameters for configuring a certificate hosted in GCP SecretManager.",
+                                        "description_kind": "plain"
+                                      },
+                                      "max_items": 1,
+                                      "min_items": 1,
+                                      "nesting_mode": "list"
+                                    }
+                                  },
+                                  "description": "Parameters for configuring CA certificate and domains.",
+                                  "description_kind": "plain"
+                                },
+                                "nesting_mode": "list"
+                              }
+                            },
+                            "description": "Parameters for private container registries configuration.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "Parameters for containerd configuration.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
                   "ephemeral_storage_local_ssd_config": {
                     "block": {
                       "attributes": {
@@ -2815,6 +2945,73 @@ const googleContainerCluster = `{
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"
+                  }
+                },
+                "block_types": {
+                  "containerd_config": {
+                    "block": {
+                      "block_types": {
+                        "private_registry_access_config": {
+                          "block": {
+                            "attributes": {
+                              "enabled": {
+                                "description": "Whether or not private registries are configured.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "bool"
+                              }
+                            },
+                            "block_types": {
+                              "certificate_authority_domain_config": {
+                                "block": {
+                                  "attributes": {
+                                    "fqdns": {
+                                      "description": "List of fully-qualified-domain-names. IPv4s and port specification are supported.",
+                                      "description_kind": "plain",
+                                      "required": true,
+                                      "type": [
+                                        "list",
+                                        "string"
+                                      ]
+                                    }
+                                  },
+                                  "block_types": {
+                                    "gcp_secret_manager_certificate_config": {
+                                      "block": {
+                                        "attributes": {
+                                          "secret_uri": {
+                                            "description": "URI for the secret that hosts a certificate. Must be in the format 'projects/PROJECT_NUM/secrets/SECRET_NAME/versions/VERSION_OR_LATEST'.",
+                                            "description_kind": "plain",
+                                            "required": true,
+                                            "type": "string"
+                                          }
+                                        },
+                                        "description": "Parameters for configuring a certificate hosted in GCP SecretManager.",
+                                        "description_kind": "plain"
+                                      },
+                                      "max_items": 1,
+                                      "min_items": 1,
+                                      "nesting_mode": "list"
+                                    }
+                                  },
+                                  "description": "Parameters for configuring CA certificate and domains.",
+                                  "description_kind": "plain"
+                                },
+                                "nesting_mode": "list"
+                              }
+                            },
+                            "description": "Parameters for private container registries configuration.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "Parameters for containerd configuration.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
                   }
                 },
                 "description": "Subset of NodeConfig message that has defaults.",

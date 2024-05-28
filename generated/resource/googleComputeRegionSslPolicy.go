@@ -76,9 +76,10 @@ const googleComputeRegionSslPolicy = `{
         "type": "string"
       },
       "region": {
+        "computed": true,
         "description": "The region where the regional SSL policy resides.",
         "description_kind": "plain",
-        "required": true,
+        "optional": true,
         "type": "string"
       },
       "self_link": {

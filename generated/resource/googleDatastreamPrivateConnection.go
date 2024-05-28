@@ -9,6 +9,12 @@ import (
 const googleDatastreamPrivateConnection = `{
   "block": {
     "attributes": {
+      "create_without_validation": {
+        "description": "If set to true, will skip validations.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "display_name": {
         "description": "Display name.",
         "description_kind": "plain",

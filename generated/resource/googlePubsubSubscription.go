@@ -148,6 +148,12 @@ const googlePubsubSubscription = `{
               "required": true,
               "type": "string"
             },
+            "filename_datetime_format": {
+              "description": "User-provided format string specifying how to represent datetimes in Cloud Storage filenames.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "filename_prefix": {
               "description": "User-provided prefix for Cloud Storage filename.",
               "description_kind": "plain",

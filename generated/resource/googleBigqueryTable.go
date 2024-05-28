@@ -263,7 +263,7 @@ const googleBigqueryTable = `{
               "type": "string"
             },
             "source_format": {
-              "description": " Please see sourceFormat under ExternalDataConfiguration in Bigquery's public API documentation (https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration) for supported formats. To use \"GOOGLE_SHEETS\" the scopes must include \"googleapis.com/auth/drive.readonly\".",
+              "description": "Please see sourceFormat under ExternalDataConfiguration in Bigquery's public API documentation (https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration) for supported formats. To use \"GOOGLE_SHEETS\" the scopes must include \"googleapis.com/auth/drive.readonly\".",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
@@ -290,6 +290,116 @@ const googleBigqueryTable = `{
                   }
                 },
                 "description": "Additional options if source_format is set to \"AVRO\"",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "bigtable_options": {
+              "block": {
+                "attributes": {
+                  "ignore_unspecified_column_families": {
+                    "description": "If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  },
+                  "output_column_families_as_json": {
+                    "description": "If field is true, then each column family will be read as a single JSON column. Otherwise they are read as a repeated cell structure containing timestamp/value tuples. The default value is false.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  },
+                  "read_rowkey_as_string": {
+                    "description": "If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  }
+                },
+                "block_types": {
+                  "column_family": {
+                    "block": {
+                      "attributes": {
+                        "encoding": {
+                          "description": "The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "family_id": {
+                          "description": "Identifier of the column family.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "only_read_latest": {
+                          "description": "If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "bool"
+                        },
+                        "type": {
+                          "description": "The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): \"BYTES\", \"STRING\", \"INTEGER\", \"FLOAT\", \"BOOLEAN\", \"JSON\". Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "block_types": {
+                        "column": {
+                          "block": {
+                            "attributes": {
+                              "encoding": {
+                                "description": "The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "field_name": {
+                                "description": "If the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the column field name and is used as field name in queries.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "only_read_latest": {
+                                "description": "If this is set, only the latest version of value in this column are exposed. 'onlyReadLatest' can also be set at the column family level. However, the setting at this level takes precedence if 'onlyReadLatest' is set at both levels.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "bool"
+                              },
+                              "qualifier_encoded": {
+                                "description": "Qualifier of the column. Columns in the parent column family that has this exact qualifier are exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the qualifierString field. Otherwise, a base-64 encoded value must be set to qualifierEncoded. The column field name is the same as the column qualifier. However, if the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as fieldName.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "qualifier_string": {
+                                "description": "Qualifier string.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "type": {
+                                "description": "The type to convert the value in cells of this column. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): \"BYTES\", \"STRING\", \"INTEGER\", \"FLOAT\", \"BOOLEAN\", \"JSON\", Default type is \"BYTES\". 'type' can also be set at the column family level. However, the setting at this level takes precedence if 'type' is set at both levels.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "A List of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as Other columns can be accessed as a list through column field",
+                            "description_kind": "plain"
+                          },
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "A list of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.",
+                      "description_kind": "plain"
+                    },
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "Additional options if sourceFormat is set to BIGTABLE.",
                 "description_kind": "plain"
               },
               "max_items": 1,
@@ -345,7 +455,7 @@ const googleBigqueryTable = `{
               "block": {
                 "attributes": {
                   "range": {
-                    "description": "Range of a sheet to query from. Only used when non-empty. At least one of range or skip_leading_rows must be set. Typical format: \"sheet_name!top_left_cell_id:bottom_right_cell_id\" For example: \"sheet1!A1:B20\"",
+                    "description": "Range of a sheet to query from. Only used when non-empty. At least one of range or skip_leading_rows must be set. Typical format: \"sheet_name!top_left_cell_id:bottom_right_cell_id\" For example: \"sheet1!A1:B20",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"
@@ -401,7 +511,7 @@ const googleBigqueryTable = `{
                     "type": "string"
                   }
                 },
-                "description": "Additional properties to set if sourceFormat is set to JSON.\"",
+                "description": "Additional properties to set if sourceFormat is set to JSON.",
                 "description_kind": "plain"
               },
               "max_items": 1,
@@ -423,7 +533,7 @@ const googleBigqueryTable = `{
                     "type": "bool"
                   }
                 },
-                "description": "Additional properties to set if sourceFormat is set to PARQUET.\"",
+                "description": "Additional properties to set if sourceFormat is set to PARQUET.",
                 "description_kind": "plain"
               },
               "max_items": 1,

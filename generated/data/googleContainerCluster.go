@@ -802,6 +802,44 @@ const googleContainerCluster = `{
                   }
                 ]
               ],
+              "containerd_config": [
+                "list",
+                [
+                  "object",
+                  {
+                    "private_registry_access_config": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "certificate_authority_domain_config": [
+                            "list",
+                            [
+                              "object",
+                              {
+                                "fqdns": [
+                                  "list",
+                                  "string"
+                                ],
+                                "gcp_secret_manager_certificate_config": [
+                                  "list",
+                                  [
+                                    "object",
+                                    {
+                                      "secret_uri": "string"
+                                    }
+                                  ]
+                                ]
+                              }
+                            ]
+                          ],
+                          "enabled": "bool"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              ],
               "disk_size_gb": "number",
               "disk_type": "string",
               "effective_taints": [
@@ -1146,6 +1184,44 @@ const googleContainerCluster = `{
                         }
                       ]
                     ],
+                    "containerd_config": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "private_registry_access_config": [
+                            "list",
+                            [
+                              "object",
+                              {
+                                "certificate_authority_domain_config": [
+                                  "list",
+                                  [
+                                    "object",
+                                    {
+                                      "fqdns": [
+                                        "list",
+                                        "string"
+                                      ],
+                                      "gcp_secret_manager_certificate_config": [
+                                        "list",
+                                        [
+                                          "object",
+                                          {
+                                            "secret_uri": "string"
+                                          }
+                                        ]
+                                      ]
+                                    }
+                                  ]
+                                ],
+                                "enabled": "bool"
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    ],
                     "disk_size_gb": "number",
                     "disk_type": "string",
                     "effective_taints": [
@@ -1485,6 +1561,44 @@ const googleContainerCluster = `{
                 [
                   "object",
                   {
+                    "containerd_config": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "private_registry_access_config": [
+                            "list",
+                            [
+                              "object",
+                              {
+                                "certificate_authority_domain_config": [
+                                  "list",
+                                  [
+                                    "object",
+                                    {
+                                      "fqdns": [
+                                        "list",
+                                        "string"
+                                      ],
+                                      "gcp_secret_manager_certificate_config": [
+                                        "list",
+                                        [
+                                          "object",
+                                          {
+                                            "secret_uri": "string"
+                                          }
+                                        ]
+                                      ]
+                                    }
+                                  ]
+                                ],
+                                "enabled": "bool"
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    ],
                     "logging_variant": "string"
                   }
                 ]

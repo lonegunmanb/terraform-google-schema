@@ -15,6 +15,12 @@ const googleDatastreamConnectionProfile = `{
         "required": true,
         "type": "string"
       },
+      "create_without_validation": {
+        "description": "Create the connection profile without validating it.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "display_name": {
         "description": "Display name.",
         "description_kind": "plain",

@@ -6,7 +6,7 @@ import (
 	tfjson "github.com/hashicorp/terraform-json"
 )
 
-const googleNetworkServicesLbTrafficExtension = `{
+const googleNetworkServicesLbRouteExtension = `{
   "block": {
     "attributes": {
       "description": {
@@ -25,7 +25,7 @@ const googleNetworkServicesLbTrafficExtension = `{
         ]
       },
       "forwarding_rules": {
-        "description": "A list of references to the forwarding rules to which this service extension is attached to.\nAt least one forwarding rule is required. There can be only one LBTrafficExtension resource per forwarding rule.",
+        "description": "A list of references to the forwarding rules to which this service extension is attached to.\nAt least one forwarding rule is required. There can be only one LbRouteExtension resource per forwarding rule.",
         "description_kind": "plain",
         "required": true,
         "type": [
@@ -40,7 +40,7 @@ const googleNetworkServicesLbTrafficExtension = `{
         "type": "string"
       },
       "labels": {
-        "description": "Set of labels associated with the LbTrafficExtension resource.\n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
+        "description": "Set of labels associated with the LbRouteExtension resource.\n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
         "description_kind": "plain",
         "optional": true,
         "type": [
@@ -51,17 +51,17 @@ const googleNetworkServicesLbTrafficExtension = `{
       "load_balancing_scheme": {
         "description": "All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.\nFor more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and\n[Supported application load balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs). Possible values: [\"INTERNAL_MANAGED\", \"EXTERNAL_MANAGED\"]",
         "description_kind": "plain",
-        "optional": true,
+        "required": true,
         "type": "string"
       },
       "location": {
-        "description": "The location of the traffic extension",
+        "description": "The location of the route extension",
         "description_kind": "plain",
         "required": true,
         "type": "string"
       },
       "name": {
-        "description": "Name of the LbTrafficExtension resource in the following format: projects/{project}/locations/{location}/lbTrafficExtensions/{lbTrafficExtension}.",
+        "description": "Name of the LbRouteExtension resource in the following format: projects/{project}/locations/{location}/lbRouteExtensions/{lbRouteExtension}",
         "description_kind": "plain",
         "required": true,
         "type": "string"
@@ -87,7 +87,7 @@ const googleNetworkServicesLbTrafficExtension = `{
         "block": {
           "attributes": {
             "name": {
-              "description": "The name for this extension chain. The name is logged as part of the HTTP request logs.\nThe name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,\nand can have a maximum length of 63 characters. Additionally, the first character must be a letter\nand the last a letter or a number.",
+              "description": "The name for this extension chain. The name is logged as part of the HTTP request logs.\nThe name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,\nand can have a maximum length of 63 characters. Additionally, the first character must be a letter\nand the last character must be a letter or a number.",
               "description_kind": "plain",
               "required": true,
               "type": "string"
@@ -129,15 +129,6 @@ const googleNetworkServicesLbTrafficExtension = `{
                     "description_kind": "plain",
                     "required": true,
                     "type": "string"
-                  },
-                  "supported_events": {
-                    "description": "A set of events during request or response processing for which this extension is called.\nThis field is required for the LbTrafficExtension resource. It's not relevant for the LbRouteExtension\nresource. Possible values:'EVENT_TYPE_UNSPECIFIED', 'REQUEST_HEADERS', 'REQUEST_BODY', 'RESPONSE_HEADERS',\n'RESPONSE_BODY', 'RESPONSE_BODY' and 'RESPONSE_BODY'.",
-                    "description_kind": "plain",
-                    "optional": true,
-                    "type": [
-                      "list",
-                      "string"
-                    ]
                   },
                   "timeout": {
                     "description": "Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.\nA duration in seconds with up to nine fractional digits, ending with 's'. Example: \"3.5s\".",
@@ -205,8 +196,8 @@ const googleNetworkServicesLbTrafficExtension = `{
   "version": 0
 }`
 
-func GoogleNetworkServicesLbTrafficExtensionSchema() *tfjson.Schema {
+func GoogleNetworkServicesLbRouteExtensionSchema() *tfjson.Schema {
 	var result tfjson.Schema
-	_ = json.Unmarshal([]byte(googleNetworkServicesLbTrafficExtension), &result)
+	_ = json.Unmarshal([]byte(googleNetworkServicesLbRouteExtension), &result)
 	return &result
 }

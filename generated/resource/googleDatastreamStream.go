@@ -9,6 +9,12 @@ import (
 const googleDatastreamStream = `{
   "block": {
     "attributes": {
+      "create_without_validation": {
+        "description": "Create the stream without validating it.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "customer_managed_encryption_key": {
         "description": "A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data\nwill be encrypted using an internal Stream-specific encryption key provisioned through KMS.",
         "description_kind": "plain",

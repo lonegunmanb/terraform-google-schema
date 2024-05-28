@@ -52,6 +52,7 @@ const googlePubsubSubscription = `{
                 ]
               ],
               "bucket": "string",
+              "filename_datetime_format": "string",
               "filename_prefix": "string",
               "filename_suffix": "string",
               "max_bytes": "number",
