@@ -770,7 +770,7 @@ const googleSqlDatabaseInstance = `{
                     "type": "number"
                   },
                   "update_track": {
-                    "description": "Receive updates earlier (canary) or later (stable)",
+                    "description": "Receive updates after one week (canary) or after two weeks (stable) or after five weeks (week5) of notification.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"

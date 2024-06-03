@@ -532,6 +532,22 @@ const googleAlloydbCluster = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "psc_config": {
+        "block": {
+          "attributes": {
+            "psc_enabled": {
+              "description": "Create an instance that allows connections from Private Service Connect endpoints to the instance.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            }
+          },
+          "description": "Configuration for Private Service Connect (PSC) for the cluster.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "restore_backup_source": {
         "block": {
           "attributes": {

@@ -6,23 +6,23 @@ import (
 	tfjson "github.com/hashicorp/terraform-json"
 )
 
-const googleNetappStoragePool = `{
+const googleDataplexEntryType = `{
   "block": {
     "attributes": {
-      "active_directory": {
-        "description": "Specifies the Active Directory policy to be used. Format: 'projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}'.\nThe policy needs to be in the same location as the storage pool.",
+      "create_time": {
+        "computed": true,
+        "description": "The time when the EntryType was created.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "description": {
+        "description": "Description of the EntryType.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
       },
-      "capacity_gib": {
-        "description": "Capacity of the storage pool (in GiB).",
-        "description_kind": "plain",
-        "required": true,
-        "type": "string"
-      },
-      "description": {
-        "description": "An optional description of this resource.",
+      "display_name": {
+        "description": "User friendly display name.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -36,10 +36,10 @@ const googleNetappStoragePool = `{
           "string"
         ]
       },
-      "encryption_type": {
-        "computed": true,
-        "description": "Reports if volumes in the pool are encrypted using a Google-managed encryption key or CMEK.",
+      "entry_type_id": {
+        "description": "The entry type id of the entry type.",
         "description_kind": "plain",
+        "optional": true,
         "type": "string"
       },
       "id": {
@@ -48,14 +48,8 @@ const googleNetappStoragePool = `{
         "optional": true,
         "type": "string"
       },
-      "kms_config": {
-        "description": "Specifies the CMEK policy to be used for volume encryption. Format: 'projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}'.\nThe policy needs to be in the same location as the storage pool.",
-        "description_kind": "plain",
-        "optional": true,
-        "type": "string"
-      },
       "labels": {
-        "description": "Labels as key value pairs. Example: '{ \"owner\": \"Bob\", \"department\": \"finance\", \"purpose\": \"testing\" }'.\n\n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
+        "description": "User-defined labels for the EntryType.\n\n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
         "description_kind": "plain",
         "optional": true,
         "type": [
@@ -63,28 +57,22 @@ const googleNetappStoragePool = `{
           "string"
         ]
       },
-      "ldap_enabled": {
-        "description": "When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,\nusing security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.",
+      "location": {
+        "description": "The location where entry type will be created in.",
         "description_kind": "plain",
         "optional": true,
-        "type": "bool"
-      },
-      "location": {
-        "description": "Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.",
-        "description_kind": "plain",
-        "required": true,
         "type": "string"
       },
       "name": {
-        "description": "The resource name of the storage pool. Needs to be unique per location.",
+        "computed": true,
+        "description": "The relative resource name of the EntryType, of the form: projects/{project_number}/locations/{location_id}/entryTypes/{entry_type_id}",
         "description_kind": "plain",
-        "required": true,
         "type": "string"
       },
-      "network": {
-        "description": "VPC network name with format: 'projects/{{project}}/global/networks/{{network}}'",
+      "platform": {
+        "description": "The platform that Entries of this type belongs to.",
         "description_kind": "plain",
-        "required": true,
+        "optional": true,
         "type": "string"
       },
       "project": {
@@ -93,10 +81,10 @@ const googleNetappStoragePool = `{
         "optional": true,
         "type": "string"
       },
-      "service_level": {
-        "description": "Service level of the storage pool. Possible values: [\"PREMIUM\", \"EXTREME\", \"STANDARD\", \"FLEX\"]",
+      "system": {
+        "description": "The system that Entries of this type belongs to.",
         "description_kind": "plain",
-        "required": true,
+        "optional": true,
         "type": "string"
       },
       "terraform_labels": {
@@ -108,20 +96,44 @@ const googleNetappStoragePool = `{
           "string"
         ]
       },
-      "volume_capacity_gib": {
+      "type_aliases": {
+        "description": "Indicates the class this Entry Type belongs to, for example, TABLE, DATABASE, MODEL.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": [
+          "list",
+          "string"
+        ]
+      },
+      "uid": {
         "computed": true,
-        "description": "Size allocated to volumes in the storage pool (in GiB).",
+        "description": "System generated globally unique ID for the EntryType. This ID will be different if the EntryType is deleted and re-created with the same name.",
         "description_kind": "plain",
         "type": "string"
       },
-      "volume_count": {
+      "update_time": {
         "computed": true,
-        "description": "Number of volume in the storage pool.",
+        "description": "The time when the EntryType was last updated.",
         "description_kind": "plain",
-        "type": "number"
+        "type": "string"
       }
     },
     "block_types": {
+      "required_aspects": {
+        "block": {
+          "attributes": {
+            "type": {
+              "description": "Required aspect type for the entry type.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description": "AspectInfo for the entry type.",
+          "description_kind": "plain"
+        },
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {
@@ -151,8 +163,8 @@ const googleNetappStoragePool = `{
   "version": 0
 }`
 
-func GoogleNetappStoragePoolSchema() *tfjson.Schema {
+func GoogleDataplexEntryTypeSchema() *tfjson.Schema {
 	var result tfjson.Schema
-	_ = json.Unmarshal([]byte(googleNetappStoragePool), &result)
+	_ = json.Unmarshal([]byte(googleDataplexEntryType), &result)
 	return &result
 }

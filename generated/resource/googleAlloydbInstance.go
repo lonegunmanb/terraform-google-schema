@@ -242,6 +242,37 @@ const googleAlloydbInstance = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "psc_instance_config": {
+        "block": {
+          "attributes": {
+            "allowed_consumer_projects": {
+              "description": "List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.\nThese should be specified as project numbers only.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
+            },
+            "psc_dns_name": {
+              "computed": true,
+              "description": "The DNS name of the instance for PSC connectivity.\nName convention: \u003cuid\u003e.\u003cuid\u003e.\u003cregion\u003e.alloydb-psc.goog",
+              "description_kind": "plain",
+              "type": "string"
+            },
+            "service_attachment_link": {
+              "computed": true,
+              "description": "The service attachment created when Private Service Connect (PSC) is enabled for the instance.\nThe name of the resource will be in the format of\n'projects/\u003calloydb-tenant-project-number\u003e/regions/\u003cregion-name\u003e/serviceAttachments/\u003cservice-attachment-name\u003e'",
+              "description_kind": "plain",
+              "type": "string"
+            }
+          },
+          "description": "Configuration for Private Service Connect (PSC) for the instance.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "query_insights_config": {
         "block": {
           "attributes": {

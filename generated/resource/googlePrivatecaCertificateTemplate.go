@@ -37,7 +37,7 @@ const googlePrivatecaCertificateTemplate = `{
         "type": "string"
       },
       "labels": {
-        "description": "Optional. Labels with user-defined metadata.\n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field ` + "`" + `effective_labels` + "`" + ` for all of the labels present on the resource.",
+        "description": "Optional. Labels with user-defined metadata.\n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
         "description_kind": "plain",
         "optional": true,
         "type": [
@@ -58,21 +58,20 @@ const googlePrivatecaCertificateTemplate = `{
         "type": "string"
       },
       "name": {
-        "description": "The resource name for this CertificateTemplate in the format ` + "`" + `projects/*/locations/*/certificateTemplates/*` + "`" + `.",
+        "description": "The resource name for this CertificateTemplate in the format 'projects/*/locations/*/certificateTemplates/*'.",
         "description_kind": "plain",
         "required": true,
         "type": "string"
       },
       "project": {
         "computed": true,
-        "description": "The project for the resource",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
       },
       "terraform_labels": {
         "computed": true,
-        "description": "The combination of labels configured directly on the resource and default labels configured on the provider.",
+        "description": "The combination of labels configured directly on the resource\n and default labels configured on the provider.",
         "description_kind": "plain",
         "type": [
           "map",

@@ -167,6 +167,9 @@ const googleStorageBucket = `{
                     "no_age": "bool",
                     "noncurrent_time_before": "string",
                     "num_newer_versions": "number",
+                    "send_days_since_custom_time_if_zero": "bool",
+                    "send_days_since_noncurrent_time_if_zero": "bool",
+                    "send_num_newer_versions_if_zero": "bool",
                     "with_state": "string"
                   }
                 ]
