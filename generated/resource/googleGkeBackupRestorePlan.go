@@ -114,7 +114,7 @@ const googleGkeBackupRestorePlan = `{
               "type": "string"
             },
             "namespaced_resource_restore_mode": {
-              "description": "Defines the behavior for handling the situation where sets of namespaced resources\nbeing restored already exist in the target cluster.\nThis MUST be set to a value other than 'NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED'\nif the 'namespacedResourceRestoreScope' is anything other than 'noNamespaces'.\nSee https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode\nfor more information on each mode. Possible values: [\"DELETE_AND_RESTORE\", \"FAIL_ON_CONFLICT\"]",
+              "description": "Defines the behavior for handling the situation where sets of namespaced resources\nbeing restored already exist in the target cluster.\nThis MUST be set to a value other than 'NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED'\nif the 'namespacedResourceRestoreScope' is anything other than 'noNamespaces'.\nSee https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#namespacedresourcerestoremode\nfor more information on each mode. Possible values: [\"DELETE_AND_RESTORE\", \"FAIL_ON_CONFLICT\", \"MERGE_SKIP_ON_CONFLICT\", \"MERGE_REPLACE_VOLUME_ON_CONFLICT\", \"MERGE_REPLACE_ON_CONFLICT\"]",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
@@ -213,6 +213,72 @@ const googleGkeBackupRestorePlan = `{
                   }
                 },
                 "description": "A list of selected namespaces excluded from restoration.\nAll namespaces except those in this list will be restored.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "restore_order": {
+              "block": {
+                "block_types": {
+                  "group_kind_dependencies": {
+                    "block": {
+                      "block_types": {
+                        "requiring": {
+                          "block": {
+                            "attributes": {
+                              "resource_group": {
+                                "description": "API Group of a Kubernetes resource, e.g.\n\"apiextensions.k8s.io\", \"storage.k8s.io\", etc.\nUse empty string for core group.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "resource_kind": {
+                                "description": "Kind of a Kubernetes resource, e.g.\n\"CustomResourceDefinition\", \"StorageClass\", etc.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "The requiring group kind requires that the satisfying\ngroup kind be restored first.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "min_items": 1,
+                          "nesting_mode": "list"
+                        },
+                        "satisfying": {
+                          "block": {
+                            "attributes": {
+                              "resource_group": {
+                                "description": "API Group of a Kubernetes resource, e.g.\n\"apiextensions.k8s.io\", \"storage.k8s.io\", etc.\nUse empty string for core group.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "resource_kind": {
+                                "description": "Kind of a Kubernetes resource, e.g.\n\"CustomResourceDefinition\", \"StorageClass\", etc.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "The satisfying group kind must be restored first\nin order to satisfy the dependency.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "min_items": 1,
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "A list of group kind dependency pairs\nthat is used by Backup for GKE to\ngenerate a group kind restore order.",
+                      "description_kind": "plain"
+                    },
+                    "min_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "It contains custom ordering to use on a Restore.",
                 "description_kind": "plain"
               },
               "max_items": 1,
@@ -364,6 +430,27 @@ const googleGkeBackupRestorePlan = `{
                   }
                 },
                 "description": "A list of transformation rules to be applied against Kubernetes\nresources as they are selected for restoration from a Backup.\nRules are executed in order defined - this order matters,\nas changes made by a rule may impact the filtering logic of subsequent\nrules. An empty list means no transformation will occur.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            },
+            "volume_data_restore_policy_bindings": {
+              "block": {
+                "attributes": {
+                  "policy": {
+                    "description": "Specifies the mechanism to be used to restore this volume data.\nSee https://cloud.google.com/kubernetes-engine/docs/add-on/backup-for-gke/reference/rest/v1/RestoreConfig#VolumeDataRestorePolicy\nfor more information on each policy option. Possible values: [\"RESTORE_VOLUME_DATA_FROM_BACKUP\", \"REUSE_VOLUME_HANDLE_FROM_BACKUP\", \"NO_VOLUME_DATA_RESTORATION\"]",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "volume_type": {
+                    "description": "The volume type, as determined by the PVC's\nbound PV, to apply the policy to. Possible values: [\"GCE_PERSISTENT_DISK\"]",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "description": "A table that binds volumes by their scope to a restore policy. Bindings\nmust have a unique scope. Any volumes not scoped in the bindings are\nsubject to the policy defined in volume_data_restore_policy.",
                 "description_kind": "plain"
               },
               "nesting_mode": "list"

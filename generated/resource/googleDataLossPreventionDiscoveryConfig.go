@@ -421,6 +421,28 @@ const googleDataLossPreventionDiscoveryConfig = `{
                           "max_items": 1,
                           "nesting_mode": "list"
                         },
+                        "table_reference": {
+                          "block": {
+                            "attributes": {
+                              "dataset_id": {
+                                "description": "Dataset ID of the table.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              },
+                              "table_id": {
+                                "description": "Name of the table.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "The table to scan. Discovery configurations including this can only include one DiscoveryTarget (the DiscoveryTarget with this TableReference).",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
                         "tables": {
                           "block": {
                             "block_types": {
@@ -577,6 +599,40 @@ const googleDataLossPreventionDiscoveryConfig = `{
                           "max_items": 1,
                           "nesting_mode": "list"
                         },
+                        "database_resource_reference": {
+                          "block": {
+                            "attributes": {
+                              "database": {
+                                "description": "Required. Name of a database within the instance.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              },
+                              "database_resource": {
+                                "description": "Required. Name of a database resource, for example, a table within the database.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              },
+                              "instance": {
+                                "description": "Required. The instance where this resource is located. For example: Cloud SQL instance ID.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              },
+                              "project_id": {
+                                "description": "Required. If within a project-level config, then this must match the config's project ID.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "The database resource to scan. Targets including this can only include one target (the target with this database resource reference).",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
                         "others": {
                           "block": {
                             "description": "Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically.",
@@ -638,6 +694,14 @@ const googleDataLossPreventionDiscoveryConfig = `{
                   }
                 },
                 "description": "Cloud SQL target for Discovery. The first target to match a table will be the one applied.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "secrets_target": {
+              "block": {
+                "description": "Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them as vulnerabilities to Security Command Center. Only one target of this type is allowed.",
                 "description_kind": "plain"
               },
               "max_items": 1,

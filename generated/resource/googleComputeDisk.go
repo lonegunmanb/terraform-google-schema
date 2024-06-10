@@ -167,6 +167,12 @@ const googleComputeDisk = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "storage_pool": {
+        "description": "The URL of the storage pool in which the new disk is created.\nFor example:\n* https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}\n* /projects/{project}/zones/{zone}/storagePools/{storagePool}",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "terraform_labels": {
         "computed": true,
         "description": "The combination of labels configured directly on the resource\n and default labels configured on the provider.",

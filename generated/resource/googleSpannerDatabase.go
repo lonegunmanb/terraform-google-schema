@@ -26,7 +26,7 @@ const googleSpannerDatabase = `{
         ]
       },
       "deletion_protection": {
-        "description": "Whether or not to allow Terraform to destroy the database. Defaults to true. Unless this field is set to false\nin Terraform state, a 'terraform destroy' or 'terraform apply' that would delete the database will fail.",
+        "description": "Whether Terraform will be prevented from destroying the database. Defaults to true.\nWhen a'terraform destroy' or 'terraform apply' would delete the database,\nthe command will fail if this field is not set to false in Terraform state.\nWhen the field is set to true or unset in Terraform state, a 'terraform apply'\nor 'terraform destroy' that would delete the database will fail.\nWhen the field is set to false, deleting the database is allowed.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"

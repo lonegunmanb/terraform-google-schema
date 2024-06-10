@@ -210,6 +210,29 @@ const googleRedisCluster = `{
           "description_kind": "plain"
         },
         "nesting_mode": "single"
+      },
+      "zone_distribution_config": {
+        "block": {
+          "attributes": {
+            "mode": {
+              "computed": true,
+              "description": "Immutable. The mode for zone distribution for Memorystore Redis cluster.\nIf not provided, MULTI_ZONE will be used as default Possible values: [\"MULTI_ZONE\", \"SINGLE_ZONE\"]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "zone": {
+              "description": "Immutable. The zone for single zone Memorystore Redis cluster.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description": "Immutable. Zone distribution config for Memorystore Redis cluster.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
       }
     },
     "description_kind": "plain"

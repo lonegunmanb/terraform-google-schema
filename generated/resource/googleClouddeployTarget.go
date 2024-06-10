@@ -197,6 +197,12 @@ const googleClouddeployTarget = `{
                 "string"
               ]
             },
+            "verbose": {
+              "description": "Optional. If true, additional logging will be enabled when running builds in this execution environment.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
             "worker_pool": {
               "description": "Optional. The resource name of the ` + "`" + `WorkerPool` + "`" + `, with the format ` + "`" + `projects/{project}/locations/{location}/workerPools/{worker_pool}` + "`" + `. If this optional field is unspecified, the default Cloud Build pool will be used.",
               "description_kind": "plain",

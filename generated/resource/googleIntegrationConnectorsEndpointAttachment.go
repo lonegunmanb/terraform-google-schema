@@ -30,6 +30,12 @@ const googleIntegrationConnectorsEndpointAttachment = `{
           "string"
         ]
       },
+      "endpoint_global_access": {
+        "description": "Enable global access for endpoint attachment.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "endpoint_ip": {
         "computed": true,
         "description": "The Private Service Connect connection endpoint ip.",

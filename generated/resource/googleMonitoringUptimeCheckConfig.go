@@ -295,7 +295,7 @@ const googleMonitoringUptimeCheckConfig = `{
               "type": "string"
             }
           },
-          "description": "The [monitored resource]\n(https://cloud.google.com/monitoring/api/resources) associated with the\nconfiguration. The following monitored resource types are supported for\nuptime checks:\n* 'aws_ec2_instance'\n* 'aws_elb_load_balancer'\n* 'gae_app\n* 'gce_instance'\n* 'k8s_service'\n* 'servicedirectory_service'\n* 'uptime_url'",
+          "description": "The [monitored resource]\n(https://cloud.google.com/monitoring/api/resources) associated with the\nconfiguration. The following monitored resource types are supported for\nuptime checks:\n* 'aws_ec2_instance'\n* 'aws_elb_load_balancer'\n* 'gae_app'\n* 'gce_instance'\n* 'k8s_service'\n* 'servicedirectory_service'\n* 'uptime_url'",
           "description_kind": "plain"
         },
         "max_items": 1,

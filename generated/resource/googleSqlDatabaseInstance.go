@@ -660,6 +660,7 @@ const googleSqlDatabaseInstance = `{
                     "type": "string"
                   },
                   "require_ssl": {
+                    "deprecated": true,
                     "description": "Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in ssl_mode if it has been set too.",
                     "description_kind": "plain",
                     "optional": true,
@@ -667,7 +668,7 @@ const googleSqlDatabaseInstance = `{
                   },
                   "ssl_mode": {
                     "computed": true,
-                    "description": "Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl.",
+                    "description": "Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"

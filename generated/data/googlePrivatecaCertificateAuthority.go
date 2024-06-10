@@ -261,7 +261,7 @@ const googlePrivatecaCertificateAuthority = `{
       },
       "deletion_protection": {
         "computed": true,
-        "description": "Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false\nin Terraform state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.",
+        "description": "Whether Terraform will be prevented from destroying the CertificateAuthority.\nWhen the field is set to true or unset in Terraform state, a 'terraform apply'\nor 'terraform destroy' that would delete the CertificateAuthority will fail.\nWhen the field is set to false, deleting the CertificateAuthority is allowed.",
         "description_kind": "plain",
         "type": "bool"
       },

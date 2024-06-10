@@ -10,7 +10,7 @@ const googleBigtableInstance = `{
   "block": {
     "attributes": {
       "deletion_protection": {
-        "description": "Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.",
+        "description": "      When the field is set to true or unset in Terraform state, a terraform apply or terraform destroy that would delete the instance will fail. When the field is set to false, deleting the instance is allowed.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
@@ -30,6 +30,12 @@ const googleBigtableInstance = `{
           "map",
           "string"
         ]
+      },
+      "force_destroy": {
+        "description": "When deleting a BigTable instance, this boolean option will delete all backups within the instance.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
       },
       "id": {
         "computed": true,

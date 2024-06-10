@@ -234,6 +234,37 @@ const googleNetappVolume = `{
       }
     },
     "block_types": {
+      "backup_config": {
+        "block": {
+          "attributes": {
+            "backup_policies": {
+              "description": "Specify a single backup policy ID for scheduled backups. Format: 'projects/{{projectId}}/locations/{{location}}/backupPolicies/{{backupPolicyName}}'",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
+            },
+            "backup_vault": {
+              "description": "ID of the backup vault to use. A backup vault is reqired to create manual or scheduled backups.\nFormat: 'projects/{{projectId}}/locations/{{location}}/backupVaults/{{backupVaultName}}'",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "scheduled_backup_enabled": {
+              "description": "When set to true, scheduled backup is enabled on the volume. Omit if no backup_policy is specified.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            }
+          },
+          "description": "Backup configuration for the volume.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "export_policy": {
         "block": {
           "block_types": {

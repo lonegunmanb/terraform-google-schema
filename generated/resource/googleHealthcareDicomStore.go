@@ -70,6 +70,12 @@ const googleHealthcareDicomStore = `{
               "description_kind": "plain",
               "required": true,
               "type": "string"
+            },
+            "send_for_bulk_import": {
+              "description": "Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
             }
           },
           "description": "A nested object resource",

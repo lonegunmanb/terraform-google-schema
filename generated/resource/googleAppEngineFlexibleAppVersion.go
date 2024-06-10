@@ -496,6 +496,28 @@ const googleAppEngineFlexibleAppVersion = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "flexible_runtime_settings": {
+        "block": {
+          "attributes": {
+            "operating_system": {
+              "description": "Operating System of the application runtime.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "runtime_version": {
+              "description": "The runtime version of an App Engine flexible application.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description": "Runtime settings for App Engine flexible environment.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "handlers": {
         "block": {
           "attributes": {

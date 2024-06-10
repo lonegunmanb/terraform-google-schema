@@ -92,7 +92,7 @@ const googleKmsCryptoKey = `{
       },
       "skip_initial_version_creation": {
         "computed": true,
-        "description": "If set to true, the request will create a CryptoKey without any CryptoKeyVersions.\nYou must use the 'google_kms_key_ring_import_job' resource to import the CryptoKeyVersion.",
+        "description": "If set to true, the request will create a CryptoKey without any CryptoKeyVersions.\nYou must use the 'google_kms_crypto_key_version' resource to create a new CryptoKeyVersion\nor 'google_kms_key_ring_import_job' resource to import the CryptoKeyVersion.",
         "description_kind": "plain",
         "type": "bool"
       },

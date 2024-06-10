@@ -133,6 +133,12 @@ const googleGkeBackupBackupPlan = `{
               "description_kind": "plain",
               "optional": true,
               "type": "bool"
+            },
+            "permissive_mode": {
+              "description": "This flag specifies whether Backups will not fail when\nBackup for GKE detects Kubernetes configuration that is\nnon-standard or requires additional setup to restore.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
             }
           },
           "block_types": {

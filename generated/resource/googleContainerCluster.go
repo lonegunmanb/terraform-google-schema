@@ -37,7 +37,7 @@ const googleContainerCluster = `{
         "type": "number"
       },
       "deletion_protection": {
-        "description": "Whether or not to allow Terraform to destroy the instance. Defaults to true. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the cluster will fail.",
+        "description": "When the field is set to true or unset in Terraform state, a terraform apply or terraform destroy that would delete the cluster will fail. When the field is set to false, deleting the cluster is allowed.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
