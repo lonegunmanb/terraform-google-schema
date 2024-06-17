@@ -104,7 +104,7 @@ const googleAccessContextManagerServicePerimeter = `{
                     "block": {
                       "attributes": {
                         "identities": {
-                          "description": "'A list of identities that are allowed access through this 'EgressPolicy'.\nTo specify an identity or identity group, use the IAM v1\nformat specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).\nThe following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'",
+                          "description": "A list of identities that are allowed access through this 'EgressPolicy'.\nShould be in the format of email address. The email address should\nrepresent individual user or service account only.",
                           "description_kind": "plain",
                           "optional": true,
                           "type": [
@@ -229,7 +229,7 @@ const googleAccessContextManagerServicePerimeter = `{
                     "block": {
                       "attributes": {
                         "identities": {
-                          "description": "'A list of identities that are allowed access through this 'IngressPolicy'.\nTo specify an identity or identity group, use the IAM v1\nformat specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).\nThe following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'",
+                          "description": "A list of identities that are allowed access through this ingress policy.\nShould be in the format of email address. The email address should represent\nindividual user or service account only.",
                           "description_kind": "plain",
                           "optional": true,
                           "type": [
@@ -409,7 +409,7 @@ const googleAccessContextManagerServicePerimeter = `{
                     "block": {
                       "attributes": {
                         "identities": {
-                          "description": "'A list of identities that are allowed access through this 'EgressPolicy'.\nTo specify an identity or identity group, use the IAM v1\nformat specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).\nThe following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'",
+                          "description": "A list of identities that are allowed access through this 'EgressPolicy'.\nShould be in the format of email address. The email address should\nrepresent individual user or service account only.",
                           "description_kind": "plain",
                           "optional": true,
                           "type": [
@@ -534,7 +534,7 @@ const googleAccessContextManagerServicePerimeter = `{
                     "block": {
                       "attributes": {
                         "identities": {
-                          "description": "'A list of identities that are allowed access through this 'IngressPolicy'.\nTo specify an identity or identity group, use the IAM v1\nformat specified [here](https://cloud.google.com/iam/docs/principal-identifiers.md#v1).\nThe following prefixes are supprted: user, group, serviceAccount, principal, and principalSet.'",
+                          "description": "A list of identities that are allowed access through this ingress policy.\nShould be in the format of email address. The email address should represent\nindividual user or service account only.",
                           "description_kind": "plain",
                           "optional": true,
                           "type": [

@@ -59,6 +59,30 @@ const googleBigtableTable = `{
       }
     },
     "block_types": {
+      "automated_backup_policy": {
+        "block": {
+          "attributes": {
+            "frequency": {
+              "computed": true,
+              "description": "How frequently automated backups should occur.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "retention_period": {
+              "computed": true,
+              "description": "How long the automated backups should be retained.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description": "Defines an automated backup policy for a table, specified by Retention Period and Frequency. To disable, set both Retention Period and Frequency to 0.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "set"
+      },
       "column_family": {
         "block": {
           "attributes": {

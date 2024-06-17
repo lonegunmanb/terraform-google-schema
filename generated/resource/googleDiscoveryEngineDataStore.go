@@ -86,6 +86,98 @@ const googleDiscoveryEngineDataStore = `{
       }
     },
     "block_types": {
+      "document_processing_config": {
+        "block": {
+          "attributes": {
+            "name": {
+              "computed": true,
+              "description": "The full resource name of the Document Processing Config. Format:\n'projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/documentProcessingConfig'.",
+              "description_kind": "plain",
+              "type": "string"
+            }
+          },
+          "block_types": {
+            "default_parsing_config": {
+              "block": {
+                "block_types": {
+                  "digital_parsing_config": {
+                    "block": {
+                      "description": "Configurations applied to digital parser.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "ocr_parsing_config": {
+                    "block": {
+                      "attributes": {
+                        "use_native_text": {
+                          "description": "If true, will use native text instead of OCR text on pages containing native text.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "bool"
+                        }
+                      },
+                      "description": "Configurations applied to OCR parser. Currently it only applies to PDFs.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "Configurations for default Document parser. If not specified, this resource\nwill be configured to use a default DigitalParsingConfig, and the default parsing\nconfig will be applied to all file types for Document parsing.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "parsing_config_overrides": {
+              "block": {
+                "attributes": {
+                  "file_type": {
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "block_types": {
+                  "digital_parsing_config": {
+                    "block": {
+                      "description": "Configurations applied to digital parser.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "ocr_parsing_config": {
+                    "block": {
+                      "attributes": {
+                        "use_native_text": {
+                          "description": "If true, will use native text instead of OCR text on pages containing native text.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "bool"
+                        }
+                      },
+                      "description": "Configurations applied to OCR parser. Currently it only applies to PDFs.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "Map from file type to override the default parsing configuration based on the file type. Supported keys:\n  * 'pdf': Override parsing config for PDF files, either digital parsing, ocr parsing or layout parsing is supported.\n  * 'html': Override parsing config for HTML files, only digital parsing and or layout parsing are supported.\n  * 'docx': Override parsing config for DOCX files, only digital parsing and or layout parsing are supported.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "set"
+            }
+          },
+          "description": "Configuration for Document understanding and enrichment.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {

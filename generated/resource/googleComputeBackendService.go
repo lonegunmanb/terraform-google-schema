@@ -160,7 +160,7 @@ const googleComputeBackendService = `{
       },
       "timeout_sec": {
         "computed": true,
-        "description": "How many seconds to wait for the backend before considering it a\nfailed request. Default is 30 seconds. Valid range is [1, 86400].",
+        "description": "The backend service timeout has a different meaning depending on the type of load balancer.\nFor more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).\nThe default is 30 seconds.\nThe full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.",
         "description_kind": "plain",
         "optional": true,
         "type": "number"
@@ -171,7 +171,7 @@ const googleComputeBackendService = `{
         "block": {
           "attributes": {
             "balancing_mode": {
-              "description": "Specifies the balancing mode for this backend.\n\nFor global HTTP(S) or TCP/SSL load balancing, the default is\nUTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))\nand CONNECTION (for TCP/SSL).\n\nSee the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)\nfor an explanation of load balancing modes. Default value: \"UTILIZATION\" Possible values: [\"UTILIZATION\", \"RATE\", \"CONNECTION\"]",
+              "description": "Specifies the balancing mode for this backend.\n\nFor global HTTP(S) or TCP/SSL load balancing, the default is\nUTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))\nand CONNECTION (for TCP/SSL).\n\nSee the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)\nfor an explanation of load balancing modes.\n\nFrom version 6.0.0 default value will be UTILIZATION to match default GCP value. Default value: \"UTILIZATION\" Possible values: [\"UTILIZATION\", \"RATE\", \"CONNECTION\"]",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
@@ -722,7 +722,7 @@ const googleComputeBackendService = `{
               "nesting_mode": "list"
             }
           },
-          "description": "Settings controlling eviction of unhealthy hosts from the load balancing pool.\nApplicable backend service types can be a global backend service with the\nloadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.",
+          "description": "Settings controlling eviction of unhealthy hosts from the load balancing pool.\nApplicable backend service types can be a global backend service with the\nloadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.\n\nFrom version 6.0.0 outlierDetection default terraform values will be removed to match default GCP value.\nDefault values are enforce by GCP without providing them.",
           "description_kind": "plain"
         },
         "max_items": 1,

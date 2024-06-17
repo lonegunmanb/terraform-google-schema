@@ -136,6 +136,12 @@ const googleGkeHubFeature = `{
                   "config_sync": {
                     "block": {
                       "attributes": {
+                        "prevent_drift": {
+                          "description": "Set to true to enable the Config Sync admission webhook to prevent drifts. If set to 'false', disables the Config Sync admission webhook and does not prevent drifts.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "bool"
+                        },
                         "source_format": {
                           "description": "Specifies whether the Config Sync Repo is in hierarchical or unstructured mode",
                           "description_kind": "plain",

@@ -133,6 +133,14 @@ const googleVertexAiFeatureOnlineStore = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "optimized": {
+        "block": {
+          "description": "Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {

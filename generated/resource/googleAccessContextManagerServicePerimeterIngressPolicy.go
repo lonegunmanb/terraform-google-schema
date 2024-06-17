@@ -27,7 +27,7 @@ const googleAccessContextManagerServicePerimeterIngressPolicy = `{
         "block": {
           "attributes": {
             "identities": {
-              "description": "A list of identities that are allowed access through this 'IngressPolicy'.\nShould be in the format of an email address. The email address should represent\nan individual user, service account, or Google group.",
+              "description": "A list of identities that are allowed access through this ingress policy.\nShould be in the format of email address. The email address should represent\nindividual user or service account only.",
               "description_kind": "plain",
               "optional": true,
               "type": [

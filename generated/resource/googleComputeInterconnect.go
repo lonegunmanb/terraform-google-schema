@@ -171,7 +171,7 @@ const googleComputeInterconnect = `{
       },
       "operational_status": {
         "computed": true,
-        "description": "The current status of this Interconnect's functionality, which can take one of the following values:\n  - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may\n  be provisioned on this Interconnect.\n  - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be\n  provisioned on this Interconnect.\n  - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No\n  attachments may be provisioned or updated on this Interconnect.",
+        "description": "The current status of this Interconnect's functionality, which can take one of the following:\n  - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may\n  be provisioned on this Interconnect.\n  - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be\n  provisioned on this Interconnect.\n  - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No\n  attachments may be provisioned or updated on this Interconnect.",
         "description_kind": "plain",
         "type": "string"
       },

@@ -9,6 +9,15 @@ import (
 const googleNetappActiveDirectory = `{
   "block": {
     "attributes": {
+      "administrators": {
+        "description": "Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": [
+          "list",
+          "string"
+        ]
+      },
       "aes_encryption": {
         "description": "Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.",
         "description_kind": "plain",

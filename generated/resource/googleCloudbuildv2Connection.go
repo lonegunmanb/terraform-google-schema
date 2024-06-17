@@ -99,6 +99,174 @@ const googleCloudbuildv2Connection = `{
       }
     },
     "block_types": {
+      "bitbucket_cloud_config": {
+        "block": {
+          "attributes": {
+            "webhook_secret_secret_version": {
+              "description": "Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as 'projects/*/secrets/*/versions/*'.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            },
+            "workspace": {
+              "description": "The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "block_types": {
+            "authorizer_credential": {
+              "block": {
+                "attributes": {
+                  "user_token_secret_version": {
+                    "description": "Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: 'projects/*/secrets/*/versions/*'.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "username": {
+                    "computed": true,
+                    "description": "Output only. The username associated to this token.",
+                    "description_kind": "plain",
+                    "type": "string"
+                  }
+                },
+                "description": "Required. An access token with the 'webhook', 'repository', 'repository:admin' and 'pullrequest' scope access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate these credentials.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "min_items": 1,
+              "nesting_mode": "list"
+            },
+            "read_authorizer_credential": {
+              "block": {
+                "attributes": {
+                  "user_token_secret_version": {
+                    "description": "Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: 'projects/*/secrets/*/versions/*'.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "username": {
+                    "computed": true,
+                    "description": "Output only. The username associated to this token.",
+                    "description_kind": "plain",
+                    "type": "string"
+                  }
+                },
+                "description": "Required. An access token with the 'repository' access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate the credentials.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "min_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Configuration for connections to Bitbucket Cloud.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "bitbucket_data_center_config": {
+        "block": {
+          "attributes": {
+            "host_uri": {
+              "description": "The URI of the Bitbucket Data Center host this connection is for.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            },
+            "server_version": {
+              "computed": true,
+              "description": "Output only. Version of the Bitbucket Data Center running on the 'host_uri'.",
+              "description_kind": "plain",
+              "type": "string"
+            },
+            "ssl_ca": {
+              "description": "SSL certificate to use for requests to the Bitbucket Data Center.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "webhook_secret_secret_version": {
+              "description": "Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as 'projects/*/secrets/*/versions/*'.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "block_types": {
+            "authorizer_credential": {
+              "block": {
+                "attributes": {
+                  "user_token_secret_version": {
+                    "description": "Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: 'projects/*/secrets/*/versions/*'.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "username": {
+                    "computed": true,
+                    "description": "Output only. The username associated to this token.",
+                    "description_kind": "plain",
+                    "type": "string"
+                  }
+                },
+                "description": "Required. A http access token with the 'REPO_ADMIN' scope access.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "min_items": 1,
+              "nesting_mode": "list"
+            },
+            "read_authorizer_credential": {
+              "block": {
+                "attributes": {
+                  "user_token_secret_version": {
+                    "description": "Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: 'projects/*/secrets/*/versions/*'.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "username": {
+                    "computed": true,
+                    "description": "Output only. The username associated to this token.",
+                    "description_kind": "plain",
+                    "type": "string"
+                  }
+                },
+                "description": "Required. A http access token with the 'REPO_READ' access.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "min_items": 1,
+              "nesting_mode": "list"
+            },
+            "service_directory_config": {
+              "block": {
+                "attributes": {
+                  "service": {
+                    "description": "Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Configuration for using Service Directory to privately connect to a Bitbucket Data Center. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Configuration for connections to Bitbucket Data Center.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "github_config": {
         "block": {
           "attributes": {

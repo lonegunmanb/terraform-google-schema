@@ -3214,7 +3214,7 @@ const googleContainerCluster = `{
           "attributes": {
             "mode": {
               "computed": true,
-              "description": "Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include DISABLED and BASIC.",
+              "description": "Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include DISABLED, BASIC, and ENTERPRISE.",
               "description_kind": "plain",
               "optional": true,
               "type": "string"

@@ -34,7 +34,7 @@ const googleComputeRegionNetworkEndpointGroup = `{
         "type": "string"
       },
       "network_endpoint_type": {
-        "description": "Type of network endpoints in this network endpoint group. Defaults to SERVERLESS. Default value: \"SERVERLESS\" Possible values: [\"SERVERLESS\", \"PRIVATE_SERVICE_CONNECT\", \"INTERNET_IP_PORT\", \"INTERNET_FQDN_PORT\"]",
+        "description": "Type of network endpoints in this network endpoint group. Defaults to SERVERLESS. Default value: \"SERVERLESS\" Possible values: [\"SERVERLESS\", \"PRIVATE_SERVICE_CONNECT\", \"INTERNET_IP_PORT\", \"INTERNET_FQDN_PORT\", \"GCE_VM_IP_PORTMAP\"]",
         "description_kind": "plain",
         "optional": true,
         "type": "string"

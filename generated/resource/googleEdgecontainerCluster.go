@@ -327,6 +327,48 @@ const googleEdgecontainerCluster = `{
       "maintenance_policy": {
         "block": {
           "block_types": {
+            "maintenance_exclusions": {
+              "block": {
+                "attributes": {
+                  "id": {
+                    "computed": true,
+                    "description": "A unique (per cluster) id for the window.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "block_types": {
+                  "window": {
+                    "block": {
+                      "attributes": {
+                        "end_time": {
+                          "computed": true,
+                          "description": "The time that the window ends. The end time must take place after the\nstart time.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "start_time": {
+                          "computed": true,
+                          "description": "The time that the window first starts.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Represents an arbitrary window of time.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "Exclusions to automatic maintenance. Non-emergency maintenance should not occur\nin these windows. Each exclusion has a unique name and may be active or expired.\nThe max number of maintenance exclusions allowed at a given time is 3.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            },
             "window": {
               "block": {
                 "block_types": {

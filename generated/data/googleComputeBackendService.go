@@ -322,7 +322,7 @@ const googleComputeBackendService = `{
       },
       "outlier_detection": {
         "computed": true,
-        "description": "Settings controlling eviction of unhealthy hosts from the load balancing pool.\nApplicable backend service types can be a global backend service with the\nloadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.",
+        "description": "Settings controlling eviction of unhealthy hosts from the load balancing pool.\nApplicable backend service types can be a global backend service with the\nloadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL_MANAGED.\n\nFrom version 6.0.0 outlierDetection default terraform values will be removed to match default GCP value.\nDefault values are enforce by GCP without providing them.",
         "description_kind": "plain",
         "type": [
           "list",
@@ -422,7 +422,7 @@ const googleComputeBackendService = `{
       },
       "timeout_sec": {
         "computed": true,
-        "description": "How many seconds to wait for the backend before considering it a\nfailed request. Default is 30 seconds. Valid range is [1, 86400].",
+        "description": "The backend service timeout has a different meaning depending on the type of load balancer.\nFor more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).\nThe default is 30 seconds.\nThe full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.",
         "description_kind": "plain",
         "type": "number"
       }

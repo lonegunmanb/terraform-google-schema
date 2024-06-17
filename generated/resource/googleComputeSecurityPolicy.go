@@ -68,6 +68,7 @@ const googleComputeSecurityPolicy = `{
                     "type": "bool"
                   },
                   "rule_visibility": {
+                    "computed": true,
                     "description": "Rule visibility. Supported values include: \"STANDARD\", \"PREMIUM\".",
                     "description_kind": "plain",
                     "optional": true,
