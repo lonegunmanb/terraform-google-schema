@@ -481,7 +481,7 @@ const googleArtifactRegistryRepository = `{
                           "type": "string"
                         },
                         "repository_path": {
-                          "description": "Specific repository from the base, e.g. '\"centos/8-stream/BaseOS/x86_64/os\"'",
+                          "description": "Specific repository from the base, e.g. '\"pub/rocky/9/BaseOS/x86_64/os\"'",
                           "description_kind": "plain",
                           "required": true,
                           "type": "string"

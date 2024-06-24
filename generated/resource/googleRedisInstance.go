@@ -119,6 +119,13 @@ const googleRedisInstance = `{
           ]
         ]
       },
+      "maintenance_version": {
+        "computed": true,
+        "description": "The self service update maintenance version.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "memory_size_gb": {
         "description": "Redis memory size in GiB.",
         "description_kind": "plain",

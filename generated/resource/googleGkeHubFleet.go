@@ -107,7 +107,7 @@ const googleGkeHubFleet = `{
               "block": {
                 "attributes": {
                   "mode": {
-                    "description": "Sets which mode to use for Security Posture features. Possible values: [\"DISABLED\", \"BASIC\"]",
+                    "description": "Sets which mode to use for Security Posture features. Possible values: [\"DISABLED\", \"BASIC\", \"ENTERPRISE\"]",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"

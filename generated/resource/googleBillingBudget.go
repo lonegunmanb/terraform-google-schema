@@ -50,6 +50,12 @@ const googleBillingBudget = `{
               "optional": true,
               "type": "bool"
             },
+            "enable_project_level_recipients": {
+              "description": "When set to true, and when the budget has a single project configured,\nnotifications will be sent to project level recipients of that project.\nThis field will be ignored if the budget has multiple or no project configured.\n\nCurrently, project level recipients are the users with Owner role on a cloud project.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
             "monitoring_notification_channels": {
               "description": "The full resource name of a monitoring notification\nchannel in the form\nprojects/{project_id}/notificationChannels/{channel_id}.\nA maximum of 5 channels are allowed.",
               "description_kind": "plain",

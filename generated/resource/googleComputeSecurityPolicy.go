@@ -265,6 +265,45 @@ const googleComputeSecurityPolicy = `{
                     },
                     "max_items": 1,
                     "nesting_mode": "list"
+                  },
+                  "expr_options": {
+                    "block": {
+                      "block_types": {
+                        "recaptcha_options": {
+                          "block": {
+                            "attributes": {
+                              "action_token_site_keys": {
+                                "description": "A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": [
+                                  "list",
+                                  "string"
+                                ]
+                              },
+                              "session_token_site_keys": {
+                                "description": "A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": [
+                                  "list",
+                                  "string"
+                                ]
+                              }
+                            },
+                            "description": "reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field has no effect.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "min_items": 1,
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
                   }
                 },
                 "description": "A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding action is enforced.",

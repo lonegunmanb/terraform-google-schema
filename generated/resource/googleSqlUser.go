@@ -41,7 +41,7 @@ const googleSqlUser = `{
         "type": "string"
       },
       "password": {
-        "description": "The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to\n                either CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.",
+        "description": "The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to\n\t\t\t\teither CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.",
         "description_kind": "plain",
         "optional": true,
         "sensitive": true,
@@ -72,7 +72,7 @@ const googleSqlUser = `{
         ]
       },
       "type": {
-        "description": "The user type. It determines the method to authenticate the user during login.\n                The default is the database's built-in user type. Flags include \"BUILT_IN\", \"CLOUD_IAM_USER\", \"CLOUD_IAM_GROUP\" or \"CLOUD_IAM_SERVICE_ACCOUNT\".",
+        "description": "The user type. It determines the method to authenticate the user during login.\n\t\t\t\tThe default is the database's built-in user type.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"

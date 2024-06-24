@@ -162,6 +162,30 @@ const googleComputeSecurityPolicy = `{
                         }
                       ]
                     ],
+                    "expr_options": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "recaptcha_options": [
+                            "list",
+                            [
+                              "object",
+                              {
+                                "action_token_site_keys": [
+                                  "list",
+                                  "string"
+                                ],
+                                "session_token_site_keys": [
+                                  "list",
+                                  "string"
+                                ]
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    ],
                     "versioned_expr": "string"
                   }
                 ]

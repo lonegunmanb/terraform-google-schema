@@ -25,6 +25,7 @@ const googlePubsubSubscription = `{
             "object",
             {
               "drop_unknown_fields": "bool",
+              "service_account_email": "string",
               "table": "string",
               "use_table_schema": "bool",
               "use_topic_schema": "bool",
@@ -57,6 +58,7 @@ const googlePubsubSubscription = `{
               "filename_suffix": "string",
               "max_bytes": "number",
               "max_duration": "string",
+              "service_account_email": "string",
               "state": "string"
             }
           ]

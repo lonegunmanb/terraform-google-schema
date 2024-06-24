@@ -108,6 +108,12 @@ const googlePubsubSubscription = `{
               "optional": true,
               "type": "bool"
             },
+            "service_account_email": {
+              "description": "The service account to use to write to BigQuery. If not specified, the Pub/Sub\n[service agent](https://cloud.google.com/iam/docs/service-agents),\nservice-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "table": {
               "description": "The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}",
               "description_kind": "plain",
@@ -174,6 +180,12 @@ const googlePubsubSubscription = `{
             },
             "max_duration": {
               "description": "The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.\nMay not exceed the subscription's acknowledgement deadline.\nA duration in seconds with up to nine fractional digits, ending with 's'. Example: \"3.5s\".",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "service_account_email": {
+              "description": "The service account to use to write to Cloud Storage. If not specified, the Pub/Sub\n[service agent](https://cloud.google.com/iam/docs/service-agents),\nservice-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
