@@ -556,6 +556,29 @@ const googleMonitoringAlertPolicy = `{
               "type": "string"
             }
           },
+          "block_types": {
+            "links": {
+              "block": {
+                "attributes": {
+                  "display_name": {
+                    "description": "A short display name for the link. The display name must not be empty or exceed 63 characters. Example: \"playbook\".",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "url": {
+                    "description": "The url of a webpage. A url can be templatized by using variables in the path or the query parameters. The total length of a URL should not exceed 2083 characters before and after variable expansion. Example: \"https://my_domain.com/playbook?name=${resource.name}\".",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            }
+          },
           "description": "Documentation that is included with notifications and incidents related\nto this policy. Best practice is for the documentation to include information\nto help responders understand, mitigate, escalate, and correct the underlying\nproblems detected by the alerting policy. Notification channels that have\nlimited capacity might not show this documentation.",
           "description_kind": "plain"
         },

@@ -40,6 +40,7 @@ const googleComputeRegionInstanceTemplate = `{
           [
             "object",
             {
+              "confidential_instance_type": "string",
               "enable_confidential_compute": "bool"
             }
           ]

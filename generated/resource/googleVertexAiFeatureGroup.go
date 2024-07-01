@@ -90,7 +90,7 @@ const googleVertexAiFeatureGroup = `{
         "block": {
           "attributes": {
             "entity_id_columns": {
-              "description": "Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.",
+              "description": "Columns to construct entityId / row keys. If not provided defaults to entityId.",
               "description_kind": "plain",
               "optional": true,
               "type": [

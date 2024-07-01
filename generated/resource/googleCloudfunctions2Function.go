@@ -151,6 +151,30 @@ const googleCloudfunctions2Function = `{
             }
           },
           "block_types": {
+            "automatic_update_policy": {
+              "block": {
+                "description": "Security patches are applied automatically to the runtime without requiring\nthe function to be redeployed.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "on_deploy_update_policy": {
+              "block": {
+                "attributes": {
+                  "runtime_version": {
+                    "computed": true,
+                    "description": "The runtime version which was used during latest function deployment.",
+                    "description_kind": "plain",
+                    "type": "string"
+                  }
+                },
+                "description": "Security patches are only applied when a function is redeployed.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "source": {
               "block": {
                 "block_types": {

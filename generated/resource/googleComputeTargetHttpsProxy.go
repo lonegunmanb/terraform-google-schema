@@ -105,6 +105,13 @@ const googleComputeTargetHttpsProxy = `{
         "optional": true,
         "type": "string"
       },
+      "tls_early_data": {
+        "computed": true,
+        "description": "Specifies whether TLS 1.3 0-RTT Data (“Early Data”) should be accepted for this service.\nEarly Data allows a TLS resumption handshake to include the initial application payload\n(a HTTP request) alongside the handshake, reducing the effective round trips to “zero”.\nThis applies to TLS 1.3 connections over TCP (HTTP/2) as well as over UDP (QUIC/h3). Possible values: [\"STRICT\", \"PERMISSIVE\", \"DISABLED\"]",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "url_map": {
         "description": "A reference to the UrlMap resource that defines the mapping from URL\nto the BackendService.",
         "description_kind": "plain",

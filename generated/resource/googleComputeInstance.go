@@ -418,10 +418,16 @@ const googleComputeInstance = `{
       "confidential_instance_config": {
         "block": {
           "attributes": {
-            "enable_confidential_compute": {
-              "description": "Defines whether the instance should have confidential compute enabled.",
+            "confidential_instance_type": {
+              "description": "\n\t\t\t\t\t\t\t\tSpecifies which confidential computing technology to use.\n\t\t\t\t\t\t\t\tThis could be one of the following values: SEV, SEV_SNP.\n\t\t\t\t\t\t\t\tIf SEV_SNP, min_cpu_platform = \"AMD Milan\" is currently required.",
               "description_kind": "plain",
-              "required": true,
+              "optional": true,
+              "type": "string"
+            },
+            "enable_confidential_compute": {
+              "description": "Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release",
+              "description_kind": "plain",
+              "optional": true,
               "type": "bool"
             }
           },

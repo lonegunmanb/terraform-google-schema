@@ -251,17 +251,53 @@ const googleDataFusionInstance = `{
       "network_config": {
         "block": {
           "attributes": {
+            "connection_type": {
+              "description": "Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and\nthe corresponding tenant project from a predefined list of available connection modes.\nIf this field is unspecified for a private instance, VPC peering is used. Possible values: [\"VPC_PEERING\", \"PRIVATE_SERVICE_CONNECT_INTERFACES\"]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "ip_allocation": {
               "description": "The IP range in CIDR notation to use for the managed Data Fusion instance\nnodes. This range must not overlap with any other ranges used in the Data Fusion instance network.",
               "description_kind": "plain",
-              "required": true,
+              "optional": true,
               "type": "string"
             },
             "network": {
               "description": "Name of the network in the project with which the tenant project\nwill be peered for executing pipelines. In case of shared VPC where the network resides in another host\nproject the network should specified in the form of projects/{host-project-id}/global/networks/{network}",
               "description_kind": "plain",
-              "required": true,
+              "optional": true,
               "type": "string"
+            }
+          },
+          "block_types": {
+            "private_service_connect_config": {
+              "block": {
+                "attributes": {
+                  "effective_unreachable_cidr_block": {
+                    "computed": true,
+                    "description": "Output only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC.\nThe size of this block is /25. The format of this field is governed by RFC 4632.",
+                    "description_kind": "plain",
+                    "type": "string"
+                  },
+                  "network_attachment": {
+                    "description": "Optional. The reference to the network attachment used to establish private connectivity.\nIt will be of the form projects/{project-id}/regions/{region}/networkAttachments/{network-attachment-id}.\nThis is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "unreachable_cidr_block": {
+                    "description": "Optional. Input only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC.\nThe size of this block should be at least /25. This range should not overlap with the primary address range of any subnetwork used by the network attachment.\nThis range can be used for other purposes in the consumer VPC as long as there is no requirement for CDF to reach destinations using these addresses.\nIf this value is not provided, the server chooses a non RFC 1918 address range. The format of this field is governed by RFC 4632.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Optional. Configuration for Private Service Connect.\nThis is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
             }
           },
           "description": "Network configuration options. These are required when a private Data Fusion instance is to be created.",

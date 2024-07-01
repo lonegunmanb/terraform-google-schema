@@ -18,12 +18,28 @@ const googleCloudfunctions2Function = `{
           [
             "object",
             {
+              "automatic_update_policy": [
+                "list",
+                [
+                  "object",
+                  {}
+                ]
+              ],
               "build": "string",
               "docker_repository": "string",
               "entry_point": "string",
               "environment_variables": [
                 "map",
                 "string"
+              ],
+              "on_deploy_update_policy": [
+                "list",
+                [
+                  "object",
+                  {
+                    "runtime_version": "string"
+                  }
+                ]
               ],
               "runtime": "string",
               "service_account": "string",

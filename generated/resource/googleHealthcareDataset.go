@@ -48,6 +48,22 @@ const googleHealthcareDataset = `{
       }
     },
     "block_types": {
+      "encryption_spec": {
+        "block": {
+          "attributes": {
+            "kms_key_name": {
+              "description": "KMS encryption key that is used to secure this dataset and its sub-resources. The key used for\nencryption and the dataset must be in the same location. If empty, the default Google encryption\nkey will be used to secure this dataset. The format is\nprojects/{projectId}/locations/{locationId}/keyRings/{keyRingId}/cryptoKeys/{keyId}.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description": "A nested object resource",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {

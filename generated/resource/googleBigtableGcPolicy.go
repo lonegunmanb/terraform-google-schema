@@ -33,6 +33,12 @@ const googleBigtableGcPolicy = `{
         "optional": true,
         "type": "string"
       },
+      "ignore_warnings": {
+        "description": "Allows ignoring warnings when updating the GC policy. This can be used\n\t\t\t\tto increase the gc policy on replicated clusters. Doing this may make clusters be\n\t\t\t\tinconsistent for a longer period of time, before using this make sure you understand\n\t\t\t\tthe risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "instance_name": {
         "description": "The name of the Bigtable instance.",
         "description_kind": "plain",

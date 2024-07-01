@@ -133,6 +133,55 @@ const googleVertexAiFeatureOnlineStore = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "dedicated_serving_endpoint": {
+        "block": {
+          "attributes": {
+            "public_endpoint_domain_name": {
+              "computed": true,
+              "description": "Domain name to use for this FeatureOnlineStore",
+              "description_kind": "plain",
+              "type": "string"
+            },
+            "service_attachment": {
+              "computed": true,
+              "description": "Name of the service attachment resource. Applicable only if private service connect is enabled and after FeatureViewSync is created.",
+              "description_kind": "plain",
+              "type": "string"
+            }
+          },
+          "block_types": {
+            "private_service_connect_config": {
+              "block": {
+                "attributes": {
+                  "enable_private_service_connect": {
+                    "description": "If set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "bool"
+                  },
+                  "project_allowlist": {
+                    "description": "A list of Projects from which the forwarding rule will target the service attachment.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": [
+                      "list",
+                      "string"
+                    ]
+                  }
+                },
+                "description": "Private service connect config.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "optimized": {
         "block": {
           "description": "Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore",
