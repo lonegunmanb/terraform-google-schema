@@ -107,6 +107,14 @@ const googleVertexAiFeatureOnlineStoreFeatureview = `{
       },
       "feature_registry_source": {
         "block": {
+          "attributes": {
+            "project_number": {
+              "description": "The project number of the parent project of the feature Groups.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
           "block_types": {
             "feature_groups": {
               "block": {

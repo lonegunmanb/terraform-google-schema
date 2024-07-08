@@ -783,6 +783,29 @@ const googleComputeInstanceFromTemplate = `{
               "max_items": 1,
               "nesting_mode": "list"
             },
+            "max_run_duration": {
+              "block": {
+                "attributes": {
+                  "nanos": {
+                    "computed": true,
+                    "description": "Span of time that's a fraction of a second at nanosecond\nresolution. Durations less than one second are represented\nwith a 0 seconds field and a positive nanos field. Must\nbe from 0 to 999,999,999 inclusive.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "number"
+                  },
+                  "seconds": {
+                    "description": "Span of time at a resolution of a second.\nMust be from 0 to 315,576,000,000 inclusive.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "number"
+                  }
+                },
+                "description": "The timeout for new network connections to hosts.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "node_affinities": {
               "block": {
                 "attributes": {
@@ -809,6 +832,23 @@ const googleComputeInstanceFromTemplate = `{
                 "description_kind": "plain"
               },
               "nesting_mode": "set"
+            },
+            "on_instance_stop_action": {
+              "block": {
+                "attributes": {
+                  "discard_local_ssd": {
+                    "computed": true,
+                    "description": "If true, the contents of any attached Local SSD disks will be discarded.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  }
+                },
+                "description": "Defines the behaviour for instances with the instance_termination_action.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
             }
           },
           "description": "The scheduling strategy being used by the instance.",

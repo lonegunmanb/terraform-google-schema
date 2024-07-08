@@ -213,7 +213,7 @@ const googleComputeResourcePolicy = `{
                           "type": "number"
                         },
                         "start_time": {
-                          "description": "Time within the window to start the operations.\nIt must be in an hourly format \"HH:MM\",\nwhere HH : [00-23] and MM : [00] GMT.\neg: 21:00",
+                          "description": "Time within the window to start the operations.\nIt must be in an hourly format \"HH:MM\",\nwhere HH : [00-23] and MM : [00] GMT. eg: 21:00",
                           "description_kind": "plain",
                           "required": true,
                           "type": "string"

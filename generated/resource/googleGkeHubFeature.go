@@ -136,6 +136,12 @@ const googleGkeHubFeature = `{
                   "config_sync": {
                     "block": {
                       "attributes": {
+                        "enabled": {
+                          "description": "Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "bool"
+                        },
                         "prevent_drift": {
                           "description": "Set to true to enable the Config Sync admission webhook to prevent drifts. If set to 'false', disables the Config Sync admission webhook and does not prevent drifts.",
                           "description_kind": "plain",

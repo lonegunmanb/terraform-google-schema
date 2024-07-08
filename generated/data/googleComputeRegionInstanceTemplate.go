@@ -369,6 +369,16 @@ const googleComputeRegionInstanceTemplate = `{
                   }
                 ]
               ],
+              "max_run_duration": [
+                "list",
+                [
+                  "object",
+                  {
+                    "nanos": "number",
+                    "seconds": "number"
+                  }
+                ]
+              ],
               "min_node_cpus": "number",
               "node_affinities": [
                 "set",
@@ -385,6 +395,15 @@ const googleComputeRegionInstanceTemplate = `{
                 ]
               ],
               "on_host_maintenance": "string",
+              "on_instance_stop_action": [
+                "list",
+                [
+                  "object",
+                  {
+                    "discard_local_ssd": "bool"
+                  }
+                ]
+              ],
               "preemptible": "bool",
               "provisioning_model": "string"
             }

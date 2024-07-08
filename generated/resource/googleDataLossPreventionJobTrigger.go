@@ -973,7 +973,7 @@ const googleDataLossPreventionJobTrigger = `{
                           "type": "number"
                         },
                         "sample_method": {
-                          "description": "How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either\nrowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them. Default value: \"TOP\" Possible values: [\"TOP\", \"RANDOM_START\"]",
+                          "description": "How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either\nrowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.\nIf TimespanConfig is set, set this to an empty string to avoid using the default value. Default value: \"TOP\" Possible values: [\"TOP\", \"RANDOM_START\"]",
                           "description_kind": "plain",
                           "optional": true,
                           "type": "string"

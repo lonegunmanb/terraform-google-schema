@@ -76,7 +76,7 @@ const googleBeyondcorpAppConnection = `{
         ]
       },
       "type": {
-        "description": "The type of network connectivity used by the AppConnection. Refer to\nhttps://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type\nfor a list of possible values.",
+        "description": "The type of network connectivity used by the AppConnection. Refer\nto https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type\nfor a list of possible values.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"

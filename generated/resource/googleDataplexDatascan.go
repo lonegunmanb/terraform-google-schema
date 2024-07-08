@@ -413,6 +413,22 @@ const googleDataplexDatascan = `{
                     "max_items": 1,
                     "nesting_mode": "list"
                   },
+                  "sql_assertion": {
+                    "block": {
+                      "attributes": {
+                        "sql_statement": {
+                          "description": "The SQL statement.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Table rule which evaluates whether any row matches invalid state.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
                   "statistic_range_expectation": {
                     "block": {
                       "attributes": {

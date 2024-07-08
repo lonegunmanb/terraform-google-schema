@@ -115,7 +115,7 @@ const googlePubsubSubscription = `{
               "type": "string"
             },
             "table": {
-              "description": "The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}",
+              "description": "The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}",
               "description_kind": "plain",
               "required": true,
               "type": "string"

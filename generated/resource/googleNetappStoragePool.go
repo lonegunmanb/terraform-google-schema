@@ -70,13 +70,13 @@ const googleNetappStoragePool = `{
         "type": "bool"
       },
       "location": {
-        "description": "Name of the location. Usually a region name, expect for some FLEX service level pools which require a zone name.",
+        "description": "Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.",
         "description_kind": "plain",
         "required": true,
         "type": "string"
       },
       "name": {
-        "description": "The resource name of the storage pool. Needs to be unique per location.",
+        "description": "The resource name of the storage pool. Needs to be unique per location/region.",
         "description_kind": "plain",
         "required": true,
         "type": "string"

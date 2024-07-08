@@ -80,6 +80,21 @@ const googleCertificateManagerTrustConfig = `{
       }
     },
     "block_types": {
+      "allowlisted_certificates": {
+        "block": {
+          "attributes": {
+            "pem_certificate": {
+              "description": "PEM certificate that is allowlisted. The certificate can be up to 5k bytes, and must be a parseable X.509 certificate.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "Allowlisted PEM-encoded certificates. A certificate matching an allowlisted certificate is always considered valid as long as\nthe certificate is parseable, proof of private key possession is established, and constraints on the certificate's SAN field are met.",
+          "description_kind": "plain"
+        },
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {

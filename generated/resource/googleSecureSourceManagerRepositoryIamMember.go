@@ -6,13 +6,12 @@ import (
 	tfjson "github.com/hashicorp/terraform-json"
 )
 
-const googleBigqueryReservationAssignment = `{
+const googleSecureSourceManagerRepositoryIamMember = `{
   "block": {
     "attributes": {
-      "assignee": {
-        "description": "The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.",
+      "etag": {
+        "computed": true,
         "description_kind": "plain",
-        "required": true,
         "type": "string"
       },
       "id": {
@@ -21,23 +20,15 @@ const googleBigqueryReservationAssignment = `{
         "optional": true,
         "type": "string"
       },
-      "job_type": {
-        "description": "Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY",
-        "description_kind": "plain",
-        "required": true,
-        "type": "string"
-      },
       "location": {
         "computed": true,
-        "description": "The location for the resource",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
       },
-      "name": {
-        "computed": true,
-        "description": "Output only. The resource name of the assignment.",
+      "member": {
         "description_kind": "plain",
+        "required": true,
         "type": "string"
       },
       "project": {
@@ -46,37 +37,41 @@ const googleBigqueryReservationAssignment = `{
         "optional": true,
         "type": "string"
       },
-      "reservation": {
-        "description": "The reservation for the resource",
+      "repository_id": {
         "description_kind": "plain",
         "required": true,
         "type": "string"
       },
-      "state": {
-        "computed": true,
-        "description": "Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.\nPossible values: STATE_UNSPECIFIED, PENDING, ACTIVE",
+      "role": {
         "description_kind": "plain",
+        "required": true,
         "type": "string"
       }
     },
     "block_types": {
-      "timeouts": {
+      "condition": {
         "block": {
           "attributes": {
-            "create": {
+            "description": {
               "description_kind": "plain",
               "optional": true,
               "type": "string"
             },
-            "delete": {
+            "expression": {
               "description_kind": "plain",
-              "optional": true,
+              "required": true,
+              "type": "string"
+            },
+            "title": {
+              "description_kind": "plain",
+              "required": true,
               "type": "string"
             }
           },
           "description_kind": "plain"
         },
-        "nesting_mode": "single"
+        "max_items": 1,
+        "nesting_mode": "list"
       }
     },
     "description_kind": "plain"
@@ -84,8 +79,8 @@ const googleBigqueryReservationAssignment = `{
   "version": 0
 }`
 
-func GoogleBigqueryReservationAssignmentSchema() *tfjson.Schema {
+func GoogleSecureSourceManagerRepositoryIamMemberSchema() *tfjson.Schema {
 	var result tfjson.Schema
-	_ = json.Unmarshal([]byte(googleBigqueryReservationAssignment), &result)
+	_ = json.Unmarshal([]byte(googleSecureSourceManagerRepositoryIamMember), &result)
 	return &result
 }

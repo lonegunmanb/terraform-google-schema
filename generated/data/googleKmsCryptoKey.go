@@ -17,7 +17,7 @@ const googleKmsCryptoKey = `{
       },
       "destroy_scheduled_duration": {
         "computed": true,
-        "description": "The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.\nIf not specified at creation time, the default duration is 24 hours.",
+        "description": "The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.\nIf not specified at creation time, the default duration is 30 days.",
         "description_kind": "plain",
         "type": "string"
       },
