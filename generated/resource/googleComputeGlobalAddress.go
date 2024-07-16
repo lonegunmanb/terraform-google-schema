@@ -34,6 +34,15 @@ const googleComputeGlobalAddress = `{
         "optional": true,
         "type": "string"
       },
+      "effective_labels": {
+        "computed": true,
+        "description": "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.",
+        "description_kind": "plain",
+        "type": [
+          "map",
+          "string"
+        ]
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",
@@ -45,6 +54,15 @@ const googleComputeGlobalAddress = `{
         "description_kind": "plain",
         "optional": true,
         "type": "string"
+      },
+      "labels": {
+        "description": "Labels to apply to this address.  A list of key-\u003evalue pairs.\n\n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": [
+          "map",
+          "string"
+        ]
       },
       "name": {
         "description": "Name of the resource. Provided by the client when the resource is\ncreated. The name must be 1-63 characters long, and comply with\nRFC1035.  Specifically, the name must be 1-63 characters long and\nmatch the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means\nthe first character must be a lowercase letter, and all following\ncharacters must be a dash, lowercase letter, or digit, except the last\ncharacter, which cannot be a dash.",
@@ -81,6 +99,15 @@ const googleComputeGlobalAddress = `{
         "computed": true,
         "description_kind": "plain",
         "type": "string"
+      },
+      "terraform_labels": {
+        "computed": true,
+        "description": "The combination of labels configured directly on the resource\n and default labels configured on the provider.",
+        "description_kind": "plain",
+        "type": [
+          "map",
+          "string"
+        ]
       }
     },
     "block_types": {
@@ -93,6 +120,11 @@ const googleComputeGlobalAddress = `{
               "type": "string"
             },
             "delete": {
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "update": {
               "description_kind": "plain",
               "optional": true,
               "type": "string"

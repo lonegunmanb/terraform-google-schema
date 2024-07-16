@@ -10,7 +10,7 @@ const googleIapClient = `{
   "block": {
     "attributes": {
       "brand": {
-        "description": "Identifier of the brand to which this client\nis attached to. The format is\n'projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}'.",
+        "description": "Identifier of the brand to which this client\nis attached to. The format is\n'projects/{project_number}/brands/{brand_id}'.",
         "description_kind": "plain",
         "required": true,
         "type": "string"
