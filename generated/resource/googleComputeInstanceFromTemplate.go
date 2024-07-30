@@ -428,6 +428,13 @@ const googleComputeInstanceFromTemplate = `{
                     "optional": true,
                     "type": "number"
                   },
+                  "storage_pool": {
+                    "computed": true,
+                    "description": "The URL of the storage pool in which the new disk is created",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
                   "type": {
                     "computed": true,
                     "description": "The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.",

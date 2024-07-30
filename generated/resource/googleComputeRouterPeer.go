@@ -30,6 +30,12 @@ const googleComputeRouterPeer = `{
         "optional": true,
         "type": "number"
       },
+      "custom_learned_route_priority": {
+        "description": "The user-defined custom learned route priority for a BGP session.\nThis value is applied to all custom learned route ranges for the session. You can choose a value\nfrom 0 to 65335. If you don't provide a value, Google Cloud assigns a priority of 100 to the ranges.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "number"
+      },
       "enable": {
         "description": "The status of the BGP peer connection. If set to false, any active session\nwith the peer is terminated and all associated routing information is removed.\nIf set to true, the peer connection can be established with routing information.\nThe default is true.",
         "description_kind": "plain",
@@ -201,6 +207,21 @@ const googleComputeRouterPeer = `{
           "description_kind": "plain"
         },
         "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "custom_learned_ip_ranges": {
+        "block": {
+          "attributes": {
+            "range": {
+              "description": "The IP range to advertise. The value must be a\nCIDR-formatted string.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an \nIP address is provided without a subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.",
+          "description_kind": "plain"
+        },
         "nesting_mode": "list"
       },
       "md5_authentication_key": {

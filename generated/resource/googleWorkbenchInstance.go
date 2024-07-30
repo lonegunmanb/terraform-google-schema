@@ -344,6 +344,23 @@ const googleWorkbenchInstance = `{
                     "type": "string"
                   }
                 },
+                "block_types": {
+                  "access_configs": {
+                    "block": {
+                      "attributes": {
+                        "external_ip": {
+                          "description": "An external IP address associated with this instance. Specify an unused\nstatic external IP address available to the project or leave this field\nundefined to use an IP from a shared ephemeral IP address pool. If you\nspecify a static external IP address, it must live in the same region as\nthe zone of the instance.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Optional. An array of configurations for this interface. Currently, only one access\nconfig, ONE_TO_ONE_NAT, is supported. If no accessConfigs specified, the\ninstance will have an external internet access through an ephemeral\nexternal IP address.",
+                      "description_kind": "plain"
+                    },
+                    "nesting_mode": "list"
+                  }
+                },
                 "description": "The network interfaces for the VM. Supports only one interface.",
                 "description_kind": "plain"
               },

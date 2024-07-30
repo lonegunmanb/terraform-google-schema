@@ -23,7 +23,7 @@ const googleApphubServiceProjectAttachment = `{
       },
       "name": {
         "computed": true,
-        "description": "\"Identifier. The resource name of a ServiceProjectAttachment. Format:\\\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\\\" \"",
+        "description": "\"Identifier. The resource name of a ServiceProjectAttachment. Format:\\\"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}.\\\"\"",
         "description_kind": "plain",
         "type": "string"
       },
@@ -34,7 +34,7 @@ const googleApphubServiceProjectAttachment = `{
         "type": "string"
       },
       "service_project": {
-        "description": "\"Immutable. Service project name in the format: \\\"projects/abc\\\"\nor \\\"projects/123\\\". As input, project name with either project id or number\nare accepted. As output, this field will contain project number. \"",
+        "description": "\"Immutable. Service project name in the format: \\\"projects/abc\\\"\nor \\\"projects/123\\\". As input, project name with either project id or number\nare accepted. As output, this field will contain project number.\"",
         "description_kind": "plain",
         "optional": true,
         "type": "string"

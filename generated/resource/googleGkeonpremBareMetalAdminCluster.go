@@ -243,7 +243,7 @@ const googleGkeonpremBareMetalAdminCluster = `{
                     "block": {
                       "attributes": {
                         "labels": {
-                          "description": "The map of Kubernetes labels (key/value pairs) to be applied to\neach node. These will added in addition to any default label(s)\nthat Kubernetes may apply to the node. In case of conflict in\nlabel keys, the applied set may differ depending on the Kubernetes\nversion -- it's best to assume the behavior is undefined and\nconflicts should be avoided. For more information, including usage\nand the valid values, see:\n  http://kubernetes.io/v1.1/docs/user-guide/labels.html\nAn object containing a list of \"key\": value pairs.\nExample: { \"name\": \"wrench\", \"mass\": \"1.3kg\", \"count\": \"3\" }.",
+                          "description": "The map of Kubernetes labels (key/value pairs) to be applied to\neach node. These will added in addition to any default label(s)\nthat Kubernetes may apply to the node. In case of conflict in\nlabel keys, the applied set may differ depending on the Kubernetes\nversion -- it's best to assume the behavior is undefined and\nconflicts should be avoided. For more information, including usage\nand the valid values, see:\n  - http://kubernetes.io/v1.1/docs/user-guide/labels.html\nAn object containing a list of \"key\": value pairs.\nFor example: { \"name\": \"wrench\", \"mass\": \"1.3kg\", \"count\": \"3\" }.",
                           "description_kind": "plain",
                           "optional": true,
                           "type": [
@@ -263,7 +263,7 @@ const googleGkeonpremBareMetalAdminCluster = `{
                           "block": {
                             "attributes": {
                               "labels": {
-                                "description": "The map of Kubernetes labels (key/value pairs) to be applied to\neach node. These will added in addition to any default label(s)\nthat Kubernetes may apply to the node. In case of conflict in\nlabel keys, the applied set may differ depending on the Kubernetes\nversion -- it's best to assume the behavior is undefined and\nconflicts should be avoided. For more information, including usage\nand the valid values, see:\n  http://kubernetes.io/v1.1/docs/user-guide/labels.html\nAn object containing a list of \"key\": value pairs.\nExample: { \"name\": \"wrench\", \"mass\": \"1.3kg\", \"count\": \"3\" }.",
+                                "description": "The map of Kubernetes labels (key/value pairs) to be applied to\neach node. These will added in addition to any default label(s)\nthat Kubernetes may apply to the node. In case of conflict in\nlabel keys, the applied set may differ depending on the Kubernetes\nversion -- it's best to assume the behavior is undefined and\nconflicts should be avoided. For more information, including usage\nand the valid values, see:\n  - http://kubernetes.io/v1.1/docs/user-guide/labels.html\nAn object containing a list of \"key\": value pairs.\nFor example: { \"name\": \"wrench\", \"mass\": \"1.3kg\", \"count\": \"3\" }.",
                                 "description_kind": "plain",
                                 "optional": true,
                                 "type": [
@@ -486,7 +486,7 @@ const googleGkeonpremBareMetalAdminCluster = `{
         "block": {
           "attributes": {
             "no_proxy": {
-              "description": "A list of IPs, hostnames, and domains that should skip the proxy.\nExamples: [\"127.0.0.1\", \"example.com\", \".corp\", \"localhost\"].",
+              "description": "A list of IPs, hostnames, and domains that should skip the proxy.\nFor example: [\"127.0.0.1\", \"example.com\", \".corp\", \"localhost\"].",
               "description_kind": "plain",
               "optional": true,
               "type": [
@@ -495,7 +495,7 @@ const googleGkeonpremBareMetalAdminCluster = `{
               ]
             },
             "uri": {
-              "description": "Specifies the address of your proxy server.\nExamples: http://domain\nWARNING: Do not provide credentials in the format\nhttp://(username:password@)domain these will be rejected by the server.",
+              "description": "Specifies the address of your proxy server.\nFor Example: http://domain\nWARNING: Do not provide credentials in the format\nof http://(username:password@)domain these will be rejected by the server.",
               "description_kind": "plain",
               "required": true,
               "type": "string"

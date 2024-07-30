@@ -409,6 +409,53 @@ const googleContainerCluster = `{
               "max_items": 1,
               "nesting_mode": "list"
             },
+            "ray_operator_config": {
+              "block": {
+                "attributes": {
+                  "enabled": {
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "bool"
+                  }
+                },
+                "block_types": {
+                  "ray_cluster_logging_config": {
+                    "block": {
+                      "attributes": {
+                        "enabled": {
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "bool"
+                        }
+                      },
+                      "description": "The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "ray_cluster_monitoring_config": {
+                    "block": {
+                      "attributes": {
+                        "enabled": {
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "bool"
+                        }
+                      },
+                      "description": "The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.",
+                "description_kind": "plain"
+              },
+              "max_items": 3,
+              "nesting_mode": "list"
+            },
             "stateful_ha_config": {
               "block": {
                 "attributes": {

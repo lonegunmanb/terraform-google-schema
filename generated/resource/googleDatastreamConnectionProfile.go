@@ -345,6 +345,47 @@ const googleDatastreamConnectionProfile = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "sql_server_profile": {
+        "block": {
+          "attributes": {
+            "database": {
+              "description": "Database for the SQL Server connection.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            },
+            "hostname": {
+              "description": "Hostname for the SQL Server connection.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            },
+            "password": {
+              "description": "Password for the SQL Server connection.",
+              "description_kind": "plain",
+              "required": true,
+              "sensitive": true,
+              "type": "string"
+            },
+            "port": {
+              "description": "Port for the SQL Server connection.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "number"
+            },
+            "username": {
+              "description": "Username for the SQL Server connection.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "SQL Server database profile.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {

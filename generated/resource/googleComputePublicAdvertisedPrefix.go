@@ -49,6 +49,12 @@ const googleComputePublicAdvertisedPrefix = `{
         "computed": true,
         "description_kind": "plain",
         "type": "string"
+      },
+      "shared_secret": {
+        "computed": true,
+        "description": "Output Only. The shared secret to be used for reverse DNS verification.",
+        "description_kind": "plain",
+        "type": "string"
       }
     },
     "block_types": {

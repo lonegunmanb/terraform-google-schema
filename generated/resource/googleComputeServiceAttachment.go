@@ -113,7 +113,7 @@ const googleComputeServiceAttachment = `{
         "type": "string"
       },
       "target_service": {
-        "description": "The URL of a forwarding rule that represents the service identified by\nthis service attachment.",
+        "description": "The URL of a service serving the endpoint identified by this service attachment.",
         "description_kind": "plain",
         "required": true,
         "type": "string"

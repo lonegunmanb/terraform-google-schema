@@ -734,17 +734,54 @@ const googleComputeBackendService = `{
             "client_tls_policy": {
               "description": "ClientTlsPolicy is a resource that specifies how a client should authenticate\nconnections to backends of a service. This resource itself does not affect\nconfiguration unless it is attached to a backend service resource.",
               "description_kind": "plain",
-              "required": true,
+              "optional": true,
               "type": "string"
             },
             "subject_alt_names": {
               "description": "A list of alternate names to verify the subject identity in the certificate.\nIf specified, the client will verify that the server certificate's subject\nalt name matches one of the specified values.",
               "description_kind": "plain",
-              "required": true,
+              "optional": true,
               "type": [
                 "list",
                 "string"
               ]
+            }
+          },
+          "block_types": {
+            "aws_v4_authentication": {
+              "block": {
+                "attributes": {
+                  "access_key": {
+                    "description": "The access key used for s3 bucket authentication.\nRequired for updating or creating a backend that uses AWS v4 signature authentication, but will not be returned as part of the configuration when queried with a REST API GET request.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "sensitive": true,
+                    "type": "string"
+                  },
+                  "access_key_id": {
+                    "description": "The identifier of an access key used for s3 bucket authentication.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "access_key_version": {
+                    "description": "The optional version identifier for the access key. You can use this to keep track of different iterations of your access key.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "origin_region": {
+                    "description": "The name of the cloud region of your origin. This is a free-form field with the name of the region your cloud uses to host your origin.\nFor example, \"us-east-1\" for AWS or \"us-ashburn-1\" for OCI.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication.\nAllowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
             }
           },
           "description": "The security settings that apply to this backend service. This field is applicable to either\na regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and\nload_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the\nload_balancing_scheme set to INTERNAL_SELF_MANAGED.",

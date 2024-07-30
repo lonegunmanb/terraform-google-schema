@@ -109,6 +109,33 @@ const googleContainerCluster = `{
                   }
                 ]
               ],
+              "ray_operator_config": [
+                "list",
+                [
+                  "object",
+                  {
+                    "enabled": "bool",
+                    "ray_cluster_logging_config": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "enabled": "bool"
+                        }
+                      ]
+                    ],
+                    "ray_cluster_monitoring_config": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "enabled": "bool"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              ],
               "stateful_ha_config": [
                 "list",
                 [

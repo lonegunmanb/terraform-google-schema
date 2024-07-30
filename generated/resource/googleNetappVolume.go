@@ -178,6 +178,7 @@ const googleNetappVolume = `{
         "type": "string"
       },
       "smb_settings": {
+        "computed": true,
         "description": "Settings for volumes with SMB access. Possible values: [\"ENCRYPT_DATA\", \"BROWSABLE\", \"CHANGE_NOTIFY\", \"NON_BROWSABLE\", \"OPLOCKS\", \"SHOW_SNAPSHOT\", \"SHOW_PREVIOUS_VERSIONS\", \"ACCESS_BASED_ENUMERATION\", \"CONTINUOUSLY_AVAILABLE\"]",
         "description_kind": "plain",
         "optional": true,

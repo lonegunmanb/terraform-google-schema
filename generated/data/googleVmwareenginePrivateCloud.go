@@ -9,6 +9,12 @@ import (
 const googleVmwareenginePrivateCloud = `{
   "block": {
     "attributes": {
+      "deletion_delay_hours": {
+        "computed": true,
+        "description": "The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.",
+        "description_kind": "plain",
+        "type": "number"
+      },
       "description": {
         "computed": true,
         "description": "User-provided description for this private cloud.",
@@ -124,6 +130,12 @@ const googleVmwareenginePrivateCloud = `{
         "description_kind": "plain",
         "optional": true,
         "type": "string"
+      },
+      "send_deletion_delay_hours_if_zero": {
+        "computed": true,
+        "description": "While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.",
+        "description_kind": "plain",
+        "type": "bool"
       },
       "state": {
         "computed": true,

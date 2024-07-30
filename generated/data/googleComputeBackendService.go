@@ -394,6 +394,18 @@ const googleComputeBackendService = `{
           [
             "object",
             {
+              "aws_v4_authentication": [
+                "list",
+                [
+                  "object",
+                  {
+                    "access_key": "string",
+                    "access_key_id": "string",
+                    "access_key_version": "string",
+                    "origin_region": "string"
+                  }
+                ]
+              ],
               "client_tls_policy": "string",
               "subject_alt_names": [
                 "list",

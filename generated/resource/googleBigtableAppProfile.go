@@ -68,6 +68,22 @@ const googleBigtableAppProfile = `{
       }
     },
     "block_types": {
+      "data_boost_isolation_read_only": {
+        "block": {
+          "attributes": {
+            "compute_billing_owner": {
+              "description": "The Compute Billing Owner for this Data Boost App Profile. Possible values: [\"HOST_PAYS\"]",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "Specifies that this app profile is intended for read-only usage via the Data Boost feature.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "single_cluster_routing": {
         "block": {
           "attributes": {

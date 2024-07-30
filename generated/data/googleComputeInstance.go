@@ -81,6 +81,7 @@ const googleComputeInstance = `{
                       "string"
                     ],
                     "size": "number",
+                    "storage_pool": "string",
                     "type": "string"
                   }
                 ]

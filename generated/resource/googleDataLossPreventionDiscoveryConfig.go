@@ -699,6 +699,202 @@ const googleDataLossPreventionDiscoveryConfig = `{
               "max_items": 1,
               "nesting_mode": "list"
             },
+            "cloud_storage_target": {
+              "block": {
+                "block_types": {
+                  "conditions": {
+                    "block": {
+                      "attributes": {
+                        "created_after": {
+                          "description": "File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC \"Zulu\" format with nanosecond resolution and upto nine fractional digits.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "min_age": {
+                          "description": "Duration format. Minimum age a file store must have. If set, the value must be 1 hour or greater.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "block_types": {
+                        "cloud_storage_conditions": {
+                          "block": {
+                            "attributes": {
+                              "included_bucket_attributes": {
+                                "description": "Only objects with the specified attributes will be scanned. Defaults to [ALL_SUPPORTED_BUCKETS] if unset. Possible values: [\"ALL_SUPPORTED_BUCKETS\", \"AUTOCLASS_DISABLED\", \"AUTOCLASS_ENABLED\"]",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": [
+                                  "list",
+                                  "string"
+                                ]
+                              },
+                              "included_object_attributes": {
+                                "description": "Only objects with the specified attributes will be scanned. If an object has one of the specified attributes but is inside an excluded bucket, it will not be scanned. Defaults to [ALL_SUPPORTED_OBJECTS]. A profile will be created even if no objects match the included_object_attributes. Possible values: [\"ALL_SUPPORTED_OBJECTS\", \"STANDARD\", \"NEARLINE\", \"COLDLINE\", \"ARCHIVE\", \"REGIONAL\", \"MULTI_REGIONAL\", \"DURABLE_REDUCED_AVAILABILITY\"]",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": [
+                                  "list",
+                                  "string"
+                                ]
+                              }
+                            },
+                            "description": "Cloud Storage conditions.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "In addition to matching the filter, these conditions must be true before a profile is generated.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "disabled": {
+                    "block": {
+                      "description": "Disable profiling for buckets that match this filter.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "filter": {
+                    "block": {
+                      "block_types": {
+                        "cloud_storage_resource_reference": {
+                          "block": {
+                            "attributes": {
+                              "bucket_name": {
+                                "description": "The bucket to scan.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "project_id": {
+                                "description": "If within a project-level config, then this must match the config's project id.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "The bucket to scan. Targets including this can only include one target (the target with this bucket). This enables profiling the contents of a single bucket, while the other options allow for easy profiling of many buckets within a project or an organization.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
+                        "collection": {
+                          "block": {
+                            "block_types": {
+                              "include_regexes": {
+                                "block": {
+                                  "block_types": {
+                                    "patterns": {
+                                      "block": {
+                                        "block_types": {
+                                          "cloud_storage_regex": {
+                                            "block": {
+                                              "attributes": {
+                                                "bucket_name_regex": {
+                                                  "description": "Regex to test the bucket name against. If empty, all buckets match. Example: \"marketing2021\" or \"(marketing)\\d{4}\" will both match the bucket gs://marketing2021",
+                                                  "description_kind": "plain",
+                                                  "optional": true,
+                                                  "type": "string"
+                                                },
+                                                "project_id_regex": {
+                                                  "description": "For organizations, if unset, will match all projects.",
+                                                  "description_kind": "plain",
+                                                  "optional": true,
+                                                  "type": "string"
+                                                }
+                                              },
+                                              "description": "Regex for Cloud Storage.",
+                                              "description_kind": "plain"
+                                            },
+                                            "max_items": 1,
+                                            "nesting_mode": "list"
+                                          }
+                                        },
+                                        "description": "The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.",
+                                        "description_kind": "plain"
+                                      },
+                                      "nesting_mode": "list"
+                                    }
+                                  },
+                                  "description": "A collection of regular expressions to match a file store against.",
+                                  "description_kind": "plain"
+                                },
+                                "max_items": 1,
+                                "nesting_mode": "list"
+                              }
+                            },
+                            "description": "A specific set of buckets for this filter to apply to.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
+                        "others": {
+                          "block": {
+                            "description": "Match discovery resources not covered by any other filter.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "The buckets the generation_cadence applies to. The first target with a matching filter will be the one to apply to a bucket.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "min_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "generation_cadence": {
+                    "block": {
+                      "attributes": {
+                        "refresh_frequency": {
+                          "description": "Data changes in Cloud Storage can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changes. Defaults to never. Possible values: [\"UPDATE_FREQUENCY_NEVER\", \"UPDATE_FREQUENCY_DAILY\", \"UPDATE_FREQUENCY_MONTHLY\"]",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "block_types": {
+                        "inspect_template_modified_cadence": {
+                          "block": {
+                            "attributes": {
+                              "frequency": {
+                                "description": "How frequently data profiles can be updated when the template is modified. Defaults to never. Possible values: [\"UPDATE_FREQUENCY_NEVER\", \"UPDATE_FREQUENCY_DAILY\", \"UPDATE_FREQUENCY_MONTHLY\"]",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "Governs when to update data profiles when the inspection rules defined by the 'InspectTemplate' change. If not set, changing the template will not cause a data profile to update.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "How often and when to update profiles. New buckets that match both the filter and conditions are scanned as quickly as possible depending on system capacity.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "Cloud Storage target for Discovery. The first target to match a bucket will be the one applied.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "secrets_target": {
               "block": {
                 "description": "Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them as vulnerabilities to Security Command Center. Only one target of this type is allowed.",

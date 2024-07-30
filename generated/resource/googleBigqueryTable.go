@@ -9,6 +9,13 @@ import (
 const googleBigqueryTable = `{
   "block": {
     "attributes": {
+      "allow_resource_tags_on_deletion": {
+        "deprecated": true,
+        "description": "**Deprecated** Whether or not to allow table deletion when there are still resource tags attached.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "clustering": {
         "description": "Specifies column names to use for data clustering. Up to four top-level columns are allowed, and should be specified in descending priority order.",
         "description_kind": "plain",
@@ -133,6 +140,15 @@ const googleBigqueryTable = `{
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
+      },
+      "resource_tags": {
+        "description": "The tags attached to this table. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example \"123456789012/environment\" where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example \"Production\".",
+        "description_kind": "plain",
+        "optional": true,
+        "type": [
+          "map",
+          "string"
+        ]
       },
       "schema": {
         "computed": true,

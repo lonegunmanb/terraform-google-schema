@@ -322,7 +322,7 @@ const googleCloudRunV2Service = `{
             },
             "max_instance_request_concurrency": {
               "computed": true,
-              "description": "Sets the maximum number of requests that each serving instance can receive.",
+              "description": "Sets the maximum number of requests that each serving instance can receive.\nIf not specified or 0, defaults to 80 when requested CPU \u003e= 1 and defaults to 1 when requested CPU \u003c 1.",
               "description_kind": "plain",
               "optional": true,
               "type": "number"

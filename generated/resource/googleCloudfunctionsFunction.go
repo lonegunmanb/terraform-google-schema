@@ -24,6 +24,13 @@ const googleCloudfunctionsFunction = `{
           "string"
         ]
       },
+      "build_service_account": {
+        "computed": true,
+        "description": "The fully-qualified name of the service account to be used for the build step of deploying this function",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "build_worker_pool": {
         "description": "Name of the Cloud Build Custom Worker Pool that should be used to build the function.",
         "description_kind": "plain",

@@ -406,6 +406,108 @@ const googleDatastreamStream = `{
               },
               "max_items": 1,
               "nesting_mode": "list"
+            },
+            "sql_server_excluded_objects": {
+              "block": {
+                "block_types": {
+                  "schemas": {
+                    "block": {
+                      "attributes": {
+                        "schema": {
+                          "description": "Schema name.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "block_types": {
+                        "tables": {
+                          "block": {
+                            "attributes": {
+                              "table": {
+                                "description": "Table name.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              }
+                            },
+                            "block_types": {
+                              "columns": {
+                                "block": {
+                                  "attributes": {
+                                    "column": {
+                                      "description": "Column name.",
+                                      "description_kind": "plain",
+                                      "optional": true,
+                                      "type": "string"
+                                    },
+                                    "data_type": {
+                                      "description": "The SQL Server data type. Full data types list can be found here:\nhttps://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16",
+                                      "description_kind": "plain",
+                                      "optional": true,
+                                      "type": "string"
+                                    },
+                                    "length": {
+                                      "computed": true,
+                                      "description": "Column length.",
+                                      "description_kind": "plain",
+                                      "type": "number"
+                                    },
+                                    "nullable": {
+                                      "computed": true,
+                                      "description": "Whether or not the column can accept a null value.",
+                                      "description_kind": "plain",
+                                      "type": "bool"
+                                    },
+                                    "ordinal_position": {
+                                      "computed": true,
+                                      "description": "The ordinal position of the column in the table.",
+                                      "description_kind": "plain",
+                                      "type": "number"
+                                    },
+                                    "precision": {
+                                      "computed": true,
+                                      "description": "Column precision.",
+                                      "description_kind": "plain",
+                                      "type": "number"
+                                    },
+                                    "primary_key": {
+                                      "computed": true,
+                                      "description": "Whether or not the column represents a primary key.",
+                                      "description_kind": "plain",
+                                      "type": "bool"
+                                    },
+                                    "scale": {
+                                      "computed": true,
+                                      "description": "Column scale.",
+                                      "description_kind": "plain",
+                                      "type": "number"
+                                    }
+                                  },
+                                  "description": "SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.",
+                                  "description_kind": "plain"
+                                },
+                                "nesting_mode": "list"
+                              }
+                            },
+                            "description": "Tables in the database.",
+                            "description_kind": "plain"
+                          },
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "SQL Server schemas/databases in the database server",
+                      "description_kind": "plain"
+                    },
+                    "min_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "SQL Server data source objects to avoid backfilling.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
             }
           },
           "description": "Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.",
@@ -444,6 +546,22 @@ const googleDatastreamStream = `{
                   }
                 },
                 "block_types": {
+                  "append_only": {
+                    "block": {
+                      "description": "AppendOnly mode defines that the stream of changes (INSERT, UPDATE-INSERT, UPDATE-DELETE and DELETE\nevents) to a source table will be written to the destination Google BigQuery table, retaining the\nhistorical state of the data.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "merge": {
+                    "block": {
+                      "description": "Merge mode defines that all changes to a table will be merged at the destination Google BigQuery\ntable. This is the default write mode. When selected, BigQuery reflects the way the data is stored\nin the source database. With Merge mode, no historical record of the change events is kept.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
                   "single_target_dataset": {
                     "block": {
                       "attributes": {
@@ -500,7 +618,7 @@ const googleDatastreamStream = `{
                     "nesting_mode": "list"
                   }
                 },
-                "description": "A configuration for how data should be loaded to Cloud Storage.",
+                "description": "A configuration for how data should be loaded to Google BigQuery.",
                 "description_kind": "plain"
               },
               "max_items": 1,
@@ -1293,6 +1411,236 @@ const googleDatastreamStream = `{
                   }
                 },
                 "description": "PostgreSQL data source configuration.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "sql_server_source_config": {
+              "block": {
+                "attributes": {
+                  "max_concurrent_backfill_tasks": {
+                    "computed": true,
+                    "description": "Max concurrent backfill tasks.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "number"
+                  },
+                  "max_concurrent_cdc_tasks": {
+                    "computed": true,
+                    "description": "Max concurrent CDC tasks.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "number"
+                  }
+                },
+                "block_types": {
+                  "exclude_objects": {
+                    "block": {
+                      "block_types": {
+                        "schemas": {
+                          "block": {
+                            "attributes": {
+                              "schema": {
+                                "description": "Schema name.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              }
+                            },
+                            "block_types": {
+                              "tables": {
+                                "block": {
+                                  "attributes": {
+                                    "table": {
+                                      "description": "Table name.",
+                                      "description_kind": "plain",
+                                      "required": true,
+                                      "type": "string"
+                                    }
+                                  },
+                                  "block_types": {
+                                    "columns": {
+                                      "block": {
+                                        "attributes": {
+                                          "column": {
+                                            "description": "Column name.",
+                                            "description_kind": "plain",
+                                            "optional": true,
+                                            "type": "string"
+                                          },
+                                          "data_type": {
+                                            "description": "The SQL Server data type. Full data types list can be found here:\nhttps://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16",
+                                            "description_kind": "plain",
+                                            "optional": true,
+                                            "type": "string"
+                                          },
+                                          "length": {
+                                            "computed": true,
+                                            "description": "Column length.",
+                                            "description_kind": "plain",
+                                            "type": "number"
+                                          },
+                                          "nullable": {
+                                            "computed": true,
+                                            "description": "Whether or not the column can accept a null value.",
+                                            "description_kind": "plain",
+                                            "type": "bool"
+                                          },
+                                          "ordinal_position": {
+                                            "computed": true,
+                                            "description": "The ordinal position of the column in the table.",
+                                            "description_kind": "plain",
+                                            "type": "number"
+                                          },
+                                          "precision": {
+                                            "computed": true,
+                                            "description": "Column precision.",
+                                            "description_kind": "plain",
+                                            "type": "number"
+                                          },
+                                          "primary_key": {
+                                            "computed": true,
+                                            "description": "Whether or not the column represents a primary key.",
+                                            "description_kind": "plain",
+                                            "type": "bool"
+                                          },
+                                          "scale": {
+                                            "computed": true,
+                                            "description": "Column scale.",
+                                            "description_kind": "plain",
+                                            "type": "number"
+                                          }
+                                        },
+                                        "description": "SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.",
+                                        "description_kind": "plain"
+                                      },
+                                      "nesting_mode": "list"
+                                    }
+                                  },
+                                  "description": "Tables in the database.",
+                                  "description_kind": "plain"
+                                },
+                                "nesting_mode": "list"
+                              }
+                            },
+                            "description": "SQL Server schemas/databases in the database server",
+                            "description_kind": "plain"
+                          },
+                          "min_items": 1,
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "SQL Server objects to exclude from the stream.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "include_objects": {
+                    "block": {
+                      "block_types": {
+                        "schemas": {
+                          "block": {
+                            "attributes": {
+                              "schema": {
+                                "description": "Schema name.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              }
+                            },
+                            "block_types": {
+                              "tables": {
+                                "block": {
+                                  "attributes": {
+                                    "table": {
+                                      "description": "Table name.",
+                                      "description_kind": "plain",
+                                      "required": true,
+                                      "type": "string"
+                                    }
+                                  },
+                                  "block_types": {
+                                    "columns": {
+                                      "block": {
+                                        "attributes": {
+                                          "column": {
+                                            "description": "Column name.",
+                                            "description_kind": "plain",
+                                            "optional": true,
+                                            "type": "string"
+                                          },
+                                          "data_type": {
+                                            "description": "The SQL Server data type. Full data types list can be found here:\nhttps://learn.microsoft.com/en-us/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16",
+                                            "description_kind": "plain",
+                                            "optional": true,
+                                            "type": "string"
+                                          },
+                                          "length": {
+                                            "computed": true,
+                                            "description": "Column length.",
+                                            "description_kind": "plain",
+                                            "type": "number"
+                                          },
+                                          "nullable": {
+                                            "computed": true,
+                                            "description": "Whether or not the column can accept a null value.",
+                                            "description_kind": "plain",
+                                            "type": "bool"
+                                          },
+                                          "ordinal_position": {
+                                            "computed": true,
+                                            "description": "The ordinal position of the column in the table.",
+                                            "description_kind": "plain",
+                                            "type": "number"
+                                          },
+                                          "precision": {
+                                            "computed": true,
+                                            "description": "Column precision.",
+                                            "description_kind": "plain",
+                                            "type": "number"
+                                          },
+                                          "primary_key": {
+                                            "computed": true,
+                                            "description": "Whether or not the column represents a primary key.",
+                                            "description_kind": "plain",
+                                            "type": "bool"
+                                          },
+                                          "scale": {
+                                            "computed": true,
+                                            "description": "Column scale.",
+                                            "description_kind": "plain",
+                                            "type": "number"
+                                          }
+                                        },
+                                        "description": "SQL Server columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.",
+                                        "description_kind": "plain"
+                                      },
+                                      "nesting_mode": "list"
+                                    }
+                                  },
+                                  "description": "Tables in the database.",
+                                  "description_kind": "plain"
+                                },
+                                "nesting_mode": "list"
+                              }
+                            },
+                            "description": "SQL Server schemas/databases in the database server",
+                            "description_kind": "plain"
+                          },
+                          "min_items": 1,
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "SQL Server objects to retrieve from the source.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "SQL Server data source configuration.",
                 "description_kind": "plain"
               },
               "max_items": 1,

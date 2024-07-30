@@ -233,7 +233,7 @@ const googleIntegrationConnectorsConnection = `{
                     "block": {
                       "attributes": {
                         "kms_key_name": {
-                          "description": "The [KMS key name] with which the content of the Operation is encrypted. The expected\nformat: projects/*/locations/*/keyRings/*/cryptoKeys/*.\nWill be empty string if google managed.",
+                          "description": "The [KMS key name] with which the content of the Operation is encrypted. The\nexpected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.\nWill be empty string if google managed.",
                           "description_kind": "plain",
                           "optional": true,
                           "type": "string"
@@ -546,7 +546,7 @@ const googleIntegrationConnectorsConnection = `{
               "block": {
                 "attributes": {
                   "kms_key_name": {
-                    "description": "The [KMS key name] with which the content of the Operation is encrypted. The expected\nformat: projects/*/locations/*/keyRings/*/cryptoKeys/*.\nWill be empty string if google managed.",
+                    "description": "The [KMS key name] with which the content of the Operation is encrypted. The\nexpected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.\nWill be empty string if google managed.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"
@@ -674,7 +674,7 @@ const googleIntegrationConnectorsConnection = `{
                     "block": {
                       "attributes": {
                         "kms_key_name": {
-                          "description": "The [KMS key name] with which the content of the Operation is encrypted. The expected\nformat: projects/*/locations/*/keyRings/*/cryptoKeys/*.\nWill be empty string if google managed.",
+                          "description": "The [KMS key name] with which the content of the Operation is encrypted. The\nexpected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.\nWill be empty string if google managed.",
                           "description_kind": "plain",
                           "optional": true,
                           "type": "string"
@@ -764,7 +764,7 @@ const googleIntegrationConnectorsConnection = `{
                           "block": {
                             "attributes": {
                               "kms_key_name": {
-                                "description": "The [KMS key name] with which the content of the Operation is encrypted. The expected\nformat: projects/*/locations/*/keyRings/*/cryptoKeys/*.\nWill be empty string if google managed.",
+                                "description": "The [KMS key name] with which the content of the Operation is encrypted. The\nexpected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.\nWill be empty string if google managed.",
                                 "description_kind": "plain",
                                 "optional": true,
                                 "type": "string"
@@ -1029,7 +1029,7 @@ const googleIntegrationConnectorsConnection = `{
                     "block": {
                       "attributes": {
                         "kms_key_name": {
-                          "description": "The [KMS key name] with which the content of the Operation is encrypted. The expected\nformat: projects/*/locations/*/keyRings/*/cryptoKeys/*.\nWill be empty string if google managed.",
+                          "description": "The [KMS key name] with which the content of the Operation is encrypted. The\nexpected format: projects/*/locations/*/keyRings/*/cryptoKeys/*.\nWill be empty string if google managed.",
                           "description_kind": "plain",
                           "optional": true,
                           "type": "string"

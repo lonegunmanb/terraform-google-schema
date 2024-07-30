@@ -208,6 +208,15 @@ const googleBigqueryDataset = `{
         "optional": true,
         "type": "string"
       },
+      "resource_tags": {
+        "computed": true,
+        "description": "The tags attached to this table. Tag keys are globally unique. Tag key is expected to be\nin the namespaced format, for example \"123456789012/environment\" where 123456789012 is the\nID of the parent organization or project resource for this tag key. Tag value is expected\nto be the short name, for example \"Production\". See [Tag definitions](/iam/docs/tags-access-control#definitions)\nfor more details.",
+        "description_kind": "plain",
+        "type": [
+          "map",
+          "string"
+        ]
+      },
       "self_link": {
         "computed": true,
         "description_kind": "plain",
