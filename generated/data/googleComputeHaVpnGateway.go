@@ -15,6 +15,12 @@ const googleComputeHaVpnGateway = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "gateway_ip_version": {
+        "computed": true,
+        "description": "The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used. Default value: \"IPV4\" Possible values: [\"IPV4\", \"IPV6\"]",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",
@@ -51,7 +57,7 @@ const googleComputeHaVpnGateway = `{
       },
       "stack_type": {
         "computed": true,
-        "description": "The stack type for this VPN gateway to identify the IP protocols that are enabled.\nIf not specified, IPV4_ONLY will be used. Default value: \"IPV4_ONLY\" Possible values: [\"IPV4_ONLY\", \"IPV4_IPV6\"]",
+        "description": "The stack type for this VPN gateway to identify the IP protocols that are enabled.\nIf not specified, IPV4_ONLY will be used. Default value: \"IPV4_ONLY\" Possible values: [\"IPV4_ONLY\", \"IPV4_IPV6\", \"IPV6_ONLY\"]",
         "description_kind": "plain",
         "type": "string"
       },

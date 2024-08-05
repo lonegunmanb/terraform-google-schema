@@ -92,19 +92,19 @@ const googleMigrationCenterPreferenceSet = `{
         "block": {
           "attributes": {
             "commitment_plan": {
-              "description": "Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. \n Possible values:\n COMMITMENT_PLAN_UNSPECIFIED\nCOMMITMENT_PLAN_NONE\nCOMMITMENT_PLAN_ONE_YEAR\nCOMMITMENT_PLAN_THREE_YEARS",
+              "description": "Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: 'COMMITMENT_PLAN_UNSPECIFIED', 'COMMITMENT_PLAN_NONE', 'COMMITMENT_PLAN_ONE_YEAR', 'COMMITMENT_PLAN_THREE_YEARS'",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
             },
             "sizing_optimization_strategy": {
-              "description": "Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with. \n Possible values:\n SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED\nSIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE\nSIZING_OPTIMIZATION_STRATEGY_MODERATE\nSIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE",
+              "description": "Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with. Possible values: 'SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED', 'SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE', 'SIZING_OPTIMIZATION_STRATEGY_MODERATE', 'SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE'",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
             },
             "target_product": {
-              "description": "Target product for assets using this preference set. Specify either target product or business goal, but not both. \n Possible values:\n COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED\nCOMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE\nCOMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE\nCOMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY",
+              "description": "Target product for assets using this preference set. Specify either target product or business goal, but not both. Possible values: 'COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED', 'COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE', 'COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE', 'COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY'",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
@@ -115,7 +115,7 @@ const googleMigrationCenterPreferenceSet = `{
               "block": {
                 "attributes": {
                   "license_type": {
-                    "description": "License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan. \n Possible values:\n LICENSE_TYPE_UNSPECIFIED\nLICENSE_TYPE_DEFAULT\nLICENSE_TYPE_BRING_YOUR_OWN_LICENSE",
+                    "description": "License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan. Possible values: 'LICENSE_TYPE_UNSPECIFIED', 'LICENSE_TYPE_DEFAULT', 'LICENSE_TYPE_BRING_YOUR_OWN_LICENSE'",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"
@@ -177,7 +177,7 @@ const googleMigrationCenterPreferenceSet = `{
               "block": {
                 "attributes": {
                   "commitment_plan": {
-                    "description": "Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. \n Possible values:\n COMMITMENT_PLAN_UNSPECIFIED\nON_DEMAND\nCOMMITMENT_1_YEAR\nCOMMITMENT_3_YEAR",
+                    "description": "Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: 'COMMITMENT_PLAN_UNSPECIFIED', 'ON_DEMAND', 'COMMITMENT_1_YEAR', 'COMMITMENT_3_YEAR'",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"
@@ -189,7 +189,7 @@ const googleMigrationCenterPreferenceSet = `{
                     "type": "number"
                   },
                   "host_maintenance_policy": {
-                    "description": "Sole Tenancy nodes maintenance policy. \n Possible values:\n HOST_MAINTENANCE_POLICY_UNSPECIFIED\nHOST_MAINTENANCE_POLICY_DEFAULT\nHOST_MAINTENANCE_POLICY_RESTART_IN_PLACE\nHOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP",
+                    "description": "Sole Tenancy nodes maintenance policy. Possible values: 'HOST_MAINTENANCE_POLICY_UNSPECIFIED', 'HOST_MAINTENANCE_POLICY_DEFAULT', 'HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE', 'HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP'",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"
@@ -222,7 +222,7 @@ const googleMigrationCenterPreferenceSet = `{
               "block": {
                 "attributes": {
                   "commitment_plan": {
-                    "description": "Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. \n Possible values:\n COMMITMENT_PLAN_UNSPECIFIED\nON_DEMAND\nCOMMITMENT_1_YEAR_MONTHLY_PAYMENTS\nCOMMITMENT_3_YEAR_MONTHLY_PAYMENTS\nCOMMITMENT_1_YEAR_UPFRONT_PAYMENT\nCOMMITMENT_3_YEAR_UPFRONT_PAYMENT",
+                    "description": "Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: 'COMMITMENT_PLAN_UNSPECIFIED', 'ON_DEMAND', 'COMMITMENT_1_YEAR_MONTHLY_PAYMENTS', 'COMMITMENT_3_YEAR_MONTHLY_PAYMENTS', 'COMMITMENT_1_YEAR_UPFRONT_PAYMENT', 'COMMITMENT_3_YEAR_UPFRONT_PAYMENT',",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"

@@ -49,7 +49,7 @@ const googleMigrationCenterGroup = `{
         "type": "string"
       },
       "labels": {
-        "description": "Labels as key value pairs. \n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
+        "description": "Labels as key value pairs.\n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
         "description_kind": "plain",
         "optional": true,
         "type": [

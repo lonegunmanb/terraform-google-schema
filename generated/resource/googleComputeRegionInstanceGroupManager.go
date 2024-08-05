@@ -365,26 +365,26 @@ const googleComputeRegionInstanceGroupManager = `{
             },
             "max_surge_fixed": {
               "computed": true,
-              "description": "The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with max_surge_percent. It has to be either 0 or at least equal to the number of zones. If fixed values are used, at least one of max_unavailable_fixed or max_surge_fixed must be greater than 0.",
+              "description": "Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0",
               "description_kind": "plain",
               "optional": true,
               "type": "number"
             },
             "max_surge_percent": {
-              "description": "The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with max_surge_fixed. Percent value is only allowed for regional managed instance groups with size at least 10.",
+              "description": "Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with max_surge_fixed.",
               "description_kind": "plain",
               "optional": true,
               "type": "number"
             },
             "max_unavailable_fixed": {
               "computed": true,
-              "description": "The maximum number of instances that can be unavailable during the update process. Conflicts with max_unavailable_percent. It has to be either 0 or at least equal to the number of zones. If fixed values are used, at least one of max_unavailable_fixed or max_surge_fixed must be greater than 0.",
+              "description": "Specifies a fixed number of VM instances. This must be a positive integer.",
               "description_kind": "plain",
               "optional": true,
               "type": "number"
             },
             "max_unavailable_percent": {
-              "description": "The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with max_unavailable_fixed. Percent value is only allowed for regional managed instance groups with size at least 10.",
+              "description": "Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.",
               "description_kind": "plain",
               "optional": true,
               "type": "number"

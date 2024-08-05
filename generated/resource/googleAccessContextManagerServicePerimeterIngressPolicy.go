@@ -53,7 +53,7 @@ const googleAccessContextManagerServicePerimeterIngressPolicy = `{
                     "type": "string"
                   },
                   "resource": {
-                    "description": "A Google Cloud resource that is allowed to ingress the perimeter.\nRequests from these resources will be allowed to access perimeter data.\nCurrently only projects are allowed. Format 'projects/{project_number}'\nThe project may be in any Google Cloud organization, not just the\norganization that the perimeter is defined in. '*' is not allowed, the case\nof allowing all Google Cloud resources only is not supported.",
+                    "description": "A Google Cloud resource that is allowed to ingress the perimeter.\nRequests from these resources will be allowed to access perimeter data.\nCurrently only projects and VPCs are allowed.\nProject format: 'projects/{projectNumber}'\nVPC network format:\n'//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}'.\nThe project may be in any Google Cloud organization, not just the\norganization that the perimeter is defined in. '*' is not allowed, the case\nof allowing all Google Cloud resources only is not supported.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"

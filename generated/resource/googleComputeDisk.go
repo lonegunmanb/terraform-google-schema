@@ -9,6 +9,13 @@ import (
 const googleComputeDisk = `{
   "block": {
     "attributes": {
+      "access_mode": {
+        "computed": true,
+        "description": "The accessMode of the disk.\nFor example:\n* READ_WRITE_SINGLE\n* READ_WRITE_MANY\n* READ_ONLY_SINGLE",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "creation_timestamp": {
         "computed": true,
         "description": "Creation timestamp in RFC3339 text format.",

@@ -445,6 +445,12 @@ const googleContainerCluster = `{
         "description_kind": "plain",
         "type": "bool"
       },
+      "enable_multi_networking": {
+        "computed": true,
+        "description": "Whether multi-networking is enabled for this cluster.",
+        "description_kind": "plain",
+        "type": "bool"
+      },
       "enable_shielded_nodes": {
         "computed": true,
         "description": "Enable Shielded Nodes features on all nodes in this cluster. Defaults to true.",
@@ -1161,6 +1167,27 @@ const googleContainerCluster = `{
                 [
                   "object",
                   {
+                    "additional_node_network_configs": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "network": "string",
+                          "subnetwork": "string"
+                        }
+                      ]
+                    ],
+                    "additional_pod_network_configs": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "max_pods_per_node": "number",
+                          "secondary_pod_range": "string",
+                          "subnetwork": "string"
+                        }
+                      ]
+                    ],
                     "create_pod_range": "bool",
                     "enable_private_nodes": "bool",
                     "network_performance_config": [

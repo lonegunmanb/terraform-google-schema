@@ -23,18 +23,18 @@ const googleAccessContextManagerAccessPolicy = `{
       },
       "name": {
         "computed": true,
-        "description": "Resource name of the AccessPolicy. Format: {policy_id}",
+        "description": "Resource name of the AccessPolicy. Format: '{{policy_id}}'",
         "description_kind": "plain",
         "type": "string"
       },
       "parent": {
-        "description": "The parent of this AccessPolicy in the Cloud Resource Hierarchy.\nFormat: organizations/{organization_id}",
+        "description": "The parent of this AccessPolicy in the Cloud Resource Hierarchy.\nFormat: 'organizations/{{organization_id}}'",
         "description_kind": "plain",
         "required": true,
         "type": "string"
       },
       "scopes": {
-        "description": "Folder or project on which this policy is applicable.\nFormat: folders/{{folder_id}} or projects/{{project_id}}",
+        "description": "Folder or project on which this policy is applicable.\nFormat: 'folders/{{folder_id}}' or 'projects/{{project_number}}'",
         "description_kind": "plain",
         "optional": true,
         "type": [

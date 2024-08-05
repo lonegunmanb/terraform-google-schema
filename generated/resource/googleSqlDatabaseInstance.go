@@ -386,6 +386,12 @@ const googleSqlDatabaseInstance = `{
               "optional": true,
               "type": "string"
             },
+            "enable_dataplex_integration": {
+              "description": "Enables Dataplex Integration.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
             "enable_google_ml_integration": {
               "description": "Enables Vertex AI Integration.",
               "description_kind": "plain",
@@ -668,7 +674,7 @@ const googleSqlDatabaseInstance = `{
                   },
                   "ssl_mode": {
                     "computed": true,
-                    "description": "Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.",
+                    "description": "Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"

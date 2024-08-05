@@ -9,6 +9,12 @@ import (
 const googleComputeDisk = `{
   "block": {
     "attributes": {
+      "access_mode": {
+        "computed": true,
+        "description": "The accessMode of the disk.\nFor example:\n* READ_WRITE_SINGLE\n* READ_WRITE_MANY\n* READ_ONLY_SINGLE",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "async_primary_disk": {
         "computed": true,
         "description": "A nested object resource",

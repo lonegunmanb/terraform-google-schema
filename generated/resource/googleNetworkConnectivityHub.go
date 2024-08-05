@@ -30,6 +30,13 @@ const googleNetworkConnectivityHub = `{
           "string"
         ]
       },
+      "export_psc": {
+        "computed": true,
+        "description": "Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",

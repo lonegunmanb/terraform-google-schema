@@ -77,6 +77,7 @@ const googleProject = `{
       },
       "skip_delete": {
         "computed": true,
+        "deprecated": true,
         "description": "If true, the Terraform resource can be deleted without deleting the Project via the Google API.",
         "description_kind": "plain",
         "optional": true,

@@ -314,6 +314,7 @@ const googleSqlDatabaseInstance = `{
               "disk_size": "number",
               "disk_type": "string",
               "edition": "string",
+              "enable_dataplex_integration": "bool",
               "enable_google_ml_integration": "bool",
               "insights_config": [
                 "list",

@@ -85,6 +85,12 @@ const googleContainerCluster = `{
         "optional": true,
         "type": "bool"
       },
+      "enable_multi_networking": {
+        "description": "Whether multi-networking is enabled for this cluster.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "enable_shielded_nodes": {
         "description": "Enable Shielded Nodes features on all nodes in this cluster. Defaults to true.",
         "description_kind": "plain",
@@ -2144,6 +2150,55 @@ const googleContainerCluster = `{
                   }
                 },
                 "block_types": {
+                  "additional_node_network_configs": {
+                    "block": {
+                      "attributes": {
+                        "network": {
+                          "description": "Name of the VPC where the additional interface belongs.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "subnetwork": {
+                          "description": "Name of the subnetwork where the additional interface belongs.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface",
+                      "description_kind": "plain"
+                    },
+                    "nesting_mode": "list"
+                  },
+                  "additional_pod_network_configs": {
+                    "block": {
+                      "attributes": {
+                        "max_pods_per_node": {
+                          "computed": true,
+                          "description": "The maximum number of pods per node which use this pod network.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "secondary_pod_range": {
+                          "description": "The name of the secondary range on the subnet which provides IP address for this pod range.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "subnetwork": {
+                          "description": "Name of the subnetwork where the additional pod network belongs.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node",
+                      "description_kind": "plain"
+                    },
+                    "nesting_mode": "list"
+                  },
                   "network_performance_config": {
                     "block": {
                       "attributes": {
