@@ -272,6 +272,10 @@ const googleContainerCluster = `{
                   }
                 ]
               ],
+              "auto_provisioning_locations": [
+                "list",
+                "string"
+              ],
               "autoscaling_profile": "string",
               "enabled": "bool",
               "resource_limits": [

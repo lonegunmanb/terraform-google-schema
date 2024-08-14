@@ -6,26 +6,18 @@ import (
 	tfjson "github.com/hashicorp/terraform-json"
 )
 
-const googleStorageManagedFolder = `{
+const googleLoggingLogViewIamBinding = `{
   "block": {
     "attributes": {
       "bucket": {
-        "description": "The name of the bucket that contains the managed folder.",
         "description_kind": "plain",
         "required": true,
         "type": "string"
       },
-      "create_time": {
+      "etag": {
         "computed": true,
-        "description": "The timestamp at which this managed folder was created.",
         "description_kind": "plain",
         "type": "string"
-      },
-      "force_destroy": {
-        "description": "Allows the deletion of a managed folder even if contains\nobjects. If a non-empty managed folder is deleted, any objects\nwithin the folder will remain in a simulated folder with the\nsame name.",
-        "description_kind": "plain",
-        "optional": true,
-        "type": "bool"
       },
       "id": {
         "computed": true,
@@ -33,53 +25,60 @@ const googleStorageManagedFolder = `{
         "optional": true,
         "type": "string"
       },
-      "metageneration": {
+      "location": {
         "computed": true,
-        "description": "The metadata generation of the managed folder.",
         "description_kind": "plain",
+        "optional": true,
         "type": "string"
       },
+      "members": {
+        "description_kind": "plain",
+        "required": true,
+        "type": [
+          "set",
+          "string"
+        ]
+      },
       "name": {
-        "description": "The name of the managed folder expressed as a path. Must include\ntrailing '/'. For example, 'example_dir/example_dir2/'.",
         "description_kind": "plain",
         "required": true,
         "type": "string"
       },
-      "self_link": {
-        "computed": true,
+      "parent": {
         "description_kind": "plain",
+        "required": true,
         "type": "string"
       },
-      "update_time": {
-        "computed": true,
-        "description": "The timestamp at which this managed folder was most recently updated.",
+      "role": {
         "description_kind": "plain",
+        "required": true,
         "type": "string"
       }
     },
     "block_types": {
-      "timeouts": {
+      "condition": {
         "block": {
           "attributes": {
-            "create": {
+            "description": {
               "description_kind": "plain",
               "optional": true,
               "type": "string"
             },
-            "delete": {
+            "expression": {
               "description_kind": "plain",
-              "optional": true,
+              "required": true,
               "type": "string"
             },
-            "update": {
+            "title": {
               "description_kind": "plain",
-              "optional": true,
+              "required": true,
               "type": "string"
             }
           },
           "description_kind": "plain"
         },
-        "nesting_mode": "single"
+        "max_items": 1,
+        "nesting_mode": "list"
       }
     },
     "description_kind": "plain"
@@ -87,8 +86,8 @@ const googleStorageManagedFolder = `{
   "version": 0
 }`
 
-func GoogleStorageManagedFolderSchema() *tfjson.Schema {
+func GoogleLoggingLogViewIamBindingSchema() *tfjson.Schema {
 	var result tfjson.Schema
-	_ = json.Unmarshal([]byte(googleStorageManagedFolder), &result)
+	_ = json.Unmarshal([]byte(googleLoggingLogViewIamBinding), &result)
 	return &result
 }

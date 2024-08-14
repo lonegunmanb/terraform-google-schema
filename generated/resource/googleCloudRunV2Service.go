@@ -274,6 +274,12 @@ const googleCloudRunV2Service = `{
               "optional": true,
               "type": "string"
             },
+            "policy": {
+              "description": "The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "use_default": {
               "description": "If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.",
               "description_kind": "plain",

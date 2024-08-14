@@ -53,7 +53,7 @@ const googleSpannerInstance = `{
       },
       "name": {
         "computed": true,
-        "description": "A unique identifier for the instance, which cannot be changed after\nthe instance is created. The name must be between 6 and 30 characters\nin length.\n\n\nIf not provided, a random string starting with 'tf-' will be selected.",
+        "description": "A unique identifier for the instance, which cannot be changed after\nthe instance is created. The name must be between 6 and 30 characters\nin length.\nIf not provided, a random string starting with 'tf-' will be selected.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"

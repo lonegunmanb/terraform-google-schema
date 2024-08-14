@@ -21,6 +21,12 @@ const googleProject = `{
         "optional": true,
         "type": "string"
       },
+      "deletion_policy": {
+        "description": "The deletion policy for the Project. Setting PREVENT will protect the project against any destroy actions caused by a terraform apply or terraform destroy. Setting ABANDON allows the resource\n\t\t\t\tto be abandoned rather than deleted. Possible values are: \"PREVENT\", \"ABANDON\", \"DELETE\"",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "effective_labels": {
         "computed": true,
         "description": "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.",

@@ -28,6 +28,7 @@ const googleCloudRunV2Service = `{
             "object",
             {
               "breakglass_justification": "string",
+              "policy": "string",
               "use_default": "bool"
             }
           ]

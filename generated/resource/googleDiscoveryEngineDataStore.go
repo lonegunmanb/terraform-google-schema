@@ -75,6 +75,12 @@ const googleDiscoveryEngineDataStore = `{
         "optional": true,
         "type": "string"
       },
+      "skip_default_schema_creation": {
+        "description": "A boolean flag indicating whether to skip the default schema creation for\nthe data store. Only enable this flag if you are certain that the default\nschema is incompatible with your use case.\nIf set to true, you must manually create a schema for the data store\nbefore any documents can be ingested.\nThis flag cannot be specified if 'data_store.starting_schema' is\nspecified.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "solution_types": {
         "description": "The solutions that the data store enrolls. Possible values: [\"SOLUTION_TYPE_RECOMMENDATION\", \"SOLUTION_TYPE_SEARCH\", \"SOLUTION_TYPE_CHAT\"]",
         "description_kind": "plain",

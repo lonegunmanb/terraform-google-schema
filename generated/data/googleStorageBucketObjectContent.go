@@ -83,6 +83,12 @@ const googleStorageBucketObjectContent = `{
         "description_kind": "plain",
         "type": "bool"
       },
+      "generation": {
+        "computed": true,
+        "description": "The content generation of this object. Used for object versioning and soft delete.",
+        "description_kind": "plain",
+        "type": "number"
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",

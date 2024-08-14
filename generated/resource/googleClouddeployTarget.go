@@ -229,6 +229,12 @@ const googleClouddeployTarget = `{
               "description_kind": "plain",
               "optional": true,
               "type": "bool"
+            },
+            "proxy_url": {
+              "description": "Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
             }
           },
           "description": "Information specifying a GKE Cluster.",

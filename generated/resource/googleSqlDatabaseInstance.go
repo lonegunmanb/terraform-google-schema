@@ -344,7 +344,7 @@ const googleSqlDatabaseInstance = `{
             },
             "connector_enforcement": {
               "computed": true,
-              "description": "Specifies if connections must use Cloud SQL connectors.",
+              "description": "Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.",
               "description_kind": "plain",
               "optional": true,
               "type": "string"

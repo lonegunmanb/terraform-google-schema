@@ -125,6 +125,12 @@ const googleGkeHubFeature = `{
             "configmanagement": {
               "block": {
                 "attributes": {
+                  "management": {
+                    "description": "Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades. Possible values: [\"MANAGEMENT_UNSPECIFIED\", \"MANAGEMENT_AUTOMATIC\", \"MANAGEMENT_MANUAL\"]",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
                   "version": {
                     "description": "Version of ACM installed",
                     "description_kind": "plain",

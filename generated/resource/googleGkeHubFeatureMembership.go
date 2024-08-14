@@ -51,6 +51,13 @@ const googleGkeHubFeatureMembership = `{
       "configmanagement": {
         "block": {
           "attributes": {
+            "management": {
+              "computed": true,
+              "description": "Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "version": {
               "computed": true,
               "description": "Optional. Version of ACM to install. Defaults to the latest version.",
@@ -79,6 +86,12 @@ const googleGkeHubFeatureMembership = `{
             "config_sync": {
               "block": {
                 "attributes": {
+                  "enabled": {
+                    "description": "Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  },
                   "metrics_gcp_service_account_email": {
                     "description": "The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount ` + "`" + `default` + "`" + ` in the namespace ` + "`" + `config-management-monitoring` + "`" + ` should be bound to the GSA.",
                     "description_kind": "plain",
@@ -302,7 +315,7 @@ const googleGkeHubFeatureMembership = `{
                     "nesting_mode": "list"
                   }
                 },
-                "description": "Policy Controller configuration for the cluster.",
+                "description": "**DEPRECATED** Configuring Policy Controller through the configmanagement feature is no longer recommended. Use the policycontroller feature instead.",
                 "description_kind": "plain"
               },
               "max_items": 1,
