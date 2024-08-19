@@ -375,6 +375,7 @@ const googleCloudfunctions2Function = `{
               "type": "string"
             },
             "environment_variables": {
+              "computed": true,
               "description": "Environment variables that shall be available during function execution.",
               "description_kind": "plain",
               "optional": true,

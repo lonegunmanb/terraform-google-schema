@@ -672,6 +672,13 @@ const googleSqlDatabaseInstance = `{
                     "optional": true,
                     "type": "bool"
                   },
+                  "server_ca_mode": {
+                    "computed": true,
+                    "description": "Specify how the server certificate's Certificate Authority is hosted.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
                   "ssl_mode": {
                     "computed": true,
                     "description": "Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.",

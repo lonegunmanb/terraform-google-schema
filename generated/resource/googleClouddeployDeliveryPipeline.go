@@ -436,6 +436,12 @@ const googleClouddeployDeliveryPipeline = `{
                                                   "required": true,
                                                   "type": "string"
                                                 },
+                                                "pod_selector_label": {
+                                                  "description": "Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.",
+                                                  "description_kind": "plain",
+                                                  "optional": true,
+                                                  "type": "string"
+                                                },
                                                 "route_update_wait_time": {
                                                   "description": "Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.",
                                                   "description_kind": "plain",
@@ -475,6 +481,12 @@ const googleClouddeployDeliveryPipeline = `{
                                                   "description_kind": "plain",
                                                   "optional": true,
                                                   "type": "bool"
+                                                },
+                                                "pod_selector_label": {
+                                                  "description": "Optional. The label to use when selecting Pods for the Deployment resource. This label must already be present in the Deployment.",
+                                                  "description_kind": "plain",
+                                                  "optional": true,
+                                                  "type": "string"
                                                 },
                                                 "service": {
                                                   "description": "Required. Name of the Kubernetes Service.",

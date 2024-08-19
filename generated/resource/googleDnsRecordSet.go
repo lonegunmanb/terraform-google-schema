@@ -108,7 +108,7 @@ const googleDnsRecordSet = `{
                               "load_balancer_type": {
                                 "description": "The type of load balancer. This value is case-sensitive. Possible values: [\"regionalL4ilb\", \"regionalL7ilb\", \"globalL7ilb\"]",
                                 "description_kind": "plain",
-                                "required": true,
+                                "optional": true,
                                 "type": "string"
                               },
                               "network_url": {
@@ -212,7 +212,7 @@ const googleDnsRecordSet = `{
                                     "load_balancer_type": {
                                       "description": "The type of load balancer. This value is case-sensitive. Possible values: [\"regionalL4ilb\", \"regionalL7ilb\", \"globalL7ilb\"]",
                                       "description_kind": "plain",
-                                      "required": true,
+                                      "optional": true,
                                       "type": "string"
                                     },
                                     "network_url": {
@@ -281,7 +281,7 @@ const googleDnsRecordSet = `{
                               "load_balancer_type": {
                                 "description": "The type of load balancer. This value is case-sensitive. Possible values: [\"regionalL4ilb\", \"regionalL7ilb\", \"globalL7ilb\"]",
                                 "description_kind": "plain",
-                                "required": true,
+                                "optional": true,
                                 "type": "string"
                               },
                               "network_url": {
@@ -370,7 +370,7 @@ const googleDnsRecordSet = `{
                               "load_balancer_type": {
                                 "description": "The type of load balancer. This value is case-sensitive. Possible values: [\"regionalL4ilb\", \"regionalL7ilb\", \"globalL7ilb\"]",
                                 "description_kind": "plain",
-                                "required": true,
+                                "optional": true,
                                 "type": "string"
                               },
                               "network_url": {

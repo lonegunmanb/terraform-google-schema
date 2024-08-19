@@ -363,6 +363,7 @@ const googleSqlDatabaseInstance = `{
                       ]
                     ],
                     "require_ssl": "bool",
+                    "server_ca_mode": "string",
                     "ssl_mode": "string"
                   }
                 ]

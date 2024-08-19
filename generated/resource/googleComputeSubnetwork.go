@@ -125,7 +125,7 @@ const googleComputeSubnetwork = `{
       },
       "secondary_ip_range": {
         "computed": true,
-        "description": "An array of configurations for secondary IP ranges for VM instances\ncontained in this subnetwork. The primary IP of such VM must belong\nto the primary ipCidrRange of the subnetwork. The alias IPs may belong\nto either primary or secondary ranges.\n\n**Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html) to avoid\nbreaking users during the 0.12 upgrade. To explicitly send a list\nof zero objects you must use the following syntax:\n'example=[]'\nFor more details about this behavior, see [this section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).",
+        "description": "An array of configurations for secondary IP ranges for VM instances\ncontained in this subnetwork. The primary IP of such VM must belong\nto the primary ipCidrRange of the subnetwork. The alias IPs may belong\nto either primary or secondary ranges.\n\n**Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html) to avoid\nbreaking users during the 0.12 upgrade. To explicitly send a list of zero objects,\nset 'send_secondary_ip_range_if_empty = true'",
         "description_kind": "plain",
         "optional": true,
         "type": [
@@ -143,6 +143,12 @@ const googleComputeSubnetwork = `{
         "computed": true,
         "description_kind": "plain",
         "type": "string"
+      },
+      "send_secondary_ip_range_if_empty": {
+        "description": "Controls the removal behavior of secondary_ip_range.\nWhen false, removing secondary_ip_range from config will not produce a diff as\nthe provider will default to the API's value.\nWhen true, the provider will treat removing secondary_ip_range as sending an\nempty list of secondary IP ranges to the API.\nDefaults to false.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
       },
       "stack_type": {
         "computed": true,

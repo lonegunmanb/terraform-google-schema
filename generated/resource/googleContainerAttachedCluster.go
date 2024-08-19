@@ -43,7 +43,7 @@ const googleContainerAttachedCluster = `{
         "type": "string"
       },
       "distribution": {
-        "description": "The Kubernetes distribution of the underlying attached cluster. Supported values:\n\"eks\", \"aks\".",
+        "description": "The Kubernetes distribution of the underlying attached cluster. Supported values:\n\"eks\", \"aks\", \"generic\". The generic distribution provides the ability to register\nor migrate any CNCF conformant cluster.",
         "description_kind": "plain",
         "required": true,
         "type": "string"

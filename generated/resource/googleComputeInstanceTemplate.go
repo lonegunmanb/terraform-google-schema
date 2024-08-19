@@ -43,7 +43,7 @@ const googleComputeInstanceTemplate = `{
         "type": "string"
       },
       "labels": {
-        "description": "A set of key/value label pairs to assign to instances created from this template.\n\t\t\t\t\n\t\t\t\t**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\n\t\t\t\tPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
+        "description": "A set of key/value label pairs to assign to instances created from this template.\n\n\t\t\t\t**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\n\t\t\t\tPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
         "description_kind": "plain",
         "optional": true,
         "type": [
@@ -200,7 +200,7 @@ const googleComputeInstanceTemplate = `{
         "block": {
           "attributes": {
             "confidential_instance_type": {
-              "description": "\n\t\t\t\t\t\t\t\tSpecifies which confidential computing technology to use.\n\t\t\t\t\t\t\t\tThis could be one of the following values: SEV, SEV_SNP.\n\t\t\t\t\t\t\t\tIf SEV_SNP, min_cpu_platform = \"AMD Milan\" is currently required.",
+              "description": "\n\t\t\t\t\t\t\t\tThe confidential computing technology the instance uses.\n\t\t\t\t\t\t\t\tSEV is an AMD feature. TDX is an Intel feature. One of the following\n\t\t\t\t\t\t\t\tvalues is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =\n\t\t\t\t\t\t\t\t\"AMD Milan\" is currently required. TDX is only available in beta.",
               "description_kind": "plain",
               "optional": true,
               "type": "string"

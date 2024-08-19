@@ -116,6 +116,31 @@ const googleFirestoreDatabase = `{
       }
     },
     "block_types": {
+      "cmek_config": {
+        "block": {
+          "attributes": {
+            "active_key_version": {
+              "computed": true,
+              "description": "Currently in-use KMS key versions (https://cloud.google.com/kms/docs/resource-hierarchy#key_versions).\nDuring key rotation (https://cloud.google.com/kms/docs/key-rotation), there can be\nmultiple in-use key versions.\n\nThe expected format is\n'projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}'.",
+              "description_kind": "plain",
+              "type": [
+                "list",
+                "string"
+              ]
+            },
+            "kms_key_name": {
+              "description": "The resource ID of a Cloud KMS key. If set, the database created will\nbe a Customer-managed Encryption Key (CMEK) database encrypted with\nthis key. This feature is allowlist only in initial launch.\n\nOnly keys in the same location as this database are allowed to be used\nfor encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS\nmulti-region us. For Firestore's eur3 multi-region, this corresponds to\nCloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations.\n\nThis value should be the KMS key resource ID in the format of\n'projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}'.\nHow to retrive this resource ID is listed at\nhttps://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "The CMEK (Customer Managed Encryption Key) configuration for a Firestore\ndatabase. If not present, the database is secured by the default Google\nencryption key.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {

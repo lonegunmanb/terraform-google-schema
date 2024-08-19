@@ -46,6 +46,12 @@ const googleServiceNetworkingConnection = `{
         "description_kind": "plain",
         "required": true,
         "type": "string"
+      },
+      "update_on_creation_fail": {
+        "description": "When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
       }
     },
     "block_types": {
