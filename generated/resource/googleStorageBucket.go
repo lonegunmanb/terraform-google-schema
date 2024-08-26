@@ -319,6 +319,7 @@ const googleStorageBucket = `{
                     ]
                   },
                   "no_age": {
+                    "deprecated": true,
                     "description": "While set true, age value will be omitted.Required to set true when age is unset in the config file.",
                     "description_kind": "plain",
                     "optional": true,
@@ -335,6 +336,12 @@ const googleStorageBucket = `{
                     "description_kind": "plain",
                     "optional": true,
                     "type": "number"
+                  },
+                  "send_age_if_zero": {
+                    "description": "While set true, age value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the age field. It can be used alone or together with age.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
                   },
                   "send_days_since_custom_time_if_zero": {
                     "description": "While set true, days_since_custom_time value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the days_since_custom_time field. It can be used alone or together with days_since_custom_time.",
@@ -507,7 +514,7 @@ const googleStorageBucket = `{
     },
     "description_kind": "plain"
   },
-  "version": 1
+  "version": 2
 }`
 
 func GoogleStorageBucketSchema() *tfjson.Schema {

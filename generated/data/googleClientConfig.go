@@ -16,6 +16,15 @@ const googleClientConfig = `{
         "sensitive": true,
         "type": "string"
       },
+      "default_labels": {
+        "computed": true,
+        "description": "The default labels configured on the provider.",
+        "description_kind": "markdown",
+        "type": [
+          "map",
+          "string"
+        ]
+      },
       "id": {
         "computed": true,
         "description": "The ID of this data source in Terraform state. It is created in a projects/{{project}}/regions/{{region}}/zones/{{zone}} format and is NOT used by the data source in requests to Google APIs.",

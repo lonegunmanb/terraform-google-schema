@@ -44,6 +44,7 @@ const googleComputeForwardingRules = `{
                 "map",
                 "string"
               ],
+              "forwarding_rule_id": "number",
               "ip_address": "string",
               "ip_protocol": "string",
               "ip_version": "string",

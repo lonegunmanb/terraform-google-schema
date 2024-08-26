@@ -60,6 +60,12 @@ const googleComputeForwardingRule = `{
           "string"
         ]
       },
+      "forwarding_rule_id": {
+        "computed": true,
+        "description": "The unique identifier number for the resource. This identifier is defined by the server.",
+        "description_kind": "plain",
+        "type": "number"
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",
