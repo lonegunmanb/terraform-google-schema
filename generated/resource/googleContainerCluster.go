@@ -1769,6 +1769,13 @@ const googleContainerCluster = `{
                     "required": true,
                     "type": "string"
                   },
+                  "insecure_kubelet_readonly_port_enabled": {
+                    "computed": true,
+                    "description": "Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to ` + "`" + `FALSE` + "`" + `. Possible values: ` + "`" + `TRUE` + "`" + `, ` + "`" + `FALSE` + "`" + `.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
                   "pod_pids_limit": {
                     "description": "Controls the maximum number of processes allowed to run in a pod.",
                     "description_kind": "plain",
@@ -2651,6 +2658,13 @@ const googleContainerCluster = `{
                           "required": true,
                           "type": "string"
                         },
+                        "insecure_kubelet_readonly_port_enabled": {
+                          "computed": true,
+                          "description": "Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to ` + "`" + `FALSE` + "`" + `. Possible values: ` + "`" + `TRUE` + "`" + `, ` + "`" + `FALSE` + "`" + `.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
                         "pod_pids_limit": {
                           "description": "Controls the maximum number of processes allowed to run in a pod.",
                           "description_kind": "plain",
@@ -3037,6 +3051,23 @@ const googleContainerCluster = `{
               },
               "max_items": 1,
               "nesting_mode": "list"
+            },
+            "node_kubelet_config": {
+              "block": {
+                "attributes": {
+                  "insecure_kubelet_readonly_port_enabled": {
+                    "computed": true,
+                    "description": "Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to ` + "`" + `FALSE` + "`" + `. Possible values: ` + "`" + `TRUE` + "`" + `, ` + "`" + `FALSE` + "`" + `.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Node kubelet configs.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
             }
           },
           "description": "Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.",
@@ -3051,6 +3082,13 @@ const googleContainerCluster = `{
             "node_config_defaults": {
               "block": {
                 "attributes": {
+                  "insecure_kubelet_readonly_port_enabled": {
+                    "computed": true,
+                    "description": "Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to ` + "`" + `FALSE` + "`" + `. Possible values: ` + "`" + `TRUE` + "`" + `, ` + "`" + `FALSE` + "`" + `.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
                   "logging_variant": {
                     "computed": true,
                     "description": "Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.",

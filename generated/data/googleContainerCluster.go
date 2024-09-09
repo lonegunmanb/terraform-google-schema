@@ -975,6 +975,7 @@ const googleContainerCluster = `{
                     "cpu_cfs_quota": "bool",
                     "cpu_cfs_quota_period": "string",
                     "cpu_manager_policy": "string",
+                    "insecure_kubelet_readonly_port_enabled": "string",
                     "pod_pids_limit": "number"
                   }
                 ]
@@ -1378,6 +1379,7 @@ const googleContainerCluster = `{
                           "cpu_cfs_quota": "bool",
                           "cpu_cfs_quota_period": "string",
                           "cpu_manager_policy": "string",
+                          "insecure_kubelet_readonly_port_enabled": "string",
                           "pod_pids_limit": "number"
                         }
                       ]
@@ -1597,6 +1599,15 @@ const googleContainerCluster = `{
                   }
                 ]
               ],
+              "node_kubelet_config": [
+                "list",
+                [
+                  "object",
+                  {
+                    "insecure_kubelet_readonly_port_enabled": "string"
+                  }
+                ]
+              ],
               "resource_manager_tags": [
                 "map",
                 "string"
@@ -1657,6 +1668,7 @@ const googleContainerCluster = `{
                         }
                       ]
                     ],
+                    "insecure_kubelet_readonly_port_enabled": "string",
                     "logging_variant": "string"
                   }
                 ]

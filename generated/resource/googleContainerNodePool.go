@@ -698,6 +698,13 @@ const googleContainerNodePool = `{
                     "required": true,
                     "type": "string"
                   },
+                  "insecure_kubelet_readonly_port_enabled": {
+                    "computed": true,
+                    "description": "Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to ` + "`" + `FALSE` + "`" + `. Possible values: ` + "`" + `TRUE` + "`" + `, ` + "`" + `FALSE` + "`" + `.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
                   "pod_pids_limit": {
                     "description": "Controls the maximum number of processes allowed to run in a pod.",
                     "description_kind": "plain",
