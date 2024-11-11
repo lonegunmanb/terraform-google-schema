@@ -50,6 +50,12 @@ const googleSpannerInstance = `{
         "optional": true,
         "type": "string"
       },
+      "default_backup_schedule_type": {
+        "computed": true,
+        "description": "Controls the default backup behavior for new databases within the instance.\nNote that 'AUTOMATIC' is not permitted for free instances, as backups and backup schedules are not allowed for free instances.\nif unset or NONE, no default backup schedule will be created for new databases within the instance. Possible values: [\"NONE\", \"AUTOMATIC\"]",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "display_name": {
         "description": "The descriptive name for this instance as it appears in UIs. Must be\nunique per project and between 4 and 30 characters in length.",
         "description_kind": "plain",
