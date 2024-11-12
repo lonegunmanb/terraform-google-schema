@@ -48,6 +48,15 @@ const googleContainerCluster = `{
         "optional": true,
         "type": "string"
       },
+      "effective_labels": {
+        "computed": true,
+        "description": "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.",
+        "description_kind": "plain",
+        "type": [
+          "map",
+          "string"
+        ]
+      },
       "enable_autopilot": {
         "description": "Enable Autopilot for this cluster.",
         "description_kind": "plain",
@@ -222,7 +231,7 @@ const googleContainerCluster = `{
         "type": "bool"
       },
       "resource_labels": {
-        "description": "The GCE resource labels (a map of key/value pairs) to be applied to the cluster.",
+        "description": "The GCE resource labels (a map of key/value pairs) to be applied to the cluster.\n\n\t\t\t\t**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\n\t\t\t\tPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
         "description_kind": "plain",
         "optional": true,
         "type": [
@@ -248,6 +257,15 @@ const googleContainerCluster = `{
         "description_kind": "plain",
         "optional": true,
         "type": "string"
+      },
+      "terraform_labels": {
+        "computed": true,
+        "description": "The combination of labels configured directly on the resource and default labels configured on the provider.",
+        "description_kind": "plain",
+        "type": [
+          "map",
+          "string"
+        ]
       },
       "tpu_ipv4_cidr_block": {
         "computed": true,
@@ -334,7 +352,7 @@ const googleContainerCluster = `{
                     "type": "bool"
                   }
                 },
-                "description": "The status of the Filestore CSI driver addon, which allows the usage of filestore instance as volumes. Defaults to disabled; set enabled = true to enable.",
+                "description": "The status of the Filestore CSI driver addon, which allows the usage of filestore instance as volumes. Defaults to disabled for Standard clusters; set enabled = true to enable. It is enabled by default for Autopilot clusters; set enabled = true to enable it explicitly.",
                 "description_kind": "plain"
               },
               "max_items": 1,
@@ -410,6 +428,21 @@ const googleContainerCluster = `{
                   }
                 },
                 "description": "Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a network_policy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "parallelstore_csi_driver_config": {
+              "block": {
+                "attributes": {
+                  "enabled": {
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "bool"
+                  }
+                },
+                "description": "The status of the Parallelstore CSI driver addon, which allows the usage of Parallelstore instances as volumes. Defaults to disabled; set enabled = true to enable.",
                 "description_kind": "plain"
               },
               "max_items": 1,
@@ -801,6 +834,39 @@ const googleContainerCluster = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "control_plane_endpoints_config": {
+        "block": {
+          "block_types": {
+            "dns_endpoint_config": {
+              "block": {
+                "attributes": {
+                  "allow_external_traffic": {
+                    "description": "Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  },
+                  "endpoint": {
+                    "computed": true,
+                    "description": "The cluster's DNS endpoint.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "DNS endpoint configuration.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Configuration for all of the cluster's control plane endpoints. Currently supports only DNS endpoint configuration, IP endpoint configuration is available in private_cluster_config.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "cost_management_config": {
         "block": {
           "attributes": {
@@ -858,6 +924,12 @@ const googleContainerCluster = `{
       "dns_config": {
         "block": {
           "attributes": {
+            "additive_vpc_scope_dns_domain": {
+              "description": "Enable additive VPC scope DNS in a GKE cluster.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "cluster_dns": {
               "description": "Which in-cluster DNS provider should be used.",
               "description_kind": "plain",
@@ -1058,7 +1130,7 @@ const googleContainerCluster = `{
         "block": {
           "attributes": {
             "enable_components": {
-              "description": "GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, SCHEDULER, and WORKLOADS.",
+              "description": "GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, KCP_CONNECTION, KCP_SSHD, SCHEDULER, and WORKLOADS.",
               "description_kind": "plain",
               "required": true,
               "type": [
@@ -1228,6 +1300,13 @@ const googleContainerCluster = `{
               "description_kind": "plain",
               "optional": true,
               "type": "bool"
+            },
+            "private_endpoint_enforcement_enabled": {
+              "computed": true,
+              "description": "Whether authorized networks is enforced on the private endpoint or not. Defaults to false.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
             }
           },
           "block_types": {
@@ -1302,16 +1381,8 @@ const googleContainerCluster = `{
                   "enable_relay": {
                     "description": "Whether or not Relay is enabled.",
                     "description_kind": "plain",
-                    "optional": true,
+                    "required": true,
                     "type": "bool"
-                  },
-                  "relay_mode": {
-                    "computed": true,
-                    "deprecated": true,
-                    "description": "Mode used to make Relay available.",
-                    "description_kind": "plain",
-                    "optional": true,
-                    "type": "string"
                   }
                 },
                 "description": "Configuration of Advanced Datapath Observability features.",
@@ -1409,42 +1480,6 @@ const googleContainerCluster = `{
               "description_kind": "plain",
               "optional": true,
               "type": "bool"
-            },
-            "guest_accelerator": {
-              "computed": true,
-              "description": "List of the type and count of accelerator cards attached to the instance.",
-              "description_kind": "plain",
-              "optional": true,
-              "type": [
-                "list",
-                [
-                  "object",
-                  {
-                    "count": "number",
-                    "gpu_driver_installation_config": [
-                      "list",
-                      [
-                        "object",
-                        {
-                          "gpu_driver_version": "string"
-                        }
-                      ]
-                    ],
-                    "gpu_partition_size": "string",
-                    "gpu_sharing_config": [
-                      "list",
-                      [
-                        "object",
-                        {
-                          "gpu_sharing_strategy": "string",
-                          "max_shared_clients_per_gpu": "number"
-                        }
-                      ]
-                    ],
-                    "type": "string"
-                  }
-                ]
-              ]
             },
             "image_type": {
               "computed": true,
@@ -1553,6 +1588,15 @@ const googleContainerCluster = `{
               "description_kind": "plain",
               "optional": true,
               "type": "bool"
+            },
+            "storage_pools": {
+              "description": "The list of Storage Pools where boot disks are provisioned.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
             },
             "tags": {
               "description": "The list of instance tags applied to all nodes.",
@@ -1716,6 +1760,73 @@ const googleContainerCluster = `{
               "max_items": 1,
               "nesting_mode": "list"
             },
+            "guest_accelerator": {
+              "block": {
+                "attributes": {
+                  "count": {
+                    "description": "The number of the accelerator cards exposed to an instance.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "number"
+                  },
+                  "gpu_partition_size": {
+                    "description": "Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "type": {
+                    "description": "The accelerator type resource name.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "block_types": {
+                  "gpu_driver_installation_config": {
+                    "block": {
+                      "attributes": {
+                        "gpu_driver_version": {
+                          "description": "Mode for how the GPU driver is installed.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Configuration for auto installation of GPU driver.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "gpu_sharing_config": {
+                    "block": {
+                      "attributes": {
+                        "gpu_sharing_strategy": {
+                          "description": "The type of GPU sharing strategy to enable on the GPU node. Possible values are described in the API package (https://pkg.go.dev/google.golang.org/api/container/v1#GPUSharingConfig)",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        },
+                        "max_shared_clients_per_gpu": {
+                          "description": "The maximum number of containers that can share a GPU.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "number"
+                        }
+                      },
+                      "description": "Configuration for GPU sharing.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "List of the type and count of accelerator cards attached to the instance.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            },
             "gvnic": {
               "block": {
                 "attributes": {
@@ -1766,7 +1877,7 @@ const googleContainerCluster = `{
                   "cpu_manager_policy": {
                     "description": "Control the CPU management policy on the node.",
                     "description_kind": "plain",
-                    "required": true,
+                    "optional": true,
                     "type": "string"
                   },
                   "insecure_kubelet_readonly_port_enabled": {
@@ -1807,6 +1918,30 @@ const googleContainerCluster = `{
                       "map",
                       "string"
                     ]
+                  }
+                },
+                "block_types": {
+                  "hugepages_config": {
+                    "block": {
+                      "attributes": {
+                        "hugepage_size_1g": {
+                          "description": "Amount of 1G hugepages.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "hugepage_size_2m": {
+                          "description": "Amount of 2M hugepages.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        }
+                      },
+                      "description": "Amounts for 2M and 1G hugepages.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
                   }
                 },
                 "description": "Parameters that can be configured on Linux nodes.",
@@ -2299,42 +2434,6 @@ const googleContainerCluster = `{
                     "optional": true,
                     "type": "bool"
                   },
-                  "guest_accelerator": {
-                    "computed": true,
-                    "description": "List of the type and count of accelerator cards attached to the instance.",
-                    "description_kind": "plain",
-                    "optional": true,
-                    "type": [
-                      "list",
-                      [
-                        "object",
-                        {
-                          "count": "number",
-                          "gpu_driver_installation_config": [
-                            "list",
-                            [
-                              "object",
-                              {
-                                "gpu_driver_version": "string"
-                              }
-                            ]
-                          ],
-                          "gpu_partition_size": "string",
-                          "gpu_sharing_config": [
-                            "list",
-                            [
-                              "object",
-                              {
-                                "gpu_sharing_strategy": "string",
-                                "max_shared_clients_per_gpu": "number"
-                              }
-                            ]
-                          ],
-                          "type": "string"
-                        }
-                      ]
-                    ]
-                  },
                   "image_type": {
                     "computed": true,
                     "description": "The image type to use for this node. Note that for a given image type, the latest version of it will be used.",
@@ -2442,6 +2541,15 @@ const googleContainerCluster = `{
                     "description_kind": "plain",
                     "optional": true,
                     "type": "bool"
+                  },
+                  "storage_pools": {
+                    "description": "The list of Storage Pools where boot disks are provisioned.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": [
+                      "list",
+                      "string"
+                    ]
                   },
                   "tags": {
                     "description": "The list of instance tags applied to all nodes.",
@@ -2605,6 +2713,73 @@ const googleContainerCluster = `{
                     "max_items": 1,
                     "nesting_mode": "list"
                   },
+                  "guest_accelerator": {
+                    "block": {
+                      "attributes": {
+                        "count": {
+                          "description": "The number of the accelerator cards exposed to an instance.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "number"
+                        },
+                        "gpu_partition_size": {
+                          "description": "Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "type": {
+                          "description": "The accelerator type resource name.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "block_types": {
+                        "gpu_driver_installation_config": {
+                          "block": {
+                            "attributes": {
+                              "gpu_driver_version": {
+                                "description": "Mode for how the GPU driver is installed.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "Configuration for auto installation of GPU driver.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
+                        "gpu_sharing_config": {
+                          "block": {
+                            "attributes": {
+                              "gpu_sharing_strategy": {
+                                "description": "The type of GPU sharing strategy to enable on the GPU node. Possible values are described in the API package (https://pkg.go.dev/google.golang.org/api/container/v1#GPUSharingConfig)",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              },
+                              "max_shared_clients_per_gpu": {
+                                "description": "The maximum number of containers that can share a GPU.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "number"
+                              }
+                            },
+                            "description": "Configuration for GPU sharing.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "List of the type and count of accelerator cards attached to the instance.",
+                      "description_kind": "plain"
+                    },
+                    "nesting_mode": "list"
+                  },
                   "gvnic": {
                     "block": {
                       "attributes": {
@@ -2655,7 +2830,7 @@ const googleContainerCluster = `{
                         "cpu_manager_policy": {
                           "description": "Control the CPU management policy on the node.",
                           "description_kind": "plain",
-                          "required": true,
+                          "optional": true,
                           "type": "string"
                         },
                         "insecure_kubelet_readonly_port_enabled": {
@@ -2696,6 +2871,30 @@ const googleContainerCluster = `{
                             "map",
                             "string"
                           ]
+                        }
+                      },
+                      "block_types": {
+                        "hugepages_config": {
+                          "block": {
+                            "attributes": {
+                              "hugepage_size_1g": {
+                                "description": "Amount of 1G hugepages.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "number"
+                              },
+                              "hugepage_size_2m": {
+                                "description": "Amount of 2M hugepages.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "number"
+                              }
+                            },
+                            "description": "Amounts for 2M and 1G hugepages.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
                         }
                       },
                       "description": "Parameters that can be configured on Linux nodes.",
@@ -3162,6 +3361,22 @@ const googleContainerCluster = `{
                     },
                     "max_items": 1,
                     "nesting_mode": "list"
+                  },
+                  "gcfs_config": {
+                    "block": {
+                      "attributes": {
+                        "enabled": {
+                          "description": "Whether or not GCFS is enabled",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "bool"
+                        }
+                      },
+                      "description": "GCFS configuration for this node.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
                   }
                 },
                 "description": "Subset of NodeConfig message that has defaults.",
@@ -3359,6 +3574,22 @@ const googleContainerCluster = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "secret_manager_config": {
+        "block": {
+          "attributes": {
+            "enabled": {
+              "description": "Enable the Secret manager csi component.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "bool"
+            }
+          },
+          "description": "Configuration for the Secret Manager feature.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "security_posture_config": {
         "block": {
           "attributes": {
@@ -3426,6 +3657,70 @@ const googleContainerCluster = `{
           "description_kind": "plain"
         },
         "nesting_mode": "single"
+      },
+      "user_managed_keys_config": {
+        "block": {
+          "attributes": {
+            "aggregation_ca": {
+              "description": "The Certificate Authority Service caPool to use for the aggreation CA in this cluster.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "cluster_ca": {
+              "description": "The Certificate Authority Service caPool to use for the cluster CA in this cluster.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "control_plane_disk_encryption_key": {
+              "description": "The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "etcd_api_ca": {
+              "description": "The Certificate Authority Service caPool to use for the etcd API CA in this cluster.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "etcd_peer_ca": {
+              "description": "The Certificate Authority Service caPool to use for the etcd peer CA in this cluster.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "gkeops_etcd_backup_encryption_key": {
+              "description": "Resource path of the Cloud KMS cryptoKey to use for encryption of internal etcd backups.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "service_account_signing_keys": {
+              "description": "The Cloud KMS cryptoKeyVersions to use for signing service account JWTs issued by this cluster.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "set",
+                "string"
+              ]
+            },
+            "service_account_verification_keys": {
+              "description": "The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs issued by this cluster.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "set",
+                "string"
+              ]
+            }
+          },
+          "description": "The custom keys configuration of the cluster.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
       },
       "vertical_pod_autoscaling": {
         "block": {

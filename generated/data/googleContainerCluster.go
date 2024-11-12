@@ -109,6 +109,15 @@ const googleContainerCluster = `{
                   }
                 ]
               ],
+              "parallelstore_csi_driver_config": [
+                "list",
+                [
+                  "object",
+                  {
+                    "enabled": "bool"
+                  }
+                ]
+              ],
               "ray_operator_config": [
                 "list",
                 [
@@ -313,6 +322,29 @@ const googleContainerCluster = `{
           ]
         ]
       },
+      "control_plane_endpoints_config": {
+        "computed": true,
+        "description": "Configuration for all of the cluster's control plane endpoints. Currently supports only DNS endpoint configuration, IP endpoint configuration is available in private_cluster_config.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "dns_endpoint_config": [
+                "list",
+                [
+                  "object",
+                  {
+                    "allow_external_traffic": "bool",
+                    "endpoint": "string"
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      },
       "cost_management_config": {
         "computed": true,
         "description": "Cost management configuration for the cluster.",
@@ -389,11 +421,21 @@ const googleContainerCluster = `{
           [
             "object",
             {
+              "additive_vpc_scope_dns_domain": "string",
               "cluster_dns": "string",
               "cluster_dns_domain": "string",
               "cluster_dns_scope": "string"
             }
           ]
+        ]
+      },
+      "effective_labels": {
+        "computed": true,
+        "description": "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.",
+        "description_kind": "plain",
+        "type": [
+          "map",
+          "string"
         ]
       },
       "enable_autopilot": {
@@ -703,7 +745,8 @@ const googleContainerCluster = `{
                   }
                 ]
               ],
-              "gcp_public_cidrs_access_enabled": "bool"
+              "gcp_public_cidrs_access_enabled": "bool",
+              "private_endpoint_enforcement_enabled": "bool"
             }
           ]
         ]
@@ -749,8 +792,7 @@ const googleContainerCluster = `{
                   "object",
                   {
                     "enable_metrics": "bool",
-                    "enable_relay": "bool",
-                    "relay_mode": "string"
+                    "enable_relay": "bool"
                   }
                 ]
               ],
@@ -990,6 +1032,16 @@ const googleContainerCluster = `{
                   "object",
                   {
                     "cgroup_mode": "string",
+                    "hugepages_config": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "hugepage_size_1g": "number",
+                          "hugepage_size_2m": "number"
+                        }
+                      ]
+                    ],
                     "sysctls": [
                       "map",
                       "string"
@@ -1086,6 +1138,10 @@ const googleContainerCluster = `{
                 ]
               ],
               "spot": "bool",
+              "storage_pools": [
+                "list",
+                "string"
+              ],
               "tags": [
                 "list",
                 "string"
@@ -1394,6 +1450,16 @@ const googleContainerCluster = `{
                         "object",
                         {
                           "cgroup_mode": "string",
+                          "hugepages_config": [
+                            "list",
+                            [
+                              "object",
+                              {
+                                "hugepage_size_1g": "number",
+                                "hugepage_size_2m": "number"
+                              }
+                            ]
+                          ],
                           "sysctls": [
                             "map",
                             "string"
@@ -1490,6 +1556,10 @@ const googleContainerCluster = `{
                       ]
                     ],
                     "spot": "bool",
+                    "storage_pools": [
+                      "list",
+                      "string"
+                    ],
                     "tags": [
                       "list",
                       "string"
@@ -1668,6 +1738,15 @@ const googleContainerCluster = `{
                         }
                       ]
                     ],
+                    "gcfs_config": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "enabled": "bool"
+                        }
+                      ]
+                    ],
                     "insecure_kubelet_readonly_port_enabled": "string",
                     "logging_variant": "string"
                   }
@@ -1786,7 +1865,7 @@ const googleContainerCluster = `{
       },
       "resource_labels": {
         "computed": true,
-        "description": "The GCE resource labels (a map of key/value pairs) to be applied to the cluster.",
+        "description": "The GCE resource labels (a map of key/value pairs) to be applied to the cluster.\n\n\t\t\t\t**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\n\t\t\t\tPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
         "description_kind": "plain",
         "type": [
           "map",
@@ -1813,6 +1892,20 @@ const googleContainerCluster = `{
               ],
               "enable_network_egress_metering": "bool",
               "enable_resource_consumption_metering": "bool"
+            }
+          ]
+        ]
+      },
+      "secret_manager_config": {
+        "computed": true,
+        "description": "Configuration for the Secret Manager feature.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "enabled": "bool"
             }
           ]
         ]
@@ -1864,11 +1957,47 @@ const googleContainerCluster = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "terraform_labels": {
+        "computed": true,
+        "description": "The combination of labels configured directly on the resource and default labels configured on the provider.",
+        "description_kind": "plain",
+        "type": [
+          "map",
+          "string"
+        ]
+      },
       "tpu_ipv4_cidr_block": {
         "computed": true,
         "description": "The IP address range of the Cloud TPUs in this cluster, in CIDR notation (e.g. 1.2.3.4/29).",
         "description_kind": "plain",
         "type": "string"
+      },
+      "user_managed_keys_config": {
+        "computed": true,
+        "description": "The custom keys configuration of the cluster.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "aggregation_ca": "string",
+              "cluster_ca": "string",
+              "control_plane_disk_encryption_key": "string",
+              "etcd_api_ca": "string",
+              "etcd_peer_ca": "string",
+              "gkeops_etcd_backup_encryption_key": "string",
+              "service_account_signing_keys": [
+                "set",
+                "string"
+              ],
+              "service_account_verification_keys": [
+                "set",
+                "string"
+              ]
+            }
+          ]
+        ]
       },
       "vertical_pod_autoscaling": {
         "computed": true,

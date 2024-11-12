@@ -77,6 +77,32 @@ const googleBigqueryAnalyticsHubDataExchange = `{
       }
     },
     "block_types": {
+      "sharing_environment_config": {
+        "block": {
+          "block_types": {
+            "dcr_exchange_config": {
+              "block": {
+                "description": "Data Clean Room (DCR), used for privacy-safe and secured data sharing.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "default_exchange_config": {
+              "block": {
+                "description": "Default Analytics Hub data exchange, used for secured data sharing.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Configurable data sharing environment option for a data exchange.\nThis field is required for data clean room exchanges.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {

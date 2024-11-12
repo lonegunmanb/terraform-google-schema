@@ -27,6 +27,12 @@ const googleComputeInstance = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "creation_timestamp": {
+        "computed": true,
+        "description": "Creation timestamp in RFC3339 text format.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "current_status": {
         "computed": true,
         "description": "\n\t\t\t\t\tCurrent status of the instance.\n\t\t\t\t\tThis could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.\n\t\t\t\t\tFor more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).",
@@ -46,7 +52,7 @@ const googleComputeInstance = `{
         "type": "string"
       },
       "desired_status": {
-        "description": "Desired status of the instance. Either \"RUNNING\" or \"TERMINATED\".",
+        "description": "Desired status of the instance. Either \"RUNNING\", \"SUSPENDED\" or \"TERMINATED\".",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -66,22 +72,6 @@ const googleComputeInstance = `{
         "optional": true,
         "type": "bool"
       },
-      "guest_accelerator": {
-        "computed": true,
-        "description": "List of the type and count of accelerator cards attached to the instance.",
-        "description_kind": "plain",
-        "optional": true,
-        "type": [
-          "list",
-          [
-            "object",
-            {
-              "count": "number",
-              "type": "string"
-            }
-          ]
-        ]
-      },
       "hostname": {
         "description": "A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.",
         "description_kind": "plain",
@@ -98,6 +88,12 @@ const googleComputeInstance = `{
         "computed": true,
         "description": "The server-assigned unique identifier of this instance.",
         "description_kind": "plain",
+        "type": "string"
+      },
+      "key_revocation_action_type": {
+        "description": "Action to be taken when a customer's encryption key is revoked. Supports \"STOP\" and \"NONE\", with \"NONE\" being the default.",
+        "description_kind": "plain",
+        "optional": true,
         "type": "string"
       },
       "label_fingerprint": {
@@ -225,6 +221,12 @@ const googleComputeInstance = `{
               "optional": true,
               "type": "number"
             },
+            "turbo_mode": {
+              "description": "Turbo frequency mode to use for the instance. Currently supported modes is \"ALL_CORE_MAX\".",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "visible_core_count": {
               "description": "The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\\'s nominal CPU count and the underlying platform\\'s SMT width.",
               "description_kind": "plain",
@@ -315,6 +317,12 @@ const googleComputeInstance = `{
               "description_kind": "plain",
               "type": "string"
             },
+            "interface": {
+              "description": "The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "kms_key_self_link": {
               "computed": true,
               "description": "The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.",
@@ -386,6 +394,16 @@ const googleComputeInstance = `{
                       "string"
                     ]
                   },
+                  "resource_policies": {
+                    "computed": true,
+                    "description": "A list of self_links of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": [
+                      "list",
+                      "string"
+                    ]
+                  },
                   "size": {
                     "computed": true,
                     "description": "The size of the image in gigabytes.",
@@ -425,7 +443,7 @@ const googleComputeInstance = `{
         "block": {
           "attributes": {
             "confidential_instance_type": {
-              "description": "\n\t\t\t\t\t\t\t\tThe confidential computing technology the instance uses.\n\t\t\t\t\t\t\t\tSEV is an AMD feature. TDX is an Intel feature. One of the following\n\t\t\t\t\t\t\t\tvalues is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =\n\t\t\t\t\t\t\t\t\"AMD Milan\" is currently required. TDX is only available in beta.",
+              "description": "\n\t\t\t\t\t\t\t\tThe confidential computing technology the instance uses.\n\t\t\t\t\t\t\t\tSEV is an AMD feature. TDX is an Intel feature. One of the following\n\t\t\t\t\t\t\t\tvalues is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =\n\t\t\t\t\t\t\t\t\"AMD Milan\" is currently required.",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
@@ -441,6 +459,27 @@ const googleComputeInstance = `{
           "description_kind": "plain"
         },
         "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "guest_accelerator": {
+        "block": {
+          "attributes": {
+            "count": {
+              "description": "The number of the guest accelerator cards exposed to this instance.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "number"
+            },
+            "type": {
+              "description": "The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "List of the type and count of accelerator cards attached to the instance.",
+          "description_kind": "plain"
+        },
         "nesting_mode": "list"
       },
       "network_interface": {

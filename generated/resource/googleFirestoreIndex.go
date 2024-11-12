@@ -106,7 +106,7 @@ const googleFirestoreIndex = `{
           "description": "The fields supported by this index. The last non-stored field entry is\nalways for the field path '__name__'. If, on creation, '__name__' was not\nspecified as the last field, it will be added automatically with the same\ndirection as that of the last field defined. If the final field in a\ncomposite index is not directional, the '__name__' will be ordered\n'\"ASCENDING\"' (unless explicitly specified otherwise).",
           "description_kind": "plain"
         },
-        "min_items": 2,
+        "min_items": 1,
         "nesting_mode": "list"
       },
       "timeouts": {

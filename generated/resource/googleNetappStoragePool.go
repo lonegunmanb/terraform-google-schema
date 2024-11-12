@@ -15,6 +15,12 @@ const googleNetappStoragePool = `{
         "optional": true,
         "type": "string"
       },
+      "allow_auto_tiering": {
+        "description": "Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.\nAuto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "capacity_gib": {
         "description": "Capacity of the storage pool (in GiB).",
         "description_kind": "plain",
@@ -93,6 +99,12 @@ const googleNetappStoragePool = `{
         "optional": true,
         "type": "string"
       },
+      "replica_zone": {
+        "description": "Specifies the replica zone for regional Flex pools. 'zone' and 'replica_zone' values can be swapped to initiate a\n[zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "service_level": {
         "description": "Service level of the storage pool. Possible values: [\"PREMIUM\", \"EXTREME\", \"STANDARD\", \"FLEX\"]",
         "description_kind": "plain",
@@ -119,6 +131,12 @@ const googleNetappStoragePool = `{
         "description": "Number of volume in the storage pool.",
         "description_kind": "plain",
         "type": "number"
+      },
+      "zone": {
+        "description": "Specifies the active zone for regional Flex pools. 'zone' and 'replica_zone' values can be swapped to initiate a\n[zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).\nIf you want to create a zonal Flex pool, specify a zone name for 'location' and omit 'zone'.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
       }
     },
     "block_types": {

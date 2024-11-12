@@ -81,11 +81,14 @@ const googleProject = `{
         "optional": true,
         "type": "string"
       },
-      "skip_delete": {
+      "tags": {
         "computed": true,
-        "description": "If true, the Terraform resource can be deleted without deleting the Project via the Google API.",
+        "description": "A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the google_tags_tag_value resource.",
         "description_kind": "plain",
-        "type": "bool"
+        "type": [
+          "map",
+          "string"
+        ]
       },
       "terraform_labels": {
         "computed": true,

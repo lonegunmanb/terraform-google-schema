@@ -256,25 +256,6 @@ const googleComposerEnvironment = `{
                     "optional": true,
                     "type": "bool"
                   },
-                  "ip_allocation_policy": {
-                    "computed": true,
-                    "description": "Configuration for controlling how IPs are allocated in the GKE cluster. Cannot be updated.",
-                    "description_kind": "plain",
-                    "optional": true,
-                    "type": [
-                      "list",
-                      [
-                        "object",
-                        {
-                          "cluster_ipv4_cidr_block": "string",
-                          "cluster_secondary_range_name": "string",
-                          "services_ipv4_cidr_block": "string",
-                          "services_secondary_range_name": "string",
-                          "use_ip_aliases": "bool"
-                        }
-                      ]
-                    ]
-                  },
                   "machine_type": {
                     "computed": true,
                     "description": "The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: \"projects/{project}/zones/{zone}/machineTypes/{machineType}\". Must belong to the enclosing environment's project and region/zone. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.",
@@ -327,6 +308,48 @@ const googleComposerEnvironment = `{
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"
+                  }
+                },
+                "block_types": {
+                  "ip_allocation_policy": {
+                    "block": {
+                      "attributes": {
+                        "cluster_ipv4_cidr_block": {
+                          "description": "The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either cluster_secondary_range_name or cluster_ipv4_cidr_block but not both.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "cluster_secondary_range_name": {
+                          "description": "The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either cluster_secondary_range_name or cluster_ipv4_cidr_block but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "services_ipv4_cidr_block": {
+                          "description": "The IP address range used to allocate IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either services_secondary_range_name or services_ipv4_cidr_block but not both.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "services_secondary_range_name": {
+                          "description": "The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either services_secondary_range_name or services_ipv4_cidr_block but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when use_ip_aliases is true.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "use_ip_aliases": {
+                          "description": "Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ip_allocation_policy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "bool"
+                        }
+                      },
+                      "description": "Configuration for controlling how IPs are allocated in the GKE cluster. Cannot be updated.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
                   }
                 },
                 "description": "The configuration used for the Kubernetes Engine cluster.",
@@ -494,6 +517,24 @@ const googleComposerEnvironment = `{
                     "description_kind": "plain",
                     "optional": true,
                     "type": "number"
+                  }
+                },
+                "block_types": {
+                  "cloud_data_lineage_integration": {
+                    "block": {
+                      "attributes": {
+                        "enabled": {
+                          "description": "Whether or not Cloud Data Lineage integration is enabled.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "bool"
+                        }
+                      },
+                      "description": "The configuration for Cloud Data Lineage integration. Supported for Cloud Composer environments in versions composer-2.1.2-airflow-*.*.* and newer",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
                   }
                 },
                 "description": "The configuration settings for software inside the environment.",

@@ -159,6 +159,7 @@ const googleSqlDatabaseInstance = `{
             "object",
             {
               "ca_certificate": "string",
+              "cascadable_replica": "bool",
               "client_certificate": "string",
               "client_key": "string",
               "connect_retry_interval": "number",
@@ -171,6 +172,15 @@ const googleSqlDatabaseInstance = `{
               "verify_server_certificate": "bool"
             }
           ]
+        ]
+      },
+      "replica_names": {
+        "computed": true,
+        "description": "The replicas of the instance.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          "string"
         ]
       },
       "restore_backup_context": {
@@ -362,7 +372,6 @@ const googleSqlDatabaseInstance = `{
                         }
                       ]
                     ],
-                    "require_ssl": "bool",
                     "server_ca_mode": "string",
                     "ssl_mode": "string"
                   }

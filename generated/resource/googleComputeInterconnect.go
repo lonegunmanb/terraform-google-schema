@@ -47,9 +47,9 @@ const googleComputeInterconnect = `{
         "type": "string"
       },
       "customer_name": {
-        "description": "Customer name, to put in the Letter of Authorization as the party authorized to request a\ncrossconnect.",
+        "description": "Customer name, to put in the Letter of Authorization as the party authorized to request a\ncrossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified\nfor cross-cloud interconnect.",
         "description_kind": "plain",
-        "required": true,
+        "optional": true,
         "type": "string"
       },
       "description": {
@@ -146,9 +146,9 @@ const googleComputeInterconnect = `{
         "type": "string"
       },
       "location": {
-        "description": "URL of the InterconnectLocation object that represents where this connection is to be provisioned.",
+        "description": "URL of the InterconnectLocation object that represents where this connection is to be provisioned.\nSpecifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.",
         "description_kind": "plain",
-        "required": true,
+        "optional": true,
         "type": "string"
       },
       "macsec_enabled": {
@@ -200,7 +200,7 @@ const googleComputeInterconnect = `{
         "type": "string"
       },
       "requested_features": {
-        "description": "interconnects.list of features requested for this Interconnect connection. Options: MACSEC (\nIf specified then the connection is created on MACsec capable hardware ports. If not\nspecified, the default value is false, which allocates non-MACsec capable ports first if\navailable). Possible values: [\"MACSEC\"]",
+        "description": "interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (\nIf specified then the connection is created on MACsec capable hardware ports. If not\nspecified, the default value is false, which allocates non-MACsec capable ports first if\navailable). Note that MACSEC is still technically allowed for compatibility reasons, but it\ndoes not work with the API, and will be removed in an upcoming major version. Possible values: [\"MACSEC\", \"IF_MACSEC\"]",
         "description_kind": "plain",
         "optional": true,
         "type": [
@@ -239,11 +239,20 @@ const googleComputeInterconnect = `{
     "block_types": {
       "macsec": {
         "block": {
+          "attributes": {
+            "fail_open": {
+              "description": "If set to true, the Interconnect connection is configured with a should-secure\nMACsec security policy, that allows the Google router to fallback to cleartext\ntraffic if the MKA session cannot be established. By default, the Interconnect\nconnection is configured with a must-secure security policy that drops all traffic\nif the MKA session cannot be established with your router.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            }
+          },
           "block_types": {
             "pre_shared_keys": {
               "block": {
                 "attributes": {
                   "fail_open": {
+                    "deprecated": true,
                     "description": "If set to true, the Interconnect connection is configured with a should-secure\nMACsec security policy, that allows the Google router to fallback to cleartext\ntraffic if the MKA session cannot be established. By default, the Interconnect\nconnection is configured with a must-secure security policy that drops all traffic\nif the MKA session cannot be established with your router.",
                     "description_kind": "plain",
                     "optional": true,

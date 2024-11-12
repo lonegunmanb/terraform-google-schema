@@ -1,6 +1,6 @@
-module github.com/lonegunmanb/terraform-google-schema/v5
+module github.com/lonegunmanb/terraform-google-schema/v6
 
-go 1.20
+go 1.23
 
 require (
 	github.com/ahmetb/go-linq/v3 v3.2.0

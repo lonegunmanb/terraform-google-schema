@@ -10,7 +10,7 @@ const googleBigtableInstance = `{
   "block": {
     "attributes": {
       "deletion_protection": {
-        "description": "      When the field is set to true or unset in Terraform state, a terraform apply or terraform destroy that would delete the instance will fail. When the field is set to false, deleting the instance is allowed.",
+        "description": "When the field is set to true or unset in Terraform state, a terraform apply or terraform destroy that would delete the instance will fail. When the field is set to false, deleting the instance is allowed.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"

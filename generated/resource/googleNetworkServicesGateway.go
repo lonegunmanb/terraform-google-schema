@@ -109,6 +109,12 @@ const googleNetworkServicesGateway = `{
         "optional": true,
         "type": "string"
       },
+      "routing_mode": {
+        "description": "The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY. Possible values: [\"NEXT_HOP_ROUTING_MODE\"]",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "scope": {
         "description": "Immutable. Scope determines how configuration across multiple Gateway instances are merged.\nThe configuration for multiple Gateway instances with the same scope will be merged as presented as\na single coniguration to the proxy/load balancer.\nMax length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.",
         "description_kind": "plain",

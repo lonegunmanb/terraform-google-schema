@@ -17,7 +17,7 @@ const googleComputeDisk = `{
       },
       "async_primary_disk": {
         "computed": true,
-        "description": "A nested object resource",
+        "description": "A nested object resource.",
         "description_kind": "plain",
         "type": [
           "list",

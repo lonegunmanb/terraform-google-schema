@@ -22,7 +22,7 @@ const googleDatastreamStream = `{
         "type": "string"
       },
       "desired_state": {
-        "description": "Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream.",
+        "description": "Desired state of the Stream. Set this field to 'RUNNING' to start the stream,\n'NOT_STARTED' to create the stream without starting and 'PAUSED' to pause\nthe stream from a 'RUNNING' state.\nPossible values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -1435,6 +1435,14 @@ const googleDatastreamStream = `{
                   }
                 },
                 "block_types": {
+                  "change_tables": {
+                    "block": {
+                      "description": "CDC reader reads from change tables.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
                   "exclude_objects": {
                     "block": {
                       "block_types": {
@@ -1634,6 +1642,14 @@ const googleDatastreamStream = `{
                         }
                       },
                       "description": "SQL Server objects to retrieve from the source.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "transaction_logs": {
+                    "block": {
+                      "description": "CDC reader reads from transaction logs.",
                       "description_kind": "plain"
                     },
                     "max_items": 1,

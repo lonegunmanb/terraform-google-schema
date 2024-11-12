@@ -9,6 +9,12 @@ import (
 const googleApigeeNatAddress = `{
   "block": {
     "attributes": {
+      "activate": {
+        "description": "Flag that specifies whether the reserved NAT address should be activate.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",
@@ -50,6 +56,11 @@ const googleApigeeNatAddress = `{
               "type": "string"
             },
             "delete": {
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "update": {
               "description_kind": "plain",
               "optional": true,
               "type": "string"

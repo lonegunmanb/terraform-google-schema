@@ -96,6 +96,14 @@ const googleDiscoveryEngineChatEngine = `{
     "block_types": {
       "chat_engine_config": {
         "block": {
+          "attributes": {
+            "dialogflow_agent_to_link": {
+              "description": "The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: 'projects/\u003cProject_ID\u003e/locations/\u003cLocation_ID\u003e/agents/\u003cAgent_ID\u003e'.\nExactly one of 'agent_creation_config' or 'dialogflow_agent_to_link' must be set.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
           "block_types": {
             "agent_creation_config": {
               "block": {
@@ -125,11 +133,10 @@ const googleDiscoveryEngineChatEngine = `{
                     "type": "string"
                   }
                 },
-                "description": "The configuration to generate the Dialogflow agent that is associated to this Engine.",
+                "description": "The configuration to generate the Dialogflow agent that is associated to this Engine.\nExactly one of 'agent_creation_config' or 'dialogflow_agent_to_link' must be set.",
                 "description_kind": "plain"
               },
               "max_items": 1,
-              "min_items": 1,
               "nesting_mode": "list"
             }
           },

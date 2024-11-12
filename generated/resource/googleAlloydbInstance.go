@@ -116,6 +116,15 @@ const googleAlloydbInstance = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "outbound_public_ip_addresses": {
+        "computed": true,
+        "description": "The outbound public IP addresses for the instance. This is available ONLY when\nnetworkConfig.enableOutboundPublicIp is set to true. These IP addresses are used\nfor outbound connections.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          "string"
+        ]
+      },
       "public_ip_address": {
         "computed": true,
         "description": "The public IP addresses for the Instance. This is available ONLY when\nnetworkConfig.enablePublicIp is set to true. This is the connection\nendpoint for an end-user application.",
@@ -212,6 +221,12 @@ const googleAlloydbInstance = `{
       "network_config": {
         "block": {
           "attributes": {
+            "enable_outbound_public_ip": {
+              "description": "Enabling outbound public ip for the instance.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
             "enable_public_ip": {
               "description": "Enabling public ip for the instance. If a user wishes to disable this,\nplease also clear the list of the authorized external networks set on\nthe same instance.",
               "description_kind": "plain",

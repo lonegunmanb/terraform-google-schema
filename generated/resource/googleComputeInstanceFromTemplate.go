@@ -16,26 +16,6 @@ const googleComputeInstanceFromTemplate = `{
         "optional": true,
         "type": "bool"
       },
-      "attached_disk": {
-        "computed": true,
-        "description": "List of disks attached to the instance",
-        "description_kind": "plain",
-        "optional": true,
-        "type": [
-          "list",
-          [
-            "object",
-            {
-              "device_name": "string",
-              "disk_encryption_key_raw": "string",
-              "disk_encryption_key_sha256": "string",
-              "kms_key_self_link": "string",
-              "mode": "string",
-              "source": "string"
-            }
-          ]
-        ]
-      },
       "can_ip_forward": {
         "computed": true,
         "description": "Whether sending and receiving of packets with non-matching source or destination IPs is allowed.",
@@ -46,6 +26,12 @@ const googleComputeInstanceFromTemplate = `{
       "cpu_platform": {
         "computed": true,
         "description": "The CPU platform used by this instance.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "creation_timestamp": {
+        "computed": true,
+        "description": "Creation timestamp in RFC3339 text format.",
         "description_kind": "plain",
         "type": "string"
       },
@@ -71,7 +57,7 @@ const googleComputeInstanceFromTemplate = `{
       },
       "desired_status": {
         "computed": true,
-        "description": "Desired status of the instance. Either \"RUNNING\" or \"TERMINATED\".",
+        "description": "Desired status of the instance. Either \"RUNNING\", \"SUSPENDED\" or \"TERMINATED\".",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -92,22 +78,6 @@ const googleComputeInstanceFromTemplate = `{
         "optional": true,
         "type": "bool"
       },
-      "guest_accelerator": {
-        "computed": true,
-        "description": "List of the type and count of accelerator cards attached to the instance.",
-        "description_kind": "plain",
-        "optional": true,
-        "type": [
-          "list",
-          [
-            "object",
-            {
-              "count": "number",
-              "type": "string"
-            }
-          ]
-        ]
-      },
       "hostname": {
         "computed": true,
         "description": "A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression [a-z]([-a-z0-9]*[a-z0-9]), concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.",
@@ -125,6 +95,13 @@ const googleComputeInstanceFromTemplate = `{
         "computed": true,
         "description": "The server-assigned unique identifier of this instance.",
         "description_kind": "plain",
+        "type": "string"
+      },
+      "key_revocation_action_type": {
+        "computed": true,
+        "description": "Action to be taken when a customer's encryption key is revoked. Supports \"STOP\" and \"NONE\", with \"NONE\" being the default.",
+        "description_kind": "plain",
+        "optional": true,
         "type": "string"
       },
       "label_fingerprint": {
@@ -203,47 +180,11 @@ const googleComputeInstanceFromTemplate = `{
           "string"
         ]
       },
-      "scratch_disk": {
-        "computed": true,
-        "description": "The scratch disks attached to the instance.",
-        "description_kind": "plain",
-        "optional": true,
-        "type": [
-          "list",
-          [
-            "object",
-            {
-              "device_name": "string",
-              "interface": "string",
-              "size": "number"
-            }
-          ]
-        ]
-      },
       "self_link": {
         "computed": true,
         "description": "The URI of the created resource.",
         "description_kind": "plain",
         "type": "string"
-      },
-      "service_account": {
-        "computed": true,
-        "description": "The service account to attach to the instance.",
-        "description_kind": "plain",
-        "optional": true,
-        "type": [
-          "list",
-          [
-            "object",
-            {
-              "email": "string",
-              "scopes": [
-                "set",
-                "string"
-              ]
-            }
-          ]
-        ]
       },
       "source_instance_template": {
         "description": "Name or self link of an instance template to create the instance based on.",
@@ -302,6 +243,13 @@ const googleComputeInstanceFromTemplate = `{
               "optional": true,
               "type": "number"
             },
+            "turbo_mode": {
+              "computed": true,
+              "description": "Turbo frequency mode to use for the instance. Currently supported modes is \"ALL_CORE_MAX\".",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "visible_core_count": {
               "computed": true,
               "description": "The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\\'s nominal CPU count and the underlying platform\\'s SMT width.",
@@ -314,6 +262,56 @@ const googleComputeInstanceFromTemplate = `{
           "description_kind": "plain"
         },
         "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "attached_disk": {
+        "block": {
+          "attributes": {
+            "device_name": {
+              "computed": true,
+              "description": "Name with which the attached disk is accessible under /dev/disk/by-id/",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "disk_encryption_key_raw": {
+              "computed": true,
+              "description": "A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.",
+              "description_kind": "plain",
+              "optional": true,
+              "sensitive": true,
+              "type": "string"
+            },
+            "disk_encryption_key_sha256": {
+              "computed": true,
+              "description": "The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.",
+              "description_kind": "plain",
+              "type": "string"
+            },
+            "kms_key_self_link": {
+              "computed": true,
+              "description": "The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "mode": {
+              "computed": true,
+              "description": "Read/write mode for the disk. One of \"READ_ONLY\" or \"READ_WRITE\".",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "source": {
+              "description": "The name or self_link of the disk attached to this instance.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "List of disks attached to the instance",
+          "description_kind": "plain"
+        },
         "nesting_mode": "list"
       },
       "boot_disk": {
@@ -345,6 +343,13 @@ const googleComputeInstanceFromTemplate = `{
               "computed": true,
               "description": "The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.",
               "description_kind": "plain",
+              "type": "string"
+            },
+            "interface": {
+              "computed": true,
+              "description": "The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)",
+              "description_kind": "plain",
+              "optional": true,
               "type": "string"
             },
             "kms_key_self_link": {
@@ -421,6 +426,16 @@ const googleComputeInstanceFromTemplate = `{
                       "string"
                     ]
                   },
+                  "resource_policies": {
+                    "computed": true,
+                    "description": "A list of self_links of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": [
+                      "list",
+                      "string"
+                    ]
+                  },
                   "size": {
                     "computed": true,
                     "description": "The size of the image in gigabytes.",
@@ -461,7 +476,7 @@ const googleComputeInstanceFromTemplate = `{
           "attributes": {
             "confidential_instance_type": {
               "computed": true,
-              "description": "\n\t\t\t\t\t\t\t\tThe confidential computing technology the instance uses.\n\t\t\t\t\t\t\t\tSEV is an AMD feature. TDX is an Intel feature. One of the following\n\t\t\t\t\t\t\t\tvalues is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =\n\t\t\t\t\t\t\t\t\"AMD Milan\" is currently required. TDX is only available in beta.",
+              "description": "\n\t\t\t\t\t\t\t\tThe confidential computing technology the instance uses.\n\t\t\t\t\t\t\t\tSEV is an AMD feature. TDX is an Intel feature. One of the following\n\t\t\t\t\t\t\t\tvalues is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =\n\t\t\t\t\t\t\t\t\"AMD Milan\" is currently required.",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
@@ -480,42 +495,30 @@ const googleComputeInstanceFromTemplate = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "guest_accelerator": {
+        "block": {
+          "attributes": {
+            "count": {
+              "description": "The number of the guest accelerator cards exposed to this instance.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "number"
+            },
+            "type": {
+              "description": "The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "List of the type and count of accelerator cards attached to the instance.",
+          "description_kind": "plain"
+        },
+        "nesting_mode": "list"
+      },
       "network_interface": {
         "block": {
           "attributes": {
-            "access_config": {
-              "computed": true,
-              "description": "Access configurations, i.e. IPs via which this instance can be accessed via the Internet.",
-              "description_kind": "plain",
-              "optional": true,
-              "type": [
-                "list",
-                [
-                  "object",
-                  {
-                    "nat_ip": "string",
-                    "network_tier": "string",
-                    "public_ptr_domain_name": "string"
-                  }
-                ]
-              ]
-            },
-            "alias_ip_range": {
-              "computed": true,
-              "description": "An array of alias IP ranges for this network interface.",
-              "description_kind": "plain",
-              "optional": true,
-              "type": [
-                "list",
-                [
-                  "object",
-                  {
-                    "ip_cidr_range": "string",
-                    "subnetwork_range_name": "string"
-                  }
-                ]
-              ]
-            },
             "internal_ipv6_prefix_length": {
               "computed": true,
               "description": "The prefix length of the primary internal IPv6 range.",
@@ -593,6 +596,58 @@ const googleComputeInstanceFromTemplate = `{
             }
           },
           "block_types": {
+            "access_config": {
+              "block": {
+                "attributes": {
+                  "nat_ip": {
+                    "computed": true,
+                    "description": "The IP address that is be 1:1 mapped to the instance's network ip.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "network_tier": {
+                    "computed": true,
+                    "description": "The networking tier used for configuring this instance. One of PREMIUM or STANDARD.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "public_ptr_domain_name": {
+                    "computed": true,
+                    "description": "The DNS domain name for the public PTR record.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Access configurations, i.e. IPs via which this instance can be accessed via the Internet.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            },
+            "alias_ip_range": {
+              "block": {
+                "attributes": {
+                  "ip_cidr_range": {
+                    "description": "The IP CIDR range represented by this alias IP range.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "subnetwork_range_name": {
+                    "computed": true,
+                    "description": "The subnetwork secondary range name specifying the secondary range from which to allocate the IP CIDR range for this alias IP range.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "An array of alias IP ranges for this network interface.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            },
             "ipv6_access_config": {
               "block": {
                 "attributes": {
@@ -859,6 +914,61 @@ const googleComputeInstanceFromTemplate = `{
             }
           },
           "description": "The scheduling strategy being used by the instance.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "scratch_disk": {
+        "block": {
+          "attributes": {
+            "device_name": {
+              "computed": true,
+              "description": "Name with which the attached disk is accessible under /dev/disk/by-id/",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "interface": {
+              "description": "The disk interface used for attaching this disk. One of SCSI or NVME.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            },
+            "size": {
+              "computed": true,
+              "description": "The size of the disk in gigabytes. One of 375 or 3000.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "number"
+            }
+          },
+          "description": "The scratch disks attached to the instance.",
+          "description_kind": "plain"
+        },
+        "nesting_mode": "list"
+      },
+      "service_account": {
+        "block": {
+          "attributes": {
+            "email": {
+              "computed": true,
+              "description": "The service account e-mail address.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "scopes": {
+              "description": "A list of service scopes.",
+              "description_kind": "plain",
+              "required": true,
+              "type": [
+                "set",
+                "string"
+              ]
+            }
+          },
+          "description": "The service account to attach to the instance.",
           "description_kind": "plain"
         },
         "max_items": 1,

@@ -232,7 +232,7 @@ const googleGkeHubFeatureMembership = `{
                     "type": "bool"
                   },
                   "enabled": {
-                    "description": "Whether Hierarchy Controller is enabled in this cluster.",
+                    "description": "**DEPRECATED** Configuring Hierarchy Controller through the configmanagement feature is no longer recommended. Use https://github.com/kubernetes-sigs/hierarchical-namespaces instead.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "bool"

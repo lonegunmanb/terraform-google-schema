@@ -44,6 +44,49 @@ const googlePubsubTopic = `{
                     "stream_arn": "string"
                   }
                 ]
+              ],
+              "cloud_storage": [
+                "list",
+                [
+                  "object",
+                  {
+                    "avro_format": [
+                      "list",
+                      [
+                        "object",
+                        {}
+                      ]
+                    ],
+                    "bucket": "string",
+                    "match_glob": "string",
+                    "minimum_object_create_time": "string",
+                    "pubsub_avro_format": [
+                      "list",
+                      [
+                        "object",
+                        {}
+                      ]
+                    ],
+                    "text_format": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "delimiter": "string"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              ],
+              "platform_logs_settings": [
+                "list",
+                [
+                  "object",
+                  {
+                    "severity": "string"
+                  }
+                ]
               ]
             }
           ]

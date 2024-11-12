@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	tfjson "github.com/hashicorp/terraform-json"
-	"github.com/lonegunmanb/terraform-google-schema/v5/generated/data"
+	"github.com/lonegunmanb/terraform-google-schema/v6/generated/data"
 	"github.com/stretchr/testify/assert"
 )
 

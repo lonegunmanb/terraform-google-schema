@@ -73,7 +73,7 @@ const googleWorkbenchInstance = `{
         "type": "string"
       },
       "instance_owners": {
-        "description": "'Optional. Input only. The owner of this instance after creation. Format:\n'alias@example.com' Currently supports one owner only. If not specified, all of\nthe service account users of your VM instance''s service account can use the instance.'",
+        "description": "'Optional. Input only. The owner of this instance after creation. Format:\n'alias@example.com' Currently supports one owner only. If not specified, all of\nthe service account users of your VM instance''s service account can use the instance.\nIf specified, sets the access mode to 'Single user'. For more details, see\nhttps://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab'",
         "description_kind": "plain",
         "optional": true,
         "type": [

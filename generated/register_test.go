@@ -3,7 +3,7 @@ package generated_test
 import (
 	"testing"
 
-	"github.com/lonegunmanb/terraform-google-schema/v5/generated"
+	"github.com/lonegunmanb/terraform-google-schema/v6/generated"
 	"github.com/stretchr/testify/assert"
 )
 

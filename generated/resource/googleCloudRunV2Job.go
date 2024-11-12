@@ -69,6 +69,12 @@ const googleCloudRunV2Job = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "deletion_protection": {
+        "description": "Whether Terraform will be prevented from destroying the job. Defaults to true.\nWhen a'terraform destroy' or 'terraform apply' would delete the job,\nthe command will fail if this field is not set to false in Terraform state.\nWhen the field is set to true or unset in Terraform state, a 'terraform apply'\nor 'terraform destroy' that would delete the job will fail.\nWhen the field is set to false, deleting the job is allowed.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "effective_annotations": {
         "computed": true,
         "description": "All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.",
@@ -426,7 +432,7 @@ const googleCloudRunV2Job = `{
                             "description": "List of environment variables to set in the container.",
                             "description_kind": "plain"
                           },
-                          "nesting_mode": "list"
+                          "nesting_mode": "set"
                         },
                         "ports": {
                           "block": {
@@ -521,6 +527,78 @@ const googleCloudRunV2Job = `{
                               }
                             },
                             "description": "For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
+                        "empty_dir": {
+                          "block": {
+                            "attributes": {
+                              "medium": {
+                                "description": "The different types of medium supported for EmptyDir. Default value: \"MEMORY\" Possible values: [\"MEMORY\"]",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "size_limit": {
+                                "description": "Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "Ephemeral storage used as a shared volume.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
+                        "gcs": {
+                          "block": {
+                            "attributes": {
+                              "bucket": {
+                                "description": "Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              },
+                              "read_only": {
+                                "description": "If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "bool"
+                              }
+                            },
+                            "description": "Cloud Storage bucket mounted as a volume using GCSFuse.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
+                        "nfs": {
+                          "block": {
+                            "attributes": {
+                              "path": {
+                                "description": "Path that is exported by the NFS server.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "read_only": {
+                                "description": "If true, mount this volume as read-only in all mounts.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "bool"
+                              },
+                              "server": {
+                                "description": "Hostname or IP address of the NFS server.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "NFS share mounted as a volume.",
                             "description_kind": "plain"
                           },
                           "max_items": 1,

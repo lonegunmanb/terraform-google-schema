@@ -335,6 +335,42 @@ const googleContainerAwsNodePool = `{
         "min_items": 1,
         "nesting_mode": "list"
       },
+      "kubelet_config": {
+        "block": {
+          "attributes": {
+            "cpu_cfs_quota": {
+              "computed": true,
+              "description": "Whether or not to enable CPU CFS quota. Defaults to true.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
+            "cpu_cfs_quota_period": {
+              "description": "Optional. The CPU CFS quota period to use for the node. Defaults to \"100ms\".",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "cpu_manager_policy": {
+              "computed": true,
+              "description": "The CpuManagerPolicy to use for the node. Defaults to \"none\".",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "pod_pids_limit": {
+              "description": "Optional. The maximum number of PIDs in each pod running on the node. The limit scales automatically based on underlying machine size if left unset.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "number"
+            }
+          },
+          "description": "The kubelet configuration for the node pool.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "management": {
         "block": {
           "attributes": {

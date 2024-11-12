@@ -48,6 +48,7 @@ const googlePubsubSubscription = `{
                 [
                   "object",
                   {
+                    "use_topic_schema": "bool",
                     "write_metadata": "bool"
                   }
                 ]
@@ -58,6 +59,7 @@ const googlePubsubSubscription = `{
               "filename_suffix": "string",
               "max_bytes": "number",
               "max_duration": "string",
+              "max_messages": "number",
               "service_account_email": "string",
               "state": "string"
             }
@@ -137,7 +139,7 @@ const googlePubsubSubscription = `{
       },
       "message_retention_duration": {
         "computed": true,
-        "description": "How long to retain unacknowledged messages in the subscription's\nbacklog, from the moment a message is published. If\nretain_acked_messages is true, then this also configures the retention\nof acknowledged messages, and thus configures how far back in time a\nsubscriptions.seek can be done. Defaults to 7 days. Cannot be more\nthan 7 days ('\"604800s\"') or less than 10 minutes ('\"600s\"').\n\nA duration in seconds with up to nine fractional digits, terminated\nby 's'. Example: '\"600.5s\"'.",
+        "description": "How long to retain unacknowledged messages in the subscription's\nbacklog, from the moment a message is published. If\nretain_acked_messages is true, then this also configures the retention\nof acknowledged messages, and thus configures how far back in time a\nsubscriptions.seek can be done. Defaults to 7 days. Cannot be more\nthan 31 days ('\"2678400s\"') or less than 10 minutes ('\"600s\"').\n\nA duration in seconds with up to nine fractional digits, terminated\nby 's'. Example: '\"600.5s\"'.",
         "description_kind": "plain",
         "type": "string"
       },

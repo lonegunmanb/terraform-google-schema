@@ -18,7 +18,10 @@ const googleComputeServiceAttachment = `{
           [
             "object",
             {
+              "consumer_network": "string",
               "endpoint": "string",
+              "propagated_connection_count": "number",
+              "psc_connection_id": "string",
               "status": "string"
             }
           ]
@@ -92,6 +95,13 @@ const googleComputeServiceAttachment = `{
         "description_kind": "plain",
         "optional": true,
         "type": "string"
+      },
+      "propagated_connection_limit": {
+        "computed": true,
+        "description": "The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.\nThis limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.\n\nIf the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.\nIf the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.\n\nIf unspecified, the default propagated connection limit is 250.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "number"
       },
       "reconcile_connections": {
         "computed": true,

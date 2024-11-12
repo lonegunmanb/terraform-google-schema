@@ -267,7 +267,7 @@ const googlePrivatecaCertificateAuthority = `{
       },
       "desired_state": {
         "computed": true,
-        "description": "Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.",
+        "description": "Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.\nPossible values: ENABLED, DISABLED, STAGED.",
         "description_kind": "plain",
         "type": "string"
       },

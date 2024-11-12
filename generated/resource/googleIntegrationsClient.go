@@ -15,13 +15,6 @@ const googleIntegrationsClient = `{
         "optional": true,
         "type": "bool"
       },
-      "create_sample_workflows": {
-        "deprecated": true,
-        "description": "Indicates if sample workflow should be created along with provisioning.",
-        "description_kind": "plain",
-        "optional": true,
-        "type": "bool"
-      },
       "id": {
         "computed": true,
         "description_kind": "plain",
@@ -39,13 +32,6 @@ const googleIntegrationsClient = `{
         "description_kind": "plain",
         "optional": true,
         "type": "string"
-      },
-      "provision_gmek": {
-        "deprecated": true,
-        "description": "Indicates provision with GMEK or CMEK.",
-        "description_kind": "plain",
-        "optional": true,
-        "type": "bool"
       },
       "run_as_service_account": {
         "description": "User input run-as service account, if empty, will bring up a new default service account.",

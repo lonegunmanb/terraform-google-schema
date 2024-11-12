@@ -74,6 +74,54 @@ const googleComputeNodeTemplate = `{
       }
     },
     "block_types": {
+      "accelerators": {
+        "block": {
+          "attributes": {
+            "accelerator_count": {
+              "description": "The number of the guest accelerator cards exposed to this\nnode template.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "number"
+            },
+            "accelerator_type": {
+              "description": "Full or partial URL of the accelerator type resource to expose\nto this node template.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description": "List of the type and count of accelerator cards attached to the\nnode template",
+          "description_kind": "plain"
+        },
+        "nesting_mode": "list"
+      },
+      "disks": {
+        "block": {
+          "attributes": {
+            "disk_count": {
+              "description": "Specifies the number of such disks.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "number"
+            },
+            "disk_size_gb": {
+              "description": "Specifies the size of the disk in base-2 GB.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "number"
+            },
+            "disk_type": {
+              "description": "Specifies the desired disk type on the node. This disk type must be a local storage type (e.g.: local-ssd). Note that for nodeTemplates, this should be the name of the disk type and not its URL.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description": "List of the type, size and count of disks attached to the\nnode template",
+          "description_kind": "plain"
+        },
+        "nesting_mode": "list"
+      },
       "node_type_flexibility": {
         "block": {
           "attributes": {

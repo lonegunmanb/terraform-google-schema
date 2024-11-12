@@ -31,7 +31,7 @@ const googleContainerAttachedCluster = `{
         "type": "string"
       },
       "deletion_policy": {
-        "description": "Policy to determine what flags to send on delete.",
+        "description": "Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -321,6 +321,23 @@ const googleContainerAttachedCluster = `{
             }
           },
           "description": "Support for proxy configuration.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "security_posture_config": {
+        "block": {
+          "attributes": {
+            "vulnerability_mode": {
+              "description": "Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Possible values: [\"VULNERABILITY_DISABLED\", \"VULNERABILITY_ENTERPRISE\"]",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "deprecated": true,
+          "description": "Enable/Disable Security Posture API features for the cluster.",
           "description_kind": "plain"
         },
         "max_items": 1,

@@ -15,6 +15,18 @@ const googleVertexAiEndpoint = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "dedicated_endpoint_dns": {
+        "computed": true,
+        "description": "Output only. DNS of the dedicated endpoint. Will only be populated if dedicatedEndpointEnabled is true. Format: 'https://{endpointId}.{region}-{projectNumber}.prediction.vertexai.goog'.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "dedicated_endpoint_enabled": {
+        "description": "If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "deployed_models": {
         "computed": true,
         "description": "Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).",
@@ -151,7 +163,7 @@ const googleVertexAiEndpoint = `{
         "type": "string"
       },
       "network": {
-        "description": "The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): 'projects/{project}/global/networks/{network}'. Where '{project}' is a project number, as in '12345', and '{network}' is network name.",
+        "description": "The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): 'projects/{project}/global/networks/{network}'. Where '{project}' is a project number, as in '12345', and '{network}' is network name. Only one of the fields, 'network' or 'privateServiceConnectConfig', can be set.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -177,6 +189,12 @@ const googleVertexAiEndpoint = `{
           "string"
         ]
       },
+      "traffic_split": {
+        "description": "A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.\nIf a DeployedModel's id is not listed in this map, then it receives no traffic.\nThe traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.\n\n~\u003e **Note:** The 'traffic_split' setting only applies after a model has been deployed to the endpoint. Re-applying a 'google_vertex_ai_endpoint'\nresource without updating the 'traffic_split' post-deployment may lead to your deployed 'traffic_split' being lost; see\nthe 'deployModel' [example](https://cloud.google.com/vertex-ai/docs/general/deployment#deploy_a_model_to_an_endpoint) and\n[documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for details.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "update_time": {
         "computed": true,
         "description": "Output only. Timestamp when this Endpoint was last updated.",
@@ -196,6 +214,77 @@ const googleVertexAiEndpoint = `{
             }
           },
           "description": "Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "predict_request_response_logging_config": {
+        "block": {
+          "attributes": {
+            "enabled": {
+              "description": "If logging is enabled or not.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
+            "sampling_rate": {
+              "description": "Percentage of requests to be logged, expressed as a fraction in range(0,1]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "number"
+            }
+          },
+          "block_types": {
+            "bigquery_destination": {
+              "block": {
+                "attributes": {
+                  "output_uri": {
+                    "description": "BigQuery URI to a project or table, up to 2000 characters long. When only the project is specified, the Dataset and Table is created. When the full table reference is specified, the Dataset must exist and table must not exist. Accepted forms: - BigQuery path. For example: 'bq://projectId' or 'bq://projectId.bqDatasetId' or 'bq://projectId.bqDatasetId.bqTableId'.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "BigQuery table for logging. If only given a project, a new dataset will be created with name 'logging_\u003cendpoint-display-name\u003e_\u003cendpoint-id\u003e' where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name 'request_response_logging'",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Configures the request-response logging for online prediction.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "private_service_connect_config": {
+        "block": {
+          "attributes": {
+            "enable_private_service_connect": {
+              "description": "Required. If true, expose the IndexEndpoint via private service connect.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "bool"
+            },
+            "enable_secure_private_service_connect": {
+              "description": "If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
+            "project_allowlist": {
+              "description": "A list of Projects from which the forwarding rule will target the service attachment.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
+            }
+          },
+          "description": "Configuration for private service connect. 'network' and 'privateServiceConnectConfig' are mutually exclusive.",
           "description_kind": "plain"
         },
         "max_items": 1,

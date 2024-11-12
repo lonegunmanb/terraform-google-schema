@@ -82,8 +82,17 @@ const googleSpannerDatabase = `{
             "kms_key_name": {
               "description": "Fully qualified name of the KMS key to use to encrypt this database. This key must exist\nin the same location as the Spanner Database.",
               "description_kind": "plain",
-              "required": true,
+              "optional": true,
               "type": "string"
+            },
+            "kms_key_names": {
+              "description": "Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist\nin the same locations as the Spanner Database.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
             }
           },
           "description": "Encryption configuration for the database",

@@ -29,7 +29,7 @@ const googleComputeHealthCheck = `{
       },
       "grpc_health_check": {
         "computed": true,
-        "description": "A nested object resource",
+        "description": "A nested object resource.",
         "description_kind": "plain",
         "type": [
           "list",
@@ -52,7 +52,7 @@ const googleComputeHealthCheck = `{
       },
       "http2_health_check": {
         "computed": true,
-        "description": "A nested object resource",
+        "description": "A nested object resource.",
         "description_kind": "plain",
         "type": [
           "list",
@@ -72,7 +72,7 @@ const googleComputeHealthCheck = `{
       },
       "http_health_check": {
         "computed": true,
-        "description": "A nested object resource",
+        "description": "A nested object resource.",
         "description_kind": "plain",
         "type": [
           "list",
@@ -92,7 +92,7 @@ const googleComputeHealthCheck = `{
       },
       "https_health_check": {
         "computed": true,
-        "description": "A nested object resource",
+        "description": "A nested object resource.",
         "description_kind": "plain",
         "type": [
           "list",
@@ -157,7 +157,7 @@ const googleComputeHealthCheck = `{
       },
       "ssl_health_check": {
         "computed": true,
-        "description": "A nested object resource",
+        "description": "A nested object resource.",
         "description_kind": "plain",
         "type": [
           "list",
@@ -176,7 +176,7 @@ const googleComputeHealthCheck = `{
       },
       "tcp_health_check": {
         "computed": true,
-        "description": "A nested object resource",
+        "description": "A nested object resource.",
         "description_kind": "plain",
         "type": [
           "list",

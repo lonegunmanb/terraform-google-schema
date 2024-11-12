@@ -385,7 +385,42 @@ const googleCloudRunService = `{
                       [
                         "object",
                         {
+                          "csi": [
+                            "list",
+                            [
+                              "object",
+                              {
+                                "driver": "string",
+                                "read_only": "bool",
+                                "volume_attributes": [
+                                  "map",
+                                  "string"
+                                ]
+                              }
+                            ]
+                          ],
+                          "empty_dir": [
+                            "list",
+                            [
+                              "object",
+                              {
+                                "medium": "string",
+                                "size_limit": "string"
+                              }
+                            ]
+                          ],
                           "name": "string",
+                          "nfs": [
+                            "list",
+                            [
+                              "object",
+                              {
+                                "path": "string",
+                                "read_only": "bool",
+                                "server": "string"
+                              }
+                            ]
+                          ],
                           "secret": [
                             "list",
                             [

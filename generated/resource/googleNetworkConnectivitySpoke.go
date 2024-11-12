@@ -101,6 +101,15 @@ const googleNetworkConnectivitySpoke = `{
       "linked_interconnect_attachments": {
         "block": {
           "attributes": {
+            "include_import_ranges": {
+              "description": "IP ranges allowed to be included during import from hub (does not control transit connectivity).\nThe only allowed value for now is \"ALL_IPV4_RANGES\".",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
+            },
             "site_to_site_data_transfer": {
               "description": "A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.",
               "description_kind": "plain",
@@ -123,9 +132,64 @@ const googleNetworkConnectivitySpoke = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "linked_producer_vpc_network": {
+        "block": {
+          "attributes": {
+            "exclude_export_ranges": {
+              "description": "IP ranges encompassing the subnets to be excluded from peering.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
+            },
+            "include_export_ranges": {
+              "description": "IP ranges allowed to be included from peering.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
+            },
+            "network": {
+              "description": "The URI of the Service Consumer VPC that the Producer VPC is peered with.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            },
+            "peering": {
+              "description": "The name of the VPC peering between the Service Consumer VPC and the Producer VPC (defined in the Tenant project) which is added to the NCC hub. This peering must be in ACTIVE state.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            },
+            "producer_network": {
+              "computed": true,
+              "description": "The URI of the Producer VPC.",
+              "description_kind": "plain",
+              "type": "string"
+            }
+          },
+          "description": "Producer VPC network that is associated with the spoke.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "linked_router_appliance_instances": {
         "block": {
           "attributes": {
+            "include_import_ranges": {
+              "description": "IP ranges allowed to be included during import from hub (does not control transit connectivity).\nThe only allowed value for now is \"ALL_IPV4_RANGES\".",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
+            },
             "site_to_site_data_transfer": {
               "description": "A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.",
               "description_kind": "plain",
@@ -175,6 +239,15 @@ const googleNetworkConnectivitySpoke = `{
                 "string"
               ]
             },
+            "include_export_ranges": {
+              "description": "IP ranges allowed to be included from peering.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
+            },
             "uri": {
               "description": "The URI of the VPC network resource.",
               "description_kind": "plain",
@@ -191,6 +264,15 @@ const googleNetworkConnectivitySpoke = `{
       "linked_vpn_tunnels": {
         "block": {
           "attributes": {
+            "include_import_ranges": {
+              "description": "IP ranges allowed to be included during import from hub (does not control transit connectivity).\nThe only allowed value for now is \"ALL_IPV4_RANGES\".",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
+            },
             "site_to_site_data_transfer": {
               "description": "A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.",
               "description_kind": "plain",

@@ -21,6 +21,15 @@ const googleEdgenetworkSubnet = `{
         "optional": true,
         "type": "string"
       },
+      "effective_labels": {
+        "computed": true,
+        "description": "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.",
+        "description_kind": "plain",
+        "type": [
+          "map",
+          "string"
+        ]
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",
@@ -46,7 +55,7 @@ const googleEdgenetworkSubnet = `{
         ]
       },
       "labels": {
-        "description": "Labels associated with this resource.",
+        "description": "Labels associated with this resource.\n\n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
         "description_kind": "plain",
         "optional": true,
         "type": [
@@ -90,6 +99,15 @@ const googleEdgenetworkSubnet = `{
         "required": true,
         "type": "string"
       },
+      "terraform_labels": {
+        "computed": true,
+        "description": "The combination of labels configured directly on the resource\n and default labels configured on the provider.",
+        "description_kind": "plain",
+        "type": [
+          "map",
+          "string"
+        ]
+      },
       "update_time": {
         "computed": true,
         "description": "The time when the subnet was last updated.\nA timestamp in RFC3339 UTC \"Zulu\" format, with nanosecond resolution and up to nine\nfractional digits. Examples: '2014-10-02T15:01:23Z' and '2014-10-02T15:01:23.045123456Z'.",
@@ -120,6 +138,11 @@ const googleEdgenetworkSubnet = `{
               "type": "string"
             },
             "delete": {
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "update": {
               "description_kind": "plain",
               "optional": true,
               "type": "string"

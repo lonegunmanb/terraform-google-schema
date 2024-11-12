@@ -40,13 +40,6 @@ const googleBigqueryReservation = `{
         "optional": true,
         "type": "string"
       },
-      "multi_region_auxiliary": {
-        "deprecated": true,
-        "description": "Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).\nIf set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.",
-        "description_kind": "plain",
-        "optional": true,
-        "type": "bool"
-      },
       "name": {
         "description": "The name of the reservation. This field must only contain alphanumeric characters or dash.",
         "description_kind": "plain",

@@ -165,6 +165,58 @@ const googleIamWorkloadIdentityPoolProvider = `{
           "description_kind": "plain"
         },
         "nesting_mode": "single"
+      },
+      "x509": {
+        "block": {
+          "block_types": {
+            "trust_store": {
+              "block": {
+                "block_types": {
+                  "intermediate_cas": {
+                    "block": {
+                      "attributes": {
+                        "pem_certificate": {
+                          "description": "PEM certificate of the PKI used for validation. Must only contain one\nca certificate(either root or intermediate cert).",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Set of intermediate CA certificates used for building the trust chain to\ntrust anchor.\nIMPORTANT: Intermediate CAs are only supported when configuring x509 federation.",
+                      "description_kind": "plain"
+                    },
+                    "nesting_mode": "list"
+                  },
+                  "trust_anchors": {
+                    "block": {
+                      "attributes": {
+                        "pem_certificate": {
+                          "description": "PEM certificate of the PKI used for validation. Must only contain one\nca certificate(either root or intermediate cert).",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "List of Trust Anchors to be used while performing validation\nagainst a given TrustStore. The incoming end entity's certificate\nmust be chained up to one of the trust anchors here.",
+                      "description_kind": "plain"
+                    },
+                    "min_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "A Trust store, use this trust store as a wrapper to config the trust\nanchor and optional intermediate cas to help build the trust chain for\nthe incoming end entity certificate. Follow the x509 guidelines to\ndefine those PEM encoded certs. Only 1 trust store is currently\nsupported.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "min_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "An X.509-type identity provider represents a CA. It is trusted to assert a\nclient identity if the client has a certificate that chains up to this CA.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
       }
     },
     "description_kind": "plain"

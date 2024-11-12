@@ -24,6 +24,12 @@ const googleActiveDirectoryDomain = `{
           "string"
         ]
       },
+      "deletion_protection": {
+        "description": "Whether Terraform will be prevented from destroying the domain. Defaults to true.\nWhen a'terraform destroy' or 'terraform apply' would delete the domain,\nthe command will fail if this field is not set to false in Terraform state.\nWhen the field is set to true or unset in Terraform state, a 'terraform apply'\nor 'terraform destroy' that would delete the domain will fail.\nWhen the field is set to false, deleting the domain is allowed.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "domain_name": {
         "description": "The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions\nof https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.",
         "description_kind": "plain",

@@ -94,6 +94,12 @@ const googleCloudRunV2Service = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "deletion_protection": {
+        "computed": true,
+        "description": "Whether Terraform will be prevented from destroying the service. Defaults to true.\nWhen a'terraform destroy' or 'terraform apply' would delete the service,\nthe command will fail if this field is not set to false in Terraform state.\nWhen the field is set to true or unset in Terraform state, a 'terraform apply'\nor 'terraform destroy' that would delete the service will fail.\nWhen the field is set to false, deleting the service is allowed.",
+        "description_kind": "plain",
+        "type": "bool"
+      },
       "description": {
         "computed": true,
         "description": "User-provided description of the Service. This field currently has a 512-character limit.",
@@ -147,6 +153,12 @@ const googleCloudRunV2Service = `{
         "description": "Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: [\"INGRESS_TRAFFIC_ALL\", \"INGRESS_TRAFFIC_INTERNAL_ONLY\", \"INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER\"]",
         "description_kind": "plain",
         "type": "string"
+      },
+      "invoker_iam_disabled": {
+        "computed": true,
+        "description": "Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.",
+        "description_kind": "plain",
+        "type": "bool"
       },
       "labels": {
         "computed": true,
@@ -210,6 +222,20 @@ const googleCloudRunV2Service = `{
         "description_kind": "plain",
         "type": "bool"
       },
+      "scaling": {
+        "computed": true,
+        "description": "Scaling settings that apply to the whole service",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "min_instance_count": "number"
+            }
+          ]
+        ]
+      },
       "template": {
         "computed": true,
         "description": "The template used to create revisions for this Service.",
@@ -241,7 +267,7 @@ const googleCloudRunV2Service = `{
                       "string"
                     ],
                     "env": [
-                      "list",
+                      "set",
                       [
                         "object",
                         {
@@ -445,6 +471,16 @@ const googleCloudRunV2Service = `{
                             "set",
                             "string"
                           ]
+                        }
+                      ]
+                    ],
+                    "empty_dir": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "medium": "string",
+                          "size_limit": "string"
                         }
                       ]
                     ],

@@ -21,6 +21,12 @@ const googleDataprocMetastoreService = `{
         "optional": true,
         "type": "string"
       },
+      "deletion_protection": {
+        "description": "Indicates if the dataproc metastore should be protected against accidental deletions.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "effective_labels": {
         "computed": true,
         "description": "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.",

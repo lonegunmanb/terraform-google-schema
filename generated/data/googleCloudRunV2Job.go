@@ -85,6 +85,12 @@ const googleCloudRunV2Job = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "deletion_protection": {
+        "computed": true,
+        "description": "Whether Terraform will be prevented from destroying the job. Defaults to true.\nWhen a'terraform destroy' or 'terraform apply' would delete the job,\nthe command will fail if this field is not set to false in Terraform state.\nWhen the field is set to true or unset in Terraform state, a 'terraform apply'\nor 'terraform destroy' that would delete the job will fail.\nWhen the field is set to false, deleting the job is allowed.",
+        "description_kind": "plain",
+        "type": "bool"
+      },
       "effective_annotations": {
         "computed": true,
         "description": "All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.",
@@ -237,7 +243,7 @@ const googleCloudRunV2Job = `{
                             "string"
                           ],
                           "env": [
-                            "list",
+                            "set",
                             [
                               "object",
                               {
@@ -324,7 +330,38 @@ const googleCloudRunV2Job = `{
                               }
                             ]
                           ],
+                          "empty_dir": [
+                            "list",
+                            [
+                              "object",
+                              {
+                                "medium": "string",
+                                "size_limit": "string"
+                              }
+                            ]
+                          ],
+                          "gcs": [
+                            "list",
+                            [
+                              "object",
+                              {
+                                "bucket": "string",
+                                "read_only": "bool"
+                              }
+                            ]
+                          ],
                           "name": "string",
+                          "nfs": [
+                            "list",
+                            [
+                              "object",
+                              {
+                                "path": "string",
+                                "read_only": "bool",
+                                "server": "string"
+                              }
+                            ]
+                          ],
                           "secret": [
                             "list",
                             [

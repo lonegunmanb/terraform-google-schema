@@ -780,6 +780,88 @@ const googleCloudRunService = `{
                         }
                       },
                       "block_types": {
+                        "csi": {
+                          "block": {
+                            "attributes": {
+                              "driver": {
+                                "description": "Unique name representing the type of file system to be created. Cloud Run supports the following values:\n  * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the\n    run.googleapis.com/execution-environment annotation to be unset or set to \"gen2\"",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              },
+                              "read_only": {
+                                "computed": true,
+                                "description": "If true, all mounts created from this volume will be read-only.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "bool"
+                              },
+                              "volume_attributes": {
+                                "description": "Driver-specific attributes. The following options are supported for available drivers:\n  * gcsfuse.run.googleapis.com\n    * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": [
+                                  "map",
+                                  "string"
+                                ]
+                              }
+                            },
+                            "description": "A filesystem specified by the Container Storage Interface (CSI).",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
+                        "empty_dir": {
+                          "block": {
+                            "attributes": {
+                              "medium": {
+                                "description": "The medium on which the data is stored. The default is \"\" which means to use the node's default medium. Must be an empty string (default) or Memory.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "size_limit": {
+                                "description": "Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
+                        "nfs": {
+                          "block": {
+                            "attributes": {
+                              "path": {
+                                "description": "Path exported by the NFS server",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              },
+                              "read_only": {
+                                "description": "If true, mount the NFS volume as read only in all mounts. Defaults to false.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "bool"
+                              },
+                              "server": {
+                                "description": "IP address or hostname of the NFS server",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "A filesystem backed by a Network File System share. This filesystem requires the\nrun.googleapis.com/execution-environment annotation to be unset or set to \"gen2\"",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
                         "secret": {
                           "block": {
                             "attributes": {

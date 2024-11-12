@@ -93,6 +93,12 @@ const googleComputeExternalVpnGateway = `{
               "description_kind": "plain",
               "optional": true,
               "type": "string"
+            },
+            "ipv6_address": {
+              "description": "IPv6 address of the interface in the external VPN gateway. This IPv6\naddress can be either from your on-premise gateway or another Cloud\nprovider's VPN gateway, it cannot be an IP address from Google Compute\nEngine. Must specify an IPv6 address (not IPV4-mapped) using any format\ndescribed in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format\nis RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
             }
           },
           "description": "A list of interfaces on this external VPN gateway.",

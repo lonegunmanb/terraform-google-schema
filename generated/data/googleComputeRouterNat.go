@@ -57,6 +57,15 @@ const googleComputeRouterNat = `{
         "optional": true,
         "type": "string"
       },
+      "initial_nat_ips": {
+        "computed": true,
+        "description": "Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.\nConflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.",
+        "description_kind": "plain",
+        "type": [
+          "set",
+          "string"
+        ]
+      },
       "log_config": {
         "computed": true,
         "description": "Configuration for logging on NAT",
@@ -98,7 +107,7 @@ const googleComputeRouterNat = `{
       },
       "nat_ips": {
         "computed": true,
-        "description": "Self-links of NAT IPs. Only valid if natIpAllocateOption\nis set to MANUAL_ONLY.",
+        "description": "Self-links of NAT IPs. Only valid if natIpAllocateOption\nis set to MANUAL_ONLY.\nIf this field is used alongside with a count created list of address resources 'google_compute_address.foobar.*.self_link',\nthe access level resource for the address resource must have a 'lifecycle' block with 'create_before_destroy = true' so\nthe number of resources can be increased/decreased without triggering the 'resourceInUseByAnotherResource' error.",
         "description_kind": "plain",
         "type": [
           "set",

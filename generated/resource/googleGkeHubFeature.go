@@ -132,7 +132,7 @@ const googleGkeHubFeature = `{
                     "type": "string"
                   },
                   "version": {
-                    "description": "Version of ACM installed",
+                    "description": "Version of Config Sync installed",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"
@@ -255,7 +255,7 @@ const googleGkeHubFeature = `{
                               },
                               "version": {
                                 "deprecated": true,
-                                "description": "Version of ACM installed",
+                                "description": "Version of Config Sync installed",
                                 "description_kind": "plain",
                                 "optional": true,
                                 "type": "string"

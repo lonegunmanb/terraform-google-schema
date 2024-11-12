@@ -94,6 +94,15 @@ const googleMonitoringAlertPolicy = `{
               "description_kind": "plain",
               "optional": true,
               "type": "string"
+            },
+            "notification_prompts": {
+              "description": "Control when notifications will be sent out. Possible values: [\"NOTIFICATION_PROMPT_UNSPECIFIED\", \"OPENED\", \"CLOSED\"]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
             }
           },
           "block_types": {

@@ -102,6 +102,23 @@ const googleBigqueryAnalyticsHubListing = `{
               "type": "string"
             }
           },
+          "block_types": {
+            "selected_resources": {
+              "block": {
+                "attributes": {
+                  "table": {
+                    "description": "Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:\"projects/test_project/datasets/test_dataset/tables/test_table\"",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            }
+          },
           "description": "Shared dataset i.e. BigQuery dataset source.",
           "description_kind": "plain"
         },
@@ -160,6 +177,12 @@ const googleBigqueryAnalyticsHubListing = `{
               "description": "If true, enable restricted export.",
               "description_kind": "plain",
               "optional": true,
+              "type": "bool"
+            },
+            "restrict_direct_table_access": {
+              "computed": true,
+              "description": "If true, restrict direct table access(read api/tabledata.list) on linked table.",
+              "description_kind": "plain",
               "type": "bool"
             },
             "restrict_query_result": {
