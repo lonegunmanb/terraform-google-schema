@@ -23,7 +23,7 @@ const tfProviderCode = `terraform {
   required_providers {
     google = {
       source = "hashicorp/google"
-      version = "~>5.0"
+      version = "~>6.0"
     }
   }
 }
@@ -42,8 +42,8 @@ const registerTemplate = `package generated
 
 import (
 	tfjson "github.com/hashicorp/terraform-json"
-	"github.com/{{ .RepoOwner }}/{{ .GoModule }}/v5/generated/data"
-	"github.com/{{ .RepoOwner }}/{{ .GoModule }}/v5/generated/resource"
+	"github.com/{{ .RepoOwner }}/{{ .GoModule }}/v6/generated/data"
+	"github.com/{{ .RepoOwner }}/{{ .GoModule }}/v6/generated/resource"
 )
 
 var Resources map[string]*tfjson.Schema
@@ -67,7 +67,7 @@ const registerTestTemplate = `package generated_test
 import (
 	"testing"
 
-	"github.com/{{ .RepoOwner }}/{{ .GoModule }}/v5/generated"
+	"github.com/{{ .RepoOwner }}/{{ .GoModule }}/v6/generated"
 	"github.com/stretchr/testify/assert"
 )
 

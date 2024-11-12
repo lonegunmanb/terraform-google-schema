@@ -213,7 +213,7 @@ const googleComputeRouterPeer = `{
         "block": {
           "attributes": {
             "range": {
-              "description": "The IP range to advertise. The value must be a\nCIDR-formatted string.",
+              "description": "The IP range to learn. The value must be a\nCIDR-formatted string.",
               "description_kind": "plain",
               "required": true,
               "type": "string"

@@ -34,6 +34,12 @@ const googleComputeAttachedDisk = `{
         "required": true,
         "type": "string"
       },
+      "interface": {
+        "description": "The disk interface used for attaching this disk. One of SCSI or NVME. (This field is only used for specific cases, please don't specify this field without advice from Google.)",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "mode": {
         "description": "The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode.",
         "description_kind": "plain",

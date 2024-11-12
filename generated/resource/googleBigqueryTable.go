@@ -9,13 +9,6 @@ import (
 const googleBigqueryTable = `{
   "block": {
     "attributes": {
-      "allow_resource_tags_on_deletion": {
-        "deprecated": true,
-        "description": "**Deprecated** Whether or not to allow table deletion when there are still resource tags attached.",
-        "description_kind": "plain",
-        "optional": true,
-        "type": "bool"
-      },
       "clustering": {
         "description": "Specifies column names to use for data clustering. Up to four top-level columns are allowed, and should be specified in descending priority order.",
         "description_kind": "plain",
@@ -186,6 +179,40 @@ const googleBigqueryTable = `{
       }
     },
     "block_types": {
+      "biglake_configuration": {
+        "block": {
+          "attributes": {
+            "connection_id": {
+              "description": "The connection specifying the credentials to be used to read and write to external storage, such as Cloud Storage. The connection_id can have the form \"\u0026lt;project\\_id\u0026gt;.\u0026lt;location\\_id\u0026gt;.\u0026lt;connection\\_id\u0026gt;\" or \"projects/\u0026lt;project\\_id\u0026gt;/locations/\u0026lt;location\\_id\u0026gt;/connections/\u0026lt;connection\\_id\u0026gt;\".",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            },
+            "file_format": {
+              "description": "The file format the data is stored in.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            },
+            "storage_uri": {
+              "description": "The fully qualified location prefix of the external folder where table data is stored. The '*' wildcard character is not allowed. The URI should be in the format \"gs://bucket/path_to_table/\"",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            },
+            "table_format": {
+              "description": "The table format the metadata only snapshots are stored in.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "Specifies the configuration of a BigLake managed table.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "encryption_configuration": {
         "block": {
           "attributes": {

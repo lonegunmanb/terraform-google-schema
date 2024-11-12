@@ -20,6 +20,7 @@ const googleComputeInstance = `{
             {
               "enable_nested_virtualization": "bool",
               "threads_per_core": "number",
+              "turbo_mode": "string",
               "visible_core_count": "number"
             }
           ]
@@ -80,12 +81,17 @@ const googleComputeInstance = `{
                       "map",
                       "string"
                     ],
+                    "resource_policies": [
+                      "list",
+                      "string"
+                    ],
                     "size": "number",
                     "storage_pool": "string",
                     "type": "string"
                   }
                 ]
               ],
+              "interface": "string",
               "kms_key_self_link": "string",
               "mode": "string",
               "source": "string"
@@ -120,6 +126,12 @@ const googleComputeInstance = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "creation_timestamp": {
+        "computed": true,
+        "description": "Creation timestamp in RFC3339 text format.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "current_status": {
         "computed": true,
         "description": "\n\t\t\t\t\tCurrent status of the instance.\n\t\t\t\t\tThis could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.\n\t\t\t\t\tFor more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).",
@@ -140,7 +152,7 @@ const googleComputeInstance = `{
       },
       "desired_status": {
         "computed": true,
-        "description": "Desired status of the instance. Either \"RUNNING\" or \"TERMINATED\".",
+        "description": "Desired status of the instance. Either \"RUNNING\", \"SUSPENDED\" or \"TERMINATED\".",
         "description_kind": "plain",
         "type": "string"
       },
@@ -189,6 +201,12 @@ const googleComputeInstance = `{
       "instance_id": {
         "computed": true,
         "description": "The server-assigned unique identifier of this instance.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "key_revocation_action_type": {
+        "computed": true,
+        "description": "Action to be taken when a customer's encryption key is revoked. Supports \"STOP\" and \"NONE\", with \"NONE\" being the default.",
         "description_kind": "plain",
         "type": "string"
       },

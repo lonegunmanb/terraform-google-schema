@@ -186,7 +186,7 @@ const googleApphubApplication = `{
         "block": {
           "attributes": {
             "type": {
-              "description": "Required. Scope Type. \n Possible values:\nREGIONAL Possible values: [\"REGIONAL\"]",
+              "description": "Required. Scope Type. \n Possible values:\nREGIONAL\nGLOBAL Possible values: [\"REGIONAL\", \"GLOBAL\"]",
               "description_kind": "plain",
               "required": true,
               "type": "string"

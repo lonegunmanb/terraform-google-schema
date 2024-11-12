@@ -57,6 +57,15 @@ const googleCertificateManagerCertificate = `{
         "optional": true,
         "type": "string"
       },
+      "san_dnsnames": {
+        "computed": true,
+        "description": "The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          "string"
+        ]
+      },
       "scope": {
         "description": "The scope of the certificate.\n\nDEFAULT: Certificates with default scope are served from core Google data centers.\nIf unsure, choose this option.\n\nEDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.\nSee https://cloud.google.com/vpc/docs/edge-locations.\n\nALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).\nSee https://cloud.google.com/compute/docs/regions-zones",
         "description_kind": "plain",

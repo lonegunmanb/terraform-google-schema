@@ -47,6 +47,13 @@ const googleComputeRegionCommitment = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "existing_reservations": {
+        "computed": true,
+        "description": "Specifies the already existing reservations to attach to the Commitment.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",

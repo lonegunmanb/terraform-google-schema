@@ -51,6 +51,12 @@ const googleNetworkSecurityGatewaySecurityPolicy = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "tls_inspection_policy": {
+        "description": "Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.\nNote: google_network_security_tls_inspection_policy resource is still in [Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) therefore it will need to import the provider.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "update_time": {
         "computed": true,
         "description": "The timestamp when the resource was updated.\nA timestamp in RFC3339 UTC \"Zulu\" format, with nanosecond resolution and up to nine fractional digits.\nExamples: \"2014-10-02T15:01:23Z\" and \"2014-10-02T15:01:23.045123456Z\".",

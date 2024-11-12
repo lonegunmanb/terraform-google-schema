@@ -20,6 +20,7 @@ const googleComputeInstanceTemplate = `{
             {
               "enable_nested_virtualization": "bool",
               "threads_per_core": "number",
+              "turbo_mode": "string",
               "visible_core_count": "number"
             }
           ]
@@ -45,6 +46,12 @@ const googleComputeInstanceTemplate = `{
             }
           ]
         ]
+      },
+      "creation_timestamp": {
+        "computed": true,
+        "description": "Creation timestamp in RFC3339 text format.",
+        "description_kind": "plain",
+        "type": "string"
       },
       "description": {
         "computed": true,
@@ -83,6 +90,7 @@ const googleComputeInstanceTemplate = `{
               ],
               "mode": "string",
               "provisioned_iops": "number",
+              "provisioned_throughput": "number",
               "resource_manager_tags": [
                 "map",
                 "string"
@@ -160,6 +168,12 @@ const googleComputeInstanceTemplate = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "key_revocation_action_type": {
+        "computed": true,
+        "description": "Action to be taken when a customer's encryption key is revoked. Supports \"STOP\" and \"NONE\", with \"NONE\" being the default.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "labels": {
         "computed": true,
         "description": "A set of key/value label pairs to assign to instances created from this template.\n\n\t\t\t\t**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\n\t\t\t\tPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
@@ -215,7 +229,7 @@ const googleComputeInstanceTemplate = `{
       },
       "name_prefix": {
         "computed": true,
-        "description": "Creates a unique name beginning with the specified prefix. Conflicts with name.",
+        "description": "Creates a unique name beginning with the specified prefix. Conflicts with name. Max length is 54 characters. Prefixes with lengths longer than 37 characters will use a shortened UUID that will be more prone to collisions.",
         "description_kind": "plain",
         "type": "string"
       },

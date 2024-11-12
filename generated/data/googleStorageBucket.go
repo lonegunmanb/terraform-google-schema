@@ -108,6 +108,20 @@ const googleStorageBucket = `{
         "description_kind": "plain",
         "type": "bool"
       },
+      "hierarchical_namespace": {
+        "computed": true,
+        "description": "The bucket's HNS configuration, which defines bucket can organize folders in logical file system structure.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "enabled": "bool"
+            }
+          ]
+        ]
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",
@@ -164,7 +178,6 @@ const googleStorageBucket = `{
                       "list",
                       "string"
                     ],
-                    "no_age": "bool",
                     "noncurrent_time_before": "string",
                     "num_newer_versions": "number",
                     "send_age_if_zero": "bool",

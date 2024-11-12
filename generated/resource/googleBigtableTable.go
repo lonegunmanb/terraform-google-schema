@@ -91,6 +91,12 @@ const googleBigtableTable = `{
               "description_kind": "plain",
               "required": true,
               "type": "string"
+            },
+            "type": {
+              "description": "The type of the column family.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
             }
           },
           "description": "A group of columns within a table which share a common configuration. This can be specified multiple times.",

@@ -21,6 +21,12 @@ const googleNetappVolume = `{
         "required": true,
         "type": "string"
       },
+      "cold_tier_size_gib": {
+        "computed": true,
+        "description": "Output only. Size of the volume cold tier data in GiB.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "create_time": {
         "computed": true,
         "description": "Create time of the volume. A timestamp in RFC3339 UTC \"Zulu\" format. Examples: \"2023-06-22T09:13:01.617Z\".",
@@ -28,7 +34,7 @@ const googleNetappVolume = `{
         "type": "string"
       },
       "deletion_policy": {
-        "description": "Policy to determine if the volume should be deleted forcefully.\nVolumes may have nested snapshot resources. Deleting such a volume will fail.\nSetting this parameter to FORCE will delete volumes including nested snapshots.",
+        "description": "Policy to determine if the volume should be deleted forcefully.\nVolumes may have nested snapshot resources. Deleting such a volume will fail.\nSetting this parameter to FORCE will delete volumes including nested snapshots.\nPossible values: DEFAULT, FORCE.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -87,6 +93,12 @@ const googleNetappVolume = `{
           "string"
         ]
       },
+      "large_capacity": {
+        "description": "Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "ldap_enabled": {
         "computed": true,
         "description": "Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.",
@@ -115,6 +127,12 @@ const googleNetappVolume = `{
             }
           ]
         ]
+      },
+      "multiple_endpoints": {
+        "description": "Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.\nOnly the volume with largeCapacity will be allowed to have multiple endpoints.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
       },
       "name": {
         "description": "The name of the volume. Needs to be unique per location.",
@@ -146,6 +164,12 @@ const googleNetappVolume = `{
       "psa_range": {
         "computed": true,
         "description": "Name of the Private Service Access allocated range. Inherited from storage pool.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "replica_zone": {
+        "computed": true,
+        "description": "Specifies the replica zone for regional volume.",
         "description_kind": "plain",
         "type": "string"
       },
@@ -230,6 +254,12 @@ const googleNetappVolume = `{
       "used_gib": {
         "computed": true,
         "description": "Used capacity of the volume (in GiB). This is computed periodically and it does not represent the realtime usage.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "zone": {
+        "computed": true,
+        "description": "Specifies the active zone for regional volume.",
         "description_kind": "plain",
         "type": "string"
       }
@@ -505,6 +535,28 @@ const googleNetappVolume = `{
             }
           },
           "description": "Snapshot policy defines the schedule for automatic snapshot creation.\nTo disable automatic snapshot creation you have to remove the whole snapshot_policy block.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "tiering_policy": {
+        "block": {
+          "attributes": {
+            "cooling_threshold_days": {
+              "description": "Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 7-183.\nDefault is 31.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "number"
+            },
+            "tier_action": {
+              "description": "Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED. Default value: \"PAUSED\" Possible values: [\"ENABLED\", \"PAUSED\"]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description": "Tiering policy for the volume.",
           "description_kind": "plain"
         },
         "max_items": 1,

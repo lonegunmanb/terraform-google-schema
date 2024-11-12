@@ -180,7 +180,7 @@ const googleComputeRegionDisk = `{
               "type": "string"
             }
           },
-          "description": "A nested object resource",
+          "description": "A nested object resource.",
           "description_kind": "plain"
         },
         "max_items": 1,

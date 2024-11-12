@@ -313,6 +313,126 @@ const googleComputeSecurityPolicy = `{
               "min_items": 1,
               "nesting_mode": "list"
             },
+            "preconfigured_waf_config": {
+              "block": {
+                "block_types": {
+                  "exclusion": {
+                    "block": {
+                      "attributes": {
+                        "target_rule_ids": {
+                          "description": "A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "set",
+                            "string"
+                          ]
+                        },
+                        "target_rule_set": {
+                          "description": "Target WAF rule set to apply the preconfigured WAF exclusion.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "block_types": {
+                        "request_cookie": {
+                          "block": {
+                            "attributes": {
+                              "operator": {
+                                "description": "You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              },
+                              "value": {
+                                "description": "A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.",
+                            "description_kind": "plain"
+                          },
+                          "nesting_mode": "list"
+                        },
+                        "request_header": {
+                          "block": {
+                            "attributes": {
+                              "operator": {
+                                "description": "You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              },
+                              "value": {
+                                "description": "A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "Request header whose value will be excluded from inspection during preconfigured WAF evaluation.",
+                            "description_kind": "plain"
+                          },
+                          "nesting_mode": "list"
+                        },
+                        "request_query_param": {
+                          "block": {
+                            "attributes": {
+                              "operator": {
+                                "description": "You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              },
+                              "value": {
+                                "description": "A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.  Note that the parameter can be in the query string or in the POST body.",
+                            "description_kind": "plain"
+                          },
+                          "nesting_mode": "list"
+                        },
+                        "request_uri": {
+                          "block": {
+                            "attributes": {
+                              "operator": {
+                                "description": "You can specify an exact match or a partial match by using a field operator and a field value. Available options: EQUALS: The operator matches if the field value equals the specified value. STARTS_WITH: The operator matches if the field value starts with the specified value. ENDS_WITH: The operator matches if the field value ends with the specified value. CONTAINS: The operator matches if the field value contains the specified value. EQUALS_ANY: The operator matches if the field value is any value.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              },
+                              "value": {
+                                "description": "A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation. The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.",
+                            "description_kind": "plain"
+                          },
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "An exclusion to apply during preconfigured WAF evaluation.",
+                      "description_kind": "plain"
+                    },
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "rate_limit_options": {
               "block": {
                 "attributes": {

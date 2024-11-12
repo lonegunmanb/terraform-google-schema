@@ -9,6 +9,63 @@ import (
 const googleVmwareengineCluster = `{
   "block": {
     "attributes": {
+      "autoscaling_settings": {
+        "computed": true,
+        "description": "Configuration of the autoscaling applied to this cluster",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "autoscaling_policies": [
+                "set",
+                [
+                  "object",
+                  {
+                    "autoscale_policy_id": "string",
+                    "consumed_memory_thresholds": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "scale_in": "number",
+                          "scale_out": "number"
+                        }
+                      ]
+                    ],
+                    "cpu_thresholds": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "scale_in": "number",
+                          "scale_out": "number"
+                        }
+                      ]
+                    ],
+                    "node_type_id": "string",
+                    "scale_out_size": "number",
+                    "storage_thresholds": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "scale_in": "number",
+                          "scale_out": "number"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              ],
+              "cool_down_period": "string",
+              "max_cluster_node_count": "number",
+              "min_cluster_node_count": "number"
+            }
+          ]
+        ]
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",

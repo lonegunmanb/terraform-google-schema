@@ -16,7 +16,7 @@ const googleComputeRegionNetworkFirewallPolicyAssociation = `{
         "type": "string"
       },
       "firewall_policy": {
-        "description": "The firewall policy ID of the association.",
+        "description": "The firewall policy of the resource.",
         "description_kind": "plain",
         "required": true,
         "type": "string"
@@ -35,7 +35,6 @@ const googleComputeRegionNetworkFirewallPolicyAssociation = `{
       },
       "project": {
         "computed": true,
-        "description": "The project for the resource",
         "description_kind": "plain",
         "optional": true,
         "type": "string"

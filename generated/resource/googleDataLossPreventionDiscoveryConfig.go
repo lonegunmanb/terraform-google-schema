@@ -224,6 +224,74 @@ const googleDataLossPreventionDiscoveryConfig = `{
               },
               "max_items": 1,
               "nesting_mode": "list"
+            },
+            "tag_resources": {
+              "block": {
+                "attributes": {
+                  "lower_data_risk_to_low": {
+                    "description": "Whether applying a tag to a resource should lower the risk of the profile for that resource. For example, in conjunction with an [IAM deny policy](https://cloud.google.com/iam/docs/deny-overview), you can deny all principals a permission if a tag value is present, mitigating the risk of the resource. This also lowers the data risk of resources at the lower levels of the resource hierarchy. For example, reducing the data risk of a table data profile also reduces the data risk of the constituent column data profiles.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  },
+                  "profile_generations_to_tag": {
+                    "description": "The profile generations for which the tag should be attached to resources. If you attach a tag to only new profiles, then if the sensitivity score of a profile subsequently changes, its tag doesn't change. By default, this field includes only new profiles. To include both new and updated profiles for tagging, this field should explicitly include both 'PROFILE_GENERATION_NEW' and 'PROFILE_GENERATION_UPDATE'. Possible values: [\"PROFILE_GENERATION_NEW\", \"PROFILE_GENERATION_UPDATE\"]",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": [
+                      "list",
+                      "string"
+                    ]
+                  }
+                },
+                "block_types": {
+                  "tag_conditions": {
+                    "block": {
+                      "block_types": {
+                        "sensitivity_score": {
+                          "block": {
+                            "attributes": {
+                              "score": {
+                                "description": "The sensitivity score applied to the resource. Possible values: [\"SENSITIVITY_LOW\", \"SENSITIVITY_MODERATE\", \"SENSITIVITY_HIGH\"]",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "Conditions attaching the tag to a resource on its profile having this sensitivity score.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
+                        "tag": {
+                          "block": {
+                            "attributes": {
+                              "namespaced_value": {
+                                "description": "The namespaced name for the tag value to attach to resources. Must be in the format '{parent_id}/{tag_key_short_name}/{short_name}', for example, \"123456/environment/prod\".",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "The tag value to attach to resources.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "The tags to associate with different conditions.",
+                      "description_kind": "plain"
+                    },
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "Publish a message into the Pub/Sub topic.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
             }
           },
           "description": "Actions to execute at the completion of scanning",
@@ -265,7 +333,7 @@ const googleDataLossPreventionDiscoveryConfig = `{
               "nesting_mode": "list"
             }
           },
-          "description": "A nested object resource",
+          "description": "A nested object resource.",
           "description_kind": "plain"
         },
         "max_items": 1,
@@ -280,6 +348,22 @@ const googleDataLossPreventionDiscoveryConfig = `{
                   "cadence": {
                     "block": {
                       "block_types": {
+                        "inspect_template_modified_cadence": {
+                          "block": {
+                            "attributes": {
+                              "frequency": {
+                                "description": "How frequently data profiles can be updated when the template is modified. Defaults to never. Possible values: [\"UPDATE_FREQUENCY_NEVER\", \"UPDATE_FREQUENCY_DAILY\", \"UPDATE_FREQUENCY_MONTHLY\"]",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "Governs when to update data profiles when the inspection rules defined by the 'InspectTemplate' change. If not set, changing the template will not cause a data profile to update.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
                         "schema_modified_cadence": {
                           "block": {
                             "attributes": {
@@ -660,6 +744,22 @@ const googleDataLossPreventionDiscoveryConfig = `{
                         }
                       },
                       "block_types": {
+                        "inspect_template_modified_cadence": {
+                          "block": {
+                            "attributes": {
+                              "frequency": {
+                                "description": "How frequently data profiles can be updated when the template is modified. Defaults to never. Possible values: [\"UPDATE_FREQUENCY_NEVER\", \"UPDATE_FREQUENCY_DAILY\", \"UPDATE_FREQUENCY_MONTHLY\"]",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "Governs when to update data profiles when the inspection rules defined by the 'InspectTemplate' change. If not set, changing the template will not cause a data profile to update.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
                         "schema_modified_cadence": {
                           "block": {
                             "attributes": {

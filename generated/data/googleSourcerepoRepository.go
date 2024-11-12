@@ -9,6 +9,12 @@ import (
 const googleSourcerepoRepository = `{
   "block": {
     "attributes": {
+      "create_ignore_already_exists": {
+        "computed": true,
+        "description": "If set to true, skip repository creation if a repository with the same name already exists.",
+        "description_kind": "plain",
+        "type": "bool"
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",

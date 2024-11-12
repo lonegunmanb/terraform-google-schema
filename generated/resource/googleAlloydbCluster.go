@@ -84,7 +84,7 @@ const googleAlloydbCluster = `{
         "type": "string"
       },
       "deletion_policy": {
-        "description": "Policy to determine if the cluster should be deleted forcefully.\nDeleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.\nDeleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = \"FORCE\" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.",
+        "description": "Policy to determine if the cluster should be deleted forcefully.\nDeleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.\nDeleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = \"FORCE\" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.\nPossible values: DEFAULT, FORCE",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -180,14 +180,6 @@ const googleAlloydbCluster = `{
         "description_kind": "plain",
         "type": "string"
       },
-      "network": {
-        "computed": true,
-        "deprecated": true,
-        "description": "The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:\n\n\"projects/{projectNumber}/global/networks/{network_id}\".",
-        "description_kind": "plain",
-        "optional": true,
-        "type": "string"
-      },
       "project": {
         "computed": true,
         "description_kind": "plain",
@@ -206,6 +198,13 @@ const googleAlloydbCluster = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "subscription_type": {
+        "computed": true,
+        "description": "The subscrition type of cluster. Possible values: [\"TRIAL\", \"STANDARD\"]",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "terraform_labels": {
         "computed": true,
         "description": "The combination of labels configured directly on the resource\n and default labels configured on the provider.",
@@ -213,6 +212,23 @@ const googleAlloydbCluster = `{
         "type": [
           "map",
           "string"
+        ]
+      },
+      "trial_metadata": {
+        "computed": true,
+        "description": "Contains information and all metadata related to TRIAL clusters.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "end_time": "string",
+              "grace_end_time": "string",
+              "start_time": "string",
+              "upgrade_time": "string"
+            }
+          ]
         ]
       },
       "uid": {

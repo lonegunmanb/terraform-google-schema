@@ -15,6 +15,12 @@ const googleComputeInstanceTemplate = `{
         "optional": true,
         "type": "bool"
       },
+      "creation_timestamp": {
+        "computed": true,
+        "description": "Creation timestamp in RFC3339 text format.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "description": {
         "description": "A brief description of this resource.",
         "description_kind": "plain",
@@ -38,6 +44,12 @@ const googleComputeInstanceTemplate = `{
       },
       "instance_description": {
         "description": "A description of the instance.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
+      "key_revocation_action_type": {
+        "description": "Action to be taken when a customer's encryption key is revoked. Supports \"STOP\" and \"NONE\", with \"NONE\" being the default.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -93,7 +105,7 @@ const googleComputeInstanceTemplate = `{
       },
       "name_prefix": {
         "computed": true,
-        "description": "Creates a unique name beginning with the specified prefix. Conflicts with name.",
+        "description": "Creates a unique name beginning with the specified prefix. Conflicts with name. Max length is 54 characters. Prefixes with lengths longer than 37 characters will use a shortened UUID that will be more prone to collisions.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -183,6 +195,12 @@ const googleComputeInstanceTemplate = `{
               "optional": true,
               "type": "number"
             },
+            "turbo_mode": {
+              "description": "Turbo frequency mode to use for the instance. Currently supported modes is \"ALL_CORE_MAX\".",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "visible_core_count": {
               "description": "The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\\'s nominal CPU count and the underlying platform\\'s SMT width.",
               "description_kind": "plain",
@@ -200,7 +218,7 @@ const googleComputeInstanceTemplate = `{
         "block": {
           "attributes": {
             "confidential_instance_type": {
-              "description": "\n\t\t\t\t\t\t\t\tThe confidential computing technology the instance uses.\n\t\t\t\t\t\t\t\tSEV is an AMD feature. TDX is an Intel feature. One of the following\n\t\t\t\t\t\t\t\tvalues is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =\n\t\t\t\t\t\t\t\t\"AMD Milan\" is currently required. TDX is only available in beta.",
+              "description": "\n\t\t\t\t\t\t\t\tThe confidential computing technology the instance uses.\n\t\t\t\t\t\t\t\tSEV is an AMD feature. TDX is an Intel feature. One of the following\n\t\t\t\t\t\t\t\tvalues is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =\n\t\t\t\t\t\t\t\t\"AMD Milan\" is currently required.",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
@@ -286,7 +304,14 @@ const googleComputeInstanceTemplate = `{
             },
             "provisioned_iops": {
               "computed": true,
-              "description": "Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).",
+              "description": "Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. For more details, see the [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk) or the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks) depending on the selected disk_type.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "number"
+            },
+            "provisioned_throughput": {
+              "computed": true,
+              "description": "Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).",
               "description_kind": "plain",
               "optional": true,
               "type": "number"

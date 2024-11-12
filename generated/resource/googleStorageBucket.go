@@ -232,6 +232,22 @@ const googleStorageBucket = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "hierarchical_namespace": {
+        "block": {
+          "attributes": {
+            "enabled": {
+              "description": "Set this field true to organize bucket with logical file system structure.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "bool"
+            }
+          },
+          "description": "The bucket's HNS configuration, which defines bucket can organize folders in logical file system structure.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "lifecycle_rule": {
         "block": {
           "block_types": {
@@ -317,13 +333,6 @@ const googleStorageBucket = `{
                       "list",
                       "string"
                     ]
-                  },
-                  "no_age": {
-                    "deprecated": true,
-                    "description": "While set true, age value will be omitted.Required to set true when age is unset in the config file.",
-                    "description_kind": "plain",
-                    "optional": true,
-                    "type": "bool"
                   },
                   "noncurrent_time_before": {
                     "description": "Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.",
@@ -514,7 +523,7 @@ const googleStorageBucket = `{
     },
     "description_kind": "plain"
   },
-  "version": 2
+  "version": 3
 }`
 
 func GoogleStorageBucketSchema() *tfjson.Schema {

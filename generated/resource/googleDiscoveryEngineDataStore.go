@@ -52,7 +52,7 @@ const googleDiscoveryEngineDataStore = `{
         "type": "string"
       },
       "industry_vertical": {
-        "description": "The industry vertical that the data store registers. Possible values: [\"GENERIC\", \"MEDIA\"]",
+        "description": "The industry vertical that the data store registers. Possible values: [\"GENERIC\", \"MEDIA\", \"HEALTHCARE_FHIR\"]",
         "description_kind": "plain",
         "required": true,
         "type": "string"
@@ -82,7 +82,7 @@ const googleDiscoveryEngineDataStore = `{
         "type": "bool"
       },
       "solution_types": {
-        "description": "The solutions that the data store enrolls. Possible values: [\"SOLUTION_TYPE_RECOMMENDATION\", \"SOLUTION_TYPE_SEARCH\", \"SOLUTION_TYPE_CHAT\"]",
+        "description": "The solutions that the data store enrolls. Possible values: [\"SOLUTION_TYPE_RECOMMENDATION\", \"SOLUTION_TYPE_SEARCH\", \"SOLUTION_TYPE_CHAT\", \"SOLUTION_TYPE_GENERATIVE_CHAT\"]",
         "description_kind": "plain",
         "optional": true,
         "type": [
@@ -103,12 +103,52 @@ const googleDiscoveryEngineDataStore = `{
             }
           },
           "block_types": {
+            "chunking_config": {
+              "block": {
+                "block_types": {
+                  "layout_based_chunking_config": {
+                    "block": {
+                      "attributes": {
+                        "chunk_size": {
+                          "description": "The token size limit for each chunk.\nSupported values: 100-500 (inclusive). Default value: 500.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "include_ancestor_headings": {
+                          "description": "Whether to include appending different levels of headings to chunks from the middle of the document to prevent context loss.\nDefault value: False.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "bool"
+                        }
+                      },
+                      "description": "Configuration for the layout based chunking.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "Whether chunking mode is enabled.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "default_parsing_config": {
               "block": {
                 "block_types": {
                   "digital_parsing_config": {
                     "block": {
                       "description": "Configurations applied to digital parser.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "layout_parsing_config": {
+                    "block": {
+                      "description": "Configurations applied to layout parser.",
                       "description_kind": "plain"
                     },
                     "max_items": 1,
@@ -150,6 +190,14 @@ const googleDiscoveryEngineDataStore = `{
                   "digital_parsing_config": {
                     "block": {
                       "description": "Configurations applied to digital parser.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "layout_parsing_config": {
+                    "block": {
+                      "description": "Configurations applied to layout parser.",
                       "description_kind": "plain"
                     },
                     "max_items": 1,

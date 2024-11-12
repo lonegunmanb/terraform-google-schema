@@ -17,6 +17,7 @@ const googleComputeRouterNat = `{
         "type": "string"
       },
       "drain_nat_ips": {
+        "computed": true,
         "description": "A list of URLs of the IP resources to be drained. These IPs must be\nvalid static external IPs that have been assigned to the NAT.",
         "description_kind": "plain",
         "optional": true,
@@ -61,6 +62,15 @@ const googleComputeRouterNat = `{
         "optional": true,
         "type": "string"
       },
+      "initial_nat_ips": {
+        "description": "Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.\nConflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": [
+          "set",
+          "string"
+        ]
+      },
       "max_ports_per_vm": {
         "description": "Maximum number of ports allocated to a VM from this NAT.\nThis field can only be set when enableDynamicPortAllocation is enabled.",
         "description_kind": "plain",
@@ -87,7 +97,8 @@ const googleComputeRouterNat = `{
         "type": "string"
       },
       "nat_ips": {
-        "description": "Self-links of NAT IPs. Only valid if natIpAllocateOption\nis set to MANUAL_ONLY.",
+        "computed": true,
+        "description": "Self-links of NAT IPs. Only valid if natIpAllocateOption\nis set to MANUAL_ONLY.\nIf this field is used alongside with a count created list of address resources 'google_compute_address.foobar.*.self_link',\nthe access level resource for the address resource must have a 'lifecycle' block with 'create_before_destroy = true' so\nthe number of resources can be increased/decreased without triggering the 'resourceInUseByAnotherResource' error.",
         "description_kind": "plain",
         "optional": true,
         "type": [

@@ -104,7 +104,7 @@ const googleNetworkConnectivityInternalRange = `{
         ]
       },
       "usage": {
-        "description": "The type of usage set for this InternalRange. Possible values: [\"FOR_VPC\", \"EXTERNAL_TO_VPC\"]",
+        "description": "The type of usage set for this InternalRange. Possible values: [\"FOR_VPC\", \"EXTERNAL_TO_VPC\", \"FOR_MIGRATION\"]",
         "description_kind": "plain",
         "required": true,
         "type": "string"
@@ -120,6 +120,28 @@ const googleNetworkConnectivityInternalRange = `{
       }
     },
     "block_types": {
+      "migration": {
+        "block": {
+          "attributes": {
+            "source": {
+              "description": "Resource path as an URI of the source resource, for example a subnet.\nThe project for the source resource should match the project for the\nInternalRange.\nAn example /projects/{project}/regions/{region}/subnetworks/{subnet}",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            },
+            "target": {
+              "description": "Resource path of the target resource. The target project can be\ndifferent, as in the cases when migrating to peer networks. The resource\nmay not exist yet.\nFor example /projects/{project}/regions/{region}/subnetworks/{subnet}",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "Specification for migration with source and target resource names.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {

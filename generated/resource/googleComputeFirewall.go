@@ -138,7 +138,7 @@ const googleComputeFirewall = `{
         "block": {
           "attributes": {
             "ports": {
-              "description": "An optional list of ports to which this rule applies. This field\nis only applicable for UDP or TCP protocol. Each entry must be\neither an integer or a range. If not specified, this rule\napplies to connections through any port.\n\nExample inputs include: [\"22\"], [\"80\",\"443\"], and\n[\"12345-12349\"].",
+              "description": "An optional list of ports to which this rule applies. This field\nis only applicable for UDP or TCP protocol. Each entry must be\neither an integer or a range. If not specified, this rule\napplies to connections through any port.\n\nExample inputs include: [22], [80, 443], and\n[\"12345-12349\"].",
               "description_kind": "plain",
               "optional": true,
               "type": [
@@ -162,7 +162,7 @@ const googleComputeFirewall = `{
         "block": {
           "attributes": {
             "ports": {
-              "description": "An optional list of ports to which this rule applies. This field\nis only applicable for UDP or TCP protocol. Each entry must be\neither an integer or a range. If not specified, this rule\napplies to connections through any port.\n\nExample inputs include: [\"22\"], [\"80\",\"443\"], and\n[\"12345-12349\"].",
+              "description": "An optional list of ports to which this rule applies. This field\nis only applicable for UDP or TCP protocol. Each entry must be\neither an integer or a range. If not specified, this rule\napplies to connections through any port.\n\nExample inputs include: [22], [80, 443], and\n[\"12345-12349\"].",
               "description_kind": "plain",
               "optional": true,
               "type": [

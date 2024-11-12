@@ -104,6 +104,84 @@ const googlePubsubTopic = `{
               },
               "max_items": 1,
               "nesting_mode": "list"
+            },
+            "cloud_storage": {
+              "block": {
+                "attributes": {
+                  "bucket": {
+                    "description": "Cloud Storage bucket. The bucket name must be without any\nprefix like \"gs://\". See the bucket naming requirements:\nhttps://cloud.google.com/storage/docs/buckets#naming.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "match_glob": {
+                    "description": "Glob pattern used to match objects that will be ingested. If unset, all\nobjects will be ingested. See the supported patterns:\nhttps://cloud.google.com/storage/docs/json_api/v1/objects/list#list-objects-and-prefixes-using-glob",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "minimum_object_create_time": {
+                    "description": "The timestamp set in RFC3339 text format. If set, only objects with a\nlarger or equal timestamp will be ingested. Unset by default, meaning\nall objects will be ingested.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "block_types": {
+                  "avro_format": {
+                    "block": {
+                      "description": "Configuration for reading Cloud Storage data in Avro binary format. The\nbytes of each object will be set to the 'data' field of a Pub/Sub message.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "pubsub_avro_format": {
+                    "block": {
+                      "description": "Configuration for reading Cloud Storage data written via Cloud Storage\nsubscriptions(See https://cloud.google.com/pubsub/docs/cloudstorage). The\ndata and attributes fields of the originally exported Pub/Sub message\nwill be restored when publishing.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "text_format": {
+                    "block": {
+                      "attributes": {
+                        "delimiter": {
+                          "description": "The delimiter to use when using the 'text' format. Each line of text as\nspecified by the delimiter will be set to the 'data' field of a Pub/Sub\nmessage. When unset, '\\n' is used.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Configuration for reading Cloud Storage data in text format. Each line of\ntext as specified by the delimiter will be set to the 'data' field of a\nPub/Sub message.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "Settings for ingestion from Cloud Storage.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "platform_logs_settings": {
+              "block": {
+                "attributes": {
+                  "severity": {
+                    "description": "The minimum severity level of Platform Logs that will be written. If unspecified,\nno Platform Logs will be written. Default value: \"SEVERITY_UNSPECIFIED\" Possible values: [\"SEVERITY_UNSPECIFIED\", \"DISABLED\", \"DEBUG\", \"INFO\", \"WARNING\", \"ERROR\"]",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,\nno Platform Logs will be generated.'",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
             }
           },
           "description": "Settings for ingestion from a data source into this topic.",

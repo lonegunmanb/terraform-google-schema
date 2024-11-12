@@ -21,11 +21,23 @@ const googleLookerInstance = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "deletion_policy": {
+        "description": "Policy to determine if the cluster should be deleted forcefully.\nIf setting deletion_policy = \"FORCE\", the Looker instance will be deleted regardless\nof its nested resources. If set to \"DEFAULT\", Looker instances that still have\nnested resources will return an error. Possible values: DEFAULT, FORCE",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "egress_public_ip": {
         "computed": true,
         "description": "Public Egress IP (IPv4).",
         "description_kind": "plain",
         "type": "string"
+      },
+      "fips_enabled": {
+        "description": "FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
       },
       "id": {
         "computed": true,
@@ -80,6 +92,12 @@ const googleLookerInstance = `{
         "description_kind": "plain",
         "optional": true,
         "type": "string"
+      },
+      "psc_enabled": {
+        "description": "Whether Public Service Connect (PSC) is enabled on the Looker instance",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
       },
       "public_ip_enabled": {
         "description": "Whether public IP is enabled on the Looker instance.",
@@ -350,6 +368,61 @@ const googleLookerInstance = `{
             }
           },
           "description": "Looker Instance OAuth login settings.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "min_items": 1,
+        "nesting_mode": "list"
+      },
+      "psc_config": {
+        "block": {
+          "attributes": {
+            "allowed_vpcs": {
+              "description": "List of VPCs that are allowed ingress into the Looker instance.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
+            },
+            "looker_service_attachment_uri": {
+              "computed": true,
+              "description": "URI of the Looker service attachment.",
+              "description_kind": "plain",
+              "type": "string"
+            }
+          },
+          "block_types": {
+            "service_attachments": {
+              "block": {
+                "attributes": {
+                  "connection_status": {
+                    "computed": true,
+                    "description": "Status of the service attachment connection.",
+                    "description_kind": "plain",
+                    "type": "string"
+                  },
+                  "local_fqdn": {
+                    "description": "Fully qualified domain name that will be used in the private DNS record created for the service attachment.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "target_service_attachment_uri": {
+                    "description": "URI of the service attachment to connect to.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "List of egress service attachment configurations.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Information for Private Service Connect (PSC) setup for a Looker instance.",
           "description_kind": "plain"
         },
         "max_items": 1,

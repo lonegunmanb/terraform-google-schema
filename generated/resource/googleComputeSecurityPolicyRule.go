@@ -53,6 +53,37 @@ const googleComputeSecurityPolicyRule = `{
       }
     },
     "block_types": {
+      "header_action": {
+        "block": {
+          "block_types": {
+            "request_headers_to_adds": {
+              "block": {
+                "attributes": {
+                  "header_name": {
+                    "description": "The name of the header to set.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "header_value": {
+                    "description": "The value to set the named header to.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "The list of request headers to add or overwrite if they're already present.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "match": {
         "block": {
           "attributes": {
@@ -389,6 +420,28 @@ const googleComputeSecurityPolicyRule = `{
             }
           },
           "description": "Must be specified if the action is \"rate_based_ban\" or \"throttle\". Cannot be specified for any other actions.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "redirect_options": {
+        "block": {
+          "attributes": {
+            "target": {
+              "description": "Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "type": {
+              "description": "Type of the redirect action.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description": "Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.",
           "description_kind": "plain"
         },
         "max_items": 1,

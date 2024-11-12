@@ -78,6 +78,12 @@ const googleCloudRunV2Service = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "deletion_protection": {
+        "description": "Whether Terraform will be prevented from destroying the service. Defaults to true.\nWhen a'terraform destroy' or 'terraform apply' would delete the service,\nthe command will fail if this field is not set to false in Terraform state.\nWhen the field is set to true or unset in Terraform state, a 'terraform apply'\nor 'terraform destroy' that would delete the service will fail.\nWhen the field is set to false, deleting the service is allowed.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "description": {
         "description": "User-provided description of the Service. This field currently has a 512-character limit.",
         "description_kind": "plain",
@@ -132,6 +138,12 @@ const googleCloudRunV2Service = `{
         "description_kind": "plain",
         "optional": true,
         "type": "string"
+      },
+      "invoker_iam_disabled": {
+        "description": "Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
       },
       "labels": {
         "description": "Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,\nenvironment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.\n\nCloud Run API v2 does not support labels with  'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.\nAll system labels in v1 now have a corresponding field in v2 Service.\n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
@@ -288,6 +300,22 @@ const googleCloudRunV2Service = `{
             }
           },
           "description": "Settings for the Binary Authorization feature.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "scaling": {
+        "block": {
+          "attributes": {
+            "min_instance_count": {
+              "description": "Minimum number of instances for the service, to be divided among all revisions receiving traffic.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "number"
+            }
+          },
+          "description": "Scaling settings that apply to the whole service",
           "description_kind": "plain"
         },
         "max_items": 1,
@@ -464,7 +492,7 @@ const googleCloudRunV2Service = `{
                       "description": "List of environment variables to set in the container.",
                       "description_kind": "plain"
                     },
-                    "nesting_mode": "list"
+                    "nesting_mode": "set"
                   },
                   "liveness_probe": {
                     "block": {
@@ -621,7 +649,7 @@ const googleCloudRunV2Service = `{
                         },
                         "limits": {
                           "computed": true,
-                          "description": "Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go",
+                          "description": "Only memory, CPU, and nvidia.com/gpu are supported. Use key 'cpu' for CPU limit, 'memory' for memory limit, 'nvidia.com/gpu' for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go",
                           "description_kind": "plain",
                           "optional": true,
                           "type": [
@@ -843,6 +871,28 @@ const googleCloudRunV2Service = `{
                     "max_items": 1,
                     "nesting_mode": "list"
                   },
+                  "empty_dir": {
+                    "block": {
+                      "attributes": {
+                        "medium": {
+                          "description": "The different types of medium supported for EmptyDir. Default value: \"MEMORY\" Possible values: [\"MEMORY\"]",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "size_limit": {
+                          "description": "Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Ephemeral storage used as a shared volume.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
                   "gcs": {
                     "block": {
                       "attributes": {
@@ -859,7 +909,7 @@ const googleCloudRunV2Service = `{
                           "type": "bool"
                         }
                       },
-                      "description": "Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.",
+                      "description": "Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.",
                       "description_kind": "plain"
                     },
                     "max_items": 1,

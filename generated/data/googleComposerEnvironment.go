@@ -171,6 +171,15 @@ const googleComposerEnvironment = `{
                       "map",
                       "string"
                     ],
+                    "cloud_data_lineage_integration": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "enabled": "bool"
+                        }
+                      ]
+                    ],
                     "env_variables": [
                       "map",
                       "string"

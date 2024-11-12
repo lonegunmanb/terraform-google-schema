@@ -466,15 +466,15 @@ const googleDatabaseMigrationServiceConnectionProfile = `{
               "type": "string"
             },
             "host": {
-              "description": "Required. The IP or hostname of the source MySQL database.",
+              "description": "The IP or hostname of the source MySQL database.",
               "description_kind": "plain",
-              "required": true,
+              "optional": true,
               "type": "string"
             },
             "password": {
-              "description": "Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.\nThis field is not returned on request, and the value is encrypted when stored in Database Migration Service.",
+              "description": "Input only. The password for the user that Database Migration Service will be using to connect to the database.\nThis field is not returned on request, and the value is encrypted when stored in Database Migration Service.",
               "description_kind": "plain",
-              "required": true,
+              "optional": true,
               "sensitive": true,
               "type": "string"
             },
@@ -485,15 +485,15 @@ const googleDatabaseMigrationServiceConnectionProfile = `{
               "type": "bool"
             },
             "port": {
-              "description": "Required. The network port of the source MySQL database.",
+              "description": "The network port of the source MySQL database.",
               "description_kind": "plain",
-              "required": true,
+              "optional": true,
               "type": "number"
             },
             "username": {
-              "description": "Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.",
+              "description": "The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.",
               "description_kind": "plain",
-              "required": true,
+              "optional": true,
               "type": "string"
             }
           },
@@ -697,6 +697,12 @@ const googleDatabaseMigrationServiceConnectionProfile = `{
       "postgresql": {
         "block": {
           "attributes": {
+            "alloydb_cluster_id": {
+              "description": "If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "cloud_sql_id": {
               "description": "If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.",
               "description_kind": "plain",
@@ -704,9 +710,9 @@ const googleDatabaseMigrationServiceConnectionProfile = `{
               "type": "string"
             },
             "host": {
-              "description": "Required. The IP or hostname of the source MySQL database.",
+              "description": "The IP or hostname of the source MySQL database.",
               "description_kind": "plain",
-              "required": true,
+              "optional": true,
               "type": "string"
             },
             "network_architecture": {
@@ -716,9 +722,9 @@ const googleDatabaseMigrationServiceConnectionProfile = `{
               "type": "string"
             },
             "password": {
-              "description": "Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.\nThis field is not returned on request, and the value is encrypted when stored in Database Migration Service.",
+              "description": "Input only. The password for the user that Database Migration Service will be using to connect to the database.\nThis field is not returned on request, and the value is encrypted when stored in Database Migration Service.",
               "description_kind": "plain",
-              "required": true,
+              "optional": true,
               "sensitive": true,
               "type": "string"
             },
@@ -729,15 +735,15 @@ const googleDatabaseMigrationServiceConnectionProfile = `{
               "type": "bool"
             },
             "port": {
-              "description": "Required. The network port of the source MySQL database.",
+              "description": "The network port of the source MySQL database.",
               "description_kind": "plain",
-              "required": true,
+              "optional": true,
               "type": "number"
             },
             "username": {
-              "description": "Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.",
+              "description": "The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.",
               "description_kind": "plain",
-              "required": true,
+              "optional": true,
               "type": "string"
             }
           },

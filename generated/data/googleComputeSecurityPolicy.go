@@ -190,6 +190,67 @@ const googleComputeSecurityPolicy = `{
                   }
                 ]
               ],
+              "preconfigured_waf_config": [
+                "list",
+                [
+                  "object",
+                  {
+                    "exclusion": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "request_cookie": [
+                            "list",
+                            [
+                              "object",
+                              {
+                                "operator": "string",
+                                "value": "string"
+                              }
+                            ]
+                          ],
+                          "request_header": [
+                            "list",
+                            [
+                              "object",
+                              {
+                                "operator": "string",
+                                "value": "string"
+                              }
+                            ]
+                          ],
+                          "request_query_param": [
+                            "list",
+                            [
+                              "object",
+                              {
+                                "operator": "string",
+                                "value": "string"
+                              }
+                            ]
+                          ],
+                          "request_uri": [
+                            "list",
+                            [
+                              "object",
+                              {
+                                "operator": "string",
+                                "value": "string"
+                              }
+                            ]
+                          ],
+                          "target_rule_ids": [
+                            "set",
+                            "string"
+                          ],
+                          "target_rule_set": "string"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              ],
               "preview": "bool",
               "priority": "number",
               "rate_limit_options": [

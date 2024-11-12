@@ -15,6 +15,18 @@ const googleFilestoreInstance = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "deletion_protection_enabled": {
+        "description": "Indicates whether the instance is protected against deletion.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
+      "deletion_protection_reason": {
+        "description": "The reason for enabling deletion protection.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "description": {
         "description": "A description of the instance.",
         "description_kind": "plain",
@@ -72,6 +84,12 @@ const googleFilestoreInstance = `{
       },
       "project": {
         "computed": true,
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
+      "protocol": {
+        "description": "Either NFSv3, for using NFS version 3 as file sharing protocol,\nor NFSv4.1, for using NFS version 4.1 as file sharing protocol.\nNFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.\nThe default is NFSv3. Default value: \"NFS_V3\" Possible values: [\"NFS_V3\", \"NFS_V4_1\"]",
         "description_kind": "plain",
         "optional": true,
         "type": "string"

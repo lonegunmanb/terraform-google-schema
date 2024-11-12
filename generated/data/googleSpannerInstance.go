@@ -18,6 +18,41 @@ const googleSpannerInstance = `{
           [
             "object",
             {
+              "asymmetric_autoscaling_options": [
+                "list",
+                [
+                  "object",
+                  {
+                    "overrides": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "autoscaling_limits": [
+                            "list",
+                            [
+                              "object",
+                              {
+                                "max_nodes": "number",
+                                "min_nodes": "number"
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    ],
+                    "replica_selection": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "location": "string"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              ],
               "autoscaling_limits": [
                 "list",
                 [
@@ -60,6 +95,12 @@ const googleSpannerInstance = `{
         "description": "The descriptive name for this instance as it appears in UIs. Must be\nunique per project and between 4 and 30 characters in length.",
         "description_kind": "plain",
         "optional": true,
+        "type": "string"
+      },
+      "edition": {
+        "computed": true,
+        "description": "The edition selected for this instance. Different editions provide different capabilities at different price points. Possible values: [\"EDITION_UNSPECIFIED\", \"STANDARD\", \"ENTERPRISE\", \"ENTERPRISE_PLUS\"]",
+        "description_kind": "plain",
         "type": "string"
       },
       "effective_labels": {

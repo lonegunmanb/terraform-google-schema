@@ -30,6 +30,11 @@ const googleSecretManagerSecretVersion = `{
         "optional": true,
         "type": "string"
       },
+      "is_secret_data_base64": {
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "name": {
         "computed": true,
         "description_kind": "plain",

@@ -59,7 +59,7 @@ const googlePubsubSubscription = `{
         ]
       },
       "message_retention_duration": {
-        "description": "How long to retain unacknowledged messages in the subscription's\nbacklog, from the moment a message is published. If\nretain_acked_messages is true, then this also configures the retention\nof acknowledged messages, and thus configures how far back in time a\nsubscriptions.seek can be done. Defaults to 7 days. Cannot be more\nthan 7 days ('\"604800s\"') or less than 10 minutes ('\"600s\"').\n\nA duration in seconds with up to nine fractional digits, terminated\nby 's'. Example: '\"600.5s\"'.",
+        "description": "How long to retain unacknowledged messages in the subscription's\nbacklog, from the moment a message is published. If\nretain_acked_messages is true, then this also configures the retention\nof acknowledged messages, and thus configures how far back in time a\nsubscriptions.seek can be done. Defaults to 7 days. Cannot be more\nthan 31 days ('\"2678400s\"') or less than 10 minutes ('\"600s\"').\n\nA duration in seconds with up to nine fractional digits, terminated\nby 's'. Example: '\"600.5s\"'.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -184,6 +184,12 @@ const googlePubsubSubscription = `{
               "optional": true,
               "type": "string"
             },
+            "max_messages": {
+              "description": "The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "number"
+            },
             "service_account_email": {
               "description": "The service account to use to write to Cloud Storage. If not specified, the Pub/Sub\n[service agent](https://cloud.google.com/iam/docs/service-agents),\nservice-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.",
               "description_kind": "plain",
@@ -201,6 +207,12 @@ const googlePubsubSubscription = `{
             "avro_config": {
               "block": {
                 "attributes": {
+                  "use_topic_schema": {
+                    "description": "When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  },
                   "write_metadata": {
                     "description": "When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.",
                     "description_kind": "plain",

@@ -135,6 +135,16 @@ const googleSqlDatabaseInstance = `{
         "optional": true,
         "type": "string"
       },
+      "replica_names": {
+        "computed": true,
+        "description": "The replicas of the instance.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": [
+          "list",
+          "string"
+        ]
+      },
       "root_password": {
         "description": "Initial root password. Required for MS SQL Server.",
         "description_kind": "plain",
@@ -225,6 +235,12 @@ const googleSqlDatabaseInstance = `{
               "description_kind": "plain",
               "optional": true,
               "type": "string"
+            },
+            "cascadable_replica": {
+              "description": "Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
             },
             "client_certificate": {
               "description": "PEM representation of the replica's x509 certificate.",
@@ -381,6 +397,7 @@ const googleSqlDatabaseInstance = `{
               "type": "string"
             },
             "edition": {
+              "computed": true,
               "description": "The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.",
               "description_kind": "plain",
               "optional": true,
@@ -665,13 +682,6 @@ const googleSqlDatabaseInstance = `{
                     "optional": true,
                     "type": "string"
                   },
-                  "require_ssl": {
-                    "deprecated": true,
-                    "description": "Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in ssl_mode if it has been set too.",
-                    "description_kind": "plain",
-                    "optional": true,
-                    "type": "bool"
-                  },
                   "server_ca_mode": {
                     "computed": true,
                     "description": "Specify how the server certificate's Certificate Authority is hosted.",
@@ -681,7 +691,7 @@ const googleSqlDatabaseInstance = `{
                   },
                   "ssl_mode": {
                     "computed": true,
-                    "description": "Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcement options compared to require_ssl. To change this field, also set the correspoding value in require_ssl until next major release.",
+                    "description": "Specify how SSL connection should be enforced in DB connections.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"

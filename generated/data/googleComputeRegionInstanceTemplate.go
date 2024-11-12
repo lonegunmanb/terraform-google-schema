@@ -20,6 +20,7 @@ const googleComputeRegionInstanceTemplate = `{
             {
               "enable_nested_virtualization": "bool",
               "threads_per_core": "number",
+              "turbo_mode": "string",
               "visible_core_count": "number"
             }
           ]
@@ -45,6 +46,12 @@ const googleComputeRegionInstanceTemplate = `{
             }
           ]
         ]
+      },
+      "creation_timestamp": {
+        "computed": true,
+        "description": "The time at which the instance was created in RFC 3339 format.",
+        "description_kind": "plain",
+        "type": "string"
       },
       "description": {
         "computed": true,
@@ -83,6 +90,7 @@ const googleComputeRegionInstanceTemplate = `{
               ],
               "mode": "string",
               "provisioned_iops": "number",
+              "provisioned_throughput": "number",
               "resource_manager_tags": [
                 "map",
                 "string"
@@ -157,6 +165,12 @@ const googleComputeRegionInstanceTemplate = `{
       "instance_description": {
         "computed": true,
         "description": "A description of the instance.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "key_revocation_action_type": {
+        "computed": true,
+        "description": "Action to be taken when a customer's encryption key is revoked. Supports \"STOP\" and \"NONE\", with \"NONE\" being the default.",
         "description_kind": "plain",
         "type": "string"
       },

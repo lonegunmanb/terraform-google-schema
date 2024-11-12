@@ -339,42 +339,6 @@ const googleContainerNodePool = `{
               "optional": true,
               "type": "bool"
             },
-            "guest_accelerator": {
-              "computed": true,
-              "description": "List of the type and count of accelerator cards attached to the instance.",
-              "description_kind": "plain",
-              "optional": true,
-              "type": [
-                "list",
-                [
-                  "object",
-                  {
-                    "count": "number",
-                    "gpu_driver_installation_config": [
-                      "list",
-                      [
-                        "object",
-                        {
-                          "gpu_driver_version": "string"
-                        }
-                      ]
-                    ],
-                    "gpu_partition_size": "string",
-                    "gpu_sharing_config": [
-                      "list",
-                      [
-                        "object",
-                        {
-                          "gpu_sharing_strategy": "string",
-                          "max_shared_clients_per_gpu": "number"
-                        }
-                      ]
-                    ],
-                    "type": "string"
-                  }
-                ]
-              ]
-            },
             "image_type": {
               "computed": true,
               "description": "The image type to use for this node. Note that for a given image type, the latest version of it will be used.",
@@ -482,6 +446,15 @@ const googleContainerNodePool = `{
               "description_kind": "plain",
               "optional": true,
               "type": "bool"
+            },
+            "storage_pools": {
+              "description": "The list of Storage Pools where boot disks are provisioned.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
             },
             "tags": {
               "description": "The list of instance tags applied to all nodes.",
@@ -645,6 +618,73 @@ const googleContainerNodePool = `{
               "max_items": 1,
               "nesting_mode": "list"
             },
+            "guest_accelerator": {
+              "block": {
+                "attributes": {
+                  "count": {
+                    "description": "The number of the accelerator cards exposed to an instance.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "number"
+                  },
+                  "gpu_partition_size": {
+                    "description": "Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "type": {
+                    "description": "The accelerator type resource name.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "block_types": {
+                  "gpu_driver_installation_config": {
+                    "block": {
+                      "attributes": {
+                        "gpu_driver_version": {
+                          "description": "Mode for how the GPU driver is installed.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Configuration for auto installation of GPU driver.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "gpu_sharing_config": {
+                    "block": {
+                      "attributes": {
+                        "gpu_sharing_strategy": {
+                          "description": "The type of GPU sharing strategy to enable on the GPU node. Possible values are described in the API package (https://pkg.go.dev/google.golang.org/api/container/v1#GPUSharingConfig)",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        },
+                        "max_shared_clients_per_gpu": {
+                          "description": "The maximum number of containers that can share a GPU.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "number"
+                        }
+                      },
+                      "description": "Configuration for GPU sharing.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "List of the type and count of accelerator cards attached to the instance.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            },
             "gvnic": {
               "block": {
                 "attributes": {
@@ -695,7 +735,7 @@ const googleContainerNodePool = `{
                   "cpu_manager_policy": {
                     "description": "Control the CPU management policy on the node.",
                     "description_kind": "plain",
-                    "required": true,
+                    "optional": true,
                     "type": "string"
                   },
                   "insecure_kubelet_readonly_port_enabled": {
@@ -736,6 +776,30 @@ const googleContainerNodePool = `{
                       "map",
                       "string"
                     ]
+                  }
+                },
+                "block_types": {
+                  "hugepages_config": {
+                    "block": {
+                      "attributes": {
+                        "hugepage_size_1g": {
+                          "description": "Amount of 1G hugepages.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "hugepage_size_2m": {
+                          "description": "Amount of 2M hugepages.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        }
+                      },
+                      "description": "Amounts for 2M and 1G hugepages.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
                   }
                 },
                 "description": "Parameters that can be configured on Linux nodes.",

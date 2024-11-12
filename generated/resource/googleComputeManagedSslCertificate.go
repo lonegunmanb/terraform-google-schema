@@ -13,7 +13,6 @@ const googleComputeManagedSslCertificate = `{
         "computed": true,
         "description": "The unique identifier for the resource.",
         "description_kind": "plain",
-        "optional": true,
         "type": "number"
       },
       "creation_timestamp": {

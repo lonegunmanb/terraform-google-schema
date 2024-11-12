@@ -168,7 +168,7 @@ const googleGkeonpremVmwareNodePool = `{
               "type": "string"
             },
             "image_type": {
-              "description": "The OS image to be used for each node in a node pool.\nCurrently 'cos', 'ubuntu', 'ubuntu_containerd' and 'windows' are supported.",
+              "description": "The OS image to be used for each node in a node pool.\nCurrently 'cos', 'cos_cgv2', 'ubuntu', 'ubuntu_cgv2', 'ubuntu_containerd' and 'windows' are supported.",
               "description_kind": "plain",
               "required": true,
               "type": "string"

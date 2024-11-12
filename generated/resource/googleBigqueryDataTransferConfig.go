@@ -108,6 +108,22 @@ const googleBigqueryDataTransferConfig = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "encryption_configuration": {
+        "block": {
+          "attributes": {
+            "kms_key_name": {
+              "description": "The name of the KMS key used for encrypting BigQuery data.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "Represents the encryption configuration for a transfer.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "schedule_options": {
         "block": {
           "attributes": {

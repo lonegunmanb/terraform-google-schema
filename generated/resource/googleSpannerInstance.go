@@ -28,6 +28,13 @@ const googleSpannerInstance = `{
         "required": true,
         "type": "string"
       },
+      "edition": {
+        "computed": true,
+        "description": "The edition selected for this instance. Different editions provide different capabilities at different price points. Possible values: [\"EDITION_UNSPECIFIED\", \"STANDARD\", \"ENTERPRISE\", \"ENTERPRISE_PLUS\"]",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "effective_labels": {
         "computed": true,
         "description": "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.",
@@ -105,6 +112,66 @@ const googleSpannerInstance = `{
       "autoscaling_config": {
         "block": {
           "block_types": {
+            "asymmetric_autoscaling_options": {
+              "block": {
+                "block_types": {
+                  "overrides": {
+                    "block": {
+                      "block_types": {
+                        "autoscaling_limits": {
+                          "block": {
+                            "attributes": {
+                              "max_nodes": {
+                                "description": "The maximum number of nodes for this specific replica.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "number"
+                              },
+                              "min_nodes": {
+                                "description": "The minimum number of nodes for this specific replica.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "number"
+                              }
+                            },
+                            "description": "A nested object resource.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "min_items": 1,
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "A nested object resource.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "min_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "replica_selection": {
+                    "block": {
+                      "attributes": {
+                        "location": {
+                          "description": "The location of the replica to apply asymmetric autoscaling options.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "A nested object resource.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "min_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "Asymmetric autoscaling options for specific replicas.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            },
             "autoscaling_limits": {
               "block": {
                 "attributes": {

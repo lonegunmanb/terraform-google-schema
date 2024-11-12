@@ -572,7 +572,7 @@ const googleGkeonpremBareMetalCluster = `{
                     "type": "bool"
                   }
                 },
-                "description": "A nested object resource",
+                "description": "A nested object resource.",
                 "description_kind": "plain"
               },
               "max_items": 1,
@@ -709,7 +709,7 @@ const googleGkeonpremBareMetalCluster = `{
                     "nesting_mode": "list"
                   }
                 },
-                "description": "A nested object resource",
+                "description": "A nested object resource.",
                 "description_kind": "plain"
               },
               "max_items": 1,
@@ -815,7 +815,7 @@ const googleGkeonpremBareMetalCluster = `{
                     ]
                   }
                 },
-                "description": "A nested object resource",
+                "description": "A nested object resource.",
                 "description_kind": "plain"
               },
               "max_items": 1,

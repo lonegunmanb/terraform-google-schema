@@ -27,6 +27,12 @@ const googleWorkflowsWorkflow = `{
         "optional": true,
         "type": "string"
       },
+      "deletion_protection": {
+        "description": "Whether Terraform will be prevented from destroying the workflow. Defaults to true.\nWhen a'terraform destroy' or 'terraform apply' would delete the workflow,\nthe command will fail if this field is not set to false in Terraform state.\nWhen the field is set to true or unset in Terraform state, a 'terraform apply'\nor 'terraform destroy' that would delete the workflow will fail.\nWhen the field is set to false, deleting the workflow is allowed.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "description": {
         "computed": true,
         "description": "Description of the workflow provided by the user. Must be at most 1000 unicode characters long.",
