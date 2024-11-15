@@ -190,7 +190,8 @@ const googleVertexAiEndpoint = `{
         ]
       },
       "traffic_split": {
-        "description": "A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.\nIf a DeployedModel's id is not listed in this map, then it receives no traffic.\nThe traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.\n\n~\u003e **Note:** The 'traffic_split' setting only applies after a model has been deployed to the endpoint. Re-applying a 'google_vertex_ai_endpoint'\nresource without updating the 'traffic_split' post-deployment may lead to your deployed 'traffic_split' being lost; see\nthe 'deployModel' [example](https://cloud.google.com/vertex-ai/docs/general/deployment#deploy_a_model_to_an_endpoint) and\n[documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for details.",
+        "computed": true,
+        "description": "A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.\nIf a DeployedModel's id is not listed in this map, then it receives no traffic.\nThe traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment. See\nthe 'deployModel' [example](https://cloud.google.com/vertex-ai/docs/general/deployment#deploy_a_model_to_an_endpoint) and\n[documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for more information.\n\n~\u003e **Note:** To set the map to empty, set '\"{}\"', apply, and then remove the field from your config.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
