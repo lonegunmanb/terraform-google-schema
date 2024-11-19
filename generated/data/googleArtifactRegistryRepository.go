@@ -193,6 +193,15 @@ const googleArtifactRegistryRepository = `{
                   }
                 ]
               ],
+              "common_repository": [
+                "list",
+                [
+                  "object",
+                  {
+                    "uri": "string"
+                  }
+                ]
+              ],
               "description": "string",
               "disable_upstream_validation": "bool",
               "docker_repository": [

@@ -171,6 +171,22 @@ const googleSecureSourceManagerInstance = `{
           "description_kind": "plain"
         },
         "nesting_mode": "single"
+      },
+      "workforce_identity_federation_config": {
+        "block": {
+          "attributes": {
+            "enabled": {
+              "description": "'Whether Workforce Identity Federation is enabled.'",
+              "description_kind": "plain",
+              "required": true,
+              "type": "bool"
+            }
+          },
+          "description": "Configuration for Workforce Identity Federation to support third party identity provider.\nIf unset, defaults to the Google OIDC IdP.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
       }
     },
     "description_kind": "plain"

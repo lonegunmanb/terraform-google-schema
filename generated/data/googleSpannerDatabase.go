@@ -67,7 +67,7 @@ const googleSpannerDatabase = `{
         "type": "string"
       },
       "name": {
-        "description": "A unique identifier for the database, which cannot be changed after\nthe instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].",
+        "description": "A unique identifier for the database, which cannot be changed after the\ninstance is created. Values are of the form '[a-z][-_a-z0-9]*[a-z0-9]'.",
         "description_kind": "plain",
         "required": true,
         "type": "string"

@@ -640,6 +640,15 @@ const googleCloudRunV2Service = `{
         "description": "The main URI in which this Service is serving traffic.",
         "description_kind": "plain",
         "type": "string"
+      },
+      "urls": {
+        "computed": true,
+        "description": "All URLs serving traffic for this Service.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          "string"
+        ]
       }
     },
     "description_kind": "plain"

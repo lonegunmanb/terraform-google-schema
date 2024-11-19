@@ -300,6 +300,22 @@ const googleArtifactRegistryRepository = `{
               "max_items": 1,
               "nesting_mode": "list"
             },
+            "common_repository": {
+              "block": {
+                "attributes": {
+                  "uri": {
+                    "description": "Specific uri to the Artifact Registory repository, e.g. 'projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY'",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Specific settings for an Artifact Registory remote repository.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "docker_repository": {
               "block": {
                 "attributes": {

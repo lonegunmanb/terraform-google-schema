@@ -276,6 +276,66 @@ const googleRedisCluster = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "persistence_config": {
+        "block": {
+          "attributes": {
+            "mode": {
+              "computed": true,
+              "description": "Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.\n\n- DISABLED: \tPersistence (both backup and restore) is disabled for the cluster.\n- RDB: RDB based Persistence is enabled.\n- AOF: AOF based Persistence is enabled. Possible values: [\"PERSISTENCE_MODE_UNSPECIFIED\", \"DISABLED\", \"RDB\", \"AOF\"]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "block_types": {
+            "aof_config": {
+              "block": {
+                "attributes": {
+                  "append_fsync": {
+                    "computed": true,
+                    "description": "Optional. Available fsync modes.\n\n- NO - Do not explicilty call fsync(). Rely on OS defaults.\n- EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.\n- ALWAYS - Call fsync() for earch write command. Possible values: [\"APPEND_FSYNC_UNSPECIFIED\", \"NO\", \"EVERYSEC\", \"ALWAYS\"]",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "AOF configuration. This field will be ignored if mode is not AOF.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "rdb_config": {
+              "block": {
+                "attributes": {
+                  "rdb_snapshot_period": {
+                    "computed": true,
+                    "description": "Optional. Available snapshot periods for scheduling.\n\n- ONE_HOUR:\tSnapshot every 1 hour.\n- SIX_HOURS:\tSnapshot every 6 hours.\n- TWELVE_HOURS:\tSnapshot every 12 hours.\n- TWENTY_FOUR_HOURS:\tSnapshot every 24 hours. Possible values: [\"SNAPSHOT_PERIOD_UNSPECIFIED\", \"ONE_HOUR\", \"SIX_HOURS\", \"TWELVE_HOURS\", \"TWENTY_FOUR_HOURS\"]",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "rdb_snapshot_start_time": {
+                    "computed": true,
+                    "description": "The time that the first snapshot was/will be attempted, and to which\nfuture snapshots will be aligned.\nIf not provided, the current time will be used.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "RDB configuration. This field will be ignored if mode is not RDB.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Persistence config (RDB, AOF) for the cluster.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "psc_configs": {
         "block": {
           "attributes": {

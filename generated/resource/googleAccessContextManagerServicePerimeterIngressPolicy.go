@@ -27,7 +27,7 @@ const googleAccessContextManagerServicePerimeterIngressPolicy = `{
         "block": {
           "attributes": {
             "identities": {
-              "description": "A list of identities that are allowed access through this ingress policy.\nShould be in the format of email address. The email address should represent\nindividual user or service account only.",
+              "description": "Identities can be an individual user, service account, Google group,\nor third-party identity. For third-party identity, only single identities\nare supported and other identity types are not supported.The v1 identities\nthat have the prefix user, group and serviceAccount in\nhttps://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.",
               "description_kind": "plain",
               "optional": true,
               "type": [

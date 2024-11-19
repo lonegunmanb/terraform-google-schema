@@ -137,6 +137,37 @@ const googleFilestoreInstance = `{
           ]
         ]
       },
+      "performance_config": {
+        "computed": true,
+        "description": "Performance configuration for the instance. If not provided,\nthe default performance settings will be used.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "fixed_iops": [
+                "list",
+                [
+                  "object",
+                  {
+                    "max_iops": "number"
+                  }
+                ]
+              ],
+              "iops_per_tb": [
+                "list",
+                [
+                  "object",
+                  {
+                    "max_iops_per_tb": "number"
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      },
       "project": {
         "description_kind": "plain",
         "optional": true,

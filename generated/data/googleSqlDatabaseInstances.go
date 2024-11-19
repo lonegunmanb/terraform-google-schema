@@ -257,6 +257,16 @@ const googleSqlDatabaseInstances = `{
                                   "set",
                                   "string"
                                 ],
+                                "psc_auto_connections": [
+                                  "list",
+                                  [
+                                    "object",
+                                    {
+                                      "consumer_network": "string",
+                                      "consumer_service_project_id": "string"
+                                    }
+                                  ]
+                                ],
                                 "psc_enabled": "bool"
                               }
                             ]

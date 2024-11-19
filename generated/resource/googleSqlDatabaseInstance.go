@@ -740,6 +740,29 @@ const googleSqlDatabaseInstance = `{
                           "type": "bool"
                         }
                       },
+                      "block_types": {
+                        "psc_auto_connections": {
+                          "block": {
+                            "attributes": {
+                              "consumer_network": {
+                                "description": "The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. The consumer host project of this network might be different from the consumer service project.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              },
+                              "consumer_service_project_id": {
+                                "description": "The project ID of consumer service project of this consumer endpoint.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.",
+                            "description_kind": "plain"
+                          },
+                          "nesting_mode": "list"
+                        }
+                      },
                       "description": "PSC settings for a Cloud SQL instance.",
                       "description_kind": "plain"
                     },

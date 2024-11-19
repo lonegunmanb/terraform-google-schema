@@ -240,6 +240,48 @@ const googleFilestoreInstance = `{
         "min_items": 1,
         "nesting_mode": "list"
       },
+      "performance_config": {
+        "block": {
+          "block_types": {
+            "fixed_iops": {
+              "block": {
+                "attributes": {
+                  "max_iops": {
+                    "description": "The number of IOPS to provision for the instance.\nmax_iops must be in multiple of 1000.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "number"
+                  }
+                },
+                "description": "The instance will have a fixed provisioned IOPS value,\nwhich will remain constant regardless of instance\ncapacity.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "iops_per_tb": {
+              "block": {
+                "attributes": {
+                  "max_iops_per_tb": {
+                    "description": "The instance max IOPS will be calculated by multiplying\nthe capacity of the instance (TB) by max_iops_per_tb,\nand rounding to the nearest 1000. The instance max IOPS\nwill be changed dynamically based on the instance\ncapacity.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "number"
+                  }
+                },
+                "description": "The instance provisioned IOPS will change dynamically\nbased on the capacity of the instance.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Performance configuration for the instance. If not provided,\nthe default performance settings will be used.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {
