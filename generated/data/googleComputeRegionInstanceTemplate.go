@@ -19,6 +19,8 @@ const googleComputeRegionInstanceTemplate = `{
             "object",
             {
               "enable_nested_virtualization": "bool",
+              "enable_uefi_networking": "bool",
+              "performance_monitoring_unit": "string",
               "threads_per_core": "number",
               "turbo_mode": "string",
               "visible_core_count": "number"

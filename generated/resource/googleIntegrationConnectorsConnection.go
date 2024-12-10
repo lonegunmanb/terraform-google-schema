@@ -239,13 +239,13 @@ const googleIntegrationConnectorsConnection = `{
                           "type": "string"
                         },
                         "type": {
-                          "description": "Type of Encription Key Possible values: [\"GOOGLE_MANAGED\", \"CUSTOMER_MANAGED\"]",
+                          "description": "Type of Encryption Key Possible values: [\"GOOGLE_MANAGED\", \"CUSTOMER_MANAGED\"]",
                           "description_kind": "plain",
                           "required": true,
                           "type": "string"
                         }
                       },
-                      "description": "Encription key value of configVariable.",
+                      "description": "Encryption key value of configVariable.",
                       "description_kind": "plain"
                     },
                     "max_items": 1,
@@ -552,13 +552,13 @@ const googleIntegrationConnectorsConnection = `{
                     "type": "string"
                   },
                   "type": {
-                    "description": "Type of Encription Key Possible values: [\"GOOGLE_MANAGED\", \"CUSTOMER_MANAGED\"]",
+                    "description": "Type of Encryption Key Possible values: [\"GOOGLE_MANAGED\", \"CUSTOMER_MANAGED\"]",
                     "description_kind": "plain",
                     "required": true,
                     "type": "string"
                   }
                 },
-                "description": "Encription key value of configVariable.",
+                "description": "Encryption key value of configVariable.",
                 "description_kind": "plain"
               },
               "max_items": 1,
@@ -686,7 +686,7 @@ const googleIntegrationConnectorsConnection = `{
                           "type": "string"
                         }
                       },
-                      "description": "Encription key value of configVariable.",
+                      "description": "Encryption key value of configVariable.",
                       "description_kind": "plain"
                     },
                     "max_items": 1,
@@ -770,13 +770,13 @@ const googleIntegrationConnectorsConnection = `{
                                 "type": "string"
                               },
                               "type": {
-                                "description": "Type of Encription Key Possible values: [\"GOOGLE_MANAGED\", \"CUSTOMER_MANAGED\"]",
+                                "description": "Type of Encryption Key Possible values: [\"GOOGLE_MANAGED\", \"CUSTOMER_MANAGED\"]",
                                 "description_kind": "plain",
                                 "optional": true,
                                 "type": "string"
                               }
                             },
-                            "description": "Encription key value of configVariable",
+                            "description": "Encryption key value of configVariable",
                             "description_kind": "plain"
                           },
                           "max_items": 1,
@@ -1035,13 +1035,13 @@ const googleIntegrationConnectorsConnection = `{
                           "type": "string"
                         },
                         "type": {
-                          "description": "Type of Encription Key Possible values: [\"GOOGLE_MANAGED\", \"CUSTOMER_MANAGED\"]",
+                          "description": "Type of Encryption Key Possible values: [\"GOOGLE_MANAGED\", \"CUSTOMER_MANAGED\"]",
                           "description_kind": "plain",
                           "optional": true,
                           "type": "string"
                         }
                       },
-                      "description": "Encription key value of configVariable",
+                      "description": "Encryption key value of configVariable",
                       "description_kind": "plain"
                     },
                     "max_items": 1,

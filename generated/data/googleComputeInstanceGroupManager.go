@@ -81,6 +81,12 @@ const googleComputeInstanceGroupManager = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "instance_group_manager_id": {
+        "computed": true,
+        "description": "The unique identifier number for the resource. This identifier is defined by the server.",
+        "description_kind": "plain",
+        "type": "number"
+      },
       "instance_lifecycle_policy": {
         "computed": true,
         "description": "The instance lifecycle policy for this managed instance group.",

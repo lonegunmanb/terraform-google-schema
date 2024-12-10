@@ -394,6 +394,22 @@ const googleDataprocCluster = `{
                   }
                 },
                 "block_types": {
+                  "confidential_instance_config": {
+                    "block": {
+                      "attributes": {
+                        "enable_confidential_compute": {
+                          "description": "Defines whether the instance should have confidential compute enabled.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "bool"
+                        }
+                      },
+                      "description": "Confidential Instance Config for clusters using Compute Engine Confidential VMs.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
                   "node_group_affinity": {
                     "block": {
                       "attributes": {
@@ -754,6 +770,28 @@ const googleDataprocCluster = `{
                             "description": "List of instance selection options that the group will use when creating new VMs.",
                             "description_kind": "plain"
                           },
+                          "nesting_mode": "list"
+                        },
+                        "provisioning_model_mix": {
+                          "block": {
+                            "attributes": {
+                              "standard_capacity_base": {
+                                "description": "The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "number"
+                              },
+                              "standard_capacity_percent_above_base": {
+                                "description": "The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "number"
+                              }
+                            },
+                            "description": "Defines how Dataproc should create VMs with a mixture of provisioning models.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
                           "nesting_mode": "list"
                         }
                       },

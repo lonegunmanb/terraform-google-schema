@@ -47,6 +47,8 @@ const googleComposerEnvironment = `{
                   }
                 ]
               ],
+              "enable_private_builds_only": "bool",
+              "enable_private_environment": "bool",
               "encryption_config": [
                 "list",
                 [
@@ -93,6 +95,8 @@ const googleComposerEnvironment = `{
                 [
                   "object",
                   {
+                    "composer_internal_ipv4_cidr_block": "string",
+                    "composer_network_attachment": "string",
                     "disk_size_gb": "number",
                     "enable_ip_masq_agent": "bool",
                     "ip_allocation_policy": [
@@ -190,7 +194,8 @@ const googleComposerEnvironment = `{
                       "string"
                     ],
                     "python_version": "string",
-                    "scheduler_count": "number"
+                    "scheduler_count": "number",
+                    "web_server_plugins_mode": "string"
                   }
                 ]
               ],
@@ -226,6 +231,18 @@ const googleComposerEnvironment = `{
                 [
                   "object",
                   {
+                    "dag_processor": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "count": "number",
+                          "cpu": "number",
+                          "memory_gb": "number",
+                          "storage_gb": "number"
+                        }
+                      ]
+                    ],
                     "scheduler": [
                       "list",
                       [

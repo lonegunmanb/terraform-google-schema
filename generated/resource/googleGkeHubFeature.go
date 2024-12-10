@@ -526,7 +526,7 @@ const googleGkeHubFeature = `{
                                 "block": {
                                   "attributes": {
                                     "installation": {
-                                      "description": "Configures the manner in which the template library is installed on the cluster. Possible values: [\"INSTALATION_UNSPECIFIED\", \"NOT_INSTALLED\", \"ALL\"]",
+                                      "description": "Configures the manner in which the template library is installed on the cluster. Possible values: [\"INSTALLATION_UNSPECIFIED\", \"NOT_INSTALLED\", \"ALL\"]",
                                       "description_kind": "plain",
                                       "optional": true,
                                       "type": "string"

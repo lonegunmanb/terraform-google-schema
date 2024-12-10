@@ -93,7 +93,7 @@ const googleGkeHubFeatureMembership = `{
                     "type": "bool"
                   },
                   "metrics_gcp_service_account_email": {
-                    "description": "The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount ` + "`" + `default` + "`" + ` in the namespace ` + "`" + `config-management-monitoring` + "`" + ` should be bound to the GSA.",
+                    "description": "Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"
@@ -110,6 +110,12 @@ const googleGkeHubFeatureMembership = `{
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"
+                  },
+                  "stop_syncing": {
+                    "description": "Set to true to stop syncing configs for a single cluster. Default: false.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
                   }
                 },
                 "block_types": {

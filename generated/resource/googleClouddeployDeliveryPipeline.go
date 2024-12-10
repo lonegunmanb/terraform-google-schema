@@ -461,6 +461,33 @@ const googleClouddeployDeliveryPipeline = `{
                                                   "type": "string"
                                                 }
                                               },
+                                              "block_types": {
+                                                "route_destinations": {
+                                                  "block": {
+                                                    "attributes": {
+                                                      "destination_ids": {
+                                                        "description": "Required. The clusters where the Gateway API HTTPRoute resource will be deployed to. Valid entries include the associated entities IDs configured in the Target resource and \"@self\" to include the Target cluster.",
+                                                        "description_kind": "plain",
+                                                        "required": true,
+                                                        "type": [
+                                                          "list",
+                                                          "string"
+                                                        ]
+                                                      },
+                                                      "propagate_service": {
+                                                        "description": "Optional. Whether to propagate the Kubernetes Service to the route destination clusters. The Service will always be deployed to the Target cluster even if the HTTPRoute is not. This option may be used to facilitiate successful DNS lookup in the route destination clusters. Can only be set to true if destinations are specified.",
+                                                        "description_kind": "plain",
+                                                        "optional": true,
+                                                        "type": "bool"
+                                                      }
+                                                    },
+                                                    "description": "Optional. Route destinations allow configuring the Gateway API HTTPRoute to be deployed to additional clusters. This option is available for multi-cluster service mesh set ups that require the route to exist in the clusters that call the service. If unspecified, the HTTPRoute will only be deployed to the Target cluster.",
+                                                    "description_kind": "plain"
+                                                  },
+                                                  "max_items": 1,
+                                                  "nesting_mode": "list"
+                                                }
+                                              },
                                               "description": "Kubernetes Gateway API service mesh configuration.",
                                               "description_kind": "plain"
                                             },

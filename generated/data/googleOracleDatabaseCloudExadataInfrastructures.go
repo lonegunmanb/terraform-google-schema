@@ -19,6 +19,7 @@ const googleOracleDatabaseCloudExadataInfrastructures = `{
             {
               "cloud_exadata_infrastructure_id": "string",
               "create_time": "string",
+              "deletion_protection": "bool",
               "display_name": "string",
               "effective_labels": [
                 "map",

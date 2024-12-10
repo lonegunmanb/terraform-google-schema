@@ -112,6 +112,28 @@ const googleCloudbuildWorkerPool = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "private_service_connect": {
+        "block": {
+          "attributes": {
+            "network_attachment": {
+              "description": "Required. Immutable. The network attachment that the worker network interface is connected to. Must be in the format ` + "`" + `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}` + "`" + `. The region of network attachment must be the same as the worker pool. See [Network Attachments](https://cloud.google.com/vpc/docs/about-network-attachments)",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            },
+            "route_all_traffic": {
+              "description": "Immutable. Route all traffic through PSC interface. Enable this if you want full control of traffic in the private pool. Configure Cloud NAT for the subnet of network attachment if you need to access public Internet. If false, Only route private IPs, e.g. 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16 through PSC interface.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            }
+          },
+          "description": "Private Service Connect configuration for the pool.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {

@@ -363,6 +363,12 @@ const googleContainerNodePool = `{
               "optional": true,
               "type": "number"
             },
+            "local_ssd_encryption_mode": {
+              "description": "LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "logging_variant": {
               "computed": true,
               "description": "Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.",

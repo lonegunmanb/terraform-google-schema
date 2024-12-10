@@ -566,7 +566,7 @@ const googlePrivatecaCertificate = `{
               "block": {
                 "attributes": {
                   "key_id": {
-                    "description": "The value of the KeyId in lowercase hexidecimal.",
+                    "description": "The value of the KeyId in lowercase hexadecimal.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"

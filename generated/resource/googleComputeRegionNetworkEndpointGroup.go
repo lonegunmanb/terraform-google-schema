@@ -148,6 +148,22 @@ const googleComputeRegionNetworkEndpointGroup = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "psc_data": {
+        "block": {
+          "attributes": {
+            "producer_port": {
+              "description": "The PSC producer port to use when consumer PSC NEG connects to a producer. If\nthis flag isn't specified for a PSC NEG with endpoint type\nprivate-service-connect, then PSC NEG will be connected to a first port in the\navailable PSC producer port range.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description": "This field is only used for PSC NEGs.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {

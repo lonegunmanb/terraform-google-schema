@@ -175,7 +175,7 @@ const googleNetworkServicesEdgeCacheService = `{
                 "description": "The list of hostRules to match against. These rules define which hostnames the EdgeCacheService will match against, and which route configurations apply.",
                 "description_kind": "plain"
               },
-              "max_items": 10,
+              "max_items": 50,
               "min_items": 1,
               "nesting_mode": "list"
             },
@@ -806,7 +806,7 @@ const googleNetworkServicesEdgeCacheService = `{
                 "description": "The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL's host portion.",
                 "description_kind": "plain"
               },
-              "max_items": 10,
+              "max_items": 50,
               "min_items": 1,
               "nesting_mode": "list"
             }

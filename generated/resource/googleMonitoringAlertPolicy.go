@@ -338,6 +338,12 @@ const googleMonitoringAlertPolicy = `{
                     "optional": true,
                     "type": "string"
                   },
+                  "disable_metric_validation": {
+                    "description": "Whether to disable metric existence validation for this condition.\n\nThis allows alerting policies to be defined on metrics that do not yet\nexist, improving advanced customer workflows such as configuring\nalerting policies using Terraform.\n\nUsers with the 'monitoring.alertPolicyViewer' role are able to see the\nname of the non-existent metric in the alerting policy condition.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  },
                   "duration": {
                     "description": "Alerts are considered firing once their PromQL expression evaluated\nto be \"true\" for this long. Alerts whose PromQL expression was not\nevaluated to be \"true\" for long enough are considered pending. The\ndefault value is zero. Must be zero or positive.",
                     "description_kind": "plain",

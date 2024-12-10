@@ -16,7 +16,7 @@ const googleApigeeAppGroup = `{
         "type": "string"
       },
       "channel_id": {
-        "description": "Channel identifier identifies the owner maintaing this grouping.",
+        "description": "Channel identifier identifies the owner maintaining this grouping.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"

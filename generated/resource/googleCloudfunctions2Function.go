@@ -467,7 +467,7 @@ const googleCloudfunctions2Function = `{
                     "type": "string"
                   },
                   "project_id": {
-                    "description": "Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.",
+                    "description": "Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.",
                     "description_kind": "plain",
                     "required": true,
                     "type": "string"
@@ -500,7 +500,7 @@ const googleCloudfunctions2Function = `{
                     "type": "string"
                   },
                   "project_id": {
-                    "description": "Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.",
+                    "description": "Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.",
                     "description_kind": "plain",
                     "required": true,
                     "type": "string"

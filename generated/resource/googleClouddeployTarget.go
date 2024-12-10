@@ -148,6 +148,65 @@ const googleClouddeployTarget = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "associated_entities": {
+        "block": {
+          "attributes": {
+            "entity_id": {
+              "description": "The name for the key in the map for which this object is mapped to in the API",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "block_types": {
+            "anthos_clusters": {
+              "block": {
+                "attributes": {
+                  "membership": {
+                    "description": "Optional. Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is ` + "`" + `projects/{project}/locations/{location}/memberships/{membership_name}` + "`" + `.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Optional. Information specifying Anthos clusters as associated entities.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            },
+            "gke_clusters": {
+              "block": {
+                "attributes": {
+                  "cluster": {
+                    "description": "Optional. Information specifying a GKE Cluster. Format is ` + "`" + `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}` + "`" + `.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "internal_ip": {
+                    "description": "Optional. If true, ` + "`" + `cluster` + "`" + ` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when ` + "`" + `cluster` + "`" + ` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  },
+                  "proxy_url": {
+                    "description": "Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Optional. Information specifying GKE clusters as associated entities.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: ` + "`" + `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$` + "`" + `.",
+          "description_kind": "plain"
+        },
+        "nesting_mode": "set"
+      },
       "custom_target": {
         "block": {
           "attributes": {

@@ -49,7 +49,7 @@ const googleDiscoveryEngineSearchEngine = `{
         "type": "string"
       },
       "industry_vertical": {
-        "description": "The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine. Default value: \"GENERIC\" Possible values: [\"GENERIC\", \"MEDIA\"]",
+        "description": "The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine. Default value: \"GENERIC\" Possible values: [\"GENERIC\", \"MEDIA\", \"HEALTHCARE_FHIR\"]",
         "description_kind": "plain",
         "optional": true,
         "type": "string"

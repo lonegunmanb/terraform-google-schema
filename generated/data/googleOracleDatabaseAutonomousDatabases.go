@@ -22,6 +22,7 @@ const googleOracleDatabaseAutonomousDatabases = `{
               "cidr": "string",
               "create_time": "string",
               "database": "string",
+              "deletion_protection": "bool",
               "display_name": "string",
               "effective_labels": [
                 "map",

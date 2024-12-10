@@ -91,6 +91,20 @@ const googleComputeRegionNetworkEndpointGroup = `{
         "optional": true,
         "type": "string"
       },
+      "psc_data": {
+        "computed": true,
+        "description": "This field is only used for PSC NEGs.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "producer_port": "string"
+            }
+          ]
+        ]
+      },
       "psc_target_service": {
         "computed": true,
         "description": "This field is only used for PSC and INTERNET NEGs.\n\nThe target service url used to set up private service connection to\na Google API or a PSC Producer Service Attachment.",

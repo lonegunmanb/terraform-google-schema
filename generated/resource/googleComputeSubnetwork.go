@@ -147,6 +147,12 @@ const googleComputeSubnetwork = `{
         "description_kind": "plain",
         "optional": true,
         "type": "string"
+      },
+      "subnetwork_id": {
+        "computed": true,
+        "description": "The unique identifier number for the resource. This identifier is defined by the server.",
+        "description_kind": "plain",
+        "type": "number"
       }
     },
     "block_types": {

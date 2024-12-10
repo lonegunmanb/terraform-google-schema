@@ -27,6 +27,12 @@ const googleComputeRegionNetworkEndpoint = `{
         "optional": true,
         "type": "string"
       },
+      "network_endpoint_id": {
+        "computed": true,
+        "description": "The unique identifier number for the resource. This identifier is defined by the server.",
+        "description_kind": "plain",
+        "type": "number"
+      },
       "port": {
         "description": "Port number of network endpoint.",
         "description_kind": "plain",

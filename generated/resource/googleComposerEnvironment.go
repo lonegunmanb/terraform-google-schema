@@ -79,6 +79,20 @@ const googleComposerEnvironment = `{
               "description_kind": "plain",
               "type": "string"
             },
+            "enable_private_builds_only": {
+              "computed": true,
+              "description": "Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
+            "enable_private_environment": {
+              "computed": true,
+              "description": "Optional. If true, a private Composer environment will be created.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
             "environment_size": {
               "computed": true,
               "description": "The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.",
@@ -242,6 +256,20 @@ const googleComposerEnvironment = `{
             "node_config": {
               "block": {
                 "attributes": {
+                  "composer_internal_ipv4_cidr_block": {
+                    "computed": true,
+                    "description": "IPv4 cidr range that will be used by Composer internal components.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "composer_network_attachment": {
+                    "computed": true,
+                    "description": "PSC (Private Service Connect) Network entry point. Customers can pre-create the Network Attachment and point Cloud Composer environment to use. It is possible to share network attachment among many environments, provided enough IP addresses are available.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
                   "disk_size_gb": {
                     "computed": true,
                     "description": "The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.",
@@ -288,6 +316,7 @@ const googleComposerEnvironment = `{
                     "type": "string"
                   },
                   "subnetwork": {
+                    "computed": true,
                     "description": "The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. \"projects/{project}/regions/{region}/subnetworks/{subnetwork}\"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.",
                     "description_kind": "plain",
                     "optional": true,
@@ -517,6 +546,13 @@ const googleComposerEnvironment = `{
                     "description_kind": "plain",
                     "optional": true,
                     "type": "number"
+                  },
+                  "web_server_plugins_mode": {
+                    "computed": true,
+                    "description": "Should be either 'ENABLED' or 'DISABLED'. Defaults to 'ENABLED'. Used in Composer 3.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
                   }
                 },
                 "block_types": {
@@ -593,6 +629,44 @@ const googleComposerEnvironment = `{
             "workloads_config": {
               "block": {
                 "block_types": {
+                  "dag_processor": {
+                    "block": {
+                      "attributes": {
+                        "count": {
+                          "computed": true,
+                          "description": "Number of DAG processors.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "cpu": {
+                          "computed": true,
+                          "description": "CPU request and limit for DAG processor.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "memory_gb": {
+                          "computed": true,
+                          "description": "Memory (GB) request and limit for DAG processor.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "storage_gb": {
+                          "computed": true,
+                          "description": "Storage (GB) request and limit for DAG processor.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        }
+                      },
+                      "description": "Configuration for resources used by DAG processor.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
                   "scheduler": {
                     "block": {
                       "attributes": {

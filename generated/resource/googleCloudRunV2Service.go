@@ -116,7 +116,7 @@ const googleCloudRunV2Service = `{
       },
       "expire_time": {
         "computed": true,
-        "description": "For a deleted resource, the time after which it will be permamently deleted.",
+        "description": "For a deleted resource, the time after which it will be permanently deleted.",
         "description_kind": "plain",
         "type": "string"
       },

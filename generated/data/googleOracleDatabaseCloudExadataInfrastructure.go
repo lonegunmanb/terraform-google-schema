@@ -21,6 +21,12 @@ const googleOracleDatabaseCloudExadataInfrastructure = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "deletion_protection": {
+        "computed": true,
+        "description": "Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.",
+        "description_kind": "plain",
+        "type": "bool"
+      },
       "display_name": {
         "computed": true,
         "description": "User friendly name for this resource.",

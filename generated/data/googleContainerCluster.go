@@ -515,6 +515,21 @@ const googleContainerCluster = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "enterprise_config": {
+        "computed": true,
+        "description": "Defines the config needed to enable/disable GKE Enterprise",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "cluster_tier": "string",
+              "desired_tier": "string"
+            }
+          ]
+        ]
+      },
       "fleet": {
         "computed": true,
         "description": "Fleet configuration of the cluster.",
@@ -1059,6 +1074,7 @@ const googleContainerCluster = `{
                 ]
               ],
               "local_ssd_count": "number",
+              "local_ssd_encryption_mode": "string",
               "logging_variant": "string",
               "machine_type": "string",
               "metadata": [
@@ -1477,6 +1493,7 @@ const googleContainerCluster = `{
                       ]
                     ],
                     "local_ssd_count": "number",
+                    "local_ssd_encryption_mode": "string",
                     "logging_variant": "string",
                     "machine_type": "string",
                     "metadata": [
@@ -1657,6 +1674,15 @@ const googleContainerCluster = `{
           [
             "object",
             {
+              "linux_node_config": [
+                "list",
+                [
+                  "object",
+                  {
+                    "cgroup_mode": "string"
+                  }
+                ]
+              ],
               "network_tags": [
                 "list",
                 [

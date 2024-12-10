@@ -33,6 +33,12 @@ const googleOracleDatabaseCloudVmCluster = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "deletion_protection": {
+        "computed": true,
+        "description": "Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or terraform apply will only succeed if this field is false in the Terraform state.",
+        "description_kind": "plain",
+        "type": "bool"
+      },
       "display_name": {
         "computed": true,
         "description": "User friendly name for this resource.",

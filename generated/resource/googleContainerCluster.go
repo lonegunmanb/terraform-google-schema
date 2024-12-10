@@ -974,6 +974,29 @@ const googleContainerCluster = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "enterprise_config": {
+        "block": {
+          "attributes": {
+            "cluster_tier": {
+              "computed": true,
+              "description": "Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.",
+              "description_kind": "plain",
+              "type": "string"
+            },
+            "desired_tier": {
+              "computed": true,
+              "description": "Indicates the desired cluster tier. Available options include STANDARD and ENTERPRISE.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description": "Defines the config needed to enable/disable GKE Enterprise",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "fleet": {
         "block": {
           "attributes": {
@@ -1504,6 +1527,12 @@ const googleContainerCluster = `{
               "description_kind": "plain",
               "optional": true,
               "type": "number"
+            },
+            "local_ssd_encryption_mode": {
+              "description": "LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
             },
             "logging_variant": {
               "computed": true,
@@ -2458,6 +2487,12 @@ const googleContainerCluster = `{
                     "optional": true,
                     "type": "number"
                   },
+                  "local_ssd_encryption_mode": {
+                    "description": "LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
                   "logging_variant": {
                     "computed": true,
                     "description": "Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.",
@@ -3232,6 +3267,23 @@ const googleContainerCluster = `{
             }
           },
           "block_types": {
+            "linux_node_config": {
+              "block": {
+                "attributes": {
+                  "cgroup_mode": {
+                    "computed": true,
+                    "description": "cgroupMode specifies the cgroup mode to be used on the node.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Linux node configuration options.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "network_tags": {
               "block": {
                 "attributes": {

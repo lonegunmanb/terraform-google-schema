@@ -143,7 +143,7 @@ const googleBillingBudget = `{
             },
             "credit_types": {
               "computed": true,
-              "description": "Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,\nthis is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.\nIf creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.\n\n**Note:** If the field has a value in the config and needs to be removed, the field has to be an emtpy array in the config.",
+              "description": "Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,\nthis is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.\nIf creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.\n\n**Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.",
               "description_kind": "plain",
               "optional": true,
               "type": [
@@ -197,7 +197,7 @@ const googleBillingBudget = `{
             },
             "subaccounts": {
               "computed": true,
-              "description": "A set of subaccounts of the form billingAccounts/{account_id},\nspecifying that usage from only this set of subaccounts should\nbe included in the budget. If a subaccount is set to the name of\nthe parent account, usage from the parent account will be included.\nIf the field is omitted, the report will include usage from the parent\naccount and all subaccounts, if they exist.\n\n**Note:** If the field has a value in the config and needs to be removed, the field has to be an emtpy array in the config.",
+              "description": "A set of subaccounts of the form billingAccounts/{account_id},\nspecifying that usage from only this set of subaccounts should\nbe included in the budget. If a subaccount is set to the name of\nthe parent account, usage from the parent account will be included.\nIf the field is omitted, the report will include usage from the parent\naccount and all subaccounts, if they exist.\n\n**Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.",
               "description_kind": "plain",
               "optional": true,
               "type": [

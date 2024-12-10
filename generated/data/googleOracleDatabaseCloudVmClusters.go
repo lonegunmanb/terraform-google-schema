@@ -21,6 +21,7 @@ const googleOracleDatabaseCloudVmClusters = `{
               "cidr": "string",
               "cloud_vm_cluster_id": "string",
               "create_time": "string",
+              "deletion_protection": "bool",
               "display_name": "string",
               "effective_labels": [
                 "map",

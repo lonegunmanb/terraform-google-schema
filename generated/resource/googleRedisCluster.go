@@ -194,6 +194,106 @@ const googleRedisCluster = `{
       }
     },
     "block_types": {
+      "cross_cluster_replication_config": {
+        "block": {
+          "attributes": {
+            "cluster_role": {
+              "description": "The role of the cluster in cross cluster replication. Supported values are:\n\n1. 'CLUSTER_ROLE_UNSPECIFIED': This is an independent cluster that has never participated in cross cluster replication. It allows both reads and writes.\n\n1. 'NONE': This is an independent cluster that previously participated in cross cluster replication(either as a 'PRIMARY' or 'SECONDARY' cluster). It allows both reads and writes.\n\n1. 'PRIMARY': This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.\n\n1. 'SECONDARY': This cluster replicates data from the primary cluster. It allows only reads. Possible values: [\"CLUSTER_ROLE_UNSPECIFIED\", \"NONE\", \"PRIMARY\", \"SECONDARY\"]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "membership": {
+              "computed": true,
+              "description": "An output only view of all the member clusters participating in cross cluster replication. This field is populated for all the member clusters irrespective of their cluster role.",
+              "description_kind": "plain",
+              "type": [
+                "list",
+                [
+                  "object",
+                  {
+                    "primary_cluster": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "cluster": "string",
+                          "uid": "string"
+                        }
+                      ]
+                    ],
+                    "secondary_clusters": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "cluster": "string",
+                          "uid": "string"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            },
+            "update_time": {
+              "computed": true,
+              "description": "The last time cross cluster replication config was updated.",
+              "description_kind": "plain",
+              "type": "string"
+            }
+          },
+          "block_types": {
+            "primary_cluster": {
+              "block": {
+                "attributes": {
+                  "cluster": {
+                    "description": "The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "uid": {
+                    "computed": true,
+                    "description": "The unique id of the primary cluster.",
+                    "description_kind": "plain",
+                    "type": "string"
+                  }
+                },
+                "description": "Details of the primary cluster that is used as the replication source for this secondary cluster. This is allowed to be set only for clusters whose cluster role is of type 'SECONDARY'.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "secondary_clusters": {
+              "block": {
+                "attributes": {
+                  "cluster": {
+                    "description": "The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "uid": {
+                    "computed": true,
+                    "description": "The unique id of the secondary cluster.",
+                    "description_kind": "plain",
+                    "type": "string"
+                  }
+                },
+                "description": "List of secondary clusters that are replicating from this primary cluster. This is allowed to be set only for clusters whose cluster role is of type 'PRIMARY'.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Cross cluster replication config",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "maintenance_policy": {
         "block": {
           "attributes": {
@@ -293,7 +393,7 @@ const googleRedisCluster = `{
                 "attributes": {
                   "append_fsync": {
                     "computed": true,
-                    "description": "Optional. Available fsync modes.\n\n- NO - Do not explicilty call fsync(). Rely on OS defaults.\n- EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.\n- ALWAYS - Call fsync() for earch write command. Possible values: [\"APPEND_FSYNC_UNSPECIFIED\", \"NO\", \"EVERYSEC\", \"ALWAYS\"]",
+                    "description": "Optional. Available fsync modes.\n\n- NO - Do not explicitly call fsync(). Rely on OS defaults.\n- EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.\n- ALWAYS - Call fsync() for earch write command. Possible values: [\"APPEND_FSYNC_UNSPECIFIED\", \"NO\", \"EVERYSEC\", \"ALWAYS\"]",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"

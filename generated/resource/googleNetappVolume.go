@@ -191,7 +191,7 @@ const googleNetappVolume = `{
       },
       "service_level": {
         "computed": true,
-        "description": "Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.",
+        "description": "Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTREME, STANDARD, FLEX.",
         "description_kind": "plain",
         "type": "string"
       },
@@ -230,7 +230,7 @@ const googleNetappVolume = `{
         "type": "string"
       },
       "storage_pool": {
-        "description": "Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.",
+        "description": "Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.",
         "description_kind": "plain",
         "required": true,
         "type": "string"
@@ -309,7 +309,7 @@ const googleNetappVolume = `{
                     "type": "string"
                   },
                   "allowed_clients": {
-                    "description": "Defines the client ingress specification (allowed clients) as a comma seperated list with IPv4 CIDRs or IPv4 host addresses.",
+                    "description": "Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"

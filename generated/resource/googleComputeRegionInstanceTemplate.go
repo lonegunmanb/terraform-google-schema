@@ -183,6 +183,18 @@ const googleComputeRegionInstanceTemplate = `{
               "optional": true,
               "type": "bool"
             },
+            "enable_uefi_networking": {
+              "description": "Whether to enable UEFI networking or not.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
+            "performance_monitoring_unit": {
+              "description": "The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are \"STANDARD\", \"ENHANCED\", and \"ARCHITECTURAL\".",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "threads_per_core": {
               "description": "The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.",
               "description_kind": "plain",

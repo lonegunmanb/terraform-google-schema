@@ -62,6 +62,12 @@ const googleComputeRegionInstanceGroupManager = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "instance_group_manager_id": {
+        "computed": true,
+        "description": "The unique identifier number for the resource. This identifier is defined by the server.",
+        "description_kind": "plain",
+        "type": "number"
+      },
       "list_managed_instances_results": {
         "description": "Pagination behavior of the listManagedInstances API method for this managed instance group. Valid values are: \"PAGELESS\", \"PAGINATED\". If PAGELESS (default), Pagination is disabled for the group's listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response. If PAGINATED, pagination is enabled, maxResults and pageToken query parameters are respected.",
         "description_kind": "plain",
@@ -220,6 +226,46 @@ const googleComputeRegionInstanceGroupManager = `{
             }
           },
           "description": "The autohealing policies for this managed instance group. You can specify only one value.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "instance_flexibility_policy": {
+        "block": {
+          "block_types": {
+            "instance_selections": {
+              "block": {
+                "attributes": {
+                  "machine_types": {
+                    "description": "Full machine-type names, e.g. \"n1-standard-16\"",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": [
+                      "set",
+                      "string"
+                    ]
+                  },
+                  "name": {
+                    "description": "Instance selection name.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "rank": {
+                    "description": "Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "number"
+                  }
+                },
+                "description": "Named instance selections configuring properties that the group will use when creating new VMs.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "set"
+            }
+          },
+          "description": "The flexibility policy for this managed instance group. Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.",
           "description_kind": "plain"
         },
         "max_items": 1,

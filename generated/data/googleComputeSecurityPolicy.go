@@ -24,7 +24,34 @@ const googleComputeSecurityPolicy = `{
                   "object",
                   {
                     "enable": "bool",
-                    "rule_visibility": "string"
+                    "rule_visibility": "string",
+                    "threshold_configs": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "auto_deploy_confidence_threshold": "number",
+                          "auto_deploy_expiration_sec": "number",
+                          "auto_deploy_impacted_baseline_threshold": "number",
+                          "auto_deploy_load_threshold": "number",
+                          "detection_absolute_qps": "number",
+                          "detection_load_threshold": "number",
+                          "detection_relative_to_baseline_qps": "number",
+                          "name": "string",
+                          "traffic_granularity_configs": [
+                            "list",
+                            [
+                              "object",
+                              {
+                                "enable_each_unique_value": "bool",
+                                "type": "string",
+                                "value": "string"
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    ]
                   }
                 ]
               ]

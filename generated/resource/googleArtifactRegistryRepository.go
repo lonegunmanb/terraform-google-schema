@@ -304,7 +304,7 @@ const googleArtifactRegistryRepository = `{
               "block": {
                 "attributes": {
                   "uri": {
-                    "description": "Specific uri to the Artifact Registory repository, e.g. 'projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY'",
+                    "description": "One of:\na. Artifact Registry Repository resource, e.g. 'projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY'\nb. URI to the registry, e.g. '\"https://registry-1.docker.io\"'\nc. URI to Artifact Registry Repository, e.g. '\"https://REGION-docker.pkg.dev/UPSTREAM_PROJECT_ID/UPSTREAM_REPOSITORY\"'",
                     "description_kind": "plain",
                     "required": true,
                     "type": "string"
@@ -337,7 +337,7 @@ const googleArtifactRegistryRepository = `{
                           "type": "string"
                         }
                       },
-                      "description": "Settings for a remote repository with a custom uri.",
+                      "description": "[Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.",
                       "description_kind": "plain"
                     },
                     "max_items": 1,
@@ -371,7 +371,7 @@ const googleArtifactRegistryRepository = `{
                           "type": "string"
                         }
                       },
-                      "description": "Settings for a remote repository with a custom uri.",
+                      "description": "[Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.",
                       "description_kind": "plain"
                     },
                     "max_items": 1,
@@ -405,7 +405,7 @@ const googleArtifactRegistryRepository = `{
                           "type": "string"
                         }
                       },
-                      "description": "Settings for a remote repository with a custom uri.",
+                      "description": "[Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.",
                       "description_kind": "plain"
                     },
                     "max_items": 1,
@@ -439,7 +439,7 @@ const googleArtifactRegistryRepository = `{
                           "type": "string"
                         }
                       },
-                      "description": "Settings for a remote repository with a custom uri.",
+                      "description": "[Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.",
                       "description_kind": "plain"
                     },
                     "max_items": 1,

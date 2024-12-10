@@ -27,6 +27,12 @@ const googleComputeRegionHealthCheck = `{
         "optional": true,
         "type": "string"
       },
+      "health_check_id": {
+        "computed": true,
+        "description": "The unique identifier number for the resource. This identifier is defined by the server.",
+        "description_kind": "plain",
+        "type": "number"
+      },
       "healthy_threshold": {
         "description": "A so-far unhealthy instance will be marked healthy after this many\nconsecutive successes. The default value is 2.",
         "description_kind": "plain",

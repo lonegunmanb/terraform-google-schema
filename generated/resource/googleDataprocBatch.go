@@ -337,6 +337,12 @@ const googleDataprocBatch = `{
       "runtime_config": {
         "block": {
           "attributes": {
+            "cohort": {
+              "description": "Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL jobs.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "container_image": {
               "description": "Optional custom container image for the job runtime environment. If not specified, a default container image will be used.",
               "description_kind": "plain",
@@ -367,6 +373,27 @@ const googleDataprocBatch = `{
               "description_kind": "plain",
               "optional": true,
               "type": "string"
+            }
+          },
+          "block_types": {
+            "autotuning_config": {
+              "block": {
+                "attributes": {
+                  "scenarios": {
+                    "description": "Optional. Scenarios for which tunings are applied. Possible values: [\"SCALING\", \"BROADCAST_HASH_JOIN\", \"MEMORY\"]",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": [
+                      "list",
+                      "string"
+                    ]
+                  }
+                },
+                "description": "Optional. Autotuning configuration of the workload.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
             }
           },
           "description": "Runtime configuration for the batch execution.",

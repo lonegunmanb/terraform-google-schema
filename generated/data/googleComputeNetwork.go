@@ -35,6 +35,11 @@ const googleComputeNetwork = `{
         "required": true,
         "type": "string"
       },
+      "numeric_id": {
+        "computed": true,
+        "description_kind": "plain",
+        "type": "string"
+      },
       "project": {
         "description_kind": "plain",
         "optional": true,

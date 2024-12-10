@@ -90,11 +90,44 @@ const googleComputeRegionInstanceGroupManager = `{
         "optional": true,
         "type": "string"
       },
+      "instance_flexibility_policy": {
+        "computed": true,
+        "description": "The flexibility policy for this managed instance group. Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "instance_selections": [
+                "set",
+                [
+                  "object",
+                  {
+                    "machine_types": [
+                      "set",
+                      "string"
+                    ],
+                    "name": "string",
+                    "rank": "number"
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      },
       "instance_group": {
         "computed": true,
         "description": "The full URL of the instance group created by the manager.",
         "description_kind": "plain",
         "type": "string"
+      },
+      "instance_group_manager_id": {
+        "computed": true,
+        "description": "The unique identifier number for the resource. This identifier is defined by the server.",
+        "description_kind": "plain",
+        "type": "number"
       },
       "instance_lifecycle_policy": {
         "computed": true,

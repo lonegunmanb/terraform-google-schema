@@ -75,6 +75,86 @@ const googleComputeSecurityPolicy = `{
                     "type": "string"
                   }
                 },
+                "block_types": {
+                  "threshold_configs": {
+                    "block": {
+                      "attributes": {
+                        "auto_deploy_confidence_threshold": {
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "auto_deploy_expiration_sec": {
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "auto_deploy_impacted_baseline_threshold": {
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "auto_deploy_load_threshold": {
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "detection_absolute_qps": {
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "detection_load_threshold": {
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "detection_relative_to_baseline_qps": {
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "name": {
+                          "description": "The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "block_types": {
+                        "traffic_granularity_configs": {
+                          "block": {
+                            "attributes": {
+                              "enable_each_unique_value": {
+                                "description": "If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if value is empty.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "bool"
+                              },
+                              "type": {
+                                "description": "Type of this configuration.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              },
+                              "value": {
+                                "description": "Requests that match this value constitute a granular traffic unit.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description_kind": "plain"
+                          },
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "Configuration options for layer7 adaptive protection for various customizable thresholds.",
+                      "description_kind": "plain"
+                    },
+                    "nesting_mode": "list"
+                  }
+                },
                 "description": "Layer 7 DDoS Defense Config of this security policy",
                 "description_kind": "plain"
               },

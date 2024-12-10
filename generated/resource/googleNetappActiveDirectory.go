@@ -79,7 +79,7 @@ const googleNetappActiveDirectory = `{
         "type": "string"
       },
       "kdc_hostname": {
-        "description": "Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only requried for volumes using kerberized NFSv4.1",
+        "description": "Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
