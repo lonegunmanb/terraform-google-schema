@@ -10,7 +10,7 @@ const googleComputeProjectCloudArmorTier = `{
   "block": {
     "attributes": {
       "cloud_armor_tier": {
-        "description": "Managed protection tier to be set. Possible values: [\"CA_STANDARD\", \"CA_ENTERPRISE_PAYGO\"]",
+        "description": "Managed protection tier to be set. Possible values: [\"CA_STANDARD\", \"CA_ENTERPRISE_PAYGO\", \"CA_ENTERPRISE_ANNUAL\"]",
         "description_kind": "plain",
         "required": true,
         "type": "string"

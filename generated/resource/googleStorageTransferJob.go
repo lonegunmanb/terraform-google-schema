@@ -396,6 +396,22 @@ const googleStorageTransferJob = `{
               "max_items": 1,
               "nesting_mode": "list"
             },
+            "hdfs_data_source": {
+              "block": {
+                "attributes": {
+                  "path": {
+                    "description": "Directory path to the filesystem.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "description": "An HDFS Storage data source.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "http_data_source": {
               "block": {
                 "attributes": {

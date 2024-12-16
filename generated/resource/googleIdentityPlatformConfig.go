@@ -274,7 +274,7 @@ const googleIdentityPlatformConfig = `{
               "block": {
                 "attributes": {
                   "quota": {
-                    "description": "A sign up APIs quota that customers can override temporarily.",
+                    "description": "A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "number"
@@ -292,7 +292,7 @@ const googleIdentityPlatformConfig = `{
                     "type": "string"
                   }
                 },
-                "description": "Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.",
+                "description": "Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.",
                 "description_kind": "plain"
               },
               "max_items": 1,

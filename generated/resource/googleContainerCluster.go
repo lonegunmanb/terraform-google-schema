@@ -69,6 +69,12 @@ const googleContainerCluster = `{
         "optional": true,
         "type": "bool"
       },
+      "enable_fqdn_network_policy": {
+        "description": "Whether FQDN Network Policy is enabled on this cluster.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "enable_intranode_visibility": {
         "computed": true,
         "description": "Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.",

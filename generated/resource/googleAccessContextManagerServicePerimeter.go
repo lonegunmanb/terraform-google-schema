@@ -21,12 +21,6 @@ const googleAccessContextManagerServicePerimeter = `{
         "optional": true,
         "type": "string"
       },
-      "etag": {
-        "computed": true,
-        "description": "An opaque identifier for the current version of the ServicePerimeter. This\nidentifier does not follow any specific format. If an etag is not provided, the\noperation will be performed as if a valid etag is provided.",
-        "description_kind": "plain",
-        "type": "string"
-      },
       "id": {
         "computed": true,
         "description_kind": "plain",

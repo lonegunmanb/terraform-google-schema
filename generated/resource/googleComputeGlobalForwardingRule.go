@@ -96,6 +96,13 @@ const googleComputeGlobalForwardingRule = `{
         "optional": true,
         "type": "string"
       },
+      "network_tier": {
+        "computed": true,
+        "description": "This signifies the networking tier used for configuring\nthis load balancer and can only take the following values:\n'PREMIUM', 'STANDARD'.\n\nFor regional ForwardingRule, the valid values are 'PREMIUM' and\n'STANDARD'. For GlobalForwardingRule, the valid value is\n'PREMIUM'.\n\nIf this field is not specified, it is assumed to be 'PREMIUM'.\nIf 'IPAddress' is specified, this value must be equal to the\nnetworkTier of the Address. Possible values: [\"PREMIUM\", \"STANDARD\"]",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "no_automate_dns_zone": {
         "description": "This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.",
         "description_kind": "plain",

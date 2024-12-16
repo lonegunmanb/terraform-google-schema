@@ -84,6 +84,12 @@ const googleOrgPolicyPolicy = `{
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"
+                  },
+                  "parameters": {
+                    "description": "Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \\\"allowedLocations\\\" : [\\\"us-east1\\\", \\\"us-west1\\\"], \\\"allowAll\\\" : true }",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
                   }
                 },
                 "block_types": {
@@ -208,6 +214,12 @@ const googleOrgPolicyPolicy = `{
                   },
                   "enforce": {
                     "description": "If '\"TRUE\"', then the 'Policy' is enforced. If '\"FALSE\"', then any configuration is acceptable. This field can be set only in Policies for boolean constraints.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "parameters": {
+                    "description": "Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \\\"allowedLocations\\\" : [\\\"us-east1\\\", \\\"us-west1\\\"], \\\"allowAll\\\" : true }",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"

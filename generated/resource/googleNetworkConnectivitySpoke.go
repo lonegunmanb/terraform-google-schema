@@ -204,13 +204,13 @@ const googleNetworkConnectivitySpoke = `{
                   "ip_address": {
                     "description": "The IP address on the VM to use for peering.",
                     "description_kind": "plain",
-                    "optional": true,
+                    "required": true,
                     "type": "string"
                   },
                   "virtual_machine": {
                     "description": "The URI of the virtual machine resource",
                     "description_kind": "plain",
-                    "optional": true,
+                    "required": true,
                     "type": "string"
                   }
                 },

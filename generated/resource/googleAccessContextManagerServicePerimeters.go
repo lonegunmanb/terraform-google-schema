@@ -38,12 +38,6 @@ const googleAccessContextManagerServicePerimeters = `{
               "optional": true,
               "type": "string"
             },
-            "etag": {
-              "computed": true,
-              "description": "An opaque identifier for the current version of the ServicePerimeter. This\nidentifier does not follow any specific format. If an etag is not provided, the\noperation will be performed as if a valid etag is provided.",
-              "description_kind": "plain",
-              "type": "string"
-            },
             "name": {
               "description": "Resource name for the ServicePerimeter. The short_name component must\nbegin with a letter and only include alphanumeric and '_'.\nFormat: accessPolicies/{policy_id}/servicePerimeters/{short_name}",
               "description_kind": "plain",

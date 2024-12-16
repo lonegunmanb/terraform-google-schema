@@ -570,6 +570,27 @@ const googleComputeSecurityPolicy = `{
                     "max_items": 1,
                     "nesting_mode": "list"
                   },
+                  "enforce_on_key_configs": {
+                    "block": {
+                      "attributes": {
+                        "enforce_on_key_name": {
+                          "description": "Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "enforce_on_key_type": {
+                          "description": "Determines the key to enforce the rate_limit_threshold on",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Enforce On Key Config of this security policy",
+                      "description_kind": "plain"
+                    },
+                    "nesting_mode": "list"
+                  },
                   "exceed_redirect_options": {
                     "block": {
                       "attributes": {

@@ -65,7 +65,7 @@ const googleArtifactRegistryRepository = `{
       },
       "location": {
         "computed": true,
-        "description": "The name of the location this repository is located in.",
+        "description": "The name of the repository's location. In addition to specific regions,\nspecial values for multi-region locations are 'asia', 'europe', and 'us'.\nSee [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),\nor use the\n[google_artifact_registry_locations](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/artifact_registry_locations)\ndata source for possible values.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"

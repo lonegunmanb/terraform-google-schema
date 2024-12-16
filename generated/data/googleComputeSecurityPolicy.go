@@ -298,6 +298,16 @@ const googleComputeSecurityPolicy = `{
                     ],
                     "conform_action": "string",
                     "enforce_on_key": "string",
+                    "enforce_on_key_configs": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "enforce_on_key_name": "string",
+                          "enforce_on_key_type": "string"
+                        }
+                      ]
+                    ],
                     "enforce_on_key_name": "string",
                     "exceed_action": "string",
                     "exceed_redirect_options": [
