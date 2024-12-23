@@ -12,9 +12,6 @@ import (
 
 type Package string
 
-const PackageResource = "resource"
-const PackageData = "data"
-
 const funcTemplate = `package {{ .Package }}  
   
 import (  
