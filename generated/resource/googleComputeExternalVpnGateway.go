@@ -1,0 +1,142 @@
+package resource
+
+import (
+	"encoding/json"
+
+	tfjson "github.com/hashicorp/terraform-json"
+)
+
+const googleComputeExternalVpnGateway = `{
+  "block": {
+    "attributes": {
+      "description": {
+        "description": "An optional description of this resource.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
+      "effective_labels": {
+        "computed": true,
+        "description": "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.",
+        "description_kind": "plain",
+        "type": [
+          "map",
+          "string"
+        ]
+      },
+      "id": {
+        "computed": true,
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
+      "label_fingerprint": {
+        "computed": true,
+        "description": "The fingerprint used for optimistic locking of this resource.  Used\ninternally during updates.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "labels": {
+        "description": "Labels for the external VPN gateway resource.\n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": [
+          "map",
+          "string"
+        ]
+      },
+      "name": {
+        "description": "Name of the resource. Provided by the client when the resource is\ncreated. The name must be 1-63 characters long, and comply with\nRFC1035.  Specifically, the name must be 1-63 characters long and\nmatch the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means\nthe first character must be a lowercase letter, and all following\ncharacters must be a dash, lowercase letter, or digit, except the last\ncharacter, which cannot be a dash.",
+        "description_kind": "plain",
+        "required": true,
+        "type": "string"
+      },
+      "project": {
+        "computed": true,
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
+      "redundancy_type": {
+        "description": "Indicates the redundancy type of this external VPN gateway Possible values: [\"FOUR_IPS_REDUNDANCY\", \"SINGLE_IP_INTERNALLY_REDUNDANT\", \"TWO_IPS_REDUNDANCY\"]",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
+      "self_link": {
+        "computed": true,
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "terraform_labels": {
+        "computed": true,
+        "description": "The combination of labels configured directly on the resource\n and default labels configured on the provider.",
+        "description_kind": "plain",
+        "type": [
+          "map",
+          "string"
+        ]
+      }
+    },
+    "block_types": {
+      "interface": {
+        "block": {
+          "attributes": {
+            "id": {
+              "description": "The numeric ID for this interface. Allowed values are based on the redundancy type\nof this external VPN gateway\n* '0 - SINGLE_IP_INTERNALLY_REDUNDANT'\n* '0, 1 - TWO_IPS_REDUNDANCY'\n* '0, 1, 2, 3 - FOUR_IPS_REDUNDANCY'",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "number"
+            },
+            "ip_address": {
+              "description": "IP address of the interface in the external VPN gateway.\nOnly IPv4 is supported. This IP address can be either from\nyour on-premise gateway or another Cloud provider's VPN gateway,\nit cannot be an IP address from Google Compute Engine.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "ipv6_address": {
+              "description": "IPv6 address of the interface in the external VPN gateway. This IPv6\naddress can be either from your on-premise gateway or another Cloud\nprovider's VPN gateway, it cannot be an IP address from Google Compute\nEngine. Must specify an IPv6 address (not IPV4-mapped) using any format\ndescribed in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format\nis RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description": "A list of interfaces on this external VPN gateway.",
+          "description_kind": "plain"
+        },
+        "nesting_mode": "list"
+      },
+      "timeouts": {
+        "block": {
+          "attributes": {
+            "create": {
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "delete": {
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "update": {
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description_kind": "plain"
+        },
+        "nesting_mode": "single"
+      }
+    },
+    "description_kind": "plain"
+  },
+  "version": 0
+}`
+
+func GoogleComputeExternalVpnGatewaySchema() *tfjson.Schema {
+	var result tfjson.Schema
+	_ = json.Unmarshal([]byte(googleComputeExternalVpnGateway), &result)
+	return &result
+}
