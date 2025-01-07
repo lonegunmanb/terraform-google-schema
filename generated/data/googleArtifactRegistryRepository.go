@@ -360,6 +360,22 @@ const googleArtifactRegistryRepository = `{
             }
           ]
         ]
+      },
+      "vulnerability_scanning_config": {
+        "computed": true,
+        "description": "Configuration for vulnerability scanning of artifacts stored in this repository.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "enablement_config": "string",
+              "enablement_state": "string",
+              "enablement_state_reason": "string"
+            }
+          ]
+        ]
       }
     },
     "description_kind": "plain"

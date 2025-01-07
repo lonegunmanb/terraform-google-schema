@@ -36,6 +36,12 @@ const googleParallelstoreInstance = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "deployment_type": {
+        "description": "Parallelstore Instance deployment type.\n  Possible values:\n  DEPLOYMENT_TYPE_UNSPECIFIED\n  SCRATCH\n  PERSISTENT",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "description": {
         "description": "The description of the instance. 2048 characters or less.",
         "description_kind": "plain",

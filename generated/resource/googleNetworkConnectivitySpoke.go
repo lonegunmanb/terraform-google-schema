@@ -30,6 +30,13 @@ const googleNetworkConnectivitySpoke = `{
           "string"
         ]
       },
+      "group": {
+        "computed": true,
+        "description": "The name of the group that this spoke is associated with.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "hub": {
         "description": "Immutable. The URI of the hub that this spoke is attached to.",
         "description_kind": "plain",

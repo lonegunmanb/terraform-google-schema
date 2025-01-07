@@ -696,6 +696,12 @@ const googleComputeRegionInstanceTemplate = `{
               "optional": true,
               "type": "bool"
             },
+            "availability_domain": {
+              "description": "Specifies the availability domain, which this instance should be scheduled on.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "number"
+            },
             "instance_termination_action": {
               "description": "Specifies the action GCE should take when SPOT VM is preempted.",
               "description_kind": "plain",

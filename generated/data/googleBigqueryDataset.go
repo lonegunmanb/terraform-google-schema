@@ -18,6 +18,18 @@ const googleBigqueryDataset = `{
           [
             "object",
             {
+              "condition": [
+                "list",
+                [
+                  "object",
+                  {
+                    "description": "string",
+                    "expression": "string",
+                    "location": "string",
+                    "title": "string"
+                  }
+                ]
+              ],
               "dataset": [
                 "list",
                 [

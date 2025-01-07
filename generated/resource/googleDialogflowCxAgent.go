@@ -199,7 +199,7 @@ const googleDialogflowCxAgent = `{
                     "type": "string"
                   },
                   "use_timeout_based_endpointing": {
-                    "description": "Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.",
+                    "description": "Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "bool"

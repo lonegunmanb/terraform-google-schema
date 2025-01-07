@@ -119,6 +119,148 @@ const googleStorageTransferJob = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "replication_spec": {
+        "block": {
+          "block_types": {
+            "gcs_data_sink": {
+              "block": {
+                "attributes": {
+                  "bucket_name": {
+                    "description": "Google Cloud Storage bucket name.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "path": {
+                    "computed": true,
+                    "description": "Google Cloud Storage path in bucket to transfer",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "A Google Cloud Storage data sink.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "gcs_data_source": {
+              "block": {
+                "attributes": {
+                  "bucket_name": {
+                    "description": "Google Cloud Storage bucket name.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "path": {
+                    "computed": true,
+                    "description": "Google Cloud Storage path in bucket to transfer",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "A Google Cloud Storage data source.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "object_conditions": {
+              "block": {
+                "attributes": {
+                  "exclude_prefixes": {
+                    "description": "exclude_prefixes must follow the requirements described for include_prefixes.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": [
+                      "list",
+                      "string"
+                    ]
+                  },
+                  "include_prefixes": {
+                    "description": "If include_refixes is specified, objects that satisfy the object conditions must have names that start with one of the include_prefixes and that do not start with any of the exclude_prefixes. If include_prefixes is not specified, all objects except those that have names starting with one of the exclude_prefixes must satisfy the object conditions.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": [
+                      "list",
+                      "string"
+                    ]
+                  },
+                  "last_modified_before": {
+                    "description": "If specified, only objects with a \"last modification time\" before this timestamp and objects that don't have a \"last modification time\" are transferred. A timestamp in RFC3339 UTC \"Zulu\" format, with nanosecond resolution and up to nine fractional digits. Examples: \"2014-10-02T15:01:23Z\" and \"2014-10-02T15:01:23.045123456Z\".",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "last_modified_since": {
+                    "description": "If specified, only objects with a \"last modification time\" on or after this timestamp and objects that don't have a \"last modification time\" are transferred. A timestamp in RFC3339 UTC \"Zulu\" format, with nanosecond resolution and up to nine fractional digits. Examples: \"2014-10-02T15:01:23Z\" and \"2014-10-02T15:01:23.045123456Z\".",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "max_time_elapsed_since_last_modification": {
+                    "description": "A duration in seconds with up to nine fractional digits, terminated by 's'. Example: \"3.5s\".",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "min_time_elapsed_since_last_modification": {
+                    "description": "A duration in seconds with up to nine fractional digits, terminated by 's'. Example: \"3.5s\".",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' last_modification_time do not exclude objects in a data sink.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "transfer_options": {
+              "block": {
+                "attributes": {
+                  "delete_objects_from_source_after_transfer": {
+                    "description": "Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and delete_objects_unique_in_sink are mutually exclusive.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  },
+                  "delete_objects_unique_in_sink": {
+                    "description": "Whether objects that exist only in the sink should be deleted. Note that this option and delete_objects_from_source_after_transfer are mutually exclusive.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  },
+                  "overwrite_objects_already_existing_in_sink": {
+                    "description": "Whether overwriting objects that already exist in the sink is allowed.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  },
+                  "overwrite_when": {
+                    "description": "When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by overwriteObjectsAlreadyExistingInSink.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Characteristics of how to treat files from datasource and sink during job. If the option delete_objects_unique_in_sink is true, object conditions based on objects' last_modification_time are ignored and do not exclude objects in a data source or a data sink.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Replication specification.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "schedule": {
         "block": {
           "attributes": {
@@ -551,7 +693,6 @@ const googleStorageTransferJob = `{
           "description_kind": "plain"
         },
         "max_items": 1,
-        "min_items": 1,
         "nesting_mode": "list"
       }
     },

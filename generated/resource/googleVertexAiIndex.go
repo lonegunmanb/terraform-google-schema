@@ -140,7 +140,7 @@ const googleVertexAiIndex = `{
             "contents_delta_uri": {
               "description": "Allows inserting, updating  or deleting the contents of the Matching Engine Index.\nThe string must be a valid Cloud Storage directory path. If this\nfield is set when calling IndexService.UpdateIndex, then no other\nIndex field can be also updated as part of the same call.\nThe expected structure and format of the files this URI points to is\ndescribed at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format",
               "description_kind": "plain",
-              "required": true,
+              "optional": true,
               "type": "string"
             },
             "is_complete_overwrite": {

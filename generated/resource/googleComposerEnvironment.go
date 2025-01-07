@@ -125,6 +125,29 @@ const googleComposerEnvironment = `{
             "data_retention_config": {
               "block": {
                 "block_types": {
+                  "airflow_metadata_retention_config": {
+                    "block": {
+                      "attributes": {
+                        "retention_days": {
+                          "computed": true,
+                          "description": "How many days data should be retained for. This field is supported for Cloud Composer environments in composer 3 and newer.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "retention_mode": {
+                          "computed": true,
+                          "description": "Whether database retention is enabled or not. This field is supported for Cloud Composer environments in composer 3 and newer.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Optional. The configuration setting for database retention.",
+                      "description_kind": "plain"
+                    },
+                    "nesting_mode": "list"
+                  },
                   "task_logs_retention_config": {
                     "block": {
                       "attributes": {
@@ -138,7 +161,6 @@ const googleComposerEnvironment = `{
                       "description": "Optional. The configuration setting for Task Logs.",
                       "description_kind": "plain"
                     },
-                    "min_items": 1,
                     "nesting_mode": "list"
                   }
                 },

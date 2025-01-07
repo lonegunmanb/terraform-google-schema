@@ -582,6 +582,34 @@ const googleArtifactRegistryRepository = `{
         },
         "max_items": 1,
         "nesting_mode": "list"
+      },
+      "vulnerability_scanning_config": {
+        "block": {
+          "attributes": {
+            "enablement_config": {
+              "description": "This configures whether vulnerability scanning is automatically performed for artifacts pushed to this repository. Possible values: [\"INHERITED\", \"DISABLED\"]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "enablement_state": {
+              "computed": true,
+              "description": "This field returns whether scanning is active for this repository.",
+              "description_kind": "plain",
+              "type": "string"
+            },
+            "enablement_state_reason": {
+              "computed": true,
+              "description": "This provides an explanation for the state of scanning on this repository.",
+              "description_kind": "plain",
+              "type": "string"
+            }
+          },
+          "description": "Configuration for vulnerability scanning of artifacts stored in this repository.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
       }
     },
     "description_kind": "plain"

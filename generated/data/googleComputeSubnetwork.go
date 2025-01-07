@@ -81,6 +81,11 @@ const googleComputeSubnetwork = `{
         "description_kind": "plain",
         "optional": true,
         "type": "string"
+      },
+      "subnetwork_id": {
+        "computed": true,
+        "description_kind": "plain",
+        "type": "number"
       }
     },
     "description_kind": "plain"

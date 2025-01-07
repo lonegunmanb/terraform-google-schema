@@ -832,13 +832,13 @@ const googleCloudRunV2Service = `{
               "block": {
                 "attributes": {
                   "max_instance_count": {
-                    "description": "Maximum number of serving instances that this resource should have.",
+                    "description": "Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate\na default value based on the project's available container instances quota in the region and specified instance size.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "number"
                   },
                   "min_instance_count": {
-                    "description": "Minimum number of serving instances that this resource should have.",
+                    "description": "Minimum number of serving instances that this resource should have. Defaults to 0. Must not be greater than maximum instance count.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "number"

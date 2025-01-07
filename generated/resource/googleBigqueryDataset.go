@@ -193,6 +193,40 @@ const googleBigqueryDataset = `{
             }
           },
           "block_types": {
+            "condition": {
+              "block": {
+                "attributes": {
+                  "description": {
+                    "description": "Description of the expression. This is a longer text which describes the expression,\ne.g. when hovered over it in a UI.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "expression": {
+                    "description": "Textual representation of an expression in Common Expression Language syntax.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "location": {
+                    "description": "String indicating the location of the expression for error reporting, e.g. a file\nname and a position in the file.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "title": {
+                    "description": "Title for the expression, i.e. a short string describing its purpose.\nThis can be used e.g. in UIs which allow to enter the expression.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Condition for the binding. If CEL expression in this field is true, this\naccess binding will be considered.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "dataset": {
               "block": {
                 "attributes": {

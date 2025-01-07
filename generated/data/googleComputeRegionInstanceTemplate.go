@@ -374,6 +374,7 @@ const googleComputeRegionInstanceTemplate = `{
             "object",
             {
               "automatic_restart": "bool",
+              "availability_domain": "number",
               "instance_termination_action": "string",
               "local_ssd_recovery_timeout": [
                 "list",

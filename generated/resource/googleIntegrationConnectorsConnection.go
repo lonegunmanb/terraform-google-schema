@@ -48,7 +48,7 @@ const googleIntegrationConnectorsConnection = `{
         "type": "string"
       },
       "description": {
-        "description": "An arbitrary description for the Conection.",
+        "description": "An arbitrary description for the Connection.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -193,7 +193,7 @@ const googleIntegrationConnectorsConnection = `{
               "type": "string"
             },
             "auth_type": {
-              "description": "authType of the Connection Possible values: [\"USER_PASSWORD\", \"OAUTH2_JWT_BEARER\", \"OAUTH2_CLIENT_CREDENTIALS\", \"SSH_PUBLIC_KEY\", \"OAUTH2_AUTH_CODE_FLOW\"]",
+              "description": "authType of the Connection Possible values: [\"AUTH_TYPE_UNSPECIFIED\", \"USER_PASSWORD\", \"OAUTH2_JWT_BEARER\", \"OAUTH2_CLIENT_CREDENTIALS\", \"SSH_PUBLIC_KEY\", \"OAUTH2_AUTH_CODE_FLOW\"]",
               "description_kind": "plain",
               "required": true,
               "type": "string"

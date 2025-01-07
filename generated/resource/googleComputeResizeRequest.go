@@ -28,7 +28,7 @@ const googleComputeResizeRequest = `{
         "type": "string"
       },
       "instance_group_manager": {
-        "description": "The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.\nAuthorization requires the following IAM permission on the specified resource instanceGroupManager:\n*compute.instanceGroupManagers.update",
+        "description": "The reference of the instance group manager this ResizeRequest is a part of.",
         "description_kind": "plain",
         "required": true,
         "type": "string"
@@ -53,13 +53,13 @@ const googleComputeResizeRequest = `{
       },
       "state": {
         "computed": true,
-        "description": "[Output only] Current state of the request.",
+        "description": "Current state of the request.",
         "description_kind": "plain",
         "type": "string"
       },
       "status": {
         "computed": true,
-        "description": "[Output only] Status of the request.",
+        "description": "Status of the request.",
         "description_kind": "plain",
         "type": [
           "list",
@@ -251,7 +251,7 @@ const googleComputeResizeRequest = `{
         ]
       },
       "zone": {
-        "description": "Name of the compute zone scoping this request. Name should conform to RFC1035.",
+        "description": "The reference of the compute zone scoping this request.",
         "description_kind": "plain",
         "required": true,
         "type": "string"
@@ -268,7 +268,7 @@ const googleComputeResizeRequest = `{
               "type": "number"
             },
             "seconds": {
-              "description": "Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years",
+              "description": "Span of time at a resolution of a second. Must be from 600 to 604800 inclusive. Note: minimum and maximum allowed range for requestedRunDuration is 10 minutes (600 seconds) and 7 days(604800 seconds) correspondingly.",
               "description_kind": "plain",
               "required": true,
               "type": "string"

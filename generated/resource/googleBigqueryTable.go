@@ -251,7 +251,7 @@ const googleBigqueryTable = `{
               "type": "string"
             },
             "connection_id": {
-              "description": "The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connectionId can have the form \"{{project}}.{{location}}.{{connection_id}}\" or \"projects/{{project}}/locations/{{location}}/connections/{{connection_id}}\".",
+              "description": "The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connectionId can have the form \"\u003cproject\u003e.\u003clocation\u003e.\u003cconnection_id\u003e\" or \"projects/\u003cproject\u003e/locations/\u003clocation\u003e/connections/\u003cconnection_id\u003e\".",
               "description_kind": "plain",
               "optional": true,
               "type": "string"

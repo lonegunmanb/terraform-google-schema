@@ -71,8 +71,15 @@ const googleComputeNetwork = `{
         "optional": true,
         "type": "string"
       },
+      "network_id": {
+        "computed": true,
+        "description": "The unique identifier for the resource. This identifier is defined by the server.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "numeric_id": {
         "computed": true,
+        "deprecated": true,
         "description": "The unique identifier for the resource. This identifier is defined by the server.",
         "description_kind": "plain",
         "type": "string"

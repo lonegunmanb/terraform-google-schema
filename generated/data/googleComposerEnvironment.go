@@ -25,6 +25,16 @@ const googleComposerEnvironment = `{
                 [
                   "object",
                   {
+                    "airflow_metadata_retention_config": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "retention_days": "number",
+                          "retention_mode": "string"
+                        }
+                      ]
+                    ],
                     "task_logs_retention_config": [
                       "list",
                       [

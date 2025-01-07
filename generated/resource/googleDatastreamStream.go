@@ -724,6 +724,14 @@ const googleDatastreamStream = `{
                   }
                 },
                 "block_types": {
+                  "binary_log_position": {
+                    "block": {
+                      "description": "CDC reader reads from binary logs replication cdc method.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
                   "exclude_objects": {
                     "block": {
                       "block_types": {
@@ -815,6 +823,14 @@ const googleDatastreamStream = `{
                         }
                       },
                       "description": "MySQL objects to exclude from the stream.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "gtid": {
+                    "block": {
+                      "description": "CDC reader reads from gtid based replication.",
                       "description_kind": "plain"
                     },
                     "max_items": 1,

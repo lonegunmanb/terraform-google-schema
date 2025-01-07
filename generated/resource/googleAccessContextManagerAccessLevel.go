@@ -187,7 +187,7 @@ const googleAccessContextManagerAccessLevel = `{
                                 "type": "string"
                               },
                               "vpc_ip_subnetworks": {
-                                "description": "CIDR block IP subnetwork specification. Must be IPv4.",
+                                "description": "A list of CIDR block IP subnetwork specification. Must be IPv4.",
                                 "description_kind": "plain",
                                 "optional": true,
                                 "type": [
