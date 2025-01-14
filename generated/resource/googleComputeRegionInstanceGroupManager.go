@@ -167,6 +167,20 @@ const googleComputeRegionInstanceGroupManager = `{
         "optional": true,
         "type": "number"
       },
+      "target_stopped_size": {
+        "computed": true,
+        "description": "The target number of stopped instances for this managed instance group.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "number"
+      },
+      "target_suspended_size": {
+        "computed": true,
+        "description": "The target number of suspended instances for this managed instance group.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "number"
+      },
       "wait_for_instances": {
         "description": "Whether to wait for all instances to be created/updated before returning. Note that if this is set to true and the operation does not succeed, Terraform will continue trying until it times out.",
         "description_kind": "plain",
@@ -313,6 +327,30 @@ const googleComputeRegionInstanceGroupManager = `{
           "description_kind": "plain"
         },
         "nesting_mode": "set"
+      },
+      "standby_policy": {
+        "block": {
+          "attributes": {
+            "initial_delay_sec": {
+              "computed": true,
+              "description": "Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "number"
+            },
+            "mode": {
+              "computed": true,
+              "description": "Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is \"MANUAL\".",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description": "Standby policy for stopped and suspended instances.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
       },
       "stateful_disk": {
         "block": {

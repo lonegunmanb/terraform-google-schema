@@ -65,6 +65,12 @@ const googleDnsRecordSet = `{
               "description_kind": "plain",
               "optional": true,
               "type": "bool"
+            },
+            "health_check": {
+              "description": "Specifies the health check.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
             }
           },
           "block_types": {
@@ -89,6 +95,17 @@ const googleDnsRecordSet = `{
                 "block_types": {
                   "health_checked_targets": {
                     "block": {
+                      "attributes": {
+                        "external_endpoints": {
+                          "description": "The Internet IP addresses to be health checked.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
+                            "string"
+                          ]
+                        }
+                      },
                       "block_types": {
                         "internal_load_balancers": {
                           "block": {
@@ -139,7 +156,6 @@ const googleDnsRecordSet = `{
                             "description": "The list of internal load balancers to health check.",
                             "description_kind": "plain"
                           },
-                          "min_items": 1,
                           "nesting_mode": "list"
                         }
                       },
@@ -193,6 +209,17 @@ const googleDnsRecordSet = `{
                       "block_types": {
                         "health_checked_targets": {
                           "block": {
+                            "attributes": {
+                              "external_endpoints": {
+                                "description": "The Internet IP addresses to be health checked.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": [
+                                  "list",
+                                  "string"
+                                ]
+                              }
+                            },
                             "block_types": {
                               "internal_load_balancers": {
                                 "block": {
@@ -243,7 +270,6 @@ const googleDnsRecordSet = `{
                                   "description": "The list of internal load balancers to health check.",
                                   "description_kind": "plain"
                                 },
-                                "min_items": 1,
                                 "nesting_mode": "list"
                               }
                             },
@@ -262,6 +288,17 @@ const googleDnsRecordSet = `{
                   },
                   "primary": {
                     "block": {
+                      "attributes": {
+                        "external_endpoints": {
+                          "description": "The Internet IP addresses to be health checked.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
+                            "string"
+                          ]
+                        }
+                      },
                       "block_types": {
                         "internal_load_balancers": {
                           "block": {
@@ -312,7 +349,6 @@ const googleDnsRecordSet = `{
                             "description": "The list of internal load balancers to health check.",
                             "description_kind": "plain"
                           },
-                          "min_items": 1,
                           "nesting_mode": "list"
                         }
                       },
@@ -351,6 +387,17 @@ const googleDnsRecordSet = `{
                 "block_types": {
                   "health_checked_targets": {
                     "block": {
+                      "attributes": {
+                        "external_endpoints": {
+                          "description": "The Internet IP addresses to be health checked.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
+                            "string"
+                          ]
+                        }
+                      },
                       "block_types": {
                         "internal_load_balancers": {
                           "block": {
@@ -401,7 +448,6 @@ const googleDnsRecordSet = `{
                             "description": "The list of internal load balancers to health check.",
                             "description_kind": "plain"
                           },
-                          "min_items": 1,
                           "nesting_mode": "list"
                         }
                       },

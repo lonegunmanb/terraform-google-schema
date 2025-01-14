@@ -189,6 +189,21 @@ const googleComputeRegionInstanceGroupManager = `{
         "optional": true,
         "type": "string"
       },
+      "standby_policy": {
+        "computed": true,
+        "description": "Standby policy for stopped and suspended instances.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "initial_delay_sec": "number",
+              "mode": "string"
+            }
+          ]
+        ]
+      },
       "stateful_disk": {
         "computed": true,
         "description": "Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the official documentation. Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the update_policy.",
@@ -297,6 +312,18 @@ const googleComputeRegionInstanceGroupManager = `{
       "target_size": {
         "computed": true,
         "description": "The target number of running instances for this managed instance group. This value should always be explicitly set unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.",
+        "description_kind": "plain",
+        "type": "number"
+      },
+      "target_stopped_size": {
+        "computed": true,
+        "description": "The target number of stopped instances for this managed instance group.",
+        "description_kind": "plain",
+        "type": "number"
+      },
+      "target_suspended_size": {
+        "computed": true,
+        "description": "The target number of suspended instances for this managed instance group.",
         "description_kind": "plain",
         "type": "number"
       },

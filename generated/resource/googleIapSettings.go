@@ -16,7 +16,7 @@ const googleIapSettings = `{
         "type": "string"
       },
       "name": {
-        "description": "The resource name of the IAP protected resource. Name can have below resources:\n* organizations/{organization_id}\n* folders/{folder_id}\n* projects/{projects_id}\n* projects/{projects_id}/iap_web\n* projects/{projects_id}/iap_web/compute\n* projects/{projects_id}/iap_web/compute-{region}\n* projects/{projects_id}/iap_web/compute/service/{service_id}\n* projects/{projects_id}/iap_web/compute-{region}/service/{service_id}\n* projects/{projects_id}/iap_web/appengine-{app_id}\n* projects/{projects_id}/iap_web/appengine-{app_id}/service/{service_id}\n* projects/{projects_id}/iap_web/appengine-{app_id}/service/{service_id}/version/{version_id}",
+        "description": "The resource name of the IAP protected resource. Name can have below resources:\n* organizations/{organization_id}\n* folders/{folder_id}\n* projects/{project_id}\n* projects/{project_id}/iap_web\n* projects/{project_id}/iap_web/compute\n* projects/{project_id}/iap_web/compute-{region}\n* projects/{project_id}/iap_web/compute/services/{service_id}\n* projects/{project_id}/iap_web/compute-{region}/services/{service_id}\n* projects/{project_id}/iap_web/appengine-{app_id}\n* projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}\n* projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}",
         "description_kind": "plain",
         "required": true,
         "type": "string"
@@ -97,7 +97,7 @@ const googleIapSettings = `{
                     ]
                   }
                 },
-                "description": "GCIP claims and endpoint configurations for 3p identity providers.",
+                "description": "GCIP claims and endpoint configurations for 3p identity providers.\n* Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.",
                 "description_kind": "plain"
               },
               "max_items": 1,
@@ -107,7 +107,7 @@ const googleIapSettings = `{
               "block": {
                 "attributes": {
                   "login_hint": {
-                    "description": "Domain hint to send as hd=? parameter in OAuth request flow.\nEnables redirect to primary IDP by skipping Google's login screen.\n(https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)\nNote: IAP does not verify that the id token's hd claim matches this value\nsince access behavior is managed by IAM policies.",
+                    "description": "Domain hint to send as hd=? parameter in OAuth request flow.\nEnables redirect to primary IDP by skipping Google's login screen.\n(https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)\nNote: IAP does not verify that the id token's hd claim matches this value\nsince access behavior is managed by IAM policies.\n* loginHint setting is not a replacement for access control. Always enforce an appropriate access policy if you want to restrict access to users outside your domain.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"

@@ -689,6 +689,12 @@ const googleSqlDatabaseInstance = `{
                     "optional": true,
                     "type": "string"
                   },
+                  "server_ca_pool": {
+                    "description": "The resource name of the server CA pool for an instance with \"CUSTOMER_MANAGED_CAS_CA\" as the \"server_ca_mode\".",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
                   "ssl_mode": {
                     "computed": true,
                     "description": "Specify how SSL connection should be enforced in DB connections.",

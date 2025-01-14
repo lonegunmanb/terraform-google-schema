@@ -784,42 +784,49 @@ const googleGkeonpremVmwareCluster = `{
               "type": "string"
             },
             "ca_cert_data": {
+              "computed": true,
               "description": "Contains the vCenter CA certificate public key for SSL verification.",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
             },
             "cluster": {
+              "computed": true,
               "description": "The name of the vCenter cluster for the user cluster.",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
             },
             "datacenter": {
+              "computed": true,
               "description": "The name of the vCenter datacenter for the user cluster.",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
             },
             "datastore": {
+              "computed": true,
               "description": "The name of the vCenter datastore for the user cluster.",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
             },
             "folder": {
+              "computed": true,
               "description": "The name of the vCenter folder for the user cluster.",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
             },
             "resource_pool": {
+              "computed": true,
               "description": "The name of the vCenter resource pool for the user cluster.",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
             },
             "storage_policy_name": {
+              "computed": true,
               "description": "The name of the vCenter storage policy for the user cluster.",
               "description_kind": "plain",
               "optional": true,

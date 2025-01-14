@@ -272,6 +272,7 @@ const googleSqlDatabaseInstances = `{
                             ]
                           ],
                           "server_ca_mode": "string",
+                          "server_ca_pool": "string",
                           "ssl_mode": "string"
                         }
                       ]
