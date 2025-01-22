@@ -183,6 +183,21 @@ const googleSqlDatabaseInstance = `{
           "string"
         ]
       },
+      "replication_cluster": {
+        "computed": true,
+        "description": "A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "dr_replica": "bool",
+              "failover_dr_replica_name": "string"
+            }
+          ]
+        ]
+      },
       "restore_backup_context": {
         "computed": true,
         "description_kind": "plain",

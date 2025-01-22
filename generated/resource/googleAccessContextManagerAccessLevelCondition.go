@@ -15,6 +15,12 @@ const googleAccessContextManagerAccessLevelCondition = `{
         "required": true,
         "type": "string"
       },
+      "access_policy_id": {
+        "computed": true,
+        "description": "The name of the Access Policy this resource belongs to.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",

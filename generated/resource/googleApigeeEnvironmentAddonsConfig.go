@@ -6,31 +6,25 @@ import (
 	tfjson "github.com/hashicorp/terraform-json"
 )
 
-const googleAccessContextManagerIngressPolicy = `{
+const googleApigeeEnvironmentAddonsConfig = `{
   "block": {
     "attributes": {
-      "access_policy_id": {
-        "computed": true,
-        "description": "The name of the Access Policy this resource belongs to.",
+      "analytics_enabled": {
+        "description": "Flag to enable/disable Analytics.",
         "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
+      "env_id": {
+        "description": "The Apigee environment group associated with the Apigee environment,\nin the format 'organizations/{{org_name}}/environments/{{env_name}}'.",
+        "description_kind": "plain",
+        "required": true,
         "type": "string"
       },
       "id": {
         "computed": true,
         "description_kind": "plain",
         "optional": true,
-        "type": "string"
-      },
-      "ingress_policy_name": {
-        "description": "The name of the Service Perimeter to add this resource to.",
-        "description_kind": "plain",
-        "required": true,
-        "type": "string"
-      },
-      "resource": {
-        "description": "A GCP resource that is inside of the service perimeter.",
-        "description_kind": "plain",
-        "required": true,
         "type": "string"
       }
     },
@@ -47,6 +41,11 @@ const googleAccessContextManagerIngressPolicy = `{
               "description_kind": "plain",
               "optional": true,
               "type": "string"
+            },
+            "update": {
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
             }
           },
           "description_kind": "plain"
@@ -59,8 +58,8 @@ const googleAccessContextManagerIngressPolicy = `{
   "version": 0
 }`
 
-func GoogleAccessContextManagerIngressPolicySchema() *tfjson.Schema {
+func GoogleApigeeEnvironmentAddonsConfigSchema() *tfjson.Schema {
 	var result tfjson.Schema
-	_ = json.Unmarshal([]byte(googleAccessContextManagerIngressPolicy), &result)
+	_ = json.Unmarshal([]byte(googleApigeeEnvironmentAddonsConfig), &result)
 	return &result
 }

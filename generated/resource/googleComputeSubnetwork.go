@@ -143,7 +143,7 @@ const googleComputeSubnetwork = `{
       },
       "stack_type": {
         "computed": true,
-        "description": "The stack type for this subnet to identify whether the IPv6 feature is enabled or not.\nIf not specified IPV4_ONLY will be used. Possible values: [\"IPV4_ONLY\", \"IPV4_IPV6\"]",
+        "description": "The stack type for this subnet to identify whether the IPv6 feature is enabled or not.\nIf not specified IPV4_ONLY will be used. Possible values: [\"IPV4_ONLY\", \"IPV4_IPV6\", \"IPV6_ONLY\"]",
         "description_kind": "plain",
         "optional": true,
         "type": "string"

@@ -15,6 +15,27 @@ const googleComputeNetwork = `{
         "optional": true,
         "type": "bool"
       },
+      "bgp_always_compare_med": {
+        "computed": true,
+        "description": "Enables/disables the comparison of MED across routes with different Neighbor ASNs.\nThis value can only be set if the --bgp-best-path-selection-mode is STANDARD",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
+      "bgp_best_path_selection_mode": {
+        "computed": true,
+        "description": "The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD. Possible values: [\"LEGACY\", \"STANDARD\"]",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
+      "bgp_inter_region_cost": {
+        "computed": true,
+        "description": "Choice of the behavior of inter-regional cost and MED in the BPS algorithm. Possible values: [\"DEFAULT\", \"ADD_COST_TO_MED\"]",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "delete_default_routes_on_create": {
         "description": "If set to 'true', default routes ('0.0.0.0/0') will be deleted\nimmediately after network creation. Defaults to 'false'.",
         "description_kind": "plain",

@@ -9,6 +9,12 @@ import (
 const googleAccessContextManagerEgressPolicy = `{
   "block": {
     "attributes": {
+      "access_policy_id": {
+        "computed": true,
+        "description": "The name of the Access Policy this resource belongs to.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "egress_policy_name": {
         "description": "The name of the Service Perimeter to add this resource to.",
         "description_kind": "plain",

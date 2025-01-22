@@ -92,6 +92,28 @@ const googleDiscoveryEngineDataStore = `{
       }
     },
     "block_types": {
+      "advanced_site_search_config": {
+        "block": {
+          "attributes": {
+            "disable_automatic_refresh": {
+              "description": "If set true, automatic refresh is disabled for the DataStore.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
+            "disable_initial_index": {
+              "description": "If set true, initial indexing is disabled for the DataStore.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            }
+          },
+          "description": "Configuration data for advance site search.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "document_processing_config": {
         "block": {
           "attributes": {

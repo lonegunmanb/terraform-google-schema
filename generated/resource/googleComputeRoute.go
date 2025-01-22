@@ -64,6 +64,12 @@ const googleComputeRoute = `{
         "optional": true,
         "type": "string"
       },
+      "next_hop_inter_region_cost": {
+        "computed": true,
+        "description": "Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "next_hop_ip": {
         "computed": true,
         "description": "Network IP address of an instance that should handle matching packets.",
@@ -71,9 +77,21 @@ const googleComputeRoute = `{
         "optional": true,
         "type": "string"
       },
+      "next_hop_med": {
+        "computed": true,
+        "description": "Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "next_hop_network": {
         "computed": true,
         "description": "URL to a Network that should handle matching packets.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "next_hop_origin": {
+        "computed": true,
+        "description": "Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.",
         "description_kind": "plain",
         "type": "string"
       },

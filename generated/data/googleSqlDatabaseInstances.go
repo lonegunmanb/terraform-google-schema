@@ -99,6 +99,16 @@ const googleSqlDatabaseInstances = `{
                 "list",
                 "string"
               ],
+              "replication_cluster": [
+                "list",
+                [
+                  "object",
+                  {
+                    "dr_replica": "bool",
+                    "failover_dr_replica_name": "string"
+                  }
+                ]
+              ],
               "restore_backup_context": [
                 "list",
                 [

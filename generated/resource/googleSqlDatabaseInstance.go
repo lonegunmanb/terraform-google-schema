@@ -310,6 +310,28 @@ const googleSqlDatabaseInstance = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "replication_cluster": {
+        "block": {
+          "attributes": {
+            "dr_replica": {
+              "computed": true,
+              "description": "Read-only field that indicates whether the replica is a DR replica.",
+              "description_kind": "plain",
+              "type": "bool"
+            },
+            "failover_dr_replica_name": {
+              "description": "If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is \"your-project:your-instance\". You can also set this field to \"your-instance\", but cloud SQL backend will convert it to the aforementioned standard format.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description": "A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "restore_backup_context": {
         "block": {
           "attributes": {
