@@ -78,7 +78,7 @@ const googleAlloydbCluster = `{
       },
       "database_version": {
         "computed": true,
-        "description": "The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.",
+        "description": "The database engine major version. This is an optional field and it's populated at the Cluster creation time.\nNote: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -190,6 +190,12 @@ const googleAlloydbCluster = `{
         "computed": true,
         "description": "Output only. Reconciling (https://google.aip.dev/128#reconciliation).\nSet to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.\nThis can happen due to user-triggered updates or system actions like failover or maintenance.",
         "description_kind": "plain",
+        "type": "bool"
+      },
+      "skip_await_major_version_upgrade": {
+        "description": "Set to true to skip awaiting on the major version upgrade of the cluster.\nPossible values: true, false\nDefault value: \"true\"",
+        "description_kind": "plain",
+        "optional": true,
         "type": "bool"
       },
       "state": {

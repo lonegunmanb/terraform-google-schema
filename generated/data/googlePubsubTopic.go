@@ -45,6 +45,21 @@ const googlePubsubTopic = `{
                   }
                 ]
               ],
+              "azure_event_hubs": [
+                "list",
+                [
+                  "object",
+                  {
+                    "client_id": "string",
+                    "event_hub": "string",
+                    "gcp_service_account": "string",
+                    "namespace": "string",
+                    "resource_group": "string",
+                    "subscription_id": "string",
+                    "tenant_id": "string"
+                  }
+                ]
+              ],
               "cloud_storage": [
                 "list",
                 [
@@ -125,7 +140,8 @@ const googlePubsubTopic = `{
               "allowed_persistence_regions": [
                 "list",
                 "string"
-              ]
+              ],
+              "enforce_in_transit": "bool"
             }
           ]
         ]

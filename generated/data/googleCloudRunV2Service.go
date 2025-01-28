@@ -34,6 +34,31 @@ const googleCloudRunV2Service = `{
           ]
         ]
       },
+      "build_config": {
+        "computed": true,
+        "description": "Configuration for building a Cloud Run function.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "base_image": "string",
+              "enable_automatic_updates": "bool",
+              "environment_variables": [
+                "map",
+                "string"
+              ],
+              "function_target": "string",
+              "image_uri": "string",
+              "name": "string",
+              "service_account": "string",
+              "source_location": "string",
+              "worker_pool": "string"
+            }
+          ]
+        ]
+      },
       "client": {
         "computed": true,
         "description": "Arbitrary identifier for the API client.",

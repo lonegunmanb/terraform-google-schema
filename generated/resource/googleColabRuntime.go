@@ -6,17 +6,17 @@ import (
 	tfjson "github.com/hashicorp/terraform-json"
 )
 
-const googleComputePublicAdvertisedPrefix = `{
+const googleColabRuntime = `{
   "block": {
     "attributes": {
       "description": {
-        "description": "An optional description of this resource.",
+        "description": "The description of the Runtime.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
       },
-      "dns_verification_ip": {
-        "description": "The IPv4 address to be used for reverse DNS verification.",
+      "display_name": {
+        "description": "Required. The display name of the Runtime.",
         "description_kind": "plain",
         "required": true,
         "type": "string"
@@ -27,20 +27,14 @@ const googleComputePublicAdvertisedPrefix = `{
         "optional": true,
         "type": "string"
       },
-      "ip_cidr_range": {
-        "description": "The IPv4 address range, in CIDR format, represented by this public advertised prefix.",
+      "location": {
+        "description": "The location for the resource: https://cloud.google.com/colab/docs/locations",
         "description_kind": "plain",
         "required": true,
         "type": "string"
       },
       "name": {
-        "description": "Name of the resource. The name must be 1-63 characters long, and\ncomply with RFC1035. Specifically, the name must be 1-63 characters\nlong and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?'\nwhich means the first character must be a lowercase letter, and all\nfollowing characters must be a dash, lowercase letter, or digit,\nexcept the last character, which cannot be a dash.",
-        "description_kind": "plain",
-        "required": true,
-        "type": "string"
-      },
-      "pdp_scope": {
-        "description": "Specifies how child public delegated prefix will be scoped. pdpScope\nmust be one of: GLOBAL, REGIONAL Possible values: [\"GLOBAL\", \"REGIONAL\"]",
+        "description": "The resource name of the Runtime",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -51,19 +45,30 @@ const googleComputePublicAdvertisedPrefix = `{
         "optional": true,
         "type": "string"
       },
-      "self_link": {
-        "computed": true,
+      "runtime_user": {
+        "description": "The user email of the NotebookRuntime.",
         "description_kind": "plain",
-        "type": "string"
-      },
-      "shared_secret": {
-        "computed": true,
-        "description": "Output Only. The shared secret to be used for reverse DNS verification.",
-        "description_kind": "plain",
+        "required": true,
         "type": "string"
       }
     },
     "block_types": {
+      "notebook_runtime_template_ref": {
+        "block": {
+          "attributes": {
+            "notebook_runtime_template": {
+              "description": "The resource name of the NotebookRuntimeTemplate based on which a NotebookRuntime will be created.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "'Runtime specific information used for NotebookRuntime creation.'",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {
@@ -73,6 +78,11 @@ const googleComputePublicAdvertisedPrefix = `{
               "type": "string"
             },
             "delete": {
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "update": {
               "description_kind": "plain",
               "optional": true,
               "type": "string"
@@ -88,8 +98,8 @@ const googleComputePublicAdvertisedPrefix = `{
   "version": 0
 }`
 
-func GoogleComputePublicAdvertisedPrefixSchema() *tfjson.Schema {
+func GoogleColabRuntimeSchema() *tfjson.Schema {
 	var result tfjson.Schema
-	_ = json.Unmarshal([]byte(googleComputePublicAdvertisedPrefix), &result)
+	_ = json.Unmarshal([]byte(googleColabRuntime), &result)
 	return &result
 }

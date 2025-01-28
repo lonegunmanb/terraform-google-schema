@@ -105,6 +105,58 @@ const googlePubsubTopic = `{
               "max_items": 1,
               "nesting_mode": "list"
             },
+            "azure_event_hubs": {
+              "block": {
+                "attributes": {
+                  "client_id": {
+                    "description": "The Azure event hub client ID to use for ingestion.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "event_hub": {
+                    "description": "The Azure event hub to ingest data from.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "gcp_service_account": {
+                    "description": "The GCP service account to be used for Federated Identity authentication\nwith Azure (via a 'AssumeRoleWithWebIdentity' call for the provided\nrole).",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "namespace": {
+                    "description": "The Azure event hub namespace to ingest data from.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "resource_group": {
+                    "description": "The name of the resource group within an Azure subscription.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "subscription_id": {
+                    "description": "The Azure event hub subscription ID to use for ingestion.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "tenant_id": {
+                    "description": "The Azure event hub tenant ID to use for ingestion.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Settings for ingestion from Azure Event Hubs.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "cloud_storage": {
               "block": {
                 "attributes": {
@@ -201,6 +253,12 @@ const googlePubsubTopic = `{
                 "list",
                 "string"
               ]
+            },
+            "enforce_in_transit": {
+              "description": "If true, 'allowedPersistenceRegions' is also used to enforce in-transit\nguarantees for messages. That is, Pub/Sub will fail topics.publish\noperations on this topic and subscribe operations on any subscription\nattached to this topic in any region that is not in 'allowedPersistenceRegions'.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
             }
           },
           "description": "Policy constraining the set of Google Cloud Platform regions where\nmessages published to the topic may be stored. If not present, then no\nconstraints are in effect.",

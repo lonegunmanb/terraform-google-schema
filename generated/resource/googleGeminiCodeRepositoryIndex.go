@@ -6,31 +6,19 @@ import (
 	tfjson "github.com/hashicorp/terraform-json"
 )
 
-const googleNetworkSecuritySecurityProfileGroup = `{
+const googleGeminiCodeRepositoryIndex = `{
   "block": {
     "attributes": {
+      "code_repository_index_id": {
+        "description": "Required. Id of the Code Repository Index.",
+        "description_kind": "plain",
+        "required": true,
+        "type": "string"
+      },
       "create_time": {
         "computed": true,
-        "description": "Time the security profile group was created in UTC.",
+        "description": "Output only. Create time stamp.",
         "description_kind": "plain",
-        "type": "string"
-      },
-      "custom_intercept_profile": {
-        "description": "Reference to a SecurityProfile with the CustomIntercept configuration.",
-        "description_kind": "plain",
-        "optional": true,
-        "type": "string"
-      },
-      "custom_mirroring_profile": {
-        "description": "Reference to a SecurityProfile with the custom mirroring configuration for the SecurityProfileGroup.",
-        "description_kind": "plain",
-        "optional": true,
-        "type": "string"
-      },
-      "description": {
-        "description": "An optional description of the profile. The Max length is 512 characters.",
-        "description_kind": "plain",
-        "optional": true,
         "type": "string"
       },
       "effective_labels": {
@@ -42,11 +30,11 @@ const googleNetworkSecuritySecurityProfileGroup = `{
           "string"
         ]
       },
-      "etag": {
-        "computed": true,
-        "description": "This checksum is computed by the server based on the value of other fields,\nand may be sent on update and delete requests to ensure the client has an up-to-date\nvalue before proceeding.",
+      "force_destroy": {
+        "description": "If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.",
         "description_kind": "plain",
-        "type": "string"
+        "optional": true,
+        "type": "bool"
       },
       "id": {
         "computed": true,
@@ -54,8 +42,14 @@ const googleNetworkSecuritySecurityProfileGroup = `{
         "optional": true,
         "type": "string"
       },
+      "kms_key": {
+        "description": "Optional. Immutable. Customer-managed encryption key name, in the format\n'projects/*/locations/*/keyRings/*/cryptoKeys/*'.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "labels": {
-        "description": "A map of key/value label pairs to assign to the resource.\n\n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
+        "description": "Optional. Labels as key value pairs.\n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
         "description_kind": "plain",
         "optional": true,
         "type": [
@@ -64,21 +58,27 @@ const googleNetworkSecuritySecurityProfileGroup = `{
         ]
       },
       "location": {
-        "description": "The location of the security profile group.\nThe default value is 'global'.",
-        "description_kind": "plain",
-        "optional": true,
-        "type": "string"
-      },
-      "name": {
-        "description": "The name of the security profile group resource.",
+        "description": "The location of the Code Repository Index, for example 'us-central1'.",
         "description_kind": "plain",
         "required": true,
         "type": "string"
       },
-      "parent": {
-        "description": "The name of the parent this security profile group belongs to.\nFormat: organizations/{organization_id}.",
+      "name": {
+        "computed": true,
+        "description": "Immutable. Identifier. Name of Code Repository Index.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "project": {
+        "computed": true,
         "description_kind": "plain",
         "optional": true,
+        "type": "string"
+      },
+      "state": {
+        "computed": true,
+        "description": "Output only. Code Repository Index instance State.\nPossible values are: 'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE', 'DELETING', 'SUSPENDED'.",
+        "description_kind": "plain",
         "type": "string"
       },
       "terraform_labels": {
@@ -90,15 +90,9 @@ const googleNetworkSecuritySecurityProfileGroup = `{
           "string"
         ]
       },
-      "threat_prevention_profile": {
-        "description": "Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.",
-        "description_kind": "plain",
-        "optional": true,
-        "type": "string"
-      },
       "update_time": {
         "computed": true,
-        "description": "Time the security profile group was updated in UTC.",
+        "description": "Output only. Update time stamp.",
         "description_kind": "plain",
         "type": "string"
       }
@@ -133,8 +127,8 @@ const googleNetworkSecuritySecurityProfileGroup = `{
   "version": 0
 }`
 
-func GoogleNetworkSecuritySecurityProfileGroupSchema() *tfjson.Schema {
+func GoogleGeminiCodeRepositoryIndexSchema() *tfjson.Schema {
 	var result tfjson.Schema
-	_ = json.Unmarshal([]byte(googleNetworkSecuritySecurityProfileGroup), &result)
+	_ = json.Unmarshal([]byte(googleGeminiCodeRepositoryIndex), &result)
 	return &result
 }

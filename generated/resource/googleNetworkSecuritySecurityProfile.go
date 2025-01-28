@@ -85,7 +85,7 @@ const googleNetworkSecuritySecurityProfile = `{
         ]
       },
       "type": {
-        "description": "The type of security profile. Possible values: [\"THREAT_PREVENTION\"]",
+        "description": "The type of security profile. Possible values: [\"THREAT_PREVENTION\", \"CUSTOM_MIRRORING\", \"CUSTOM_INTERCEPT\"]",
         "description_kind": "plain",
         "required": true,
         "type": "string"
@@ -98,6 +98,38 @@ const googleNetworkSecuritySecurityProfile = `{
       }
     },
     "block_types": {
+      "custom_intercept_profile": {
+        "block": {
+          "attributes": {
+            "intercept_endpoint_group": {
+              "description": "The Intercept Endpoint Group to which matching traffic should be intercepted.\nFormat: projects/{project_id}/locations/global/interceptEndpointGroups/{endpoint_group_id}",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "The configuration for defining the Intercept Endpoint Group used to\nintercept traffic to third-party firewall appliances.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "custom_mirroring_profile": {
+        "block": {
+          "attributes": {
+            "mirroring_endpoint_group": {
+              "description": "The Mirroring Endpoint Group to which matching traffic should be mirrored.\nFormat: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "The configuration for defining the Mirroring Endpoint Group used to\nmirror traffic to third-party collectors.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "threat_prevention_profile": {
         "block": {
           "block_types": {

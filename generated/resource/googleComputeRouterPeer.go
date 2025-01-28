@@ -88,6 +88,12 @@ const googleComputeRouterPeer = `{
         "optional": true,
         "type": "string"
       },
+      "is_custom_learned_priority_set": {
+        "computed": true,
+        "description": "An internal boolean field for provider use.",
+        "description_kind": "plain",
+        "type": "bool"
+      },
       "management_type": {
         "computed": true,
         "description": "The resource that configures and manages this BGP peer.\n\n* 'MANAGED_BY_USER' is the default value and can be managed by\nyou or other users\n* 'MANAGED_BY_ATTACHMENT' is a BGP peer that is configured and\nmanaged by Cloud Interconnect, specifically by an\nInterconnectAttachment of type PARTNER. Google automatically\ncreates, updates, and deletes this type of BGP peer when the\nPARTNER InterconnectAttachment is created, updated,\nor deleted.",
@@ -151,6 +157,12 @@ const googleComputeRouterPeer = `{
         "description_kind": "plain",
         "optional": true,
         "type": "string"
+      },
+      "zero_custom_learned_route_priority": {
+        "description": "Force the custom_learned_route_priority to be 0.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
       }
     },
     "block_types": {

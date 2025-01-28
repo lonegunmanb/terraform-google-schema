@@ -94,6 +94,15 @@ const googleFilestoreInstance = `{
         "optional": true,
         "type": "string"
       },
+      "tags": {
+        "description": "A map of resource manager tags. Resource manager tag keys\nand values have the same definition as resource manager\ntags. Keys must be in the format tagKeys/{tag_key_id},\nand values are in the format tagValues/456. The field is\nignored when empty. The field is immutable and causes\nresource replacement when mutated. This field is only set\nat create time and modifying this field after creation\nwill trigger recreation. To apply tags to an existing\nresource, see the 'google_tags_tag_value' resource.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": [
+          "map",
+          "string"
+        ]
+      },
       "terraform_labels": {
         "computed": true,
         "description": "The combination of labels configured directly on the resource\n and default labels configured on the provider.",

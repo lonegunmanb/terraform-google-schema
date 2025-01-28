@@ -96,6 +96,37 @@ const googleApigeeEnvironment = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "properties": {
+        "block": {
+          "block_types": {
+            "property": {
+              "block": {
+                "attributes": {
+                  "name": {
+                    "description": "The property key.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "The property value.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "List of all properties in the object.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Key-value pairs that may be used for customizing the environment.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {

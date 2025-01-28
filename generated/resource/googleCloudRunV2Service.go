@@ -314,6 +314,73 @@ const googleCloudRunV2Service = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "build_config": {
+        "block": {
+          "attributes": {
+            "base_image": {
+              "description": "The base image used to build the function.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "enable_automatic_updates": {
+              "description": "Sets whether the function will receive automatic base image updates.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
+            "environment_variables": {
+              "description": "User-provided build-time environment variables for the function.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "map",
+                "string"
+              ]
+            },
+            "function_target": {
+              "description": "The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named \"function\".",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "image_uri": {
+              "description": "Artifact Registry URI to store the built image.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "name": {
+              "computed": true,
+              "description": "The Cloud Build name of the latest successful deployment of the function.",
+              "description_kind": "plain",
+              "type": "string"
+            },
+            "service_account": {
+              "description": "Service account to be used for building the container. The format of this field is 'projects/{projectId}/serviceAccounts/{serviceAccountEmail}'.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "source_location": {
+              "description": "The Cloud Storage bucket URI where the function source code is located.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "worker_pool": {
+              "description": "Name of the Cloud Build Custom Worker Pool that should be used to build the Cloud Run function. The format of this field is 'projects/{project}/locations/{region}/workerPools/{workerPool}' where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description": "Configuration for building a Cloud Run function.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "scaling": {
         "block": {
           "attributes": {

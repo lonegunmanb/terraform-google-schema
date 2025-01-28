@@ -117,6 +117,21 @@ const googleRedisCluster = `{
           ]
         ]
       },
+      "psc_service_attachments": {
+        "computed": true,
+        "description": "Service attachment details to configure Psc connections.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "connection_type": "string",
+              "service_attachment": "string"
+            }
+          ]
+        ]
+      },
       "redis_configs": {
         "description": "Configure Redis Cluster behavior using a subset of native Redis configuration parameters.\nPlease check Memorystore documentation for the list of supported parameters:\nhttps://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations",
         "description_kind": "plain",
@@ -449,7 +464,6 @@ const googleRedisCluster = `{
           "description": "Required. Each PscConfig configures the consumer network where two\nnetwork addresses will be designated to the cluster for client access.\nCurrently, only one PscConfig is supported.",
           "description_kind": "plain"
         },
-        "min_items": 1,
         "nesting_mode": "list"
       },
       "timeouts": {
