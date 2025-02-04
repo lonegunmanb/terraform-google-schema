@@ -89,6 +89,22 @@ const googleDataprocWorkflowTemplate = `{
       }
     },
     "block_types": {
+      "encryption_config": {
+        "block": {
+          "attributes": {
+            "kms_key": {
+              "description": "Optional. The Cloud KMS key name to use for encryption.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description": "Optional. The encryption configuration for the workflow template.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "jobs": {
         "block": {
           "attributes": {

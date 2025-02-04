@@ -98,6 +98,12 @@ const googleComputeNetwork = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "network_profile": {
+        "description": "A full or partial URL of the network profile to apply to this network.\nThis field can be set only at resource creation time. For example, the\nfollowing are valid URLs:\n* https://www.googleapis.com/compute/v1/projects/{projectId}/global/networkProfiles/{network_profile_name}\n* projects/{projectId}/global/networkProfiles/{network_profile_name}",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "numeric_id": {
         "computed": true,
         "deprecated": true,

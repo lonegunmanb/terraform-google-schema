@@ -88,6 +88,12 @@ const googleComputeRouterPeer = `{
         "optional": true,
         "type": "string"
       },
+      "is_advertised_route_priority_set": {
+        "computed": true,
+        "description": "An internal boolean field for provider use for zero_advertised_route_priority.",
+        "description_kind": "plain",
+        "type": "bool"
+      },
       "is_custom_learned_priority_set": {
         "computed": true,
         "description": "An internal boolean field for provider use.",
@@ -157,6 +163,12 @@ const googleComputeRouterPeer = `{
         "description_kind": "plain",
         "optional": true,
         "type": "string"
+      },
+      "zero_advertised_route_priority": {
+        "description": "Force the advertised_route_priority to be 0.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
       },
       "zero_custom_learned_route_priority": {
         "description": "Force the custom_learned_route_priority to be 0.",

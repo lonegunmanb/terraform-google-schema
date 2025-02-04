@@ -45,6 +45,18 @@ const googlePubsubTopic = `{
                   }
                 ]
               ],
+              "aws_msk": [
+                "list",
+                [
+                  "object",
+                  {
+                    "aws_role_arn": "string",
+                    "cluster_arn": "string",
+                    "gcp_service_account": "string",
+                    "topic": "string"
+                  }
+                ]
+              ],
               "azure_event_hubs": [
                 "list",
                 [
@@ -91,6 +103,19 @@ const googlePubsubTopic = `{
                         }
                       ]
                     ]
+                  }
+                ]
+              ],
+              "confluent_cloud": [
+                "list",
+                [
+                  "object",
+                  {
+                    "bootstrap_server": "string",
+                    "cluster_id": "string",
+                    "gcp_service_account": "string",
+                    "identity_pool_id": "string",
+                    "topic": "string"
                   }
                 ]
               ],

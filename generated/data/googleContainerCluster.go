@@ -1083,6 +1083,7 @@ const googleContainerCluster = `{
               "local_ssd_encryption_mode": "string",
               "logging_variant": "string",
               "machine_type": "string",
+              "max_run_duration": "string",
               "metadata": [
                 "map",
                 "string"
@@ -1502,6 +1503,7 @@ const googleContainerCluster = `{
                     "local_ssd_encryption_mode": "string",
                     "logging_variant": "string",
                     "machine_type": "string",
+                    "max_run_duration": "string",
                     "metadata": [
                       "map",
                       "string"

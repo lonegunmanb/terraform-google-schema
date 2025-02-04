@@ -40,6 +40,11 @@ const googleComputeNetwork = `{
         "description_kind": "plain",
         "type": "number"
       },
+      "network_profile": {
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "numeric_id": {
         "computed": true,
         "deprecated": true,

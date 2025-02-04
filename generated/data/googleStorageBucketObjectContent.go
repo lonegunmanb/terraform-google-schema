@@ -22,6 +22,7 @@ const googleStorageBucketObjectContent = `{
         "type": "string"
       },
       "content": {
+        "computed": true,
         "description": "Data as string to be uploaded. Must be defined if source is not. Note: The content field is marked as sensitive. To view the raw contents of the object, please define an output.",
         "description_kind": "plain",
         "optional": true,

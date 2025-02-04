@@ -114,6 +114,15 @@ const googleWorkflowsWorkflow = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "tags": {
+        "description": "A map of resource manager tags. Resource manager tag keys and values have the same definition\nas resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in\nthe format tagValues/456. The field is ignored (both PUT \u0026 PATCH) when empty.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": [
+          "map",
+          "string"
+        ]
+      },
       "terraform_labels": {
         "computed": true,
         "description": "The combination of labels configured directly on the resource\n and default labels configured on the provider.",

@@ -383,6 +383,12 @@ const googleContainerNodePool = `{
               "optional": true,
               "type": "string"
             },
+            "max_run_duration": {
+              "description": "The runtime of each node in the node pool in seconds, terminated by 's'. Example: \"3600s\".",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "metadata": {
               "computed": true,
               "description": "The metadata key/value pairs assigned to instances in the cluster.",

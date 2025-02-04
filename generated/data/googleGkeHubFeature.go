@@ -66,6 +66,7 @@ const googleGkeHubFeature = `{
                               }
                             ]
                           ],
+                          "metrics_gcp_service_account_email": "string",
                           "oci": [
                             "list",
                             [

@@ -105,6 +105,40 @@ const googlePubsubTopic = `{
               "max_items": 1,
               "nesting_mode": "list"
             },
+            "aws_msk": {
+              "block": {
+                "attributes": {
+                  "aws_role_arn": {
+                    "description": "AWS role ARN to be used for Federated Identity authentication with\nMSK. Check the Pub/Sub docs for how to set up this role and the\nrequired permissions that need to be attached to it.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "cluster_arn": {
+                    "description": "ARN that uniquely identifies the MSK cluster.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "gcp_service_account": {
+                    "description": "The GCP service account to be used for Federated Identity authentication\nwith MSK (via a 'AssumeRoleWithWebIdentity' call for the provided\nrole). The 'awsRoleArn' must be set up with 'accounts.google.com:sub'\nequals to this service account number.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "topic": {
+                    "description": "The name of the MSK topic that Pub/Sub will import from.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Settings for ingestion from Amazon Managed Streaming for Apache Kafka.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "azure_event_hubs": {
               "block": {
                 "attributes": {
@@ -214,6 +248,46 @@ const googlePubsubTopic = `{
                   }
                 },
                 "description": "Settings for ingestion from Cloud Storage.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "confluent_cloud": {
+              "block": {
+                "attributes": {
+                  "bootstrap_server": {
+                    "description": "The Confluent Cloud bootstrap server. The format is url:port.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "cluster_id": {
+                    "description": "The Confluent Cloud cluster ID.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "gcp_service_account": {
+                    "description": "The GCP service account to be used for Federated Identity authentication\nwith Confluent Cloud.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "identity_pool_id": {
+                    "description": "Identity pool ID to be used for Federated Identity authentication with Confluent Cloud.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "topic": {
+                    "description": "Name of the Confluent Cloud topic that Pub/Sub will import from.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Settings for ingestion from Confluent Cloud.",
                 "description_kind": "plain"
               },
               "max_items": 1,

@@ -538,7 +538,7 @@ const googleComputeInstance = `{
               "type": "string"
             },
             "nic_type": {
-              "description": "The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF",
+              "description": "The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA",
               "description_kind": "plain",
               "optional": true,
               "type": "string"

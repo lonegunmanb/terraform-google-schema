@@ -1,4 +1,4 @@
-package data
+package resource
 
 import (
 	"encoding/json"
@@ -6,27 +6,13 @@ import (
 	tfjson "github.com/hashicorp/terraform-json"
 )
 
-const googleServiceAccounts = `{
+const googleBeyondcorpSecurityGatewayIamPolicy = `{
   "block": {
     "attributes": {
-      "accounts": {
+      "etag": {
         "computed": true,
         "description_kind": "plain",
-        "type": [
-          "list",
-          [
-            "object",
-            {
-              "account_id": "string",
-              "disabled": "bool",
-              "display_name": "string",
-              "email": "string",
-              "member": "string",
-              "name": "string",
-              "unique_id": "string"
-            }
-          ]
-        ]
+        "type": "string"
       },
       "id": {
         "computed": true,
@@ -34,19 +20,26 @@ const googleServiceAccounts = `{
         "optional": true,
         "type": "string"
       },
-      "prefix": {
+      "location": {
+        "computed": true,
         "description_kind": "plain",
         "optional": true,
+        "type": "string"
+      },
+      "policy_data": {
+        "description_kind": "plain",
+        "required": true,
         "type": "string"
       },
       "project": {
+        "computed": true,
         "description_kind": "plain",
         "optional": true,
         "type": "string"
       },
-      "regex": {
+      "security_gateway_id": {
         "description_kind": "plain",
-        "optional": true,
+        "required": true,
         "type": "string"
       }
     },
@@ -55,8 +48,8 @@ const googleServiceAccounts = `{
   "version": 0
 }`
 
-func GoogleServiceAccountsSchema() *tfjson.Schema {
+func GoogleBeyondcorpSecurityGatewayIamPolicySchema() *tfjson.Schema {
 	var result tfjson.Schema
-	_ = json.Unmarshal([]byte(googleServiceAccounts), &result)
+	_ = json.Unmarshal([]byte(googleBeyondcorpSecurityGatewayIamPolicy), &result)
 	return &result
 }

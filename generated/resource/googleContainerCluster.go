@@ -796,7 +796,7 @@ const googleContainerCluster = `{
                   "maximum": {
                     "description": "Maximum amount of the resource in the cluster.",
                     "description_kind": "plain",
-                    "optional": true,
+                    "required": true,
                     "type": "number"
                   },
                   "minimum": {
@@ -1550,6 +1550,12 @@ const googleContainerCluster = `{
             "machine_type": {
               "computed": true,
               "description": "The name of a Google Compute Engine machine type.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "max_run_duration": {
+              "description": "The runtime of each node in the node pool in seconds, terminated by 's'. Example: \"3600s\".",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
@@ -2509,6 +2515,12 @@ const googleContainerCluster = `{
                   "machine_type": {
                     "computed": true,
                     "description": "The name of a Google Compute Engine machine type.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "max_run_duration": {
+                    "description": "The runtime of each node in the node pool in seconds, terminated by 's'. Example: \"3600s\".",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"

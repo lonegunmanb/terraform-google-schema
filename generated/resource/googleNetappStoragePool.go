@@ -133,6 +133,7 @@ const googleNetappStoragePool = `{
         "type": "number"
       },
       "zone": {
+        "computed": true,
         "description": "Specifies the active zone for regional Flex pools. 'zone' and 'replica_zone' values can be swapped to initiate a\n[zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).\nIf you want to create a zonal Flex pool, specify a zone name for 'location' and omit 'zone'.",
         "description_kind": "plain",
         "optional": true,

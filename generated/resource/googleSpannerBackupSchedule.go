@@ -47,6 +47,28 @@ const googleSpannerBackupSchedule = `{
       }
     },
     "block_types": {
+      "encryption_config": {
+        "block": {
+          "attributes": {
+            "encryption_type": {
+              "description": "The encryption type of backups created by the backup schedule.\nPossible values are USE_DATABASE_ENCRYPTION, GOOGLE_DEFAULT_ENCRYPTION, or CUSTOMER_MANAGED_ENCRYPTION.\nIf you use CUSTOMER_MANAGED_ENCRYPTION, you must specify a kmsKeyName.\nIf your backup type is incremental-backup, the encryption type must be GOOGLE_DEFAULT_ENCRYPTION. Possible values: [\"USE_DATABASE_ENCRYPTION\", \"GOOGLE_DEFAULT_ENCRYPTION\", \"CUSTOMER_MANAGED_ENCRYPTION\"]",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            },
+            "kms_key_name": {
+              "description": "The resource name of the Cloud KMS key to use for encryption.\nFormat: 'projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}'",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description": "Configuration for the encryption of the backup schedule.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "full_backup_spec": {
         "block": {
           "description": "The schedule creates only full backups..",

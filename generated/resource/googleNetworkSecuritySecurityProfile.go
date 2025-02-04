@@ -152,7 +152,7 @@ const googleNetworkSecuritySecurityProfile = `{
                 "description": "The configuration for overriding threats actions by severity match.",
                 "description_kind": "plain"
               },
-              "nesting_mode": "list"
+              "nesting_mode": "set"
             },
             "threat_overrides": {
               "block": {
@@ -179,7 +179,7 @@ const googleNetworkSecuritySecurityProfile = `{
                 "description": "The configuration for overriding threats actions by threat id match.\nIf a threat is matched both by configuration provided in severity overrides\nand threat overrides, the threat overrides action is applied.",
                 "description_kind": "plain"
               },
-              "nesting_mode": "list"
+              "nesting_mode": "set"
             }
           },
           "description": "The threat prevention configuration for the security profile.",
