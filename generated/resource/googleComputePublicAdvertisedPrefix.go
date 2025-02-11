@@ -28,7 +28,7 @@ const googleComputePublicAdvertisedPrefix = `{
         "type": "string"
       },
       "ip_cidr_range": {
-        "description": "The IPv4 address range, in CIDR format, represented by this public advertised prefix.",
+        "description": "The address range, in CIDR format, represented by this public advertised prefix.",
         "description_kind": "plain",
         "required": true,
         "type": "string"
@@ -40,7 +40,7 @@ const googleComputePublicAdvertisedPrefix = `{
         "type": "string"
       },
       "pdp_scope": {
-        "description": "Specifies how child public delegated prefix will be scoped. pdpScope\nmust be one of: GLOBAL, REGIONAL Possible values: [\"GLOBAL\", \"REGIONAL\"]",
+        "description": "Specifies how child public delegated prefix will be scoped. pdpScope\nmust be one of: GLOBAL, REGIONAL\n* REGIONAL: The public delegated prefix is regional only. The\nprovisioning will take a few minutes.\n* GLOBAL: The public delegated prefix is global only. The provisioning\nwill take ~4 weeks. Possible values: [\"GLOBAL\", \"REGIONAL\"]",
         "description_kind": "plain",
         "optional": true,
         "type": "string"

@@ -42,6 +42,12 @@ const googleWorkbenchInstance = `{
           "string"
         ]
       },
+      "enable_third_party_identity": {
+        "description": "Flag that specifies that a notebook can be accessed with third party\nidentity provider.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "health_info": {
         "computed": true,
         "description": "'Output only. Additional information about instance health. Example:\nhealthInfo\": { \"docker_proxy_agent_status\": \"1\", \"docker_status\": \"1\", \"jupyterlab_api_status\":\n\"-1\", \"jupyterlab_status\": \"-1\", \"updated\": \"2020-10-18 09:40:03.573409\" }'",

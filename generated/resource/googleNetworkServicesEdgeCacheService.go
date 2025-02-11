@@ -434,6 +434,14 @@ const googleNetworkServicesEdgeCacheService = `{
                         },
                         "route_action": {
                           "block": {
+                            "attributes": {
+                              "compression_mode": {
+                                "description": "Setting the compression mode to automatic enables dynamic compression for every eligible response.\n\nWhen dynamic compression is enabled, it is recommended to also set a cache policy to maximize efficiency. Possible values: [\"DISABLED\", \"AUTOMATIC\"]",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
                             "block_types": {
                               "cdn_policy": {
                                 "block": {
@@ -740,6 +748,25 @@ const googleNetworkServicesEdgeCacheService = `{
                               }
                             },
                             "description": "In response to a matching path, the routeAction performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected origin.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
+                        "route_methods": {
+                          "block": {
+                            "attributes": {
+                              "allowed_methods": {
+                                "description": "The non-empty set of HTTP methods that are allowed for this route.\n\nAny combination of \"GET\", \"HEAD\", \"OPTIONS\", \"PUT\", \"POST\", \"DELETE\", and \"PATCH\".",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": [
+                                  "list",
+                                  "string"
+                                ]
+                              }
+                            },
+                            "description": "Allow overriding the set of methods that are allowed for this route.\nWhen not set, Media CDN allows only \"GET\", \"HEAD\", and \"OPTIONS\".",
                             "description_kind": "plain"
                           },
                           "max_items": 1,

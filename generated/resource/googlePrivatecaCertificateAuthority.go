@@ -739,6 +739,34 @@ const googlePrivatecaCertificateAuthority = `{
           "description_kind": "plain"
         },
         "nesting_mode": "single"
+      },
+      "user_defined_access_urls": {
+        "block": {
+          "attributes": {
+            "aia_issuing_certificate_urls": {
+              "description": "A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
+            },
+            "crl_access_urls": {
+              "description": "A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
+            }
+          },
+          "description": "Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs,\nthat can be specified by users.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
       }
     },
     "description_kind": "plain"

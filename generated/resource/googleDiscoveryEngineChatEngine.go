@@ -36,7 +36,7 @@ const googleDiscoveryEngineChatEngine = `{
         "type": "string"
       },
       "data_store_ids": {
-        "description": "The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be 'SOLUTION_TYPE_CHAT'. Adding or removing data stores will force recreation.",
+        "description": "The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be 'SOLUTION_TYPE_CHAT'.",
         "description_kind": "plain",
         "required": true,
         "type": [

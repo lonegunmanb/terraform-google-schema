@@ -283,6 +283,17 @@ const googleCloudRunV2Service = `{
                       "list",
                       "string"
                     ],
+                    "base_image_uri": "string",
+                    "build_info": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "function_target": "string",
+                          "source_location": "string"
+                        }
+                      ]
+                    ],
                     "command": [
                       "list",
                       "string"

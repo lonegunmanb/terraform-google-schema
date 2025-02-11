@@ -477,6 +477,27 @@ const googleCloudRunV2Service = `{
                       "string"
                     ]
                   },
+                  "base_image_uri": {
+                    "description": "Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "build_info": {
+                    "computed": true,
+                    "description": "The build info of the container image.",
+                    "description_kind": "plain",
+                    "type": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "function_target": "string",
+                          "source_location": "string"
+                        }
+                      ]
+                    ]
+                  },
                   "command": {
                     "description": "Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell",
                     "description_kind": "plain",

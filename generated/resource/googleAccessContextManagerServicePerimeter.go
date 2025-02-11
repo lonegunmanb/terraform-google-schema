@@ -134,6 +134,12 @@ const googleAccessContextManagerServicePerimeter = `{
                                 "description_kind": "plain",
                                 "optional": true,
                                 "type": "string"
+                              },
+                              "resource": {
+                                "description": "A Google Cloud resource that is allowed to egress the perimeter.\nRequests from these resources are allowed to access data outside the perimeter.\nCurrently only projects are allowed. Project format: 'projects/{project_number}'.\nThe resource may be in any Google Cloud organization, not just the\norganization that the perimeter is defined in. '*' is not allowed, the\ncase of allowing all Google Cloud resources only is not supported.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
                               }
                             },
                             "description": "Sources that this EgressPolicy authorizes access from.",
@@ -436,6 +442,12 @@ const googleAccessContextManagerServicePerimeter = `{
                             "attributes": {
                               "access_level": {
                                 "description": "An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "resource": {
+                                "description": "A Google Cloud resource that is allowed to egress the perimeter.\nRequests from these resources are allowed to access data outside the perimeter.\nCurrently only projects are allowed. Project format: 'projects/{project_number}'.\nThe resource may be in any Google Cloud organization, not just the\norganization that the perimeter is defined in. '*' is not allowed, the\ncase of allowing all Google Cloud resources only is not supported.",
                                 "description_kind": "plain",
                                 "optional": true,
                                 "type": "string"

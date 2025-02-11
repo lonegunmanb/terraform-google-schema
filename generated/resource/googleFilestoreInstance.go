@@ -42,6 +42,33 @@ const googleFilestoreInstance = `{
           "string"
         ]
       },
+      "effective_replication": {
+        "computed": true,
+        "description": "Output only fields for replication configuration.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "replicas": [
+                "list",
+                [
+                  "object",
+                  {
+                    "last_active_sync_time": "string",
+                    "state": "string",
+                    "state_reasons": [
+                      "list",
+                      "string"
+                    ]
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      },
       "etag": {
         "computed": true,
         "description": "Server-specified ETag for the instance resource to prevent\nsimultaneous updates from overwriting each other.",
@@ -200,6 +227,39 @@ const googleFilestoreInstance = `{
         },
         "max_items": 1,
         "min_items": 1,
+        "nesting_mode": "list"
+      },
+      "initial_replication": {
+        "block": {
+          "attributes": {
+            "role": {
+              "description": "The replication role. Default value: \"STANDBY\" Possible values: [\"ROLE_UNSPECIFIED\", \"ACTIVE\", \"STANDBY\"]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "block_types": {
+            "replicas": {
+              "block": {
+                "attributes": {
+                  "peer_instance": {
+                    "description": "The peer instance.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "description": "The replication role.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Replication configuration, once set, this cannot be updated.\nAddtionally this should be specified on the replica instance only, indicating the active as the peer_instance",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
         "nesting_mode": "list"
       },
       "networks": {

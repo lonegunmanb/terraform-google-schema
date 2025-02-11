@@ -251,9 +251,10 @@ const googleComputeResizeRequest = `{
         ]
       },
       "zone": {
-        "description": "The reference of the compute zone scoping this request.",
+        "computed": true,
+        "description": "The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.",
         "description_kind": "plain",
-        "required": true,
+        "optional": true,
         "type": "string"
       }
     },

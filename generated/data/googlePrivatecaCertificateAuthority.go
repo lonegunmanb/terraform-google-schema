@@ -429,6 +429,27 @@ const googlePrivatecaCertificateAuthority = `{
         "description": "The time at which this CertificateAuthority was updated.\n\nA timestamp in RFC3339 UTC \"Zulu\" format, with nanosecond resolution and up to nine\nfractional digits. Examples: \"2014-10-02T15:01:23Z\" and \"2014-10-02T15:01:23.045123456Z\".",
         "description_kind": "plain",
         "type": "string"
+      },
+      "user_defined_access_urls": {
+        "computed": true,
+        "description": "Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs,\nthat can be specified by users.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "aia_issuing_certificate_urls": [
+                "list",
+                "string"
+              ],
+              "crl_access_urls": [
+                "list",
+                "string"
+              ]
+            }
+          ]
+        ]
       }
     },
     "description_kind": "plain"

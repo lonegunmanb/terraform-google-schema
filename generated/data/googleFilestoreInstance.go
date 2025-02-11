@@ -42,6 +42,33 @@ const googleFilestoreInstance = `{
           "string"
         ]
       },
+      "effective_replication": {
+        "computed": true,
+        "description": "Output only fields for replication configuration.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "replicas": [
+                "list",
+                [
+                  "object",
+                  {
+                    "last_active_sync_time": "string",
+                    "state": "string",
+                    "state_reasons": [
+                      "list",
+                      "string"
+                    ]
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      },
       "etag": {
         "computed": true,
         "description": "Server-specified ETag for the instance resource to prevent\nsimultaneous updates from overwriting each other.",
@@ -85,6 +112,29 @@ const googleFilestoreInstance = `{
         "description_kind": "plain",
         "optional": true,
         "type": "string"
+      },
+      "initial_replication": {
+        "computed": true,
+        "description": "Replication configuration, once set, this cannot be updated.\nAddtionally this should be specified on the replica instance only, indicating the active as the peer_instance",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "replicas": [
+                "list",
+                [
+                  "object",
+                  {
+                    "peer_instance": "string"
+                  }
+                ]
+              ],
+              "role": "string"
+            }
+          ]
+        ]
       },
       "kms_key_name": {
         "computed": true,

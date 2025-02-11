@@ -46,6 +46,7 @@ const googleComputeForwardingRules = `{
               ],
               "forwarding_rule_id": "number",
               "ip_address": "string",
+              "ip_collection": "string",
               "ip_protocol": "string",
               "ip_version": "string",
               "is_mirroring_collector": "bool",

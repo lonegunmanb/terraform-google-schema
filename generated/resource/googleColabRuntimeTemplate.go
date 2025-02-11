@@ -232,6 +232,65 @@ const googleColabRuntimeTemplate = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "software_config": {
+        "block": {
+          "block_types": {
+            "env": {
+              "block": {
+                "attributes": {
+                  "name": {
+                    "description": "Name of the environment variable. Must be a valid C identifier.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Environment variables to be passed to the container.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            },
+            "post_startup_script_config": {
+              "block": {
+                "attributes": {
+                  "post_startup_script": {
+                    "description": "Post startup script to run after runtime is started.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "post_startup_script_behavior": {
+                    "description": "Post startup script behavior that defines download and execution behavior. Possible values: [\"RUN_ONCE\", \"RUN_EVERY_START\", \"DOWNLOAD_AND_RUN_EVERY_START\"]",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "post_startup_script_url": {
+                    "description": "Post startup script url to download. Example: https://bucket/script.sh.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Post startup script config.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "The notebook software configuration of the notebook runtime.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {

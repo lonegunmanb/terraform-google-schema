@@ -60,8 +60,33 @@ const googleMemorystoreInstance = `{
         "type": [
           "list",
           [
-            "list",
-            "string"
+            "object",
+            {
+              "connections": [
+                "list",
+                [
+                  "object",
+                  {
+                    "psc_auto_connection": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "connection_type": "string",
+                          "forwarding_rule": "string",
+                          "ip_address": "string",
+                          "network": "string",
+                          "port": "number",
+                          "project_id": "string",
+                          "psc_connection_id": "string",
+                          "service_attachment": "string"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            }
           ]
         ]
       },
@@ -110,7 +135,7 @@ const googleMemorystoreInstance = `{
       },
       "mode": {
         "computed": true,
-        "description": "Optional. Standalone or cluster. \n Possible values:\n CLUSTER\nSTANDALONE Possible values: [\"CLUSTER\", \"STANDALONE\"]",
+        "description": "Optional. cluster or cluster-disabled. \n Possible values:\n CLUSTER\n CLUSTER_DISABLED Possible values: [\"CLUSTER\", \"CLUSTER_DISABLED\"]",
         "description_kind": "plain",
         "optional": true,
         "type": "string"

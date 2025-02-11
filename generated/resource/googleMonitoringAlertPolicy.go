@@ -357,7 +357,7 @@ const googleMonitoringAlertPolicy = `{
                     "type": "string"
                   },
                   "labels": {
-                    "description": "Labels to add to or overwrite in the PromQL query result. Label names\nmust be valid.\n\nLabel values can be templatized by using variables. The only available\nvariable names are the names of the labels in the PromQL result, including\n\"__name__\" and \"value\". \"labels\" may be empty. This field is intended to be\nused for organizing and identifying the AlertPolicy",
+                    "description": "Labels to add to or overwrite in the PromQL query result. Label names\nmust be valid.\n\nLabel values can be templatized by using variables. The only available\nvariable names are the names of the labels in the PromQL result,\nalthough label names beginning with \\_\\_ (two \"\\_\") are reserved for\ninternal use. \"labels\" may be empty. This field is intended to be used\nfor organizing and identifying the AlertPolicy.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": [
