@@ -1035,9 +1035,19 @@ const googleContainerCluster = `{
                 [
                   "object",
                   {
+                    "allowed_unsafe_sysctls": [
+                      "list",
+                      "string"
+                    ],
+                    "container_log_max_files": "number",
+                    "container_log_max_size": "string",
                     "cpu_cfs_quota": "bool",
                     "cpu_cfs_quota_period": "string",
                     "cpu_manager_policy": "string",
+                    "image_gc_high_threshold_percent": "number",
+                    "image_gc_low_threshold_percent": "number",
+                    "image_maximum_gc_age": "string",
+                    "image_minimum_gc_age": "string",
                     "insecure_kubelet_readonly_port_enabled": "string",
                     "pod_pids_limit": "number"
                   }
@@ -1455,9 +1465,19 @@ const googleContainerCluster = `{
                       [
                         "object",
                         {
+                          "allowed_unsafe_sysctls": [
+                            "list",
+                            "string"
+                          ],
+                          "container_log_max_files": "number",
+                          "container_log_max_size": "string",
                           "cpu_cfs_quota": "bool",
                           "cpu_cfs_quota_period": "string",
                           "cpu_manager_policy": "string",
+                          "image_gc_high_threshold_percent": "number",
+                          "image_gc_low_threshold_percent": "number",
+                          "image_maximum_gc_age": "string",
+                          "image_minimum_gc_age": "string",
                           "insecure_kubelet_readonly_port_enabled": "string",
                           "pod_pids_limit": "number"
                         }

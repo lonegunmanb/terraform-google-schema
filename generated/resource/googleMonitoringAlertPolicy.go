@@ -384,6 +384,152 @@ const googleMonitoringAlertPolicy = `{
               "max_items": 1,
               "nesting_mode": "list"
             },
+            "condition_sql": {
+              "block": {
+                "attributes": {
+                  "query": {
+                    "description": "The Log Analytics SQL query to run, as a string.  The query must\nconform to the required shape. Specifically, the query must not try to\nfilter the input by time.  A filter will automatically be applied\nto filter the input so that the query receives all rows received\nsince the last time the query was run.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "block_types": {
+                  "boolean_test": {
+                    "block": {
+                      "attributes": {
+                        "column": {
+                          "description": "The name of the column containing the boolean value. If the value\nin a row is NULL, that row is ignored.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "The start date and time of the query. If left unspecified, then the\nquery will start immediately.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "daily": {
+                    "block": {
+                      "attributes": {
+                        "periodicity": {
+                          "description": "The number of days between runs. Must be greater than or equal\nto 1 day and less than or equal to 30 days.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "number"
+                        }
+                      },
+                      "block_types": {
+                        "execution_time": {
+                          "block": {
+                            "attributes": {
+                              "hours": {
+                                "description": "Hours of a day in 24 hour format. Must be greater than or equal\nto 0 and typically must be less than or equal to 23. An API may\nchoose to allow the value \"24:00:00\" for scenarios like business\nclosing time.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "number"
+                              },
+                              "minutes": {
+                                "description": "Minutes of an hour. Must be greater than or equal to 0 and\nless than or equal to 59.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "number"
+                              },
+                              "nanos": {
+                                "description": "Fractions of seconds, in nanoseconds. Must be greater than or\nequal to 0 and less than or equal to 999,999,999.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "number"
+                              },
+                              "seconds": {
+                                "description": "Seconds of a minute. Must be greater than or equal to 0 and\ntypically must be less than or equal to 59. An API may allow the\nvalue 60 if it allows leap-seconds.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "number"
+                              }
+                            },
+                            "description": "The time of day (in UTC) at which the query should run. If left\nunspecified, the server picks an arbitrary time of day and runs\nthe query at the same time each day.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "Used to schedule the query to run every so many days.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "hourly": {
+                    "block": {
+                      "attributes": {
+                        "minute_offset": {
+                          "description": "The number of minutes after the hour (in UTC) to run the query.\nMust be greater than or equal to 0 minutes and less than or equal to\n59 minutes.  If left unspecified, then an arbitrary offset is used.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "periodicity": {
+                          "description": "Number of hours between runs. The interval must be greater than or\nequal to 1 hour and less than or equal to 48 hours.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "number"
+                        }
+                      },
+                      "description": "Used to schedule the query to run every so many hours.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "minutes": {
+                    "block": {
+                      "attributes": {
+                        "periodicity": {
+                          "description": "Number of minutes between runs. The interval must be greater than or\nequal to 5 minutes and less than or equal to 1440 minutes.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "number"
+                        }
+                      },
+                      "description": "Used to schedule the query to run every so many minutes.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "row_count_test": {
+                    "block": {
+                      "attributes": {
+                        "comparison": {
+                          "description": "The comparison to apply between the time\nseries (indicated by filter and aggregation)\nand the threshold (indicated by\nthreshold_value). The comparison is applied\non each time series, with the time series on\nthe left-hand side and the threshold on the\nright-hand side. Only COMPARISON_LT and\nCOMPARISON_GT are supported currently. Possible values: [\"COMPARISON_GT\", \"COMPARISON_GE\", \"COMPARISON_LT\", \"COMPARISON_LE\", \"COMPARISON_EQ\", \"COMPARISON_NE\"]",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        },
+                        "threshold": {
+                          "description": "Test the boolean value in the indicated column.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "number"
+                        }
+                      },
+                      "description": "Test the row count against a threshold.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "A condition that allows alerting policies to be defined using GoogleSQL.\nSQL conditions examine a sliding window of logs using GoogleSQL.\nAlert policies with SQL conditions may incur additional billing.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "condition_threshold": {
               "block": {
                 "attributes": {

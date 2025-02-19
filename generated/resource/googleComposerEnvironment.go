@@ -143,7 +143,7 @@ const googleComposerEnvironment = `{
                           "type": "string"
                         }
                       },
-                      "description": "Optional. The configuration setting for database retention.",
+                      "description": "Optional. The policy for airflow metadata database retention.",
                       "description_kind": "plain"
                     },
                     "nesting_mode": "list"
@@ -152,7 +152,7 @@ const googleComposerEnvironment = `{
                     "block": {
                       "attributes": {
                         "storage_mode": {
-                          "description": "Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.",
+                          "description": "Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer but not in composer-3*",
                           "description_kind": "plain",
                           "optional": true,
                           "type": "string"

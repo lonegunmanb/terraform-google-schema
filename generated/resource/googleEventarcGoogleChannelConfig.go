@@ -10,7 +10,7 @@ const googleEventarcGoogleChannelConfig = `{
   "block": {
     "attributes": {
       "crypto_key_name": {
-        "description": "Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern ` + "`" + `projects/*/locations/*/keyRings/*/cryptoKeys/*` + "`" + `.",
+        "description": "Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern 'projects/*/locations/*/keyRings/*/cryptoKeys/*'.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -28,14 +28,13 @@ const googleEventarcGoogleChannelConfig = `{
         "type": "string"
       },
       "name": {
-        "description": "Required. The resource name of the config. Must be in the format of, ` + "`" + `projects/{project}/locations/{location}/googleChannelConfig` + "`" + `.",
+        "description": "Required. The resource name of the config. Must be in the format of, 'projects/{project}/locations/{location}/googleChannelConfig'.",
         "description_kind": "plain",
         "required": true,
         "type": "string"
       },
       "project": {
         "computed": true,
-        "description": "The project for the resource",
         "description_kind": "plain",
         "optional": true,
         "type": "string"

@@ -732,6 +732,27 @@ const googleContainerNodePool = `{
             "kubelet_config": {
               "block": {
                 "attributes": {
+                  "allowed_unsafe_sysctls": {
+                    "description": "Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": [
+                      "list",
+                      "string"
+                    ]
+                  },
+                  "container_log_max_files": {
+                    "description": "Defines the maximum number of container log files that can be present for a container.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "number"
+                  },
+                  "container_log_max_size": {
+                    "description": "Defines the maximum size of the container log file before it is rotated.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
                   "cpu_cfs_quota": {
                     "description": "Enable CPU CFS quota enforcement for containers that specify CPU limits.",
                     "description_kind": "plain",
@@ -746,6 +767,30 @@ const googleContainerNodePool = `{
                   },
                   "cpu_manager_policy": {
                     "description": "Control the CPU management policy on the node.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "image_gc_high_threshold_percent": {
+                    "description": "Defines the percent of disk usage after which image garbage collection is always run.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "number"
+                  },
+                  "image_gc_low_threshold_percent": {
+                    "description": "Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "number"
+                  },
+                  "image_maximum_gc_age": {
+                    "description": "Defines the maximum age an image can be unused before it is garbage collected.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "image_minimum_gc_age": {
+                    "description": "Defines the minimum age for an unused image before it is garbage collected.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"

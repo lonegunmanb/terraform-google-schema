@@ -10,7 +10,7 @@ const googleEventarcTrigger = `{
   "block": {
     "attributes": {
       "channel": {
-        "description": "Optional. The name of the channel associated with the trigger in ` + "`" + `projects/{project}/locations/{location}/channels/{channel}` + "`" + ` format. You must provide a channel to receive events from Eventarc SaaS partners.",
+        "description": "Optional. The name of the channel associated with the trigger in 'projects/{project}/locations/{location}/channels/{channel}' format. You must provide a channel to receive events from Eventarc SaaS partners.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -47,7 +47,7 @@ const googleEventarcTrigger = `{
       },
       "event_data_content_type": {
         "computed": true,
-        "description": "Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to ` + "`" + `application/json` + "`" + ` if the value is not defined.",
+        "description": "Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to 'application/json' if the value is not defined.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -59,7 +59,7 @@ const googleEventarcTrigger = `{
         "type": "string"
       },
       "labels": {
-        "description": "Optional. User labels attached to the triggers that can be used to group resources.\n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field ` + "`" + `effective_labels` + "`" + ` for all of the labels present on the resource.",
+        "description": "Optional. User labels attached to the triggers that can be used to group resources.\n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
         "description_kind": "plain",
         "optional": true,
         "type": [
@@ -81,20 +81,19 @@ const googleEventarcTrigger = `{
       },
       "project": {
         "computed": true,
-        "description": "The project for the resource",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
       },
       "service_account": {
-        "description": "Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have ` + "`" + `iam.serviceAccounts.actAs` + "`" + ` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have ` + "`" + `roles/eventarc.eventReceiver` + "`" + ` IAM role.",
+        "description": "Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have 'iam.serviceAccounts.actAs' permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'roles/eventarc.eventReceiver' IAM role.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
       },
       "terraform_labels": {
         "computed": true,
-        "description": "The combination of labels configured directly on the resource and default labels configured on the provider.",
+        "description": "The combination of labels configured directly on the resource\n and default labels configured on the provider.",
         "description_kind": "plain",
         "type": [
           "map",
@@ -125,7 +124,7 @@ const googleEventarcTrigger = `{
               "type": "string"
             },
             "workflow": {
-              "description": "The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: ` + "`" + `projects/{project}/locations/{location}/workflows/{workflow}` + "`" + `",
+              "description": "The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: 'projects/{project}/locations/{location}/workflows/{workflow}'",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
@@ -205,7 +204,7 @@ const googleEventarcTrigger = `{
               "block": {
                 "attributes": {
                   "uri": {
-                    "description": "Required. The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples: ` + "`" + `http://10.10.10.8:80/route` + "`" + `, ` + "`" + `http://svc.us-central1.p.local:8080/` + "`" + `. Only HTTP and HTTPS protocols are supported. The host can be either a static IP addressable from the VPC specified by the network config, or an internal DNS hostname of the service resolvable via Cloud DNS.",
+                    "description": "Required. The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples: 'http://10.10.10.8:80/route', 'http://svc.us-central1.p.local:8080/'. Only HTTP and HTTPS protocols are supported. The host can be either a static IP addressable from the VPC specified by the network config, or an internal DNS hostname of the service resolvable via Cloud DNS.",
                     "description_kind": "plain",
                     "required": true,
                     "type": "string"
@@ -221,7 +220,7 @@ const googleEventarcTrigger = `{
               "block": {
                 "attributes": {
                   "network_attachment": {
-                    "description": "Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: ` + "`" + `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}` + "`" + `",
+                    "description": "Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: 'projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}'",
                     "description_kind": "plain",
                     "required": true,
                     "type": "string"
@@ -251,7 +250,7 @@ const googleEventarcTrigger = `{
               "type": "string"
             },
             "operator": {
-              "description": "Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is ` + "`" + `match-path-pattern` + "`" + `.",
+              "description": "Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is 'match-path-pattern'.",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
@@ -300,12 +299,12 @@ const googleEventarcTrigger = `{
                 "attributes": {
                   "subscription": {
                     "computed": true,
-                    "description": "Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: ` + "`" + `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}` + "`" + `.",
+                    "description": "Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: 'projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}'.",
                     "description_kind": "plain",
                     "type": "string"
                   },
                   "topic": {
-                    "description": "Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: ` + "`" + `projects/{PROJECT_ID}/topics/{TOPIC_NAME}. You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` + "`" + ` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.",
+                    "description": "Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: 'projects/{PROJECT_ID}/topics/{TOPIC_NAME}. You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished' only. The topic you provide here will not be deleted by Eventarc at trigger deletion.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"

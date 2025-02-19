@@ -128,7 +128,8 @@ const googleNetworkServicesAuthzExtension = `{
         "type": "string"
       },
       "wire_format": {
-        "description": "The format of communication supported by the callout extension. Default value: \"EXT_PROC_GRPC\" Possible values: [\"WIRE_FORMAT_UNSPECIFIED\", \"EXT_PROC_GRPC\"]",
+        "computed": true,
+        "description": "The format of communication supported by the callout extension. Will be set to EXT_PROC_GRPC by the backend if no value is set. Possible values: [\"WIRE_FORMAT_UNSPECIFIED\", \"EXT_PROC_GRPC\"]",
         "description_kind": "plain",
         "optional": true,
         "type": "string"

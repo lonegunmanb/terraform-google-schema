@@ -15,6 +15,12 @@ const googleAccessContextManagerServicePerimeterEgressPolicy = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "etag": {
+        "computed": true,
+        "description": "The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",
@@ -25,6 +31,12 @@ const googleAccessContextManagerServicePerimeterEgressPolicy = `{
         "description": "The name of the Service Perimeter to add this resource to.",
         "description_kind": "plain",
         "required": true,
+        "type": "string"
+      },
+      "title": {
+        "description": "Human readable title. Must be unique within the perimeter. Does not affect behavior.",
+        "description_kind": "plain",
+        "optional": true,
         "type": "string"
       }
     },

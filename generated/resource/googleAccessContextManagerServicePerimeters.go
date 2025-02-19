@@ -104,6 +104,14 @@ const googleAccessContextManagerServicePerimeters = `{
                 "block_types": {
                   "egress_policies": {
                     "block": {
+                      "attributes": {
+                        "title": {
+                          "description": "Human readable title. Must be unique within the perimeter. Does not affect behavior.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
                       "block_types": {
                         "egress_from": {
                           "block": {
@@ -235,6 +243,14 @@ const googleAccessContextManagerServicePerimeters = `{
                   },
                   "ingress_policies": {
                     "block": {
+                      "attributes": {
+                        "title": {
+                          "description": "Human readable title. Must be unique within the perimeter. Does not affect behavior.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
                       "block_types": {
                         "ingress_from": {
                           "block": {
@@ -415,6 +431,14 @@ const googleAccessContextManagerServicePerimeters = `{
                 "block_types": {
                   "egress_policies": {
                     "block": {
+                      "attributes": {
+                        "title": {
+                          "description": "Human readable title. Must be unique within the perimeter. Does not affect behavior.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
                       "block_types": {
                         "egress_from": {
                           "block": {
@@ -546,6 +570,14 @@ const googleAccessContextManagerServicePerimeters = `{
                   },
                   "ingress_policies": {
                     "block": {
+                      "attributes": {
+                        "title": {
+                          "description": "Human readable title. Must be unique within the perimeter. Does not affect behavior.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
                       "block_types": {
                         "ingress_from": {
                           "block": {

@@ -346,7 +346,7 @@ const googleCloudRunService = `{
                                             "type": "string"
                                           },
                                           "name": {
-                                            "description": "The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project.\nIf the secret is in another project, you must define an alias.\nAn alias definition has the form: :projects/{project-id|project-number}/secrets/.\nIf multiple alias definitions are needed, they must be separated by commas.\nThe alias definitions must be set on the run.googleapis.com/secrets annotation.",
+                                            "description": "The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project.\nIf the secret is in another project, you must define an alias.\nAn alias definition has the form:\n{alias}:projects/{project-id|project-number}/secrets/{secret-name}.\nIf multiple alias definitions are needed, they must be separated by commas.\nThe alias definitions must be set on the run.googleapis.com/secrets annotation.",
                                             "description_kind": "plain",
                                             "required": true,
                                             "type": "string"
