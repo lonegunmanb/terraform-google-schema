@@ -57,6 +57,12 @@ const googleRedisCluster = `{
         "optional": true,
         "type": "string"
       },
+      "kms_key": {
+        "description": "The KMS key used to encrypt the at-rest data of the cluster.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "maintenance_schedule": {
         "computed": true,
         "description": "Upcoming maintenance schedule.",

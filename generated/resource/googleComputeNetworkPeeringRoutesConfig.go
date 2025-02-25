@@ -15,6 +15,13 @@ const googleComputeNetworkPeeringRoutesConfig = `{
         "required": true,
         "type": "bool"
       },
+      "export_subnet_routes_with_public_ip": {
+        "computed": true,
+        "description": "Whether subnet routes with public IP range are exported.\nIPv4 special-use ranges are always exported to peers and\nare not controlled by this field.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",
@@ -25,6 +32,13 @@ const googleComputeNetworkPeeringRoutesConfig = `{
         "description": "Whether to import the custom routes to the peer network.",
         "description_kind": "plain",
         "required": true,
+        "type": "bool"
+      },
+      "import_subnet_routes_with_public_ip": {
+        "computed": true,
+        "description": "Whether subnet routes with public IP range are imported.\nIPv4 special-use ranges are always imported from peers and\nare not controlled by this field.",
+        "description_kind": "plain",
+        "optional": true,
         "type": "bool"
       },
       "network": {

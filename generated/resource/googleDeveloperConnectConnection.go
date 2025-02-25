@@ -144,6 +144,174 @@ const googleDeveloperConnectConnection = `{
       }
     },
     "block_types": {
+      "bitbucket_cloud_config": {
+        "block": {
+          "attributes": {
+            "webhook_secret_secret_version": {
+              "description": "Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook\nevents, formatted as 'projects/*/secrets/*/versions/*'. This is used to\nvalidate and create webhooks.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            },
+            "workspace": {
+              "description": "Required. The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "block_types": {
+            "authorizer_credential": {
+              "block": {
+                "attributes": {
+                  "user_token_secret_version": {
+                    "description": "Required. A SecretManager resource containing the user token that authorizes\nthe Developer Connect connection. Format:\n'projects/*/secrets/*/versions/*'.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "username": {
+                    "computed": true,
+                    "description": "Output only. The username associated with this token.",
+                    "description_kind": "plain",
+                    "type": "string"
+                  }
+                },
+                "description": "Represents a personal access token that authorized the Connection,\nand associated metadata.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "min_items": 1,
+              "nesting_mode": "list"
+            },
+            "read_authorizer_credential": {
+              "block": {
+                "attributes": {
+                  "user_token_secret_version": {
+                    "description": "Required. A SecretManager resource containing the user token that authorizes\nthe Developer Connect connection. Format:\n'projects/*/secrets/*/versions/*'.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "username": {
+                    "computed": true,
+                    "description": "Output only. The username associated with this token.",
+                    "description_kind": "plain",
+                    "type": "string"
+                  }
+                },
+                "description": "Represents a personal access token that authorized the Connection,\nand associated metadata.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "min_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Configuration for connections to an instance of Bitbucket Cloud.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "bitbucket_data_center_config": {
+        "block": {
+          "attributes": {
+            "host_uri": {
+              "description": "Required. The URI of the Bitbucket Data Center host this connection is for.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            },
+            "server_version": {
+              "computed": true,
+              "description": "Output only. Version of the Bitbucket Data Center server running on the 'host_uri'.",
+              "description_kind": "plain",
+              "type": "string"
+            },
+            "ssl_ca_certificate": {
+              "description": "Optional. SSL certificate authority to trust when making requests to Bitbucket Data\nCenter.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "webhook_secret_secret_version": {
+              "description": "Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook\nevents, formatted as 'projects/*/secrets/*/versions/*'. This is used to\nvalidate webhooks.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "block_types": {
+            "authorizer_credential": {
+              "block": {
+                "attributes": {
+                  "user_token_secret_version": {
+                    "description": "Required. A SecretManager resource containing the user token that authorizes\nthe Developer Connect connection. Format:\n'projects/*/secrets/*/versions/*'.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "username": {
+                    "computed": true,
+                    "description": "Output only. The username associated with this token.",
+                    "description_kind": "plain",
+                    "type": "string"
+                  }
+                },
+                "description": "Represents a personal access token that authorized the Connection,\nand associated metadata.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "min_items": 1,
+              "nesting_mode": "list"
+            },
+            "read_authorizer_credential": {
+              "block": {
+                "attributes": {
+                  "user_token_secret_version": {
+                    "description": "Required. A SecretManager resource containing the user token that authorizes\nthe Developer Connect connection. Format:\n'projects/*/secrets/*/versions/*'.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "username": {
+                    "computed": true,
+                    "description": "Output only. The username associated with this token.",
+                    "description_kind": "plain",
+                    "type": "string"
+                  }
+                },
+                "description": "Represents a personal access token that authorized the Connection,\nand associated metadata.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "min_items": 1,
+              "nesting_mode": "list"
+            },
+            "service_directory_config": {
+              "block": {
+                "attributes": {
+                  "service": {
+                    "description": "Required. The Service Directory service name.\nFormat:\nprojects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "description": "ServiceDirectoryConfig represents Service Directory configuration for a\nconnection.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Configuration for connections to an instance of Bitbucket Data Center.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "crypto_key_config": {
         "block": {
           "attributes": {

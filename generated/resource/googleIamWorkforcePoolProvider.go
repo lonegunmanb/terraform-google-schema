@@ -153,7 +153,7 @@ const googleIamWorkforcePoolProvider = `{
               "nesting_mode": "list"
             }
           },
-          "description": "The configuration for OAuth 2.0 client used to get the additional user\nattributes. This should be used when users can't get the desired claims\nin authentication credentials. Currently this configuration is only\nsupported with OIDC protocol.",
+          "description": "The configuration for OAuth 2.0 client used to get the additional user\nattributes. This should be used when users can't get the desired claims\nin authentication credentials. Currently this configuration is only\nsupported with SAML and OIDC protocol.",
           "description_kind": "plain"
         },
         "max_items": 1,
