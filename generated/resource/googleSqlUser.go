@@ -47,6 +47,18 @@ const googleSqlUser = `{
         "sensitive": true,
         "type": "string"
       },
+      "password_wo": {
+        "description": "The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to\n\t\t\t\teither CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
+      "password_wo_version": {
+        "description": "The version of the password_wo.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "number"
+      },
       "project": {
         "computed": true,
         "description": "The ID of the project in which the resource belongs. If it is not provided, the provider project is used.",

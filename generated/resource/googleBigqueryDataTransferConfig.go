@@ -158,9 +158,21 @@ const googleBigqueryDataTransferConfig = `{
             "secret_access_key": {
               "description": "The Secret Access Key of the AWS account transferring data from.",
               "description_kind": "plain",
-              "required": true,
+              "optional": true,
               "sensitive": true,
               "type": "string"
+            },
+            "secret_access_key_wo": {
+              "description": "The Secret Access Key of the AWS account transferring data from.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "secret_access_key_wo_version": {
+              "description": "The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "number"
             }
           },
           "description": "Different parameters are configured primarily using the the 'params' field on this\nresource. This block contains the parameters which contain secrets or passwords so that they can be marked\nsensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key\nin the 'params' map in the api request.\n\nCredentials may not be specified in both locations and will cause an error. Changing from one location\nto a different credential configuration in the config will require an apply to update state.",
