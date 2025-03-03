@@ -6,13 +6,19 @@ import (
 	tfjson "github.com/hashicorp/terraform-json"
 )
 
-const googleGeminiLoggingSettingBinding = `{
+const googleGeminiDataSharingWithGoogleSettingBinding = `{
   "block": {
     "attributes": {
       "create_time": {
         "computed": true,
         "description": "Create time stamp.",
         "description_kind": "plain",
+        "type": "string"
+      },
+      "data_sharing_with_google_setting_id": {
+        "description": "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122.",
+        "description_kind": "plain",
+        "required": true,
         "type": "string"
       },
       "effective_labels": {
@@ -45,20 +51,15 @@ const googleGeminiLoggingSettingBinding = `{
         "optional": true,
         "type": "string"
       },
-      "logging_setting_id": {
-        "description": "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122.",
-        "description_kind": "plain",
-        "required": true,
-        "type": "string"
-      },
       "name": {
         "computed": true,
-        "description": "Identifier. Name of the resource.\nFormat:projects/{project}/locations/{location}/loggingSettings/{setting}/settingBindings/{setting_binding}",
+        "description": "Identifier. Name of the resource.\nFormat:projects/{project}/locations/{location}/dataSharingWithGoogleSettings/{setting}/settingBindings/{setting_binding}",
         "description_kind": "plain",
         "type": "string"
       },
       "product": {
-        "description": "Product type of the setting binding. Possible values: [\"GEMINI_CODE_ASSIST\"]",
+        "computed": true,
+        "description": "Product type of the setting binding. Possible values: [\"GEMINI_CLOUD_ASSIST\"]",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -70,7 +71,7 @@ const googleGeminiLoggingSettingBinding = `{
         "type": "string"
       },
       "setting_binding_id": {
-        "description": "Id of the setting binding.",
+        "description": "Required. Id of the setting binding.",
         "description_kind": "plain",
         "required": true,
         "type": "string"
@@ -127,8 +128,8 @@ const googleGeminiLoggingSettingBinding = `{
   "version": 0
 }`
 
-func GoogleGeminiLoggingSettingBindingSchema() *tfjson.Schema {
+func GoogleGeminiDataSharingWithGoogleSettingBindingSchema() *tfjson.Schema {
 	var result tfjson.Schema
-	_ = json.Unmarshal([]byte(googleGeminiLoggingSettingBinding), &result)
+	_ = json.Unmarshal([]byte(googleGeminiDataSharingWithGoogleSettingBinding), &result)
 	return &result
 }

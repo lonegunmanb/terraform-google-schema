@@ -84,7 +84,7 @@ const googleIamWorkforcePoolProvider = `{
         "block": {
           "attributes": {
             "attributes_type": {
-              "description": "Represents the IdP and type of claims that should be fetched.\n* AZURE_AD_GROUPS_MAIL: Used to get the user's group claims from the Azure AD identity provider using configuration provided\nin ExtraAttributesOAuth2Client and 'mail' property of the 'microsoft.graph.group' object is used for claim mapping.\nSee https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on\n'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'. Possible values: [\"AZURE_AD_GROUPS_MAIL\"]",
+              "description": "Represents the IdP and type of claims that should be fetched.\n* AZURE_AD_GROUPS_MAIL: Used to get the user's group claims from the Azure AD identity provider using configuration provided\nin ExtraAttributesOAuth2Client and 'mail' property of the 'microsoft.graph.group' object is used for claim mapping.\nSee https://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties for more details on\n'microsoft.graph.group' properties. The attributes obtained from idntity provider are mapped to 'assertion.groups'.\n* AZURE_AD_GROUPS_ID:  Used to get the user's group claims from the Azure AD identity provider\nusing configuration provided in ExtraAttributesOAuth2Client and 'id'\nproperty of the 'microsoft.graph.group' object is used for claim mapping. See\nhttps://learn.microsoft.com/en-us/graph/api/resources/group?view=graph-rest-1.0#properties\nfor more details on 'microsoft.graph.group' properties. The\ngroup IDs obtained from Azure AD are present in 'assertion.groups' for\nOIDC providers and 'assertion.attributes.groups' for SAML providers for\nattribute mapping. Possible values: [\"AZURE_AD_GROUPS_MAIL\", \"AZURE_AD_GROUPS_ID\"]",
               "description_kind": "plain",
               "required": true,
               "type": "string"
@@ -140,7 +140,7 @@ const googleIamWorkforcePoolProvider = `{
               "block": {
                 "attributes": {
                   "filter": {
-                    "description": "The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL, it represents the\nfilter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The\ngroups should be mail enabled and security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.",
+                    "description": "The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_MAIL and AZURE_AD_GROUPS_ID, it represents the\nfilter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The\ngroups should be security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"

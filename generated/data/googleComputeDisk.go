@@ -15,6 +15,11 @@ const googleComputeDisk = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "architecture": {
+        "computed": true,
+        "description_kind": "plain",
+        "type": "string"
+      },
       "async_primary_disk": {
         "computed": true,
         "description": "A nested object resource.",
@@ -148,6 +153,23 @@ const googleComputeDisk = `{
         "required": true,
         "type": "string"
       },
+      "params": {
+        "computed": true,
+        "description": "Additional params passed with the request, but not persisted as part of resource payload",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "resource_manager_tags": [
+                "map",
+                "string"
+              ]
+            }
+          ]
+        ]
+      },
       "physical_block_size_bytes": {
         "computed": true,
         "description": "Physical block size of the persistent disk, in bytes. If not present\nin a request, a default value is used. Currently supported sizes\nare 4096 and 16384, other sizes may be added in the future.\nIf an unsupported value is requested, the error message will list\nthe supported values for the caller's project.",
@@ -223,6 +245,18 @@ const googleComputeDisk = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "source_instant_snapshot": {
+        "computed": true,
+        "description": "The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.\nFor example, the following are valid values:\n\n* 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot'\n* 'projects/project/zones/zone/instantSnapshots/instantSnapshot'\n* 'zones/zone/instantSnapshots/instantSnapshot'",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "source_instant_snapshot_id": {
+        "computed": true,
+        "description": "The unique ID of the instant snapshot used to create this disk. This value identifies\nthe exact instant snapshot that was used to create this persistent disk.\nFor example, if you created the persistent disk from an instant snapshot that was later\ndeleted and recreated under the same name, the source instant snapshot ID would identify\nthe exact version of the instant snapshot that was used.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "source_snapshot_encryption_key": {
         "computed": true,
         "description": "The customer-supplied encryption key of the source snapshot. Required\nif the source snapshot is protected by a customer-supplied encryption\nkey.",
@@ -243,6 +277,12 @@ const googleComputeDisk = `{
       "source_snapshot_id": {
         "computed": true,
         "description": "The unique ID of the snapshot used to create this disk. This value\nidentifies the exact snapshot that was used to create this persistent\ndisk. For example, if you created the persistent disk from a snapshot\nthat was later deleted and recreated under the same name, the source\nsnapshot ID would identify the exact version of the snapshot that was\nused.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "source_storage_object": {
+        "computed": true,
+        "description": "The full Google Cloud Storage URI where the disk image is stored.\nThis file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.\nValid URIs may start with gs:// or https://storage.googleapis.com/.\nThis flag is not optimized for creating multiple disks from a source storage object.\nTo create many disks from a source storage object, use gcloud compute images import instead.",
         "description_kind": "plain",
         "type": "string"
       },

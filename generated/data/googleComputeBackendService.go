@@ -235,7 +235,7 @@ const googleComputeBackendService = `{
       },
       "iap": {
         "computed": true,
-        "description": "Settings for enabling Cloud Identity Aware Proxy",
+        "description": "Settings for enabling Cloud Identity Aware Proxy.\nIf OAuth client is not set, the Google-managed OAuth client is used.",
         "description_kind": "plain",
         "type": [
           "list",

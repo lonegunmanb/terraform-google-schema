@@ -18,11 +18,26 @@ const googleComputeRouterStatus = `{
           [
             "object",
             {
+              "as_paths": [
+                "list",
+                [
+                  "object",
+                  {
+                    "as_lists": [
+                      "list",
+                      "number"
+                    ],
+                    "path_segment_type": "string"
+                  }
+                ]
+              ],
+              "creation_timestamp": "string",
               "description": "string",
               "dest_range": "string",
               "name": "string",
               "network": "string",
               "next_hop_gateway": "string",
+              "next_hop_hub": "string",
               "next_hop_ilb": "string",
               "next_hop_instance": "string",
               "next_hop_instance_zone": "string",
@@ -31,13 +46,36 @@ const googleComputeRouterStatus = `{
               "next_hop_med": "string",
               "next_hop_network": "string",
               "next_hop_origin": "string",
+              "next_hop_peering": "string",
               "next_hop_vpn_tunnel": "string",
               "priority": "number",
               "project": "string",
+              "route_status": "string",
+              "route_type": "string",
               "self_link": "string",
               "tags": [
                 "set",
                 "string"
+              ],
+              "warnings": [
+                "list",
+                [
+                  "object",
+                  {
+                    "code": "string",
+                    "data": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "key": "string",
+                          "value": "string"
+                        }
+                      ]
+                    ],
+                    "message": "string"
+                  }
+                ]
               ]
             }
           ]
@@ -52,11 +90,26 @@ const googleComputeRouterStatus = `{
           [
             "object",
             {
+              "as_paths": [
+                "list",
+                [
+                  "object",
+                  {
+                    "as_lists": [
+                      "list",
+                      "number"
+                    ],
+                    "path_segment_type": "string"
+                  }
+                ]
+              ],
+              "creation_timestamp": "string",
               "description": "string",
               "dest_range": "string",
               "name": "string",
               "network": "string",
               "next_hop_gateway": "string",
+              "next_hop_hub": "string",
               "next_hop_ilb": "string",
               "next_hop_instance": "string",
               "next_hop_instance_zone": "string",
@@ -65,13 +118,36 @@ const googleComputeRouterStatus = `{
               "next_hop_med": "string",
               "next_hop_network": "string",
               "next_hop_origin": "string",
+              "next_hop_peering": "string",
               "next_hop_vpn_tunnel": "string",
               "priority": "number",
               "project": "string",
+              "route_status": "string",
+              "route_type": "string",
               "self_link": "string",
               "tags": [
                 "set",
                 "string"
+              ],
+              "warnings": [
+                "list",
+                [
+                  "object",
+                  {
+                    "code": "string",
+                    "data": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "key": "string",
+                          "value": "string"
+                        }
+                      ]
+                    ],
+                    "message": "string"
+                  }
+                ]
               ]
             }
           ]

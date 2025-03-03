@@ -51,7 +51,8 @@ const googleSqlUser = `{
         "description": "The password for the user. Can be updated. For Postgres instances this is a Required field, unless type is set to\n\t\t\t\teither CLOUD_IAM_USER or CLOUD_IAM_SERVICE_ACCOUNT.",
         "description_kind": "plain",
         "optional": true,
-        "type": "string"
+        "type": "string",
+        "write_only": true
       },
       "password_wo_version": {
         "description": "The version of the password_wo.",

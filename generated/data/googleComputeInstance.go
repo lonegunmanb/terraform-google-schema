@@ -314,6 +314,7 @@ const googleComputeInstance = `{
               "ipv6_address": "string",
               "name": "string",
               "network": "string",
+              "network_attachment": "string",
               "network_ip": "string",
               "nic_type": "string",
               "queue_count": "number",

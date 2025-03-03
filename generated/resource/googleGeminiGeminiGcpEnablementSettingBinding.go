@@ -6,7 +6,7 @@ import (
 	tfjson "github.com/hashicorp/terraform-json"
 )
 
-const googleGeminiLoggingSettingBinding = `{
+const googleGeminiGeminiGcpEnablementSettingBinding = `{
   "block": {
     "attributes": {
       "create_time": {
@@ -23,6 +23,12 @@ const googleGeminiLoggingSettingBinding = `{
           "map",
           "string"
         ]
+      },
+      "gemini_gcp_enablement_setting_id": {
+        "description": "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122.",
+        "description_kind": "plain",
+        "required": true,
+        "type": "string"
       },
       "id": {
         "computed": true,
@@ -45,20 +51,15 @@ const googleGeminiLoggingSettingBinding = `{
         "optional": true,
         "type": "string"
       },
-      "logging_setting_id": {
-        "description": "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122.",
-        "description_kind": "plain",
-        "required": true,
-        "type": "string"
-      },
       "name": {
         "computed": true,
-        "description": "Identifier. Name of the resource.\nFormat:projects/{project}/locations/{location}/loggingSettings/{setting}/settingBindings/{setting_binding}",
+        "description": "Identifier. Name of the resource.\nFormat:projects/{project}/locations/{location}/geminiGcpEnablementSettings/{setting}/settingBindings/{setting_binding}",
         "description_kind": "plain",
         "type": "string"
       },
       "product": {
-        "description": "Product type of the setting binding. Possible values: [\"GEMINI_CODE_ASSIST\"]",
+        "computed": true,
+        "description": "Product type of the setting binding. Possible values: [\"GEMINI_IN_BIGQUERY\"]",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -127,8 +128,8 @@ const googleGeminiLoggingSettingBinding = `{
   "version": 0
 }`
 
-func GoogleGeminiLoggingSettingBindingSchema() *tfjson.Schema {
+func GoogleGeminiGeminiGcpEnablementSettingBindingSchema() *tfjson.Schema {
 	var result tfjson.Schema
-	_ = json.Unmarshal([]byte(googleGeminiLoggingSettingBinding), &result)
+	_ = json.Unmarshal([]byte(googleGeminiGeminiGcpEnablementSettingBinding), &result)
 	return &result
 }

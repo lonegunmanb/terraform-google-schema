@@ -212,6 +212,28 @@ const googleComputeUrlMap = `{
               "max_items": 1,
               "nesting_mode": "list"
             },
+            "max_stream_duration": {
+              "block": {
+                "attributes": {
+                  "nanos": {
+                    "description": "Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented\nwith a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "number"
+                  },
+                  "seconds": {
+                    "description": "Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.\nNote: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Specifies the maximum duration (timeout) for streams on the selected route.\nUnlike the 'Timeout' field where the timeout duration starts from the time the request\nhas been fully processed (known as end-of-stream), the duration in this field\nis computed from the beginning of the stream until the response has been processed,\nincluding all retries. A stream that does not complete in this duration is closed.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "request_mirror_policy": {
               "block": {
                 "attributes": {
@@ -766,6 +788,28 @@ const googleComputeUrlMap = `{
                     "max_items": 1,
                     "nesting_mode": "list"
                   },
+                  "max_stream_duration": {
+                    "block": {
+                      "attributes": {
+                        "nanos": {
+                          "description": "Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented\nwith a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "seconds": {
+                          "description": "Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.\nNote: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Specifies the maximum duration (timeout) for streams on the selected route.\nUnlike the 'Timeout' field where the timeout duration starts from the time the request\nhas been fully processed (known as end-of-stream), the duration in this field\nis computed from the beginning of the stream until the response has been processed,\nincluding all retries. A stream that does not complete in this duration is closed.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
                   "request_mirror_policy": {
                     "block": {
                       "attributes": {
@@ -1283,6 +1327,28 @@ const googleComputeUrlMap = `{
                               }
                             },
                             "description": "The specification for fault injection introduced into traffic to test the\nresiliency of clients to backend service failure. As part of fault injection,\nwhen clients send requests to a backend service, delays can be introduced by\nLoadbalancer on a percentage of requests before sending those request to the\nbackend service. Similarly requests from clients can be aborted by the\nLoadbalancer for a percentage of requests. timeout and retry_policy will be\nignored by clients that are configured with a fault_injection_policy.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
+                        "max_stream_duration": {
+                          "block": {
+                            "attributes": {
+                              "nanos": {
+                                "description": "Span of time that's a fraction of a second at nanosecond resolution. Durations\nless than one second are represented with a 0 'seconds' field and a positive\n'nanos' field. Must be from 0 to 999,999,999 inclusive.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "number"
+                              },
+                              "seconds": {
+                                "description": "Span of time at a resolution of a second. Must be from 0 to 315,576,000,000\ninclusive.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "Specifies the maximum duration (timeout) for streams on the selected route.\nUnlike the 'Timeout' field where the timeout duration starts from the time the request\nhas been fully processed (known as end-of-stream), the duration in this field\nis computed from the beginning of the stream until the response has been processed,\nincluding all retries. A stream that does not complete in this duration is closed.",
                             "description_kind": "plain"
                           },
                           "max_items": 1,
@@ -1996,6 +2062,28 @@ const googleComputeUrlMap = `{
                               }
                             },
                             "description": "The specification for fault injection introduced into traffic to test the\nresiliency of clients to backend service failure. As part of fault injection,\nwhen clients send requests to a backend service, delays can be introduced by\nLoadbalancer on a percentage of requests before sending those request to the\nbackend service. Similarly requests from clients can be aborted by the\nLoadbalancer for a percentage of requests. timeout and retry_policy will be\nignored by clients that are configured with a fault_injection_policy.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
+                        "max_stream_duration": {
+                          "block": {
+                            "attributes": {
+                              "nanos": {
+                                "description": "Span of time that's a fraction of a second at nanosecond resolution. Durations\nless than one second are represented with a 0 'seconds' field and a positive\n'nanos' field. Must be from 0 to 999,999,999 inclusive.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "number"
+                              },
+                              "seconds": {
+                                "description": "Span of time at a resolution of a second. Must be from 0 to 315,576,000,000\ninclusive.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "Specifies the maximum duration (timeout) for streams on the selected route.\nUnlike the 'Timeout' field where the timeout duration starts from the time the request\nhas been fully processed (known as end-of-stream), the duration in this field\nis computed from the beginning of the stream until the response has been processed,\nincluding all retries. A stream that does not complete in this duration is closed.",
                             "description_kind": "plain"
                           },
                           "max_items": 1,

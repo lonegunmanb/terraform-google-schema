@@ -6,14 +6,26 @@ import (
 	tfjson "github.com/hashicorp/terraform-json"
 )
 
-const googleGeminiLoggingSettingBinding = `{
+const googleComputeInstantSnapshot = `{
   "block": {
     "attributes": {
-      "create_time": {
+      "creation_timestamp": {
         "computed": true,
-        "description": "Create time stamp.",
+        "description": "Creation timestamp in RFC3339 text format.",
         "description_kind": "plain",
         "type": "string"
+      },
+      "description": {
+        "description": "An optional description of this resource.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
+      "disk_size_gb": {
+        "computed": true,
+        "description": "Size of the snapshot, specified in GB.",
+        "description_kind": "plain",
+        "type": "number"
       },
       "effective_labels": {
         "computed": true,
@@ -30,8 +42,14 @@ const googleGeminiLoggingSettingBinding = `{
         "optional": true,
         "type": "string"
       },
+      "label_fingerprint": {
+        "computed": true,
+        "description": "The fingerprint used for optimistic locking of this resource. Used\ninternally during updates.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "labels": {
-        "description": "Labels as key value pairs.\n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
+        "description": "Labels to apply to this InstantSnapshot.\n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
         "description_kind": "plain",
         "optional": true,
         "type": [
@@ -39,28 +57,10 @@ const googleGeminiLoggingSettingBinding = `{
           "string"
         ]
       },
-      "location": {
-        "description": "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122.",
-        "description_kind": "plain",
-        "optional": true,
-        "type": "string"
-      },
-      "logging_setting_id": {
-        "description": "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122.",
+      "name": {
+        "description": "Name of the resource; provided by the client when the resource is\ncreated. The name must be 1-63 characters long, and comply with\nRFC1035. Specifically, the name must be 1-63 characters long and match\nthe regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means the\nfirst character must be a lowercase letter, and all following\ncharacters must be a dash, lowercase letter, or digit, except the last\ncharacter, which cannot be a dash.",
         "description_kind": "plain",
         "required": true,
-        "type": "string"
-      },
-      "name": {
-        "computed": true,
-        "description": "Identifier. Name of the resource.\nFormat:projects/{project}/locations/{location}/loggingSettings/{setting}/settingBindings/{setting_binding}",
-        "description_kind": "plain",
-        "type": "string"
-      },
-      "product": {
-        "description": "Product type of the setting binding. Possible values: [\"GEMINI_CODE_ASSIST\"]",
-        "description_kind": "plain",
-        "optional": true,
         "type": "string"
       },
       "project": {
@@ -69,16 +69,21 @@ const googleGeminiLoggingSettingBinding = `{
         "optional": true,
         "type": "string"
       },
-      "setting_binding_id": {
-        "description": "Id of the setting binding.",
+      "self_link": {
+        "computed": true,
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "source_disk": {
+        "description": "A reference to the disk used to create this instant snapshot.",
         "description_kind": "plain",
         "required": true,
         "type": "string"
       },
-      "target": {
-        "description": "Target of the binding.",
+      "source_disk_id": {
+        "computed": true,
+        "description": "The ID value of the disk used to create this InstantSnapshot.",
         "description_kind": "plain",
-        "required": true,
         "type": "string"
       },
       "terraform_labels": {
@@ -90,10 +95,11 @@ const googleGeminiLoggingSettingBinding = `{
           "string"
         ]
       },
-      "update_time": {
+      "zone": {
         "computed": true,
-        "description": "Update time stamp.",
+        "description": "A reference to the zone where the disk is located.",
         "description_kind": "plain",
+        "optional": true,
         "type": "string"
       }
     },
@@ -127,8 +133,8 @@ const googleGeminiLoggingSettingBinding = `{
   "version": 0
 }`
 
-func GoogleGeminiLoggingSettingBindingSchema() *tfjson.Schema {
+func GoogleComputeInstantSnapshotSchema() *tfjson.Schema {
 	var result tfjson.Schema
-	_ = json.Unmarshal([]byte(googleGeminiLoggingSettingBinding), &result)
+	_ = json.Unmarshal([]byte(googleComputeInstantSnapshot), &result)
 	return &result
 }

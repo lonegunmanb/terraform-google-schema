@@ -16,6 +16,11 @@ const googleComputeDisk = `{
         "optional": true,
         "type": "string"
       },
+      "architecture": {
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "creation_timestamp": {
         "computed": true,
         "description": "Creation timestamp in RFC3339 text format.",
@@ -168,10 +173,28 @@ const googleComputeDisk = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "source_instant_snapshot": {
+        "description": "The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.\nFor example, the following are valid values:\n\n* 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot'\n* 'projects/project/zones/zone/instantSnapshots/instantSnapshot'\n* 'zones/zone/instantSnapshots/instantSnapshot'",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
+      "source_instant_snapshot_id": {
+        "computed": true,
+        "description": "The unique ID of the instant snapshot used to create this disk. This value identifies\nthe exact instant snapshot that was used to create this persistent disk.\nFor example, if you created the persistent disk from an instant snapshot that was later\ndeleted and recreated under the same name, the source instant snapshot ID would identify\nthe exact version of the instant snapshot that was used.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "source_snapshot_id": {
         "computed": true,
         "description": "The unique ID of the snapshot used to create this disk. This value\nidentifies the exact snapshot that was used to create this persistent\ndisk. For example, if you created the persistent disk from a snapshot\nthat was later deleted and recreated under the same name, the source\nsnapshot ID would identify the exact version of the snapshot that was\nused.",
         "description_kind": "plain",
+        "type": "string"
+      },
+      "source_storage_object": {
+        "description": "The full Google Cloud Storage URI where the disk image is stored.\nThis file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.\nValid URIs may start with gs:// or https://storage.googleapis.com/.\nThis flag is not optimized for creating multiple disks from a source storage object.\nTo create many disks from a source storage object, use gcloud compute images import instead.",
+        "description_kind": "plain",
+        "optional": true,
         "type": "string"
       },
       "storage_pool": {
@@ -285,6 +308,25 @@ const googleComputeDisk = `{
           "description_kind": "plain"
         },
         "nesting_mode": "set"
+      },
+      "params": {
+        "block": {
+          "attributes": {
+            "resource_manager_tags": {
+              "description": "Resource manager tags to be bound to the disk. Tag keys and values have the\nsame definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},\nand values are in the format tagValues/456.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "map",
+                "string"
+              ]
+            }
+          },
+          "description": "Additional params passed with the request, but not persisted as part of resource payload",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
       },
       "source_image_encryption_key": {
         "block": {

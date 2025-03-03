@@ -3576,7 +3576,7 @@ const googleContainerCluster = `{
                     "block": {
                       "attributes": {
                         "event_type": {
-                          "description": "Can be used to filter what notifications are sent. Valid values include include UPGRADE_AVAILABLE_EVENT, UPGRADE_EVENT and SECURITY_BULLETIN_EVENT",
+                          "description": "Can be used to filter what notifications are sent. Valid values include include UPGRADE_AVAILABLE_EVENT, UPGRADE_EVENT, SECURITY_BULLETIN_EVENT, and UPGRADE_INFO_EVENT",
                           "description_kind": "plain",
                           "required": true,
                           "type": [

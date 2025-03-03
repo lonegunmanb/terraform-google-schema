@@ -9,6 +9,29 @@ import (
 const googleComputeRoute = `{
   "block": {
     "attributes": {
+      "as_paths": {
+        "computed": true,
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "as_lists": [
+                "list",
+                "number"
+              ],
+              "path_segment_type": "string"
+            }
+          ]
+        ]
+      },
+      "creation_timestamp": {
+        "computed": true,
+        "description": "Creation timestamp in RFC3339 text format.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "description": {
         "description": "An optional description of this resource. Provide this property\nwhen you create the resource.",
         "description_kind": "plain",
@@ -43,6 +66,12 @@ const googleComputeRoute = `{
         "description": "URL to a gateway that should handle matching packets.\nCurrently, you can only specify the internet gateway, using a full or\npartial valid URL:\n* 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'\n* 'projects/project/global/gateways/default-internet-gateway'\n* 'global/gateways/default-internet-gateway'\n* The string 'default-internet-gateway'.",
         "description_kind": "plain",
         "optional": true,
+        "type": "string"
+      },
+      "next_hop_hub": {
+        "computed": true,
+        "description": "The hub network that should handle matching packets, which should conform to RFC1035.",
+        "description_kind": "plain",
         "type": "string"
       },
       "next_hop_ilb": {
@@ -95,6 +124,12 @@ const googleComputeRoute = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "next_hop_peering": {
+        "computed": true,
+        "description": "The network peering name that should handle matching packets, which should conform to RFC1035.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "next_hop_vpn_tunnel": {
         "description": "URL to a VpnTunnel that should handle matching packets.",
         "description_kind": "plain",
@@ -113,6 +148,18 @@ const googleComputeRoute = `{
         "optional": true,
         "type": "string"
       },
+      "route_status": {
+        "computed": true,
+        "description": "The status of the route, which can be one of the following values:\n- 'ACTIVE' for an active route\n- 'INACTIVE' for an inactive route",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "route_type": {
+        "computed": true,
+        "description": "The type of this route, which can be one of the following values:\n- 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers\n- 'SUBNET' for a route from a subnet of the VPC\n- 'BGP' for a route learned from a BGP peer of this router\n- 'STATIC' for a static route",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "self_link": {
         "computed": true,
         "description_kind": "plain",
@@ -125,6 +172,31 @@ const googleComputeRoute = `{
         "type": [
           "set",
           "string"
+        ]
+      },
+      "warnings": {
+        "computed": true,
+        "description": "If potential misconfigurations are detected for this route, this field will be populated with warning messages.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "code": "string",
+              "data": [
+                "list",
+                [
+                  "object",
+                  {
+                    "key": "string",
+                    "value": "string"
+                  }
+                ]
+              ],
+              "message": "string"
+            }
+          ]
         ]
       }
     },

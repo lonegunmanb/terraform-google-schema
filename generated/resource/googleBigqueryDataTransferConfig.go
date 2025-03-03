@@ -166,7 +166,8 @@ const googleBigqueryDataTransferConfig = `{
               "description": "The Secret Access Key of the AWS account transferring data from.",
               "description_kind": "plain",
               "optional": true,
-              "type": "string"
+              "type": "string",
+              "write_only": true
             },
             "secret_access_key_wo_version": {
               "description": "The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only attributes](/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)",

@@ -98,6 +98,7 @@ const googleBigqueryTable = `{
         "type": "string"
       },
       "max_staleness": {
+        "computed": true,
         "description": "The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of [SQL IntervalValue type](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#interval_type).",
         "description_kind": "plain",
         "optional": true,

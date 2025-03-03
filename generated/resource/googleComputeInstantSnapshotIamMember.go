@@ -6,19 +6,28 @@ import (
 	tfjson "github.com/hashicorp/terraform-json"
 )
 
-const googleNotebooksLocation = `{
+const googleComputeInstantSnapshotIamMember = `{
   "block": {
     "attributes": {
+      "etag": {
+        "computed": true,
+        "description_kind": "plain",
+        "type": "string"
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",
         "optional": true,
         "type": "string"
       },
-      "name": {
-        "description": "Name of the Location resource.",
+      "member": {
         "description_kind": "plain",
-        "optional": true,
+        "required": true,
+        "type": "string"
+      },
+      "name": {
+        "description_kind": "plain",
+        "required": true,
         "type": "string"
       },
       "project": {
@@ -27,45 +36,51 @@ const googleNotebooksLocation = `{
         "optional": true,
         "type": "string"
       },
-      "self_link": {
+      "role": {
+        "description_kind": "plain",
+        "required": true,
+        "type": "string"
+      },
+      "zone": {
         "computed": true,
         "description_kind": "plain",
+        "optional": true,
         "type": "string"
       }
     },
     "block_types": {
-      "timeouts": {
+      "condition": {
         "block": {
           "attributes": {
-            "create": {
+            "description": {
               "description_kind": "plain",
               "optional": true,
               "type": "string"
             },
-            "delete": {
+            "expression": {
               "description_kind": "plain",
-              "optional": true,
+              "required": true,
               "type": "string"
             },
-            "update": {
+            "title": {
               "description_kind": "plain",
-              "optional": true,
+              "required": true,
               "type": "string"
             }
           },
           "description_kind": "plain"
         },
-        "nesting_mode": "single"
+        "max_items": 1,
+        "nesting_mode": "list"
       }
     },
-    "deprecated": true,
     "description_kind": "plain"
   },
   "version": 0
 }`
 
-func GoogleNotebooksLocationSchema() *tfjson.Schema {
+func GoogleComputeInstantSnapshotIamMemberSchema() *tfjson.Schema {
 	var result tfjson.Schema
-	_ = json.Unmarshal([]byte(googleNotebooksLocation), &result)
+	_ = json.Unmarshal([]byte(googleComputeInstantSnapshotIamMember), &result)
 	return &result
 }

@@ -530,6 +530,13 @@ const googleComputeInstance = `{
               "optional": true,
               "type": "string"
             },
+            "network_attachment": {
+              "computed": true,
+              "description": "The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "network_ip": {
               "computed": true,
               "description": "The private IP address assigned to the instance.",

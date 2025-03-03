@@ -88,6 +88,40 @@ const googleStorageTransferJob = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "logging_config": {
+        "block": {
+          "attributes": {
+            "enable_on_prem_gcs_transfer_logs": {
+              "description": "For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
+            "log_action_states": {
+              "description": "States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
+            },
+            "log_actions": {
+              "description": "Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enable_on_prem_gcs_transfer_logs instead.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
+            }
+          },
+          "description": "Logging configuration.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "notification_config": {
         "block": {
           "attributes": {
