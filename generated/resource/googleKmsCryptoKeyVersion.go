@@ -92,7 +92,7 @@ const googleKmsCryptoKeyVersion = `{
       },
       "state": {
         "computed": true,
-        "description": "The current state of the CryptoKeyVersion. Possible values: [\"PENDING_GENERATION\", \"ENABLED\", \"DISABLED\", \"DESTROYED\", \"DESTROY_SCHEDULED\", \"PENDING_IMPORT\", \"IMPORT_FAILED\"]",
+        "description": "The current state of the CryptoKeyVersion. Note: you can only specify this field to manually 'ENABLE' or 'DISABLE' the CryptoKeyVersion,\notherwise the value of this field is always retrieved automatically. Possible values: [\"PENDING_GENERATION\", \"ENABLED\", \"DISABLED\", \"DESTROYED\", \"DESTROY_SCHEDULED\", \"PENDING_IMPORT\", \"IMPORT_FAILED\"]",
         "description_kind": "plain",
         "optional": true,
         "type": "string"

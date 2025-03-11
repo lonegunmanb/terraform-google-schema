@@ -456,7 +456,8 @@ const googleComputeInstance = `{
                 ]
               ],
               "preemptible": "bool",
-              "provisioning_model": "string"
+              "provisioning_model": "string",
+              "termination_time": "string"
             }
           ]
         ]

@@ -216,6 +216,15 @@ const googleAlloydbInstance = `{
                 "string"
               ],
               "psc_dns_name": "string",
+              "psc_interface_configs": [
+                "list",
+                [
+                  "object",
+                  {
+                    "network_attachment_resource": "string"
+                  }
+                ]
+              ],
               "service_attachment_link": "string"
             }
           ]

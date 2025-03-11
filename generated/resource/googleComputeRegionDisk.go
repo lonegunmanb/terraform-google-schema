@@ -9,6 +9,18 @@ import (
 const googleComputeRegionDisk = `{
   "block": {
     "attributes": {
+      "create_snapshot_before_destroy": {
+        "description": "If set to true, a snapshot of the disk will be created before it is destroyed.\nIf your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.\nThe name of the snapshot by default will be '{{disk-name}}-YYYYMMDD-HHmm'",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
+      "create_snapshot_before_destroy_prefix": {
+        "description": "This will set a custom name prefix for the snapshot that's created when the disk is deleted.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "creation_timestamp": {
         "computed": true,
         "description": "Creation timestamp in RFC3339 text format.",
@@ -197,6 +209,13 @@ const googleComputeRegionDisk = `{
             },
             "raw_key": {
               "description": "Specifies a 256-bit customer-supplied encryption key, encoded in\nRFC 4648 base64 to either encrypt or decrypt this resource.",
+              "description_kind": "plain",
+              "optional": true,
+              "sensitive": true,
+              "type": "string"
+            },
+            "rsa_encrypted_key": {
+              "description": "Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit\ncustomer-supplied encryption key to either encrypt or decrypt\nthis resource. You can provide either the rawKey or the rsaEncryptedKey.",
               "description_kind": "plain",
               "optional": true,
               "sensitive": true,

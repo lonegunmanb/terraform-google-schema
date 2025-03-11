@@ -145,7 +145,7 @@ const googleIamProjectsPolicyBinding = `{
         "block": {
           "attributes": {
             "principal_set": {
-              "description": "Required. Immutable. The resource name of the policy to be bound.\nThe binding parent and policy must belong to the same Organization (or Project).",
+              "description": "Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.\nExamples for each one of the following supported principal set types:\n* Project:\n  * '//cloudresourcemanager.googleapis.com/projects/PROJECT_NUMBER'\n  * '//cloudresourcemanager.googleapis.com/projects/PROJECT_ID'\n* Workload Identity Pool: '//iam.googleapis.com/projects/PROJECT_NUMBER/locations/LOCATION/workloadIdentityPools/WORKLOAD_POOL_ID'\nIt must be parent by the policy binding's parent (the project).",
               "description_kind": "plain",
               "optional": true,
               "type": "string"

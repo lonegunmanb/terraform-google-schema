@@ -16,7 +16,7 @@ const googleComputeFirewallPolicyAssociation = `{
         "type": "string"
       },
       "firewall_policy": {
-        "description": "The firewall policy of the resource.",
+        "description": "The firewall policy of the resource.\n\nThis field can be updated to refer to a different Firewall Policy, which will create a new association from that new\nfirewall policy with the flag to override the existing attachmentTarget's policy association.\n\n**Note** Due to potential risks with this operation it is *highly* recommended to use the 'create_before_destroy' life cycle option\non your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.",
         "description_kind": "plain",
         "required": true,
         "type": "string"
@@ -50,6 +50,11 @@ const googleComputeFirewallPolicyAssociation = `{
               "type": "string"
             },
             "delete": {
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "update": {
               "description_kind": "plain",
               "optional": true,
               "type": "string"

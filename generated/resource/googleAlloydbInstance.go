@@ -282,6 +282,23 @@ const googleAlloydbInstance = `{
               "type": "string"
             }
           },
+          "block_types": {
+            "psc_interface_configs": {
+              "block": {
+                "attributes": {
+                  "network_attachment_resource": {
+                    "description": "The network attachment resource created in the consumer project to which the PSC interface will be linked.\nThis is of the format: \"projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}\".\nThe network attachment must be in the same region as the instance.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Configurations for setting up PSC interfaces attached to the instance\nwhich are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            }
+          },
           "description": "Configuration for Private Service Connect (PSC) for the instance.",
           "description_kind": "plain"
         },

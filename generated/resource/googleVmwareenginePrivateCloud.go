@@ -288,13 +288,13 @@ const googleVmwareenginePrivateCloud = `{
               "block": {
                 "attributes": {
                   "preferred_location": {
-                    "description": "Zone that will remain operational when connection between the two zones is lost.",
+                    "description": "Zone that will remain operational when connection between the two zones is lost.\nSpecify the zone in the following format: projects/{project}/locations/{location}.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"
                   },
                   "secondary_location": {
-                    "description": "Additional zone for a higher level of availability and load balancing.",
+                    "description": "Additional zone for a higher level of availability and load balancing.\nSpecify the zone in the following format: projects/{project}/locations/{location}.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"

@@ -60,6 +60,12 @@ const googleComputeSubnetwork = `{
         "optional": true,
         "type": "string"
       },
+      "ip_collection": {
+        "description": "Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP\nin EXTERNAL_IPV6_SUBNETWORK_CREATION mode.\nUse one of the following formats to specify a sub-PDP when creating an\nIPv6 NetLB forwarding rule using BYOIP:\nFull resource URL, as in:\n  * 'https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'\nPartial URL, as in:\n  * 'projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}'\n  * 'regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "ipv6_access_type": {
         "description": "The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation\nor the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet\ncannot enable direct path. Possible values: [\"EXTERNAL\", \"INTERNAL\"]",
         "description_kind": "plain",
@@ -69,6 +75,12 @@ const googleComputeSubnetwork = `{
       "ipv6_cidr_range": {
         "computed": true,
         "description": "The range of internal IPv6 addresses that are owned by this subnetwork.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "ipv6_gce_endpoint": {
+        "computed": true,
+        "description": "Possible endpoints of this subnetwork. It can be one of the following:\n  * VM_ONLY: The subnetwork can be used for creating instances and IPv6 addresses with VM endpoint type. Such a subnetwork\n  gets external IPv6 ranges from a public delegated prefix and cannot be used to create NetLb.\n  * VM_AND_FR: The subnetwork can be used for creating both VM instances and Forwarding Rules. It can also be used to reserve\n  IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly.",
         "description_kind": "plain",
         "type": "string"
       },

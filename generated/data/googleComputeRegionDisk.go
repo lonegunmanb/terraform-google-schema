@@ -23,6 +23,18 @@ const googleComputeRegionDisk = `{
           ]
         ]
       },
+      "create_snapshot_before_destroy": {
+        "computed": true,
+        "description": "If set to true, a snapshot of the disk will be created before it is destroyed.\nIf your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.\nThe name of the snapshot by default will be '{{disk-name}}-YYYYMMDD-HHmm'",
+        "description_kind": "plain",
+        "type": "bool"
+      },
+      "create_snapshot_before_destroy_prefix": {
+        "computed": true,
+        "description": "This will set a custom name prefix for the snapshot that's created when the disk is deleted.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "creation_timestamp": {
         "computed": true,
         "description": "Creation timestamp in RFC3339 text format.",
@@ -46,6 +58,7 @@ const googleComputeRegionDisk = `{
             {
               "kms_key_name": "string",
               "raw_key": "string",
+              "rsa_encrypted_key": "string",
               "sha256": "string"
             }
           ]

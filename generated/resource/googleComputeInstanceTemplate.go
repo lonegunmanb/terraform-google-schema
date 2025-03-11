@@ -739,6 +739,12 @@ const googleComputeInstanceTemplate = `{
               "description_kind": "plain",
               "optional": true,
               "type": "string"
+            },
+            "termination_time": {
+              "description": "Specifies the timestamp, when the instance will be terminated,\nin RFC3339 text format. If specified, the instance termination action\nwill be performed at the termination time.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
             }
           },
           "block_types": {

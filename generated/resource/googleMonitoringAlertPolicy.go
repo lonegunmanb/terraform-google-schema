@@ -399,13 +399,13 @@ const googleMonitoringAlertPolicy = `{
                     "block": {
                       "attributes": {
                         "column": {
-                          "description": "The name of the column containing the boolean value. If the value\nin a row is NULL, that row is ignored.",
+                          "description": "The name of the column containing the boolean value. If the value in a row is\nNULL, that row is ignored.",
                           "description_kind": "plain",
                           "required": true,
                           "type": "string"
                         }
                       },
-                      "description": "The start date and time of the query. If left unspecified, then the\nquery will start immediately.",
+                      "description": "A test that uses an alerting result in a boolean column produced by the SQL query.",
                       "description_kind": "plain"
                     },
                     "max_items": 1,
@@ -511,13 +511,13 @@ const googleMonitoringAlertPolicy = `{
                           "type": "string"
                         },
                         "threshold": {
-                          "description": "Test the boolean value in the indicated column.",
+                          "description": "The value against which to compare the row count.",
                           "description_kind": "plain",
                           "required": true,
                           "type": "number"
                         }
                       },
-                      "description": "Test the row count against a threshold.",
+                      "description": "A test that checks if the number of rows in the result set violates some threshold.",
                       "description_kind": "plain"
                     },
                     "max_items": 1,
