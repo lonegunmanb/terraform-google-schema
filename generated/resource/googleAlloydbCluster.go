@@ -562,6 +562,12 @@ const googleAlloydbCluster = `{
               "description_kind": "plain",
               "optional": true,
               "type": "bool"
+            },
+            "service_owned_project_number": {
+              "computed": true,
+              "description": "The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.\nIn case the network attachment is configured to ACCEPT_AUTOMATIC, this project number does not need to be allowlisted explicitly.",
+              "description_kind": "plain",
+              "type": "number"
             }
           },
           "description": "Configuration for Private Service Connect (PSC) for the cluster.",

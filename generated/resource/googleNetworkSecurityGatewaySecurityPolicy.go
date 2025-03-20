@@ -52,7 +52,7 @@ const googleNetworkSecurityGatewaySecurityPolicy = `{
         "type": "string"
       },
       "tls_inspection_policy": {
-        "description": "Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.\nNote: google_network_security_tls_inspection_policy resource is still in [Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) therefore it will need to import the provider.",
+        "description": "Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"

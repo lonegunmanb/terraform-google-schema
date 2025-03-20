@@ -115,7 +115,7 @@ const googleMemorystoreInstance = `{
       },
       "engine_version": {
         "computed": true,
-        "description": "Optional. Immutable. Engine version of the instance.",
+        "description": "Optional. Engine version of the instance.",
         "description_kind": "plain",
         "type": "string"
       },

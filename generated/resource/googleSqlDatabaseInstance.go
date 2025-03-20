@@ -647,13 +647,13 @@ const googleSqlDatabaseInstance = `{
                   },
                   "query_plans_per_minute": {
                     "computed": true,
-                    "description": "Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.",
+                    "description": "Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5. For Enterprise Plus instances, from 0 to 200.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "number"
                   },
                   "query_string_length": {
-                    "description": "Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.",
+                    "description": "Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "number"

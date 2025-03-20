@@ -67,7 +67,6 @@ const googleStorageInsightsReportConfig = `{
           "description_kind": "plain"
         },
         "max_items": 1,
-        "min_items": 1,
         "nesting_mode": "list"
       },
       "frequency_options": {
@@ -201,6 +200,14 @@ const googleStorageInsightsReportConfig = `{
             }
           },
           "description": "Options for including metadata in an inventory report.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "parquet_options": {
+        "block": {
+          "description": "An option for outputting inventory reports as parquet files.",
           "description_kind": "plain"
         },
         "max_items": 1,

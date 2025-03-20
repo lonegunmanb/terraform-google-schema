@@ -387,6 +387,171 @@ const googleNetworkSecurityAuthzPolicy = `{
             "to": {
               "block": {
                 "block_types": {
+                  "not_operations": {
+                    "block": {
+                      "attributes": {
+                        "methods": {
+                          "description": "A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
+                            "string"
+                          ]
+                        }
+                      },
+                      "block_types": {
+                        "header_set": {
+                          "block": {
+                            "block_types": {
+                              "headers": {
+                                "block": {
+                                  "attributes": {
+                                    "name": {
+                                      "description": "Specifies the name of the header in the request.",
+                                      "description_kind": "plain",
+                                      "optional": true,
+                                      "type": "string"
+                                    }
+                                  },
+                                  "block_types": {
+                                    "value": {
+                                      "block": {
+                                        "attributes": {
+                                          "contains": {
+                                            "description": "The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.\nExamples:\n* abc matches the value xyz.abc.def",
+                                            "description_kind": "plain",
+                                            "optional": true,
+                                            "type": "string"
+                                          },
+                                          "exact": {
+                                            "description": "The input string must match exactly the string specified here.\nExamples:\n* abc only matches the value abc.",
+                                            "description_kind": "plain",
+                                            "optional": true,
+                                            "type": "string"
+                                          },
+                                          "ignore_case": {
+                                            "description": "If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.",
+                                            "description_kind": "plain",
+                                            "optional": true,
+                                            "type": "bool"
+                                          },
+                                          "prefix": {
+                                            "description": "The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.\nExamples:\n* abc matches the value abc.xyz",
+                                            "description_kind": "plain",
+                                            "optional": true,
+                                            "type": "string"
+                                          },
+                                          "suffix": {
+                                            "description": "The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.\nExamples:\n* abc matches the value xyz.abc",
+                                            "description_kind": "plain",
+                                            "optional": true,
+                                            "type": "string"
+                                          }
+                                        },
+                                        "description": "Specifies how the header match will be performed.",
+                                        "description_kind": "plain"
+                                      },
+                                      "max_items": 1,
+                                      "nesting_mode": "list"
+                                    }
+                                  },
+                                  "description": "A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.",
+                                  "description_kind": "plain"
+                                },
+                                "nesting_mode": "list"
+                              }
+                            },
+                            "description": "A list of headers to match against in http header.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
+                        "hosts": {
+                          "block": {
+                            "attributes": {
+                              "contains": {
+                                "description": "The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.\nExamples:\n* abc matches the value xyz.abc.def",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "exact": {
+                                "description": "The input string must match exactly the string specified here.\nExamples:\n* abc only matches the value abc.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "ignore_case": {
+                                "description": "If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "bool"
+                              },
+                              "prefix": {
+                                "description": "The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.\nExamples:\n* abc matches the value abc.xyz",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "suffix": {
+                                "description": "The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.\nExamples:\n* abc matches the value xyz.abc",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.\nLimited to 5 matches.",
+                            "description_kind": "plain"
+                          },
+                          "nesting_mode": "list"
+                        },
+                        "paths": {
+                          "block": {
+                            "attributes": {
+                              "contains": {
+                                "description": "The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.\nExamples:\n* abc matches the value xyz.abc.def",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "exact": {
+                                "description": "The input string must match exactly the string specified here.\nExamples:\n* abc only matches the value abc.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "ignore_case": {
+                                "description": "If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "bool"
+                              },
+                              "prefix": {
+                                "description": "The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.\nExamples:\n* abc matches the value abc.xyz",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "suffix": {
+                                "description": "The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.\nExamples:\n* abc matches the value xyz.abc",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.\nLimited to 5 matches.\nNote that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.",
+                            "description_kind": "plain"
+                          },
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified.",
+                      "description_kind": "plain"
+                    },
+                    "nesting_mode": "list"
+                  },
                   "operations": {
                     "block": {
                       "attributes": {

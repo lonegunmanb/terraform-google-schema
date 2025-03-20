@@ -155,7 +155,7 @@ const googleCloudfunctionsFunction = `{
         "type": "string"
       },
       "runtime": {
-        "description": "The runtime in which the function is going to run. Eg. \"nodejs12\", \"nodejs14\", \"python37\", \"go111\".",
+        "description": "The runtime in which the function is going to run. Eg. \"nodejs20\", \"python37\", \"go111\".",
         "description_kind": "plain",
         "required": true,
         "type": "string"

@@ -15,6 +15,12 @@ const googleDataprocMetastoreService = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "create_time": {
+        "computed": true,
+        "description": "Output only. The time when the metastore service was created.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "database_type": {
         "computed": true,
         "description": "The database type that the Metastore service stores its data. Default value: \"MYSQL\" Possible values: [\"MYSQL\", \"SPANNER\"]",
@@ -300,6 +306,12 @@ const googleDataprocMetastoreService = `{
       "uid": {
         "computed": true,
         "description": "The globally unique resource identifier of the metastore service.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "update_time": {
+        "computed": true,
+        "description": "Output only. The time when the metastore service was last updated.",
         "description_kind": "plain",
         "type": "string"
       }

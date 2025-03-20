@@ -366,7 +366,8 @@ const googleAlloydbCluster = `{
           [
             "object",
             {
-              "psc_enabled": "bool"
+              "psc_enabled": "bool",
+              "service_owned_project_number": "number"
             }
           ]
         ]

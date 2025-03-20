@@ -163,6 +163,12 @@ const googleBigqueryTable = `{
         "required": true,
         "type": "string"
       },
+      "table_metadata_view": {
+        "description": "View sets the optional parameter \"view\": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "terraform_labels": {
         "computed": true,
         "description": "The combination of labels configured directly on the resource and default labels configured on the provider.",

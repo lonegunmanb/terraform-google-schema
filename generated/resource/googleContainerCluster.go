@@ -1159,7 +1159,7 @@ const googleContainerCluster = `{
         "block": {
           "attributes": {
             "enable_components": {
-              "description": "GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, KCP_CONNECTION, KCP_SSHD, SCHEDULER, and WORKLOADS.",
+              "description": "GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, KCP_CONNECTION, KCP_SSHD, KCP_HPA, SCHEDULER, and WORKLOADS.",
               "description_kind": "plain",
               "required": true,
               "type": [

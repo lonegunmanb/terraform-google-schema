@@ -21,6 +21,13 @@ const googleComputeSubnetwork = `{
         "optional": true,
         "type": "string"
       },
+      "enable_flow_logs": {
+        "computed": true,
+        "description": "Whether to enable flow logging for this subnetwork. If this field is not explicitly set,\nit will not appear in get listings. If not set the default behavior is determined by the\norg policy, if there is no org policy specified, then it will default to disabled.\nThis field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "external_ipv6_prefix": {
         "computed": true,
         "description": "The range of external IPv6 addresses that are owned by this subnetwork.",
@@ -158,6 +165,12 @@ const googleComputeSubnetwork = `{
         "description": "The stack type for this subnet to identify whether the IPv6 feature is enabled or not.\nIf not specified IPV4_ONLY will be used. Possible values: [\"IPV4_ONLY\", \"IPV4_IPV6\", \"IPV6_ONLY\"]",
         "description_kind": "plain",
         "optional": true,
+        "type": "string"
+      },
+      "state": {
+        "computed": true,
+        "description": "'The state of the subnetwork, which can be one of the following values:\n READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose\n set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained.\n A subnetwork that is draining cannot be used or modified until it reaches a status of READY'",
+        "description_kind": "plain",
         "type": "string"
       },
       "subnetwork_id": {

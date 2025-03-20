@@ -49,6 +49,12 @@ const googleWorkflowsWorkflow = `{
           "string"
         ]
       },
+      "execution_history_level": {
+        "description": "Describes the level of execution history to be stored for this workflow. This configuration\ndetermines how much information about workflow executions is preserved. If not specified,\ndefaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED. Possible values: [\"EXECUTION_HISTORY_LEVEL_UNSPECIFIED\", \"EXECUTION_HISTORY_BASIC\", \"EXECUTION_HISTORY_DETAILED\"]",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",
@@ -139,7 +145,7 @@ const googleWorkflowsWorkflow = `{
         "type": "string"
       },
       "user_env_vars": {
-        "description": "User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS\".",
+        "description": "User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with \"GOOGLE\" or \"WORKFLOWS\".",
         "description_kind": "plain",
         "optional": true,
         "type": [

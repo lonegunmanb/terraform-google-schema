@@ -9,6 +9,12 @@ import (
 const googleDataprocMetastoreFederation = `{
   "block": {
     "attributes": {
+      "create_time": {
+        "computed": true,
+        "description": "Output only. The time when the metastore federation was created.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "effective_labels": {
         "computed": true,
         "description": "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.",
@@ -87,6 +93,12 @@ const googleDataprocMetastoreFederation = `{
       "uid": {
         "computed": true,
         "description": "The globally unique resource identifier of the metastore federation.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "update_time": {
+        "computed": true,
+        "description": "Output only. The time when the metastore federation was last updated.",
         "description_kind": "plain",
         "type": "string"
       },
