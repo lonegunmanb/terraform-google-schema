@@ -140,7 +140,7 @@ const googleComputeInterconnect = `{
         ]
       },
       "link_type": {
-        "description": "Type of link requested. Note that this field indicates the speed of each of the links in the\nbundle, not the speed of the entire bundle. Can take one of the following values:\n  - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.\n  - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Possible values: [\"LINK_TYPE_ETHERNET_10G_LR\", \"LINK_TYPE_ETHERNET_100G_LR\"]",
+        "description": "Type of link requested. Note that this field indicates the speed of each of the links in the\nbundle, not the speed of the entire bundle. Can take one of the following values:\n  - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.\n  - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.\n  - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics Possible values: [\"LINK_TYPE_ETHERNET_10G_LR\", \"LINK_TYPE_ETHERNET_100G_LR\", \"LINK_TYPE_ETHERNET_400G_LR4\"]",
         "description_kind": "plain",
         "required": true,
         "type": "string"

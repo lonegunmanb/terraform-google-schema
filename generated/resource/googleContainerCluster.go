@@ -865,9 +865,25 @@ const googleContainerCluster = `{
               },
               "max_items": 1,
               "nesting_mode": "list"
+            },
+            "ip_endpoints_config": {
+              "block": {
+                "attributes": {
+                  "enabled": {
+                    "description": "Controls whether to allow direct IP access.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  }
+                },
+                "description": "IP endpoint configuration.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
             }
           },
-          "description": "Configuration for all of the cluster's control plane endpoints. Currently supports only DNS endpoint configuration, IP endpoint configuration is available in private_cluster_config.",
+          "description": "Configuration for all of the cluster's control plane endpoints. Currently supports only DNS endpoint configuration and disable IP endpoint. Other IP endpoint configurations are available in private_cluster_config.",
           "description_kind": "plain"
         },
         "max_items": 1,
@@ -2195,6 +2211,22 @@ const googleContainerCluster = `{
               },
               "nesting_mode": "list"
             },
+            "windows_node_config": {
+              "block": {
+                "attributes": {
+                  "osversion": {
+                    "description": "The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Parameters that can be configured on Windows nodes.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "workload_metadata_config": {
               "block": {
                 "attributes": {
@@ -3203,6 +3235,22 @@ const googleContainerCluster = `{
                       "description": "List of Kubernetes taints to be applied to each node.",
                       "description_kind": "plain"
                     },
+                    "nesting_mode": "list"
+                  },
+                  "windows_node_config": {
+                    "block": {
+                      "attributes": {
+                        "osversion": {
+                          "description": "The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Parameters that can be configured on Windows nodes.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
                     "nesting_mode": "list"
                   },
                   "workload_metadata_config": {

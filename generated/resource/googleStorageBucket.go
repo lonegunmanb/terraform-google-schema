@@ -52,7 +52,7 @@ const googleStorageBucket = `{
         ]
       },
       "location": {
-        "description": "The Google Cloud Storage location",
+        "description": "The Google Cloud Storage location or region.",
         "description_kind": "plain",
         "required": true,
         "type": "string"

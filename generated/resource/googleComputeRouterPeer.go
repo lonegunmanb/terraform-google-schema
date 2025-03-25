@@ -55,11 +55,29 @@ const googleComputeRouterPeer = `{
         "optional": true,
         "type": "bool"
       },
+      "export_policies": {
+        "description": "routers.list of export policies applied to this peer, in the order they must be evaluated. \nThe name must correspond to an existing policy that has ROUTE_POLICY_TYPE_EXPORT type.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": [
+          "list",
+          "string"
+        ]
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",
         "optional": true,
         "type": "string"
+      },
+      "import_policies": {
+        "description": "routers.list of import policies applied to this peer, in the order they must be evaluated. \nThe name must correspond to an existing policy that has ROUTE_POLICY_TYPE_IMPORT type.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": [
+          "list",
+          "string"
+        ]
       },
       "interface": {
         "description": "Name of the interface the BGP peer is associated with.",

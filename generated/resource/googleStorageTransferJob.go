@@ -282,6 +282,72 @@ const googleStorageTransferJob = `{
                     "type": "string"
                   }
                 },
+                "block_types": {
+                  "metadata_options": {
+                    "block": {
+                      "attributes": {
+                        "acl": {
+                          "description": "Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "gid": {
+                          "description": "Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "kms_key": {
+                          "description": "Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "mode": {
+                          "description": "Specifies how each file's mode attribute should be handled by the transfer.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "storage_class": {
+                          "description": "Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "symlink": {
+                          "description": "Specifies how symlinks should be handled by the transfer.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "temporary_hold": {
+                          "description": "SSpecifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "time_created": {
+                          "description": "Specifies how each object's timeCreated metadata is preserved for transfers.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "uid": {
+                          "description": "Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Specifies the metadata options for running a transfer",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
                 "description": "Characteristics of how to treat files from datasource and sink during job. If the option delete_objects_unique_in_sink is true, object conditions based on objects' last_modification_time are ignored and do not exclude objects in a data source or a data sink.",
                 "description_kind": "plain"
               },
@@ -714,6 +780,72 @@ const googleStorageTransferJob = `{
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"
+                  }
+                },
+                "block_types": {
+                  "metadata_options": {
+                    "block": {
+                      "attributes": {
+                        "acl": {
+                          "description": "Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "gid": {
+                          "description": "Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "kms_key": {
+                          "description": "Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "mode": {
+                          "description": "Specifies how each file's mode attribute should be handled by the transfer.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "storage_class": {
+                          "description": "Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "symlink": {
+                          "description": "Specifies how symlinks should be handled by the transfer.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "temporary_hold": {
+                          "description": "SSpecifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "time_created": {
+                          "description": "Specifies how each object's timeCreated metadata is preserved for transfers.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "uid": {
+                          "description": "Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Specifies the metadata options for running a transfer",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
                   }
                 },
                 "description": "Characteristics of how to treat files from datasource and sink during job. If the option delete_objects_unique_in_sink is true, object conditions based on objects' last_modification_time are ignored and do not exclude objects in a data source or a data sink.",

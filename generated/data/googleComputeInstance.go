@@ -66,11 +66,16 @@ const googleComputeInstance = `{
               "device_name": "string",
               "disk_encryption_key_raw": "string",
               "disk_encryption_key_sha256": "string",
+              "guest_os_features": [
+                "list",
+                "string"
+              ],
               "initialize_params": [
                 "list",
                 [
                   "object",
                   {
+                    "architecture": "string",
                     "enable_confidential_compute": "bool",
                     "image": "string",
                     "labels": [

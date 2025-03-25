@@ -133,6 +133,22 @@ const googleMemorystoreInstance = `{
         "required": true,
         "type": "string"
       },
+      "maintenance_schedule": {
+        "computed": true,
+        "description": "Upcoming maintenance schedule.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "end_time": "string",
+              "schedule_deadline_time": "string",
+              "start_time": "string"
+            }
+          ]
+        ]
+      },
       "mode": {
         "computed": true,
         "description": "Optional. cluster or cluster-disabled. \n Possible values:\n CLUSTER\n CLUSTER_DISABLED Possible values: [\"CLUSTER\", \"CLUSTER_DISABLED\"]",
@@ -162,7 +178,7 @@ const googleMemorystoreInstance = `{
       },
       "node_type": {
         "computed": true,
-        "description": "Optional. Immutable. Machine type for individual nodes of the instance. \n Possible values:\n SHARED_CORE_NANO\nHIGHMEM_MEDIUM\nHIGHMEM_XLARGE\nSTANDARD_SMALL",
+        "description": "Optional. Machine type for individual nodes of the instance. \n Possible values:\n SHARED_CORE_NANO\nHIGHMEM_MEDIUM\nHIGHMEM_XLARGE\nSTANDARD_SMALL",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -287,6 +303,88 @@ const googleMemorystoreInstance = `{
           "description_kind": "plain"
         },
         "min_items": 1,
+        "nesting_mode": "list"
+      },
+      "maintenance_policy": {
+        "block": {
+          "attributes": {
+            "create_time": {
+              "computed": true,
+              "description": "The time when the policy was created.\nA timestamp in RFC3339 UTC \"Zulu\" format, with nanosecond\nresolution and up to nine fractional digits.",
+              "description_kind": "plain",
+              "type": "string"
+            },
+            "update_time": {
+              "computed": true,
+              "description": "The time when the policy was last updated.\nA timestamp in RFC3339 UTC \"Zulu\" format, with nanosecond\nresolution and up to nine fractional digits.",
+              "description_kind": "plain",
+              "type": "string"
+            }
+          },
+          "block_types": {
+            "weekly_maintenance_window": {
+              "block": {
+                "attributes": {
+                  "day": {
+                    "description": "The day of week that maintenance updates occur.\n\n- DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.\n- MONDAY: Monday\n- TUESDAY: Tuesday\n- WEDNESDAY: Wednesday\n- THURSDAY: Thursday\n- FRIDAY: Friday\n- SATURDAY: Saturday\n- SUNDAY: Sunday Possible values: [\"DAY_OF_WEEK_UNSPECIFIED\", \"MONDAY\", \"TUESDAY\", \"WEDNESDAY\", \"THURSDAY\", \"FRIDAY\", \"SATURDAY\", \"SUNDAY\"]",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "duration": {
+                    "computed": true,
+                    "description": "Duration of the maintenance window.\nThe current window is fixed at 1 hour.\nA duration in seconds with up to nine fractional digits,\nterminated by 's'. Example: \"3.5s\".",
+                    "description_kind": "plain",
+                    "type": "string"
+                  }
+                },
+                "block_types": {
+                  "start_time": {
+                    "block": {
+                      "attributes": {
+                        "hours": {
+                          "description": "Hours of day in 24 hour format. Should be from 0 to 23.\nAn API may choose to allow the value \"24:00:00\" for scenarios like business closing time.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "minutes": {
+                          "description": "Minutes of hour of day. Must be from 0 to 59.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "nanos": {
+                          "description": "Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "seconds": {
+                          "description": "Seconds of minutes of the time. Must normally be from 0 to 59.\nAn API may allow the value 60 if it allows leap-seconds.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        }
+                      },
+                      "description": "Start time of the window in UTC time.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "min_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "Optional. Maintenance window that is applied to resources covered by this policy.\nMinimum 1. For the current version, the maximum number\nof weekly_window is expected to be one.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Maintenance policy for a cluster",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
         "nesting_mode": "list"
       },
       "persistence_config": {

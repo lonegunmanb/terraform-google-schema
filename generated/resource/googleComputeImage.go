@@ -201,6 +201,101 @@ const googleComputeImage = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "shielded_instance_initial_state": {
+        "block": {
+          "block_types": {
+            "dbs": {
+              "block": {
+                "attributes": {
+                  "content": {
+                    "description": "The raw content in the secure keys file.\n\nA base64-encoded string.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "file_type": {
+                    "description": "The file type of source file.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "The Key Database (db).",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            },
+            "dbxs": {
+              "block": {
+                "attributes": {
+                  "content": {
+                    "description": "The raw content in the secure keys file.\n\nA base64-encoded string.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "file_type": {
+                    "description": "The file type of source file.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "The forbidden key database (dbx).",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            },
+            "keks": {
+              "block": {
+                "attributes": {
+                  "content": {
+                    "description": "The raw content in the secure keys file.\n\nA base64-encoded string.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "file_type": {
+                    "description": "The file type of source file.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "The Key Exchange Key (KEK).",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            },
+            "pk": {
+              "block": {
+                "attributes": {
+                  "content": {
+                    "description": "The raw content in the secure keys file.\n\nA base64-encoded string.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "file_type": {
+                    "description": "The file type of source file.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "The Platform Key (PK).",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Set the secure boot keys of shielded instance.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {

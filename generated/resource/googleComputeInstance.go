@@ -329,6 +329,16 @@ const googleComputeInstance = `{
               "description_kind": "plain",
               "type": "string"
             },
+            "guest_os_features": {
+              "computed": true,
+              "description": "A list of features to enable on the guest operating system. Applicable only for bootable images.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
+            },
             "interface": {
               "description": "The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)",
               "description_kind": "plain",
@@ -360,6 +370,13 @@ const googleComputeInstance = `{
             "initialize_params": {
               "block": {
                 "attributes": {
+                  "architecture": {
+                    "computed": true,
+                    "description": "The architecture of the disk. One of \"X86_64\" or \"ARM64\".",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
                   "enable_confidential_compute": {
                     "description": "A flag to enable confidential compute mode on boot disk",
                     "description_kind": "plain",

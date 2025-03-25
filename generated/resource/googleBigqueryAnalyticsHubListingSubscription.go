@@ -71,7 +71,7 @@ const googleBigqueryAnalyticsHubListingSubscription = `{
         "type": "string"
       },
       "location": {
-        "description": "The name of the location for this subscription.",
+        "description": "The name of the location of the data exchange. Distinct from the location of the destination data set.",
         "description_kind": "plain",
         "required": true,
         "type": "string"

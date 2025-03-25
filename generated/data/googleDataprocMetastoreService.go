@@ -233,6 +233,26 @@ const googleDataprocMetastoreService = `{
           [
             "object",
             {
+              "autoscaling_config": [
+                "list",
+                [
+                  "object",
+                  {
+                    "autoscaling_enabled": "bool",
+                    "autoscaling_factor": "number",
+                    "limit_config": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "max_scaling_factor": "number",
+                          "min_scaling_factor": "number"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              ],
               "instance_size": "string",
               "scaling_factor": "number"
             }

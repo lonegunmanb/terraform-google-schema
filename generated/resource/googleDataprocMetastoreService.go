@@ -366,6 +366,56 @@ const googleDataprocMetastoreService = `{
               "type": "number"
             }
           },
+          "block_types": {
+            "autoscaling_config": {
+              "block": {
+                "attributes": {
+                  "autoscaling_enabled": {
+                    "description": "Defines whether autoscaling is enabled. The default value is false.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  },
+                  "autoscaling_factor": {
+                    "computed": true,
+                    "description": "Output only. The scaling factor of a service with autoscaling enabled.",
+                    "description_kind": "plain",
+                    "type": "number"
+                  }
+                },
+                "block_types": {
+                  "limit_config": {
+                    "block": {
+                      "attributes": {
+                        "max_scaling_factor": {
+                          "computed": true,
+                          "description": "The maximum scaling factor that the service will autoscale to. The default value is 6.0.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "min_scaling_factor": {
+                          "computed": true,
+                          "description": "The minimum scaling factor that the service will autoscale to. The default value is 0.1.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        }
+                      },
+                      "description": "Represents the limit configuration of a metastore service.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "Represents the autoscaling configuration of a metastore service.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
           "description": "Represents the scaling configuration of a metastore service.",
           "description_kind": "plain"
         },

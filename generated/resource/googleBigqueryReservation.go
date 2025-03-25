@@ -46,8 +46,51 @@ const googleBigqueryReservation = `{
         "required": true,
         "type": "string"
       },
+      "original_primary_location": {
+        "computed": true,
+        "description": "The location where the reservation was originally created. This is set only during the\nfailover reservation's creation. All billing charges for the failover reservation will be\napplied to this location.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "primary_location": {
+        "computed": true,
+        "description": "The current location of the reservation's primary replica. This field is only set for\nreservations using the managed disaster recovery feature.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "project": {
         "computed": true,
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
+      "replication_status": {
+        "computed": true,
+        "description": "The Disaster Recovery(DR) replication status of the reservation. This is only available for\nthe primary replicas of DR/failover reservations and provides information about the both the\nstaleness of the secondary and the last error encountered while trying to replicate changes\nfrom the primary to the secondary. If this field is blank, it means that the reservation is\neither not a DR reservation or the reservation is a DR secondary or that any replication\noperations on the reservation have succeeded.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "error": [
+                "list",
+                [
+                  "object",
+                  {
+                    "code": "number",
+                    "message": "string"
+                  }
+                ]
+              ],
+              "last_error_time": "string",
+              "last_replication_time": "string"
+            }
+          ]
+        ]
+      },
+      "secondary_location": {
+        "description": "The current location of the reservation's secondary replica. This field is only set for\nreservations using the managed disaster recovery feature. Users can set this in create\nreservation calls to create a failover reservation or in update reservation calls to convert\na non-failover reservation to a failover reservation(or vice versa).",
         "description_kind": "plain",
         "optional": true,
         "type": "string"

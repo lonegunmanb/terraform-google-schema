@@ -324,7 +324,7 @@ const googleContainerCluster = `{
       },
       "control_plane_endpoints_config": {
         "computed": true,
-        "description": "Configuration for all of the cluster's control plane endpoints. Currently supports only DNS endpoint configuration, IP endpoint configuration is available in private_cluster_config.",
+        "description": "Configuration for all of the cluster's control plane endpoints. Currently supports only DNS endpoint configuration and disable IP endpoint. Other IP endpoint configurations are available in private_cluster_config.",
         "description_kind": "plain",
         "type": [
           "list",
@@ -338,6 +338,15 @@ const googleContainerCluster = `{
                   {
                     "allow_external_traffic": "bool",
                     "endpoint": "string"
+                  }
+                ]
+              ],
+              "ip_endpoints_config": [
+                "list",
+                [
+                  "object",
+                  {
+                    "enabled": "bool"
                   }
                 ]
               ]
@@ -1190,6 +1199,15 @@ const googleContainerCluster = `{
                   }
                 ]
               ],
+              "windows_node_config": [
+                "list",
+                [
+                  "object",
+                  {
+                    "osversion": "string"
+                  }
+                ]
+              ],
               "workload_metadata_config": [
                 "list",
                 [
@@ -1617,6 +1635,15 @@ const googleContainerCluster = `{
                           "effect": "string",
                           "key": "string",
                           "value": "string"
+                        }
+                      ]
+                    ],
+                    "windows_node_config": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "osversion": "string"
                         }
                       ]
                     ],

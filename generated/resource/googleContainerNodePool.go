@@ -1024,6 +1024,22 @@ const googleContainerNodePool = `{
               },
               "nesting_mode": "list"
             },
+            "windows_node_config": {
+              "block": {
+                "attributes": {
+                  "osversion": {
+                    "description": "The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Parameters that can be configured on Windows nodes.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "workload_metadata_config": {
               "block": {
                 "attributes": {

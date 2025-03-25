@@ -146,6 +146,59 @@ const googleMemorystoreInstance = `{
         "optional": true,
         "type": "string"
       },
+      "maintenance_policy": {
+        "computed": true,
+        "description": "Maintenance policy for a cluster",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "create_time": "string",
+              "update_time": "string",
+              "weekly_maintenance_window": [
+                "list",
+                [
+                  "object",
+                  {
+                    "day": "string",
+                    "duration": "string",
+                    "start_time": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "hours": "number",
+                          "minutes": "number",
+                          "nanos": "number",
+                          "seconds": "number"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      },
+      "maintenance_schedule": {
+        "computed": true,
+        "description": "Upcoming maintenance schedule.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "end_time": "string",
+              "schedule_deadline_time": "string",
+              "start_time": "string"
+            }
+          ]
+        ]
+      },
       "mode": {
         "computed": true,
         "description": "Optional. cluster or cluster-disabled. \n Possible values:\n CLUSTER\n CLUSTER_DISABLED Possible values: [\"CLUSTER\", \"CLUSTER_DISABLED\"]",
@@ -174,7 +227,7 @@ const googleMemorystoreInstance = `{
       },
       "node_type": {
         "computed": true,
-        "description": "Optional. Immutable. Machine type for individual nodes of the instance. \n Possible values:\n SHARED_CORE_NANO\nHIGHMEM_MEDIUM\nHIGHMEM_XLARGE\nSTANDARD_SMALL",
+        "description": "Optional. Machine type for individual nodes of the instance. \n Possible values:\n SHARED_CORE_NANO\nHIGHMEM_MEDIUM\nHIGHMEM_XLARGE\nSTANDARD_SMALL",
         "description_kind": "plain",
         "type": "string"
       },
