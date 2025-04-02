@@ -374,6 +374,12 @@ const googleCloudfunctions2Function = `{
               "optional": true,
               "type": "string"
             },
+            "binary_authorization_policy": {
+              "description": "The binary authorization policy to be checked when deploying the Cloud Run service.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "environment_variables": {
               "computed": true,
               "description": "Environment variables that shall be available during function execution.",

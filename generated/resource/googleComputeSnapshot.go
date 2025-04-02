@@ -157,6 +157,13 @@ const googleComputeSnapshot = `{
               "sensitive": true,
               "type": "string"
             },
+            "rsa_encrypted_key": {
+              "description": "Specifies an encryption key stored in Google Cloud KMS, encoded in\nRFC 4648 base64 to either encrypt or decrypt this resource.",
+              "description_kind": "plain",
+              "optional": true,
+              "sensitive": true,
+              "type": "string"
+            },
             "sha256": {
               "computed": true,
               "description": "The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied\nencryption key that protects this resource.",

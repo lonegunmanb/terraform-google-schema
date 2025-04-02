@@ -15,6 +15,12 @@ const googleDataprocMetastoreFederation = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "deletion_protection": {
+        "description": "Whether Terraform will be prevented from destroying the federation. Defaults to false.\nWhen the field is set to true in Terraform state, a 'terraform apply'\nor 'terraform destroy' that would delete the federation will fail.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "effective_labels": {
         "computed": true,
         "description": "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.",

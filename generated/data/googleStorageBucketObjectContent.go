@@ -28,6 +28,12 @@ const googleStorageBucketObjectContent = `{
         "optional": true,
         "type": "string"
       },
+      "content_base64": {
+        "computed": true,
+        "description": "Base64 encoded version of the object content. Use this when dealing with binary data.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "content_disposition": {
         "computed": true,
         "description": "Content-Disposition of the object data.",

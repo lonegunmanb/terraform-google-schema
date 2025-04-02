@@ -146,6 +146,15 @@ const googleDataFusionInstance = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "tags": {
+        "description": "A map of resource manager tags.\nResource manager tag keys and values have the same definition as resource manager tags.\nKeys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.\nThe field is ignored (both PUT \u0026 PATCH) when empty.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": [
+          "map",
+          "string"
+        ]
+      },
       "tenant_project_id": {
         "computed": true,
         "description": "The name of the tenant project.",

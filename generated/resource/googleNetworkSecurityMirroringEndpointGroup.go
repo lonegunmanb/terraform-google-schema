@@ -9,6 +9,46 @@ import (
 const googleNetworkSecurityMirroringEndpointGroup = `{
   "block": {
     "attributes": {
+      "associations": {
+        "computed": true,
+        "description": "List of associations to this endpoint group.",
+        "description_kind": "plain",
+        "type": [
+          "set",
+          [
+            "object",
+            {
+              "name": "string",
+              "network": "string",
+              "state": "string"
+            }
+          ]
+        ]
+      },
+      "connected_deployment_groups": {
+        "computed": true,
+        "description": "List of details about the connected deployment groups to this endpoint\ngroup.",
+        "description_kind": "plain",
+        "type": [
+          "set",
+          [
+            "object",
+            {
+              "locations": [
+                "set",
+                [
+                  "object",
+                  {
+                    "location": "string",
+                    "state": "string"
+                  }
+                ]
+              ],
+              "name": "string"
+            }
+          ]
+        ]
+      },
       "create_time": {
         "computed": true,
         "description": "The timestamp when the resource was created.\nSee https://google.aip.dev/148#timestamps.",

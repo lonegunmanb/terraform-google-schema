@@ -189,6 +189,21 @@ const googleMemorystoreInstance = `{
         "optional": true,
         "type": "string"
       },
+      "psc_attachment_details": {
+        "computed": true,
+        "description": "Configuration of a service attachment of the cluster, for creating PSC connections.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "connection_type": "string",
+              "service_attachment": "string"
+            }
+          ]
+        ]
+      },
       "psc_auto_connections": {
         "computed": true,
         "description": "Output only. User inputs and resource details of the auto-created PSC connections.",
@@ -244,6 +259,8 @@ const googleMemorystoreInstance = `{
                 [
                   "object",
                   {
+                    "target_engine_version": "string",
+                    "target_node_type": "string",
                     "target_replica_count": "number",
                     "target_shard_count": "number"
                   }
@@ -283,6 +300,106 @@ const googleMemorystoreInstance = `{
       }
     },
     "block_types": {
+      "cross_instance_replication_config": {
+        "block": {
+          "attributes": {
+            "instance_role": {
+              "description": "The instance role supports the following values:\n1. 'INSTANCE_ROLE_UNSPECIFIED': This is an independent instance that has never participated in cross instance replication. It allows both reads and writes.\n2. 'NONE': This is an independent instance that previously participated in cross instance replication(either as a 'PRIMARY' or 'SECONDARY' cluster). It allows both reads and writes.\n3. 'PRIMARY': This instance serves as the replication source for secondary instance that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.\n4. 'SECONDARY': This instance replicates data from the primary instance. It allows only reads. Possible values: [\"INSTANCE_ROLE_UNSPECIFIED\", \"NONE\", \"PRIMARY\", \"SECONDARY\"]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "membership": {
+              "computed": true,
+              "description": "An output only view of all the member instance participating in cross instance replication. This field is populated for all the member clusters irrespective of their cluster role.",
+              "description_kind": "plain",
+              "type": [
+                "list",
+                [
+                  "object",
+                  {
+                    "primary_instance": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "instance": "string",
+                          "uid": "string"
+                        }
+                      ]
+                    ],
+                    "secondary_instance": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "instance": "string",
+                          "uid": "string"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            },
+            "update_time": {
+              "computed": true,
+              "description": "The last time cross instance replication config was updated.",
+              "description_kind": "plain",
+              "type": "string"
+            }
+          },
+          "block_types": {
+            "primary_instance": {
+              "block": {
+                "attributes": {
+                  "instance": {
+                    "description": "The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "uid": {
+                    "computed": true,
+                    "description": "The unique id of the primary instance.",
+                    "description_kind": "plain",
+                    "type": "string"
+                  }
+                },
+                "description": "This field is only set for a secondary instance. Details of the primary instance that is used as the replication source for this secondary instance. This is allowed to be set only for clusters whose cluster role is of type 'SECONDARY'.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "secondary_instances": {
+              "block": {
+                "attributes": {
+                  "instance": {
+                    "description": "The full resource path of the Nth instance in the format: projects/{project}/locations/{region}/instance/{instance-id}",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "uid": {
+                    "computed": true,
+                    "description": "The unique id of the Nth instance.",
+                    "description_kind": "plain",
+                    "type": "string"
+                  }
+                },
+                "description": "List of secondary instances that are replicating from this primary cluster. This is allowed to be set only for instances whose cluster role is of type 'PRIMARY'.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Cross instance replication config",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "desired_psc_auto_connections": {
         "block": {
           "attributes": {
@@ -299,10 +416,9 @@ const googleMemorystoreInstance = `{
               "type": "string"
             }
           },
-          "description": "Required. Immutable. User inputs for the auto-created PSC connections.",
+          "description": "Immutable. User inputs for the auto-created PSC connections.",
           "description_kind": "plain"
         },
-        "min_items": 1,
         "nesting_mode": "list"
       },
       "maintenance_policy": {

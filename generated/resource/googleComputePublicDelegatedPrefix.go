@@ -10,6 +10,7 @@ const googleComputePublicDelegatedPrefix = `{
   "block": {
     "attributes": {
       "allocatable_prefix_length": {
+        "computed": true,
         "description": "The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.",
         "description_kind": "plain",
         "optional": true,
@@ -40,7 +41,7 @@ const googleComputePublicDelegatedPrefix = `{
         "type": "bool"
       },
       "mode": {
-        "description": "Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,\nEXTERNAL_IPV6_FORWARDING_RULE_CREATION. Possible values: [\"DELEGATION\", \"EXTERNAL_IPV6_FORWARDING_RULE_CREATION\"]",
+        "description": "Specifies the mode of this IPv6 PDP. MODE must be one of: DELEGATION,\nEXTERNAL_IPV6_FORWARDING_RULE_CREATION and EXTERNAL_IPV6_SUBNETWORK_CREATION. Possible values: [\"DELEGATION\", \"EXTERNAL_IPV6_FORWARDING_RULE_CREATION\", \"EXTERNAL_IPV6_SUBNETWORK_CREATION\"]",
         "description_kind": "plain",
         "optional": true,
         "type": "string"

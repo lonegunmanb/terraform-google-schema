@@ -132,6 +132,28 @@ const googleComputeRouter = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "md5_authentication_keys": {
+        "block": {
+          "attributes": {
+            "key": {
+              "description": "Value of the key used for MD5 authentication.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            },
+            "name": {
+              "description": "Name used to identify the key. Must be unique within a router.\nMust be referenced by exactly one bgpPeer. Must comply with RFC1035.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "Keys used for MD5 authentication.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {

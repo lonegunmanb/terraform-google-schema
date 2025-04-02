@@ -215,6 +215,52 @@ const googleRedisCluster = `{
       }
     },
     "block_types": {
+      "automated_backup_config": {
+        "block": {
+          "attributes": {
+            "retention": {
+              "description": "How long to keep automated backups before the backups are deleted.\nThe value should be between 1 day and 365 days. If not specified, the default value is 35 days.\nA duration in seconds with up to nine fractional digits, ending with 's'. Example: \"3.5s\".",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "block_types": {
+            "fixed_frequency_schedule": {
+              "block": {
+                "block_types": {
+                  "start_time": {
+                    "block": {
+                      "attributes": {
+                        "hours": {
+                          "description": "Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23.\nAn API may choose to allow the value \"24:00:00\" for scenarios like business closing time.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "number"
+                        }
+                      },
+                      "description": "The start time of every automated backup in UTC.\nIt must be set to the start of an hour. This field is required.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "min_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "Trigger automated backups at a fixed frequency.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "min_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "The automated backup config for a instance.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "cross_cluster_replication_config": {
         "block": {
           "attributes": {

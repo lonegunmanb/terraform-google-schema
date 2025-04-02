@@ -263,7 +263,14 @@ const googleComputeInstance = `{
               "type": "string"
             },
             "disk_encryption_key_raw": {
-              "description": "A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.",
+              "description": "A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.",
+              "description_kind": "plain",
+              "optional": true,
+              "sensitive": true,
+              "type": "string"
+            },
+            "disk_encryption_key_rsa": {
+              "description": "Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.",
               "description_kind": "plain",
               "optional": true,
               "sensitive": true,
@@ -275,9 +282,15 @@ const googleComputeInstance = `{
               "description_kind": "plain",
               "type": "string"
             },
+            "disk_encryption_service_account": {
+              "description": "The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "kms_key_self_link": {
               "computed": true,
-              "description": "The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.",
+              "description": "The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
@@ -317,7 +330,14 @@ const googleComputeInstance = `{
               "type": "string"
             },
             "disk_encryption_key_raw": {
-              "description": "A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.",
+              "description": "A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.",
+              "description_kind": "plain",
+              "optional": true,
+              "sensitive": true,
+              "type": "string"
+            },
+            "disk_encryption_key_rsa": {
+              "description": "Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.",
               "description_kind": "plain",
               "optional": true,
               "sensitive": true,
@@ -327,6 +347,12 @@ const googleComputeInstance = `{
               "computed": true,
               "description": "The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.",
               "description_kind": "plain",
+              "type": "string"
+            },
+            "disk_encryption_service_account": {
+              "description": "The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used",
+              "description_kind": "plain",
+              "optional": true,
               "type": "string"
             },
             "guest_os_features": {
@@ -347,7 +373,7 @@ const googleComputeInstance = `{
             },
             "kms_key_self_link": {
               "computed": true,
-              "description": "The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.",
+              "description": "The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
@@ -440,6 +466,13 @@ const googleComputeInstance = `{
                     "optional": true,
                     "type": "number"
                   },
+                  "snapshot": {
+                    "computed": true,
+                    "description": "The snapshot from which this disk was initialised.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
                   "storage_pool": {
                     "description": "The URL of the storage pool in which the new disk is created",
                     "description_kind": "plain",
@@ -452,6 +485,94 @@ const googleComputeInstance = `{
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"
+                  }
+                },
+                "block_types": {
+                  "source_image_encryption_key": {
+                    "block": {
+                      "attributes": {
+                        "kms_key_self_link": {
+                          "computed": true,
+                          "description": "The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "kms_key_service_account": {
+                          "description": "The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "raw_key": {
+                          "description": "Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "sensitive": true,
+                          "type": "string"
+                        },
+                        "rsa_encrypted_key": {
+                          "description": "Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "sensitive": true,
+                          "type": "string"
+                        },
+                        "sha256": {
+                          "computed": true,
+                          "description": "The SHA256 hash of the encryption key used to encrypt this disk.",
+                          "description_kind": "plain",
+                          "type": "string"
+                        }
+                      },
+                      "description": "The encryption key used to decrypt the source image.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "source_snapshot_encryption_key": {
+                    "block": {
+                      "attributes": {
+                        "kms_key_self_link": {
+                          "computed": true,
+                          "description": "The self link of the encryption key that is stored in Google Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "kms_key_service_account": {
+                          "description": "The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "raw_key": {
+                          "description": "Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "sensitive": true,
+                          "type": "string"
+                        },
+                        "rsa_encrypted_key": {
+                          "description": "Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "sensitive": true,
+                          "type": "string"
+                        },
+                        "sha256": {
+                          "computed": true,
+                          "description": "The SHA256 hash of the encryption key used to encrypt this disk.",
+                          "description_kind": "plain",
+                          "type": "string"
+                        }
+                      },
+                      "description": "The encryption key used to decrypt the source snapshot.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
                   }
                 },
                 "description": "Parameters with which a disk was created alongside the instance.",
@@ -509,6 +630,35 @@ const googleComputeInstance = `{
           "description": "List of the type and count of accelerator cards attached to the instance.",
           "description_kind": "plain"
         },
+        "nesting_mode": "list"
+      },
+      "instance_encryption_key": {
+        "block": {
+          "attributes": {
+            "kms_key_self_link": {
+              "computed": true,
+              "description": "The self link of the encryption key that is stored in Google Cloud KMS.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "kms_key_service_account": {
+              "description": "The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "sha256": {
+              "computed": true,
+              "description": "The SHA256 hash of the customer's encryption key.",
+              "description_kind": "plain",
+              "type": "string"
+            }
+          },
+          "description": "Encryption key used to provide data encryption on the given instance.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
         "nesting_mode": "list"
       },
       "network_interface": {

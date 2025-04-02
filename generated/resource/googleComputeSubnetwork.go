@@ -23,6 +23,7 @@ const googleComputeSubnetwork = `{
       },
       "enable_flow_logs": {
         "computed": true,
+        "deprecated": true,
         "description": "Whether to enable flow logging for this subnetwork. If this field is not explicitly set,\nit will not appear in get listings. If not set the default behavior is determined by the\norg policy, if there is no org policy specified, then it will default to disabled.\nThis field isn't supported if the subnet purpose field is set to REGIONAL_MANAGED_PROXY.",
         "description_kind": "plain",
         "optional": true,

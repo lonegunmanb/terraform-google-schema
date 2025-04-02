@@ -14,6 +14,11 @@ const googleComputeSubnetwork = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "external_ipv6_prefix": {
+        "computed": true,
+        "description_kind": "plain",
+        "type": "string"
+      },
       "gateway_address": {
         "computed": true,
         "description_kind": "plain",
@@ -31,6 +36,11 @@ const googleComputeSubnetwork = `{
         "type": "string"
       },
       "ip_cidr_range": {
+        "computed": true,
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "ipv6_access_type": {
         "computed": true,
         "description_kind": "plain",
         "type": "string"
@@ -80,6 +90,11 @@ const googleComputeSubnetwork = `{
         "computed": true,
         "description_kind": "plain",
         "optional": true,
+        "type": "string"
+      },
+      "stack_type": {
+        "computed": true,
+        "description_kind": "plain",
         "type": "string"
       },
       "subnetwork_id": {

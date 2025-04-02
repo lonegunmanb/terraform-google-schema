@@ -53,6 +53,38 @@ const googleIdentityPlatformTenant = `{
       }
     },
     "block_types": {
+      "client": {
+        "block": {
+          "block_types": {
+            "permissions": {
+              "block": {
+                "attributes": {
+                  "disabled_user_deletion": {
+                    "description": "When true, end users cannot delete their account on the associated project through any of our API methods.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  },
+                  "disabled_user_signup": {
+                    "description": "When true, end users cannot sign up for a new account on the associated project through any of our API methods.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  }
+                },
+                "description": "Configuration related to restricting a user's ability to affect their account.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Options related to how clients making requests on behalf of a tenant should be configured.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {

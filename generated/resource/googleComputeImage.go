@@ -165,6 +165,20 @@ const googleComputeImage = `{
               "description_kind": "plain",
               "optional": true,
               "type": "string"
+            },
+            "raw_key": {
+              "description": "Specifies a 256-bit customer-supplied encryption key, encoded in\nRFC 4648 base64 to either encrypt or decrypt this resource.",
+              "description_kind": "plain",
+              "optional": true,
+              "sensitive": true,
+              "type": "string"
+            },
+            "rsa_encrypted_key": {
+              "description": "Specifies a 256-bit customer-supplied encryption key, encoded in\nRFC 4648 base64 to either encrypt or decrypt this resource.",
+              "description_kind": "plain",
+              "optional": true,
+              "sensitive": true,
+              "type": "string"
             }
           },
           "description": "Encrypts the image using a customer-supplied encryption key.\n\nAfter you encrypt an image with a customer-supplied key, you must\nprovide the same key if you use the image later (e.g. to create a\ndisk from the image)",

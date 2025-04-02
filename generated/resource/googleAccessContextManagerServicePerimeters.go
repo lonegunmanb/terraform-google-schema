@@ -187,6 +187,15 @@ const googleAccessContextManagerServicePerimeters = `{
                                   "set",
                                   "string"
                                 ]
+                              },
+                              "roles": {
+                                "description": "A list of IAM roles that represent the set of operations that the sources\nspecified in the corresponding 'EgressFrom'\nare allowed to perform.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": [
+                                  "set",
+                                  "string"
+                                ]
                               }
                             },
                             "block_types": {
@@ -305,6 +314,15 @@ const googleAccessContextManagerServicePerimeters = `{
                             "attributes": {
                               "resources": {
                                 "description": "A list of resources, currently only projects in the form\n'projects/\u003cprojectnumber\u003e', protected by this 'ServicePerimeter'\nthat are allowed to be accessed by sources defined in the\ncorresponding 'IngressFrom'. A request matches if it contains\na resource in this list. If '*' is specified for resources,\nthen this 'IngressTo' rule will authorize access to all\nresources inside the perimeter, provided that the request\nalso matches the 'operations' field.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": [
+                                  "set",
+                                  "string"
+                                ]
+                              },
+                              "roles": {
+                                "description": "A list of IAM roles that represent the set of operations that the sources\nspecified in the corresponding 'IngressFrom'\nare allowed to perform.",
                                 "description_kind": "plain",
                                 "optional": true,
                                 "type": [
@@ -514,6 +532,15 @@ const googleAccessContextManagerServicePerimeters = `{
                                   "set",
                                   "string"
                                 ]
+                              },
+                              "roles": {
+                                "description": "A list of IAM roles that represent the set of operations that the sources\nspecified in the corresponding 'EgressFrom'\nare allowed to perform.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": [
+                                  "set",
+                                  "string"
+                                ]
                               }
                             },
                             "block_types": {
@@ -632,6 +659,15 @@ const googleAccessContextManagerServicePerimeters = `{
                             "attributes": {
                               "resources": {
                                 "description": "A list of resources, currently only projects in the form\n'projects/\u003cprojectnumber\u003e', protected by this 'ServicePerimeter'\nthat are allowed to be accessed by sources defined in the\ncorresponding 'IngressFrom'. A request matches if it contains\na resource in this list. If '*' is specified for resources,\nthen this 'IngressTo' rule will authorize access to all\nresources inside the perimeter, provided that the request\nalso matches the 'operations' field.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": [
+                                  "set",
+                                  "string"
+                                ]
+                              },
+                              "roles": {
+                                "description": "A list of IAM roles that represent the set of operations that the sources\nspecified in the corresponding 'IngressFrom'\nare allowed to perform.",
                                 "description_kind": "plain",
                                 "optional": true,
                                 "type": [

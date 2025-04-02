@@ -164,7 +164,7 @@ const googleDatastreamConnectionProfile = `{
             "password": {
               "description": "Password for the MySQL connection.",
               "description_kind": "plain",
-              "required": true,
+              "optional": true,
               "sensitive": true,
               "type": "string"
             },
@@ -173,6 +173,12 @@ const googleDatastreamConnectionProfile = `{
               "description_kind": "plain",
               "optional": true,
               "type": "number"
+            },
+            "secret_manager_stored_password": {
+              "description": "A reference to a Secret Manager resource name storing the user's password.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
             },
             "username": {
               "description": "Username for the MySQL connection.",
@@ -265,7 +271,7 @@ const googleDatastreamConnectionProfile = `{
             "password": {
               "description": "Password for the Oracle connection.",
               "description_kind": "plain",
-              "required": true,
+              "optional": true,
               "sensitive": true,
               "type": "string"
             },
@@ -274,6 +280,12 @@ const googleDatastreamConnectionProfile = `{
               "description_kind": "plain",
               "optional": true,
               "type": "number"
+            },
+            "secret_manager_stored_password": {
+              "description": "A reference to a Secret Manager resource name storing the user's password.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
             },
             "username": {
               "description": "Username for the Oracle connection.",
@@ -306,7 +318,7 @@ const googleDatastreamConnectionProfile = `{
             "password": {
               "description": "Password for the PostgreSQL connection.",
               "description_kind": "plain",
-              "required": true,
+              "optional": true,
               "sensitive": true,
               "type": "string"
             },
@@ -315,6 +327,12 @@ const googleDatastreamConnectionProfile = `{
               "description_kind": "plain",
               "optional": true,
               "type": "number"
+            },
+            "secret_manager_stored_password": {
+              "description": "A reference to a Secret Manager resource name storing the user's password.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
             },
             "username": {
               "description": "Username for the PostgreSQL connection.",
@@ -363,7 +381,7 @@ const googleDatastreamConnectionProfile = `{
             "password": {
               "description": "Password for the SQL Server connection.",
               "description_kind": "plain",
-              "required": true,
+              "optional": true,
               "sensitive": true,
               "type": "string"
             },
@@ -372,6 +390,12 @@ const googleDatastreamConnectionProfile = `{
               "description_kind": "plain",
               "optional": true,
               "type": "number"
+            },
+            "secret_manager_stored_password": {
+              "description": "A reference to a Secret Manager resource name storing the user's password.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
             },
             "username": {
               "description": "Username for the SQL Server connection.",

@@ -182,6 +182,15 @@ const googleAccessContextManagerServicePerimeter = `{
                             "set",
                             "string"
                           ]
+                        },
+                        "roles": {
+                          "description": "A list of IAM roles that represent the set of operations that the sources\nspecified in the corresponding 'EgressFrom'\nare allowed to perform.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
+                            "string"
+                          ]
                         }
                       },
                       "block_types": {
@@ -304,6 +313,15 @@ const googleAccessContextManagerServicePerimeter = `{
                           "optional": true,
                           "type": [
                             "set",
+                            "string"
+                          ]
+                        },
+                        "roles": {
+                          "description": "A list of IAM roles that represent the set of operations that the sources\nspecified in the corresponding 'IngressFrom'\nare allowed to perform.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
                             "string"
                           ]
                         }
@@ -509,6 +527,15 @@ const googleAccessContextManagerServicePerimeter = `{
                             "set",
                             "string"
                           ]
+                        },
+                        "roles": {
+                          "description": "A list of IAM roles that represent the set of operations that the sources\nspecified in the corresponding 'EgressFrom'\nare allowed to perform.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
+                            "string"
+                          ]
                         }
                       },
                       "block_types": {
@@ -631,6 +658,15 @@ const googleAccessContextManagerServicePerimeter = `{
                           "optional": true,
                           "type": [
                             "set",
+                            "string"
+                          ]
+                        },
+                        "roles": {
+                          "description": "A list of IAM roles that represent the set of operations that the sources\nspecified in the corresponding 'IngressFrom'\nare allowed to perform.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
                             "string"
                           ]
                         }

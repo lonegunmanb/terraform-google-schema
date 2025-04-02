@@ -21,6 +21,69 @@ const googleMemorystoreInstance = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "cross_instance_replication_config": {
+        "computed": true,
+        "description": "Cross instance replication config",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "instance_role": "string",
+              "membership": [
+                "list",
+                [
+                  "object",
+                  {
+                    "primary_instance": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "instance": "string",
+                          "uid": "string"
+                        }
+                      ]
+                    ],
+                    "secondary_instance": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "instance": "string",
+                          "uid": "string"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              ],
+              "primary_instance": [
+                "list",
+                [
+                  "object",
+                  {
+                    "instance": "string",
+                    "uid": "string"
+                  }
+                ]
+              ],
+              "secondary_instances": [
+                "list",
+                [
+                  "object",
+                  {
+                    "instance": "string",
+                    "uid": "string"
+                  }
+                ]
+              ],
+              "update_time": "string"
+            }
+          ]
+        ]
+      },
       "deletion_protection_enabled": {
         "computed": true,
         "description": "Optional. If set to true deletion of the instance will fail.",
@@ -29,7 +92,7 @@ const googleMemorystoreInstance = `{
       },
       "desired_psc_auto_connections": {
         "computed": true,
-        "description": "Required. Immutable. User inputs for the auto-created PSC connections.",
+        "description": "Immutable. User inputs for the auto-created PSC connections.",
         "description_kind": "plain",
         "type": [
           "list",
@@ -269,6 +332,21 @@ const googleMemorystoreInstance = `{
         "optional": true,
         "type": "string"
       },
+      "psc_attachment_details": {
+        "computed": true,
+        "description": "Configuration of a service attachment of the cluster, for creating PSC connections.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "connection_type": "string",
+              "service_attachment": "string"
+            }
+          ]
+        ]
+      },
       "psc_auto_connections": {
         "computed": true,
         "description": "Output only. User inputs and resource details of the auto-created PSC connections.",
@@ -323,6 +401,8 @@ const googleMemorystoreInstance = `{
                 [
                   "object",
                   {
+                    "target_engine_version": "string",
+                    "target_node_type": "string",
                     "target_replica_count": "number",
                     "target_shard_count": "number"
                   }

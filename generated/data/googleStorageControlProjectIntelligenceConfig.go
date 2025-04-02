@@ -11,7 +11,7 @@ const googleStorageControlProjectIntelligenceConfig = `{
     "attributes": {
       "edition_config": {
         "computed": true,
-        "description": "Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED and STANDARD.",
+        "description": "Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, TRIAL, DISABLED and STANDARD.",
         "description_kind": "plain",
         "type": "string"
       },

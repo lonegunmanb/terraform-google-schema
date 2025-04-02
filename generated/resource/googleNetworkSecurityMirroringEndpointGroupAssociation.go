@@ -45,8 +45,24 @@ const googleNetworkSecurityMirroringEndpointGroupAssociation = `{
         "required": true,
         "type": "string"
       },
+      "locations": {
+        "computed": true,
+        "description": "The list of locations where the association is configured. This information\nis retrieved from the linked endpoint group.",
+        "description_kind": "plain",
+        "type": [
+          "set",
+          [
+            "object",
+            {
+              "location": "string",
+              "state": "string"
+            }
+          ]
+        ]
+      },
       "locations_details": {
         "computed": true,
+        "deprecated": true,
         "description": "The list of locations where the association is present. This information\nis retrieved from the linked endpoint group, and not configured as part\nof the association itself.",
         "description_kind": "plain",
         "type": [

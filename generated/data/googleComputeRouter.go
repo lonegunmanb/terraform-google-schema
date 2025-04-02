@@ -64,6 +64,21 @@ const googleComputeRouter = `{
         "optional": true,
         "type": "string"
       },
+      "md5_authentication_keys": {
+        "computed": true,
+        "description": "Keys used for MD5 authentication.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "key": "string",
+              "name": "string"
+            }
+          ]
+        ]
+      },
       "name": {
         "description": "Name of the resource. The name must be 1-63 characters long, and\ncomply with RFC1035. Specifically, the name must be 1-63 characters\nlong and match the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?'\nwhich means the first character must be a lowercase letter, and all\nfollowing characters must be a dash, lowercase letter, or digit,\nexcept the last character, which cannot be a dash.",
         "description_kind": "plain",

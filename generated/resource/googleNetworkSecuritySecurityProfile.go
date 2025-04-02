@@ -133,6 +133,27 @@ const googleNetworkSecuritySecurityProfile = `{
       "threat_prevention_profile": {
         "block": {
           "block_types": {
+            "antivirus_overrides": {
+              "block": {
+                "attributes": {
+                  "action": {
+                    "description": "Threat action override. For some threat types, only a subset of actions applies. Possible values: [\"ALERT\", \"ALLOW\", \"DEFAULT_ACTION\", \"DENY\"]",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "protocol": {
+                    "description": "Required protocol to match. Possible values: [\"SMTP\", \"SMB\", \"POP3\", \"IMAP\", \"HTTP2\", \"HTTP\", \"FTP\"]",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Defines what action to take for antivirus threats per protocol.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "set"
+            },
             "severity_overrides": {
               "block": {
                 "attributes": {

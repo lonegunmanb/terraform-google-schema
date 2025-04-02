@@ -421,6 +421,12 @@ const googleContainerCluster = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "disable_l4_lb_firewall_reconciliation": {
+        "computed": true,
+        "description": "Disable L4 load balancer VPC firewalls to enable firewall policies.",
+        "description_kind": "plain",
+        "type": "bool"
+      },
       "dns_config": {
         "computed": true,
         "description": "Configuration for Cloud DNS for Kubernetes Engine.",
@@ -835,6 +841,15 @@ const googleContainerCluster = `{
                 [
                   "object",
                   {
+                    "auto_monitoring_config": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "scope": "string"
+                        }
+                      ]
+                    ],
                     "enabled": "bool"
                   }
                 ]

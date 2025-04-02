@@ -421,6 +421,12 @@ const googleCloudRunV2Service = `{
               "optional": true,
               "type": "string"
             },
+            "gpu_zonal_redundancy_disabled": {
+              "description": "True if GPU zonal redundancy is disabled on this revision.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
             "labels": {
               "description": "Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.\nFor more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.\n\nCloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.\nAll system labels in v1 now have a corresponding field in v2 RevisionTemplate.",
               "description_kind": "plain",
@@ -914,6 +920,22 @@ const googleCloudRunV2Service = `{
                 "description": "Holds the containers that define the unit of execution for this Service.",
                 "description_kind": "plain"
               },
+              "nesting_mode": "list"
+            },
+            "node_selector": {
+              "block": {
+                "attributes": {
+                  "accelerator": {
+                    "description": "The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Node Selector describes the hardware requirements of the resources.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
               "nesting_mode": "list"
             },
             "scaling": {

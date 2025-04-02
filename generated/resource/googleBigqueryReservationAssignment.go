@@ -22,7 +22,7 @@ const googleBigqueryReservationAssignment = `{
         "type": "string"
       },
       "job_type": {
-        "description": "Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY",
+        "description": "Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS",
         "description_kind": "plain",
         "required": true,
         "type": "string"

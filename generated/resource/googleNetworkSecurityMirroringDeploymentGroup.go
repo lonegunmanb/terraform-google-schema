@@ -65,6 +65,21 @@ const googleNetworkSecurityMirroringDeploymentGroup = `{
         "required": true,
         "type": "string"
       },
+      "locations": {
+        "computed": true,
+        "description": "The list of locations where the deployment group is present.",
+        "description_kind": "plain",
+        "type": [
+          "set",
+          [
+            "object",
+            {
+              "location": "string",
+              "state": "string"
+            }
+          ]
+        ]
+      },
       "mirroring_deployment_group_id": {
         "description": "The ID to use for the new deployment group, which will become the final\ncomponent of the deployment group's resource name.",
         "description_kind": "plain",

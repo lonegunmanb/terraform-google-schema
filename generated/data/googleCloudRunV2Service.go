@@ -474,11 +474,21 @@ const googleCloudRunV2Service = `{
               ],
               "encryption_key": "string",
               "execution_environment": "string",
+              "gpu_zonal_redundancy_disabled": "bool",
               "labels": [
                 "map",
                 "string"
               ],
               "max_instance_request_concurrency": "number",
+              "node_selector": [
+                "list",
+                [
+                  "object",
+                  {
+                    "accelerator": "string"
+                  }
+                ]
+              ],
               "revision": "string",
               "scaling": [
                 "list",

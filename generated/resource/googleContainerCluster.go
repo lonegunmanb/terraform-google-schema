@@ -48,6 +48,12 @@ const googleContainerCluster = `{
         "optional": true,
         "type": "string"
       },
+      "disable_l4_lb_firewall_reconciliation": {
+        "description": "Disable L4 load balancer VPC firewalls to enable firewall policies.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "effective_labels": {
         "computed": true,
         "description": "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.",
@@ -1444,6 +1450,24 @@ const googleContainerCluster = `{
                     "description_kind": "plain",
                     "required": true,
                     "type": "bool"
+                  }
+                },
+                "block_types": {
+                  "auto_monitoring_config": {
+                    "block": {
+                      "attributes": {
+                        "scope": {
+                          "description": "The scope of auto-monitoring.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Configuration for GKE Workload Auto-Monitoring.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
                   }
                 },
                 "description": "Configuration for Google Cloud Managed Services for Prometheus.",

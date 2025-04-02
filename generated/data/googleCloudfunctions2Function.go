@@ -183,6 +183,7 @@ const googleCloudfunctions2Function = `{
               "all_traffic_on_latest_revision": "bool",
               "available_cpu": "string",
               "available_memory": "string",
+              "binary_authorization_policy": "string",
               "environment_variables": [
                 "map",
                 "string"

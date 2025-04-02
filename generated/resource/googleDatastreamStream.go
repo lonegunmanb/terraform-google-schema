@@ -554,6 +554,46 @@ const googleDatastreamStream = `{
                     "max_items": 1,
                     "nesting_mode": "list"
                   },
+                  "blmt_config": {
+                    "block": {
+                      "attributes": {
+                        "bucket": {
+                          "description": "The Cloud Storage bucket name.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        },
+                        "connection_name": {
+                          "description": "The bigquery connection. Format: '{project}.{location}.{name}'",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        },
+                        "file_format": {
+                          "description": "The file format.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        },
+                        "root_path": {
+                          "description": "The root path inside the Cloud Storage bucket.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "table_format": {
+                          "description": "The table format.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "BigLake Managed Tables configuration for BigQuery streams.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
                   "merge": {
                     "block": {
                       "description": "Merge mode defines that all changes to a table will be merged at the destination Google BigQuery\ntable. This is the default write mode. When selected, BigQuery reflects the way the data is stored\nin the source database. With Merge mode, no historical record of the change events is kept.",

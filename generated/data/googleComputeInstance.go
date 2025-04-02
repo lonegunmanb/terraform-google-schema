@@ -45,7 +45,9 @@ const googleComputeInstance = `{
             {
               "device_name": "string",
               "disk_encryption_key_raw": "string",
+              "disk_encryption_key_rsa": "string",
               "disk_encryption_key_sha256": "string",
+              "disk_encryption_service_account": "string",
               "kms_key_self_link": "string",
               "mode": "string",
               "source": "string"
@@ -65,7 +67,9 @@ const googleComputeInstance = `{
               "auto_delete": "bool",
               "device_name": "string",
               "disk_encryption_key_raw": "string",
+              "disk_encryption_key_rsa": "string",
               "disk_encryption_key_sha256": "string",
+              "disk_encryption_service_account": "string",
               "guest_os_features": [
                 "list",
                 "string"
@@ -93,6 +97,33 @@ const googleComputeInstance = `{
                       "string"
                     ],
                     "size": "number",
+                    "snapshot": "string",
+                    "source_image_encryption_key": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "kms_key_self_link": "string",
+                          "kms_key_service_account": "string",
+                          "raw_key": "string",
+                          "rsa_encrypted_key": "string",
+                          "sha256": "string"
+                        }
+                      ]
+                    ],
+                    "source_snapshot_encryption_key": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "kms_key_self_link": "string",
+                          "kms_key_service_account": "string",
+                          "raw_key": "string",
+                          "rsa_encrypted_key": "string",
+                          "sha256": "string"
+                        }
+                      ]
+                    ],
                     "storage_pool": "string",
                     "type": "string"
                   }
@@ -204,6 +235,22 @@ const googleComputeInstance = `{
         "description_kind": "plain",
         "optional": true,
         "type": "string"
+      },
+      "instance_encryption_key": {
+        "computed": true,
+        "description": "Encryption key used to provide data encryption on the given instance.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "kms_key_self_link": "string",
+              "kms_key_service_account": "string",
+              "sha256": "string"
+            }
+          ]
+        ]
       },
       "instance_id": {
         "computed": true,
