@@ -203,6 +203,30 @@ const googleNetappVolumeReplication = `{
               "type": "string"
             }
           },
+          "block_types": {
+            "tiering_policy": {
+              "block": {
+                "attributes": {
+                  "cooling_threshold_days": {
+                    "description": "Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.\nDefault is 31.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "number"
+                  },
+                  "tier_action": {
+                    "description": "Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED. Default value: \"PAUSED\" Possible values: [\"ENABLED\", \"PAUSED\"]",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Tiering policy for the volume.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
           "description": "Destination volume parameters.",
           "description_kind": "plain"
         },

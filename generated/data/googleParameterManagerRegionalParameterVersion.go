@@ -25,6 +25,11 @@ const googleParameterManagerRegionalParameterVersion = `{
         "optional": true,
         "type": "string"
       },
+      "kms_key_version": {
+        "computed": true,
+        "description_kind": "plain",
+        "type": "string"
+      },
       "location": {
         "computed": true,
         "description_kind": "plain",

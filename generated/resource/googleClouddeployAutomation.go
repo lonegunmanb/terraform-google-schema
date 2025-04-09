@@ -195,6 +195,141 @@ const googleClouddeployAutomation = `{
               },
               "max_items": 1,
               "nesting_mode": "list"
+            },
+            "repair_rollout_rule": {
+              "block": {
+                "attributes": {
+                  "id": {
+                    "description": "Required. ID of the rule. This id must be unique in the 'Automation' resource to which this rule belongs. The format is 'a-z{0,62}'.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "jobs": {
+                    "description": "Optional. Jobs to repair. Proceeds only after job name matched any one in the list, or for all jobs if unspecified or empty. The phase that includes the job must match the phase ID specified in sourcePhase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: ^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": [
+                      "list",
+                      "string"
+                    ]
+                  },
+                  "phases": {
+                    "description": "Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after phase name matched any one in the list, or for all phases if unspecified. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: ^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": [
+                      "list",
+                      "string"
+                    ]
+                  }
+                },
+                "block_types": {
+                  "repair_phases": {
+                    "block": {
+                      "block_types": {
+                        "retry": {
+                          "block": {
+                            "attributes": {
+                              "attempts": {
+                                "description": "Required. Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum value is 10.",
+                                "description_kind": "plain",
+                                "required": true,
+                                "type": "string"
+                              },
+                              "backoff_mode": {
+                                "description": "Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if wait is 0. Possible values: [\"BACKOFF_MODE_UNSPECIFIED\", \"BACKOFF_MODE_LINEAR\", \"BACKOFF_MODE_EXPONENTIAL\"]",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "wait": {
+                                "description": "Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d. A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "Optional. Retries a failed job.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
+                        "rollback": {
+                          "block": {
+                            "attributes": {
+                              "destination_phase": {
+                                "description": "Optional. The starting phase ID for the Rollout. If unspecified, the Rollout will start in the stable phase.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "disable_rollback_if_rollout_pending": {
+                                "description": "Optional. If pending rollout exists on the target, the rollback operation will be aborted.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "bool"
+                              }
+                            },
+                            "description": "Optional. Rolls back a Rollout.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: '^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$'.",
+                      "description_kind": "plain"
+                    },
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "Optional. The RepairRolloutRule will automatically repair a failed rollout.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "timed_promote_release_rule": {
+              "block": {
+                "attributes": {
+                  "destination_phase": {
+                    "description": "Optional. The starting phase of the rollout created by this rule. Default to the first phase.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "destination_target_id": {
+                    "description": "Optional. The ID of the stage in the pipeline to which this Release is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following:\n  - The last segment of a target name\n  - \"@next\", the next target in the promotion sequence\"",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "id": {
+                    "description": "Required. ID of the rule. This id must be unique in the 'Automation' resource to which this rule belongs. The format is 'a-z{0,62}'.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "schedule": {
+                    "description": "Required. Schedule in crontab format. e.g. '0 9 * * 1' for every Monday at 9am.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "time_zone": {
+                    "description": "Required. The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Optional. The 'TimedPromoteReleaseRule' will automatically promote a release from the current target(s) to the specified target(s) on a configured schedule.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
             }
           },
           "description": "Required. List of Automation rules associated with the Automation resource. Must have at least one rule and limited to 250 rules per Delivery Pipeline. Note: the order of the rules here is not the same as the order of execution.",

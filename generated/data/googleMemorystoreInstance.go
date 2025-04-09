@@ -15,6 +15,37 @@ const googleMemorystoreInstance = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "automated_backup_config": {
+        "computed": true,
+        "description": "The automated backup config for a instance.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "fixed_frequency_schedule": [
+                "list",
+                [
+                  "object",
+                  {
+                    "start_time": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "hours": "number"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              ],
+              "retention": "string"
+            }
+          ]
+        ]
+      },
       "create_time": {
         "computed": true,
         "description": "Output only. Creation timestamp of the instance.",

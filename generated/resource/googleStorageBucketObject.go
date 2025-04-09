@@ -96,6 +96,12 @@ const googleStorageBucketObject = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "md5hexhash": {
+        "computed": true,
+        "description": "Hex value of md5hash",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "media_link": {
         "computed": true,
         "description": "A url reference to download this object.",

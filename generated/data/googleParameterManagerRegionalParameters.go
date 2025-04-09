@@ -40,6 +40,7 @@ const googleParameterManagerRegionalParameters = `{
                 "string"
               ],
               "format": "string",
+              "kms_key": "string",
               "labels": [
                 "map",
                 "string"

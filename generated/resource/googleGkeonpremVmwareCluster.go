@@ -57,6 +57,12 @@ const googleGkeonpremVmwareCluster = `{
           "string"
         ]
       },
+      "enable_advanced_cluster": {
+        "description": "Enable advanced cluster. Default to false.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "enable_control_plane_v2": {
         "description": "Enable control plane V2. Default to false.",
         "description_kind": "plain",

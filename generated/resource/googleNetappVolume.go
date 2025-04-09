@@ -544,7 +544,7 @@ const googleNetappVolume = `{
         "block": {
           "attributes": {
             "cooling_threshold_days": {
-              "description": "Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 7-183.\nDefault is 31.",
+              "description": "Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.\nDefault is 31.",
               "description_kind": "plain",
               "optional": true,
               "type": "number"

@@ -407,6 +407,49 @@ const googleDatastreamStream = `{
               "max_items": 1,
               "nesting_mode": "list"
             },
+            "salesforce_excluded_objects": {
+              "block": {
+                "block_types": {
+                  "objects": {
+                    "block": {
+                      "attributes": {
+                        "object_name": {
+                          "description": "Name of object in Salesforce Org.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "block_types": {
+                        "fields": {
+                          "block": {
+                            "attributes": {
+                              "name": {
+                                "description": "Field name.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.",
+                            "description_kind": "plain"
+                          },
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "Salesforce objects in Salesforce Org.",
+                      "description_kind": "plain"
+                    },
+                    "min_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "Salesforce objects to avoid backfilling.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "sql_server_excluded_objects": {
               "block": {
                 "block_types": {
@@ -1467,6 +1510,110 @@ const googleDatastreamStream = `{
                   }
                 },
                 "description": "PostgreSQL data source configuration.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "salesforce_source_config": {
+              "block": {
+                "attributes": {
+                  "polling_interval": {
+                    "description": "Salesforce objects polling interval. The interval at which new changes will be polled for each object. The duration must be between 5 minutes and 24 hours.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "block_types": {
+                  "exclude_objects": {
+                    "block": {
+                      "block_types": {
+                        "objects": {
+                          "block": {
+                            "attributes": {
+                              "object_name": {
+                                "description": "Name of object in Salesforce Org.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "block_types": {
+                              "fields": {
+                                "block": {
+                                  "attributes": {
+                                    "name": {
+                                      "description": "Field name.",
+                                      "description_kind": "plain",
+                                      "optional": true,
+                                      "type": "string"
+                                    }
+                                  },
+                                  "description": "Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.",
+                                  "description_kind": "plain"
+                                },
+                                "nesting_mode": "list"
+                              }
+                            },
+                            "description": "Salesforce objects in data source.",
+                            "description_kind": "plain"
+                          },
+                          "min_items": 1,
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "Salesforce objects to exclude from the stream.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "include_objects": {
+                    "block": {
+                      "block_types": {
+                        "objects": {
+                          "block": {
+                            "attributes": {
+                              "object_name": {
+                                "description": "Name of object in Salesforce Org.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "block_types": {
+                              "fields": {
+                                "block": {
+                                  "attributes": {
+                                    "name": {
+                                      "description": "Field name.",
+                                      "description_kind": "plain",
+                                      "optional": true,
+                                      "type": "string"
+                                    }
+                                  },
+                                  "description": "Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.",
+                                  "description_kind": "plain"
+                                },
+                                "nesting_mode": "list"
+                              }
+                            },
+                            "description": "Salesforce objects in Salesforce Org.",
+                            "description_kind": "plain"
+                          },
+                          "min_items": 1,
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "Salesforce objects to retrieve from the source.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "Salesforce data source configuration.",
                 "description_kind": "plain"
               },
               "max_items": 1,

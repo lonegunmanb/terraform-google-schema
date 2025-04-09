@@ -27,6 +27,12 @@ const googleParameterManagerRegionalParameterVersion = `{
         "optional": true,
         "type": "string"
       },
+      "kms_key_version": {
+        "computed": true,
+        "description": "The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format\n'projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}'",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "location": {
         "computed": true,
         "description": "Location of Parameter Manager Regional parameter resource.",

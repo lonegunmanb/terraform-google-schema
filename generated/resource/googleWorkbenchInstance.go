@@ -268,6 +268,22 @@ const googleWorkbenchInstance = `{
               "max_items": 1,
               "nesting_mode": "list"
             },
+            "confidential_instance_config": {
+              "block": {
+                "attributes": {
+                  "confidential_instance_type": {
+                    "description": "Defines the type of technology used by the confidential instance. Possible values: [\"SEV\"]",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Confidential instance configuration.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "container_image": {
               "block": {
                 "attributes": {

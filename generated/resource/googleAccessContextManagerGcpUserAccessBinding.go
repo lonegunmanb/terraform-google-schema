@@ -10,9 +10,9 @@ const googleAccessContextManagerGcpUserAccessBinding = `{
   "block": {
     "attributes": {
       "access_levels": {
-        "description": "Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: \"accessPolicies/9522/accessLevels/device_trusted\"",
+        "description": "Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: \"accessPolicies/9522/accessLevels/device_trusted\"",
         "description_kind": "plain",
-        "required": true,
+        "optional": true,
         "type": [
           "list",
           "string"
@@ -44,6 +44,46 @@ const googleAccessContextManagerGcpUserAccessBinding = `{
       }
     },
     "block_types": {
+      "session_settings": {
+        "block": {
+          "attributes": {
+            "max_inactivity": {
+              "description": "Optional. How long a user is allowed to take between actions before a new access token must be issued. Only set for Google Cloud apps.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "session_length": {
+              "description": "Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC max_age param.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "session_length_enabled": {
+              "description": "Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
+            "session_reauth_method": {
+              "description": "Optional. The session challenges proposed to users when the Google Cloud session length is up. Possible values: [\"LOGIN\", \"SECURITY_KEY\", \"PASSWORD\"]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "use_oidc_max_age": {
+              "description": "Optional. Only useful for OIDC apps. When false, the OIDC max_age param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the max_age OIDC param.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            }
+          },
+          "description": "Optional. The Google Cloud session length (GCSL) policy for the group key.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {
