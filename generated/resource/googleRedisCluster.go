@@ -15,6 +15,12 @@ const googleRedisCluster = `{
         "optional": true,
         "type": "string"
       },
+      "backup_collection": {
+        "computed": true,
+        "description": "The backup collection full resource name.\nExample: projects/{project}/locations/{location}/backupCollections/{collection}",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "create_time": {
         "computed": true,
         "description": "The timestamp associated with the cluster creation request. A timestamp in\nRFC3339 UTC \"Zulu\" format, with nanosecond resolution and up to nine fractional\ndigits. Examples: \"2014-10-02T15:01:23Z\" and \"2014-10-02T15:01:23.045123456Z\".",
@@ -361,6 +367,25 @@ const googleRedisCluster = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "gcs_source": {
+        "block": {
+          "attributes": {
+            "uris": {
+              "description": "URIs of the GCS objects to import. Example: gs://bucket1/object1, gs://bucket2/folder2/object2",
+              "description_kind": "plain",
+              "required": true,
+              "type": [
+                "set",
+                "string"
+              ]
+            }
+          },
+          "description": "Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "maintenance_policy": {
         "block": {
           "attributes": {
@@ -438,6 +463,22 @@ const googleRedisCluster = `{
             }
           },
           "description": "Maintenance policy for a cluster",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "managed_backup_source": {
+        "block": {
+          "attributes": {
+            "backup": {
+              "description": "Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,\nlike projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "Backups that generated and managed by memorystore.",
           "description_kind": "plain"
         },
         "max_items": 1,

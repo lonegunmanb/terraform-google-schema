@@ -137,8 +137,10 @@ const googleComputeSnapshot = `{
           [
             "object",
             {
+              "kms_key_self_link": "string",
               "kms_key_service_account": "string",
-              "raw_key": "string"
+              "raw_key": "string",
+              "rsa_encrypted_key": "string"
             }
           ]
         ]

@@ -242,6 +242,94 @@ const googleBigqueryTable = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "external_catalog_table_options": {
+        "block": {
+          "attributes": {
+            "connection_id": {
+              "description": "The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connection_id can have the form \u003cproject_id\u003e.\u003clocation_id\u003e.\u003cconnection_id\u003e or projects/\u003cproject_id\u003e/locations/\u003clocation_id\u003e/connections/\u003cconnection_id\u003e.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "parameters": {
+              "description": "A map of key value pairs defining the parameters and properties of the open source table. Corresponds with hive meta store table parameters. Maximum size of 4Mib.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "map",
+                "string"
+              ]
+            }
+          },
+          "block_types": {
+            "storage_descriptor": {
+              "block": {
+                "attributes": {
+                  "input_format": {
+                    "description": "Specifies the fully qualified class name of the InputFormat (e.g. \"org.apache.hadoop.hive.ql.io.orc.OrcInputFormat\"). The maximum length is 128 characters.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "location_uri": {
+                    "description": "The physical location of the table (e.g. 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "output_format": {
+                    "description": "Specifies the fully qualified class name of the OutputFormat (e.g. \"org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat\"). The maximum length is 128 characters.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "block_types": {
+                  "serde_info": {
+                    "block": {
+                      "attributes": {
+                        "name": {
+                          "description": "Name of the SerDe. The maximum length is 256 characters.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "parameters": {
+                          "description": "Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "map",
+                            "string"
+                          ]
+                        },
+                        "serialization_library": {
+                          "description": "Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Serializer and deserializer information.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "A storage descriptor containing information about the physical storage of this table.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Options defining open source compatible table.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "external_data_configuration": {
         "block": {
           "attributes": {
@@ -672,6 +760,22 @@ const googleBigqueryTable = `{
             }
           },
           "description": "If specified, configures range-based partitioning for this table.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "schema_foreign_type_info": {
+        "block": {
+          "attributes": {
+            "type_system": {
+              "description": "Specifies the system which defines the foreign data type.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "Specifies metadata of the foreign data type definition in field schema.",
           "description_kind": "plain"
         },
         "max_items": 1,

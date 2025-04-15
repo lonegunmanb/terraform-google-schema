@@ -46,6 +46,12 @@ const googleMemorystoreInstance = `{
           ]
         ]
       },
+      "backup_collection": {
+        "computed": true,
+        "description": "The backup collection full resource name.\nExample: projects/{project}/locations/{location}/backupCollections/{collection}",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "create_time": {
         "computed": true,
         "description": "Output only. Creation timestamp of the instance.",
@@ -213,6 +219,23 @@ const googleMemorystoreInstance = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "gcs_source": {
+        "computed": true,
+        "description": "GCS source for the instance.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "uris": [
+                "set",
+                "string"
+              ]
+            }
+          ]
+        ]
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",
@@ -289,6 +312,20 @@ const googleMemorystoreInstance = `{
               "end_time": "string",
               "schedule_deadline_time": "string",
               "start_time": "string"
+            }
+          ]
+        ]
+      },
+      "managed_backup_source": {
+        "computed": true,
+        "description": "Managed backup source for the instance.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "backup": "string"
             }
           ]
         ]

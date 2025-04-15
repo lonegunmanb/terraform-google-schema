@@ -149,7 +149,15 @@ const googleComputeRouterNat = `{
                       "set",
                       "string"
                     ],
+                    "source_nat_active_ranges": [
+                      "set",
+                      "string"
+                    ],
                     "source_nat_drain_ips": [
+                      "set",
+                      "string"
+                    ],
+                    "source_nat_drain_ranges": [
                       "set",
                       "string"
                     ]
@@ -208,6 +216,12 @@ const googleComputeRouterNat = `{
         "description": "Timeout (in seconds) for TCP transitory connections.\nDefaults to 30s if not set.",
         "description_kind": "plain",
         "type": "number"
+      },
+      "type": {
+        "computed": true,
+        "description": "Indicates whether this NAT is used for public or private IP translation.\nIf unspecified, it defaults to PUBLIC.\nIf 'PUBLIC' NAT used for public IP translation.\nIf 'PRIVATE' NAT used for private IP translation. Default value: \"PUBLIC\" Possible values: [\"PUBLIC\", \"PRIVATE\"]",
+        "description_kind": "plain",
+        "type": "string"
       },
       "udp_idle_timeout_sec": {
         "computed": true,

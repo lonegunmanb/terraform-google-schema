@@ -64,6 +64,7 @@ const googleVertexAiFeatureGroup = `{
         "type": "string"
       },
       "region": {
+        "computed": true,
         "description": "The region of feature group. eg us-central1",
         "description_kind": "plain",
         "optional": true,

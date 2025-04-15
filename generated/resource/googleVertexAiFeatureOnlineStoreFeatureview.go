@@ -58,9 +58,10 @@ const googleVertexAiFeatureOnlineStoreFeatureview = `{
         "type": "string"
       },
       "region": {
+        "computed": true,
         "description": "The region for the resource. It should be the same as the featureonlinestore region.",
         "description_kind": "plain",
-        "required": true,
+        "optional": true,
         "type": "string"
       },
       "terraform_labels": {

@@ -16,6 +16,12 @@ const googleMemorystoreInstance = `{
         "optional": true,
         "type": "string"
       },
+      "backup_collection": {
+        "computed": true,
+        "description": "The backup collection full resource name.\nExample: projects/{project}/locations/{location}/backupCollections/{collection}",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "create_time": {
         "computed": true,
         "description": "Output only. Creation timestamp of the instance.",
@@ -467,6 +473,25 @@ const googleMemorystoreInstance = `{
         },
         "nesting_mode": "list"
       },
+      "gcs_source": {
+        "block": {
+          "attributes": {
+            "uris": {
+              "description": "URIs of the GCS objects to import.\nExample: gs://bucket1/object1, gs//bucket2/folder2/object2",
+              "description_kind": "plain",
+              "required": true,
+              "type": [
+                "set",
+                "string"
+              ]
+            }
+          },
+          "description": "GCS source for the instance.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "maintenance_policy": {
         "block": {
           "attributes": {
@@ -544,6 +569,22 @@ const googleMemorystoreInstance = `{
             }
           },
           "description": "Maintenance policy for a cluster",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "managed_backup_source": {
+        "block": {
+          "attributes": {
+            "backup": {
+              "description": "Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "Managed backup source for the instance.",
           "description_kind": "plain"
         },
         "max_items": 1,

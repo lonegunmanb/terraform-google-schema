@@ -43,6 +43,20 @@ const googleStorageControlFolderIntelligenceConfig = `{
         "required": true,
         "type": "string"
       },
+      "trial_config": {
+        "computed": true,
+        "description": "The trial configuration of the Storage Intelligence resource.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "expire_time": "string"
+            }
+          ]
+        ]
+      },
       "update_time": {
         "computed": true,
         "description": "The time at which the Storage Intelligence Config resource is last updated.",

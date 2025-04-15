@@ -10,7 +10,7 @@ const googleFirestoreIndex = `{
   "block": {
     "attributes": {
       "api_scope": {
-        "description": "The API scope at which a query is run. Default value: \"ANY_API\" Possible values: [\"ANY_API\", \"DATASTORE_MODE_API\"]",
+        "description": "The API scope at which a query is run. Default value: \"ANY_API\" Possible values: [\"ANY_API\", \"DATASTORE_MODE_API\", \"MONGODB_COMPATIBLE_API\"]",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -27,11 +27,24 @@ const googleFirestoreIndex = `{
         "optional": true,
         "type": "string"
       },
+      "density": {
+        "computed": true,
+        "description": "The density configuration for this index. Possible values: [\"SPARSE_ALL\", \"SPARSE_ANY\", \"DENSE\"]",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",
         "optional": true,
         "type": "string"
+      },
+      "multikey": {
+        "description": "Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
       },
       "name": {
         "computed": true,

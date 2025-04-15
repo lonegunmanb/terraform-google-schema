@@ -386,7 +386,7 @@ const googleNetappVolume = `{
         "block": {
           "attributes": {
             "source_backup": {
-              "description": "Full name of the snapshot to use for creating this volume.\n'source_snapshot' and 'source_backup' cannot be used simultaneously.\nFormat: 'projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}'.",
+              "description": "Full name of the backup to use for creating this volume.\n'source_snapshot' and 'source_backup' cannot be used simultaneously.\nFormat: 'projects/{{project}}/locations/{{location}}/backupVaults/{{backupVaultId}}/backups/{{backup}}'.",
               "description_kind": "plain",
               "optional": true,
               "type": "string"

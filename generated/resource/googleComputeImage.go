@@ -310,6 +310,114 @@ const googleComputeImage = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "source_disk_encryption_key": {
+        "block": {
+          "attributes": {
+            "kms_key_self_link": {
+              "description": "The self link of the encryption key used to decrypt this resource. Also called KmsKeyName\nin the cloud console. Your project's Compute Engine System service account\n('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have\n'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.\nSee https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "kms_key_service_account": {
+              "description": "The service account being used for the encryption request for the\ngiven KMS key. If absent, the Compute Engine default service\naccount is used.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "raw_key": {
+              "description": "Specifies a 256-bit customer-supplied encryption key, encoded in\nRFC 4648 base64 to either encrypt or decrypt this resource.",
+              "description_kind": "plain",
+              "optional": true,
+              "sensitive": true,
+              "type": "string"
+            },
+            "rsa_encrypted_key": {
+              "description": "Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit\ncustomer-supplied encryption key to either encrypt or decrypt\nthis resource. You can provide either the rawKey or the rsaEncryptedKey.",
+              "description_kind": "plain",
+              "optional": true,
+              "sensitive": true,
+              "type": "string"
+            }
+          },
+          "description": "The customer-supplied encryption key of the source disk. Required if\nthe source disk is protected by a customer-supplied encryption key.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "source_image_encryption_key": {
+        "block": {
+          "attributes": {
+            "kms_key_self_link": {
+              "description": "The self link of the encryption key used to decrypt this resource. Also called KmsKeyName\nin the cloud console. Your project's Compute Engine System service account\n('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have\n'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.\nSee https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "kms_key_service_account": {
+              "description": "The service account being used for the encryption request for the\ngiven KMS key. If absent, the Compute Engine default service\naccount is used.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "raw_key": {
+              "description": "Specifies a 256-bit customer-supplied encryption key, encoded in\nRFC 4648 base64 to either encrypt or decrypt this resource.",
+              "description_kind": "plain",
+              "optional": true,
+              "sensitive": true,
+              "type": "string"
+            },
+            "rsa_encrypted_key": {
+              "description": "Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit\ncustomer-supplied encryption key to either encrypt or decrypt\nthis resource. You can provide either the rawKey or the rsaEncryptedKey.",
+              "description_kind": "plain",
+              "optional": true,
+              "sensitive": true,
+              "type": "string"
+            }
+          },
+          "description": "The customer-supplied encryption key of the source image. Required if\nthe source image is protected by a customer-supplied encryption key.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "source_snapshot_encryption_key": {
+        "block": {
+          "attributes": {
+            "kms_key_self_link": {
+              "description": "The self link of the encryption key used to decrypt this resource. Also called KmsKeyName\nin the cloud console. Your project's Compute Engine System service account\n('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have\n'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.\nSee https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "kms_key_service_account": {
+              "description": "The service account being used for the encryption request for the\ngiven KMS key. If absent, the Compute Engine default service\naccount is used.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "raw_key": {
+              "description": "Specifies a 256-bit customer-supplied encryption key, encoded in\nRFC 4648 base64 to either encrypt or decrypt this resource.",
+              "description_kind": "plain",
+              "optional": true,
+              "sensitive": true,
+              "type": "string"
+            },
+            "rsa_encrypted_key": {
+              "description": "Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit\ncustomer-supplied encryption key to either encrypt or decrypt\nthis resource. You can provide either the rawKey or the rsaEncryptedKey.",
+              "description_kind": "plain",
+              "optional": true,
+              "sensitive": true,
+              "type": "string"
+            }
+          },
+          "description": "The customer-supplied encryption key of the source snapshot. Required if\nthe source snapshot is protected by a customer-supplied encryption key.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {

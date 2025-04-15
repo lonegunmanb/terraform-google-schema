@@ -180,6 +180,12 @@ const googleComputeSnapshot = `{
       "source_disk_encryption_key": {
         "block": {
           "attributes": {
+            "kms_key_self_link": {
+              "description": "The name of the encryption key that is stored in Google Cloud KMS.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "kms_key_service_account": {
               "description": "The service account used for the encryption request for the given KMS key.\nIf absent, the Compute Engine Service Agent service account is used.",
               "description_kind": "plain",
@@ -188,6 +194,13 @@ const googleComputeSnapshot = `{
             },
             "raw_key": {
               "description": "Specifies a 256-bit customer-supplied encryption key, encoded in\nRFC 4648 base64 to either encrypt or decrypt this resource.",
+              "description_kind": "plain",
+              "optional": true,
+              "sensitive": true,
+              "type": "string"
+            },
+            "rsa_encrypted_key": {
+              "description": "Specifies an encryption key stored in Google Cloud KMS, encoded in\nRFC 4648 base64 to either encrypt or decrypt this resource.",
               "description_kind": "plain",
               "optional": true,
               "sensitive": true,

@@ -149,6 +149,12 @@ const googleComputeRouterNat = `{
         "optional": true,
         "type": "number"
       },
+      "type": {
+        "description": "Indicates whether this NAT is used for public or private IP translation.\nIf unspecified, it defaults to PUBLIC.\nIf 'PUBLIC' NAT used for public IP translation.\nIf 'PRIVATE' NAT used for private IP translation. Default value: \"PUBLIC\" Possible values: [\"PUBLIC\", \"PRIVATE\"]",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "udp_idle_timeout_sec": {
         "description": "Timeout (in seconds) for UDP connections. Defaults to 30s if not set.",
         "description_kind": "plain",
@@ -214,8 +220,26 @@ const googleComputeRouterNat = `{
                       "string"
                     ]
                   },
+                  "source_nat_active_ranges": {
+                    "description": "A list of URLs of the subnetworks used as source ranges for this NAT Rule.\nThese subnetworks must have purpose set to PRIVATE_NAT.\nThis field is used for private NAT.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": [
+                      "set",
+                      "string"
+                    ]
+                  },
                   "source_nat_drain_ips": {
                     "description": "A list of URLs of the IP resources to be drained.\nThese IPs must be valid static external IPs that have been assigned to the NAT.\nThese IPs should be used for updating/patching a NAT rule only.\nThis field is used for public NAT.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": [
+                      "set",
+                      "string"
+                    ]
+                  },
+                  "source_nat_drain_ranges": {
+                    "description": "A list of URLs of subnetworks representing source ranges to be drained.\nThis is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.\nThis field is used for private NAT.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": [

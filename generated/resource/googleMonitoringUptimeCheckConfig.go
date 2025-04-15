@@ -220,8 +220,21 @@ const googleMonitoringUptimeCheckConfig = `{
                   "password": {
                     "description": "The password to authenticate.",
                     "description_kind": "plain",
-                    "required": true,
+                    "optional": true,
                     "sensitive": true,
+                    "type": "string"
+                  },
+                  "password_wo": {
+                    "description": "The password to authenticate.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string",
+                    "write_only": true
+                  },
+                  "password_wo_version": {
+                    "description": "The password write-only version.",
+                    "description_kind": "plain",
+                    "optional": true,
                     "type": "string"
                   },
                   "username": {

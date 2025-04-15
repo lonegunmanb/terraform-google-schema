@@ -502,9 +502,9 @@ const googleDatabaseMigrationServiceConnectionProfile = `{
               "block": {
                 "attributes": {
                   "ca_certificate": {
-                    "description": "Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.\nThe replica will use this certificate to verify it's connecting to the right host.",
+                    "description": "Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.\nThe replica will use this certificate to verify it's connecting to the right host.",
                     "description_kind": "plain",
-                    "required": true,
+                    "optional": true,
                     "sensitive": true,
                     "type": "string"
                   },
@@ -523,9 +523,9 @@ const googleDatabaseMigrationServiceConnectionProfile = `{
                     "type": "string"
                   },
                   "type": {
-                    "computed": true,
-                    "description": "The current connection profile state.",
+                    "description": "The current connection profile state. Possible values: [\"SERVER_ONLY\", \"SERVER_CLIENT\", \"REQUIRED\", \"NONE\"]",
                     "description_kind": "plain",
+                    "optional": true,
                     "type": "string"
                   }
                 },
@@ -646,9 +646,9 @@ const googleDatabaseMigrationServiceConnectionProfile = `{
               "block": {
                 "attributes": {
                   "ca_certificate": {
-                    "description": "Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.\nThe replica will use this certificate to verify it's connecting to the right host.",
+                    "description": "Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.\nThe replica will use this certificate to verify it's connecting to the right host.",
                     "description_kind": "plain",
-                    "required": true,
+                    "optional": true,
                     "sensitive": true,
                     "type": "string"
                   },
@@ -752,9 +752,9 @@ const googleDatabaseMigrationServiceConnectionProfile = `{
               "block": {
                 "attributes": {
                   "ca_certificate": {
-                    "description": "Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.\nThe replica will use this certificate to verify it's connecting to the right host.",
+                    "description": "Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.\nThe replica will use this certificate to verify it's connecting to the right host.",
                     "description_kind": "plain",
-                    "required": true,
+                    "optional": true,
                     "sensitive": true,
                     "type": "string"
                   },
@@ -773,9 +773,9 @@ const googleDatabaseMigrationServiceConnectionProfile = `{
                     "type": "string"
                   },
                   "type": {
-                    "computed": true,
-                    "description": "The current connection profile state.",
+                    "description": "The current connection profile state. Possible values: [\"SERVER_ONLY\", \"SERVER_CLIENT\", \"REQUIRED\", \"NONE\"]",
                     "description_kind": "plain",
+                    "optional": true,
                     "type": "string"
                   }
                 },

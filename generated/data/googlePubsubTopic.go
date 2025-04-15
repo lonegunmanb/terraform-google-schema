@@ -163,7 +163,7 @@ const googlePubsubTopic = `{
             "object",
             {
               "allowed_persistence_regions": [
-                "list",
+                "set",
                 "string"
               ],
               "enforce_in_transit": "bool"

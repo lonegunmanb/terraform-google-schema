@@ -31,7 +31,7 @@ const googleStorageBucket = `{
         "type": "bool"
       },
       "force_destroy": {
-        "description": "When deleting a bucket, this boolean option will delete all contained objects. If you try to delete a bucket that contains objects, Terraform will fail that run.",
+        "description": "When deleting a bucket, this boolean option will delete all contained objects, or anywhereCaches (if any). If you try to delete a bucket that contains objects or anywhereCaches, Terraform will fail that run, deleting anywhereCaches may take 80 minutes to complete.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
