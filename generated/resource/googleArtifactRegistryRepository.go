@@ -275,7 +275,7 @@ const googleArtifactRegistryRepository = `{
                     "block": {
                       "attributes": {
                         "repository_base": {
-                          "description": "A common public repository base for Apt, e.g. '\"debian/dists/buster\"' Possible values: [\"DEBIAN\", \"UBUNTU\"]",
+                          "description": "A common public repository base for Apt, e.g. '\"debian/dists/buster\"' Possible values: [\"DEBIAN\", \"UBUNTU\", \"DEBIAN_SNAPSHOT\"]",
                           "description_kind": "plain",
                           "required": true,
                           "type": "string"

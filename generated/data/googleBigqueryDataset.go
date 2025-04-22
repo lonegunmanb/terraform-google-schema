@@ -155,6 +155,24 @@ const googleBigqueryDataset = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "external_catalog_dataset_options": {
+        "computed": true,
+        "description": "Options defining open source compatible datasets living in the BigQuery catalog. Contains\nmetadata of open source database, schema or namespace represented by the current dataset.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "default_storage_location_uri": "string",
+              "parameters": [
+                "map",
+                "string"
+              ]
+            }
+          ]
+        ]
+      },
       "external_dataset_reference": {
         "computed": true,
         "description": "Information about the external metadata storage where the dataset is defined.",

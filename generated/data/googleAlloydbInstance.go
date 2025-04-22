@@ -152,7 +152,8 @@ const googleAlloydbInstance = `{
           [
             "object",
             {
-              "cpu_count": "number"
+              "cpu_count": "number",
+              "machine_type": "string"
             }
           ]
         ]

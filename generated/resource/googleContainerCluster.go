@@ -1722,7 +1722,7 @@ const googleContainerCluster = `{
                     "type": "bool"
                   }
                 },
-                "description": "Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.",
+                "description": "Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.",
                 "description_kind": "plain"
               },
               "max_items": 1,
@@ -2748,7 +2748,7 @@ const googleContainerCluster = `{
                           "type": "bool"
                         }
                       },
-                      "description": "Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.",
+                      "description": "Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.",
                       "description_kind": "plain"
                     },
                     "max_items": 1,

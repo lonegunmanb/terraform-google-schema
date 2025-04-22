@@ -45,7 +45,8 @@ const googleComputeBackendService = `{
               "max_rate": "number",
               "max_rate_per_endpoint": "number",
               "max_rate_per_instance": "number",
-              "max_utilization": "number"
+              "max_utilization": "number",
+              "preference": "string"
             }
           ]
         ]
@@ -110,6 +111,7 @@ const googleComputeBackendService = `{
                   }
                 ]
               ],
+              "request_coalescing": "bool",
               "serve_while_stale": "number",
               "signed_url_cache_max_age_sec": "number"
             }
@@ -342,7 +344,27 @@ const googleComputeBackendService = `{
             "object",
             {
               "enable": "bool",
+              "optional_fields": [
+                "list",
+                "string"
+              ],
+              "optional_mode": "string",
               "sample_rate": "number"
+            }
+          ]
+        ]
+      },
+      "max_stream_duration": {
+        "computed": true,
+        "description": "Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the\nbeginning of the stream until the response has been completely processed, including all retries. A stream that\ndoes not complete in this duration is closed.\nIf not specified, there will be no timeout limit, i.e. the maximum duration is infinite.\nThis value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.\nThis field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "nanos": "number",
+              "seconds": "string"
             }
           ]
         ]

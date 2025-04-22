@@ -407,13 +407,13 @@ const googleSqlDatabaseInstance = `{
             },
             "disk_size": {
               "computed": true,
-              "description": "The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.",
+              "description": "The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for PD_SSD, PD_HDD and 20GB for HYPERDISK_BALANCED.",
               "description_kind": "plain",
               "optional": true,
               "type": "number"
             },
             "disk_type": {
-              "description": "The type of data disk: PD_SSD or PD_HDD. Defaults to PD_SSD.",
+              "description": "The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to PD_SSD.",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
@@ -442,6 +442,12 @@ const googleSqlDatabaseInstance = `{
               "description_kind": "plain",
               "optional": true,
               "type": "string"
+            },
+            "retain_backups_on_delete": {
+              "description": "When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The ON_DEMAND backup will be retained until customer deletes the backup or the project. The AUTOMATED backup will be retained based on the backups retention setting.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
             },
             "tier": {
               "description": "The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as db-custom-2-13312. See the Custom Machine Type Documentation to learn about specifying custom machine types.",
@@ -685,6 +691,15 @@ const googleSqlDatabaseInstance = `{
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"
+                  },
+                  "custom_subject_alternative_names": {
+                    "description": "The custom subject alternative names for an instance with \"CUSTOMER_MANAGED_CAS_CA\" as the \"server_ca_mode\".",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": [
+                      "set",
+                      "string"
+                    ]
                   },
                   "enable_private_path_for_google_cloud_services": {
                     "description": "Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.",

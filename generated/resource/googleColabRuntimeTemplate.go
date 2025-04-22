@@ -37,6 +37,7 @@ const googleColabRuntimeTemplate = `{
         "type": "string"
       },
       "labels": {
+        "computed": true,
         "description": "Labels to identify and group the runtime template.\n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
         "description_kind": "plain",
         "optional": true,
@@ -128,6 +129,7 @@ const googleColabRuntimeTemplate = `{
         "block": {
           "attributes": {
             "euc_disabled": {
+              "computed": true,
               "description": "Disable end user credential access for the runtime.",
               "description_kind": "plain",
               "optional": true,
@@ -220,6 +222,7 @@ const googleColabRuntimeTemplate = `{
         "block": {
           "attributes": {
             "enable_secure_boot": {
+              "computed": true,
               "description": "Enables secure boot for the runtime.",
               "description_kind": "plain",
               "optional": true,

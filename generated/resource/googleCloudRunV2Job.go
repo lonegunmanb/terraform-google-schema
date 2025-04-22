@@ -317,7 +317,7 @@ const googleCloudRunV2Job = `{
                     "type": "string"
                   },
                   "max_retries": {
-                    "description": "Number of retries allowed per Task, before marking this Task failed.",
+                    "description": "Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "number"

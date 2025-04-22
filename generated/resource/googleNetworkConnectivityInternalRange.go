@@ -24,6 +24,15 @@ const googleNetworkConnectivityInternalRange = `{
           "string"
         ]
       },
+      "exclude_cidr_ranges": {
+        "description": "Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.\nOnly IPv4 CIDR ranges are supported.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": [
+          "list",
+          "string"
+        ]
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",
@@ -32,7 +41,7 @@ const googleNetworkConnectivityInternalRange = `{
       },
       "ip_cidr_range": {
         "computed": true,
-        "description": "The IP range that this internal range defines.",
+        "description": "The IP range that this internal range defines.\nNOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF\nNOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -74,7 +83,7 @@ const googleNetworkConnectivityInternalRange = `{
         "type": "string"
       },
       "prefix_length": {
-        "description": "An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.\nIf both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.",
+        "description": "An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.\nIf both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.\nNOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as\na redundant parameter.",
         "description_kind": "plain",
         "optional": true,
         "type": "number"

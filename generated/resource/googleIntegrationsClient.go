@@ -34,6 +34,7 @@ const googleIntegrationsClient = `{
         "type": "string"
       },
       "run_as_service_account": {
+        "deprecated": true,
         "description": "User input run-as service account, if empty, will bring up a new default service account.",
         "description_kind": "plain",
         "optional": true,

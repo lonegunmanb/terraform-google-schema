@@ -28,6 +28,12 @@ const googleMonitoringUptimeCheckConfig = `{
         "optional": true,
         "type": "string"
       },
+      "log_check_failures": {
+        "description": "Specifies whether to log the results of failed probes to Cloud Logging.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "name": {
         "computed": true,
         "description": "A unique resource name for this UptimeCheckConfig. The format is 'projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]'.",

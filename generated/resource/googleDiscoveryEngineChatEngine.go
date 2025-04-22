@@ -97,6 +97,12 @@ const googleDiscoveryEngineChatEngine = `{
       "chat_engine_config": {
         "block": {
           "attributes": {
+            "allow_cross_region": {
+              "description": "If the flag set to true, we allow the agent and engine are in\ndifferent locations, otherwise the agent and engine are required to be\nin the same location. The flag is set to false by default.\nNote that the 'allow_cross_region' are one-time consumed by and passed\nto EngineService.CreateEngine. It means they cannot be retrieved using\nEngineService.GetEngine or EngineService.ListEngines API after engine\ncreation.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
             "dialogflow_agent_to_link": {
               "description": "The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: 'projects/\u003cProject_ID\u003e/locations/\u003cLocation_ID\u003e/agents/\u003cAgent_ID\u003e'.\nExactly one of 'agent_creation_config' or 'dialogflow_agent_to_link' must be set.",
               "description_kind": "plain",

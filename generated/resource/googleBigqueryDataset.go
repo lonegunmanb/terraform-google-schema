@@ -349,6 +349,31 @@ const googleBigqueryDataset = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "external_catalog_dataset_options": {
+        "block": {
+          "attributes": {
+            "default_storage_location_uri": {
+              "description": "The storage location URI for all tables in the dataset. Equivalent to hive metastore's\ndatabase locationUri. Maximum length of 1024 characters.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "parameters": {
+              "description": "A map of key value pairs defining the parameters and properties of the open source schema.\nMaximum size of 2Mib.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "map",
+                "string"
+              ]
+            }
+          },
+          "description": "Options defining open source compatible datasets living in the BigQuery catalog. Contains\nmetadata of open source database, schema or namespace represented by the current dataset.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "external_dataset_reference": {
         "block": {
           "attributes": {

@@ -255,6 +255,10 @@ const googleSqlDatabaseInstances = `{
                               }
                             ]
                           ],
+                          "custom_subject_alternative_names": [
+                            "set",
+                            "string"
+                          ],
                           "enable_private_path_for_google_cloud_services": "bool",
                           "ipv4_enabled": "bool",
                           "private_network": "string",
@@ -324,6 +328,7 @@ const googleSqlDatabaseInstances = `{
                       ]
                     ],
                     "pricing_plan": "string",
+                    "retain_backups_on_delete": "bool",
                     "sql_server_audit_config": [
                       "list",
                       [

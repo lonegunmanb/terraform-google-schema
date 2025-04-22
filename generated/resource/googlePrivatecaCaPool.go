@@ -71,6 +71,12 @@ const googlePrivatecaCaPool = `{
       "issuance_policy": {
         "block": {
           "attributes": {
+            "backdate_duration": {
+              "description": "The duration to backdate all certificates issued from this CaPool. If not set, the\ncertificates will be issued with a not_before_time of the issuance time (i.e. the current\ntime). If set, the certificates will be issued with a not_before_time of the issuance\ntime minus the backdate_duration. The not_after_time will be adjusted to preserve the\nrequested lifetime. The backdate_duration must be less than or equal to 48 hours.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "maximum_lifetime": {
               "description": "The maximum lifetime allowed for issued Certificates. Note that if the issuing CertificateAuthority\nexpires before a Certificate's requested maximumLifetime, the effective lifetime will be explicitly truncated to match it.",
               "description_kind": "plain",

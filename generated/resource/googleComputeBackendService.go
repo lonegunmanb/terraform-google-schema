@@ -248,6 +248,12 @@ const googleComputeBackendService = `{
               "description_kind": "plain",
               "optional": true,
               "type": "number"
+            },
+            "preference": {
+              "description": "This field indicates whether this backend should be fully utilized before sending traffic to backends\nwith default preference. This field cannot be set when loadBalancingScheme is set to 'EXTERNAL'. The possible values are:\n  - PREFERRED: Backends with this preference level will be filled up to their capacity limits first,\n    based on RTT.\n  - DEFAULT: If preferred backends don't have enough capacity, backends in this layer would be used and\n    traffic would be assigned based on the load balancing algorithm you use. This is the default Possible values: [\"PREFERRED\", \"DEFAULT\"]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
             }
           },
           "block_types": {
@@ -318,6 +324,13 @@ const googleComputeBackendService = `{
             "negative_caching": {
               "computed": true,
               "description": "Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
+            "request_coalescing": {
+              "computed": true,
+              "description": "If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests\nto the origin.",
               "description_kind": "plain",
               "optional": true,
               "type": "bool"
@@ -667,6 +680,22 @@ const googleComputeBackendService = `{
               "optional": true,
               "type": "bool"
             },
+            "optional_fields": {
+              "description": "This field can only be specified if logging is enabled for this backend service and \"logConfig.optionalMode\"\nwas set to CUSTOM. Contains a list of optional fields you want to include in the logs.\nFor example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
+            },
+            "optional_mode": {
+              "computed": true,
+              "description": "Specifies the optional logging mode for the load balancer traffic.\nSupported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM. Possible values: [\"INCLUDE_ALL_OPTIONAL\", \"EXCLUDE_ALL_OPTIONAL\", \"CUSTOM\"]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "sample_rate": {
               "description": "This field can only be specified if logging is enabled for this backend service. The value of\nthe field must be in [0, 1]. This configures the sampling rate of requests to the load balancer\nwhere 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.\nThe default value is 1.0.",
               "description_kind": "plain",
@@ -675,6 +704,28 @@ const googleComputeBackendService = `{
             }
           },
           "description": "This field denotes the logging options for the load balancer traffic served by this backend service.\nIf logging is enabled, logs will be exported to Stackdriver.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "max_stream_duration": {
+        "block": {
+          "attributes": {
+            "nanos": {
+              "description": "Span of time that's a fraction of a second at nanosecond resolution.\nDurations less than one second are represented with a 0 seconds field and a positive nanos field.\nMust be from 0 to 999,999,999 inclusive.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "number"
+            },
+            "seconds": {
+              "description": "Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. (int64 format)",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the\nbeginning of the stream until the response has been completely processed, including all retries. A stream that\ndoes not complete in this duration is closed.\nIf not specified, there will be no timeout limit, i.e. the maximum duration is infinite.\nThis value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service.\nThis field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.",
           "description_kind": "plain"
         },
         "max_items": 1,

@@ -210,6 +210,13 @@ const googleAlloydbInstance = `{
               "description_kind": "plain",
               "optional": true,
               "type": "number"
+            },
+            "machine_type": {
+              "computed": true,
+              "description": "Machine type of the VM instance.\nE.g. \"n2-highmem-4\", \"n2-highmem-8\", \"c4a-highmem-4-lssd\".\n'cpu_count' must match the number of vCPUs in the machine type.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
             }
           },
           "description": "Configurations for the machines that host the underlying database engine.",

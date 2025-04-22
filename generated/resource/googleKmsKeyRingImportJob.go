@@ -43,7 +43,7 @@ const googleKmsKeyRingImportJob = `{
         "type": "string"
       },
       "import_method": {
-        "description": "The wrapping method to be used for incoming key material. Possible values: [\"RSA_OAEP_3072_SHA1_AES_256\", \"RSA_OAEP_4096_SHA1_AES_256\"]",
+        "description": "The wrapping method to be used for incoming key material. Possible values: [\"RSA_OAEP_3072_SHA1_AES_256\", \"RSA_OAEP_4096_SHA1_AES_256\", \"RSA_OAEP_3072_SHA256_AES_256\", \"RSA_OAEP_4096_SHA256_AES_256\", \"RSA_OAEP_3072_SHA256\", \"RSA_OAEP_4096_SHA256\"]",
         "description_kind": "plain",
         "required": true,
         "type": "string"

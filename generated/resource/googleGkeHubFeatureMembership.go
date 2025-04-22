@@ -119,6 +119,68 @@ const googleGkeHubFeatureMembership = `{
                   }
                 },
                 "block_types": {
+                  "deployment_overrides": {
+                    "block": {
+                      "attributes": {
+                        "deployment_name": {
+                          "description": "The name of the Deployment.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "deployment_namespace": {
+                          "description": "The namespace of the Deployment.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "block_types": {
+                        "containers": {
+                          "block": {
+                            "attributes": {
+                              "container_name": {
+                                "description": "The name of the container.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "cpu_limit": {
+                                "description": "The CPU limit of the container.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "cpu_request": {
+                                "description": "The CPU request of the container.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "memory_limit": {
+                                "description": "The memory limit of the container.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "memory_request": {
+                                "description": "The memory request of the container.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "The override configurations for the containers in the Deployment.",
+                            "description_kind": "plain"
+                          },
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "The override configurations for the Config Sync Deployments.",
+                      "description_kind": "plain"
+                    },
+                    "nesting_mode": "list"
+                  },
                   "git": {
                     "block": {
                       "attributes": {
