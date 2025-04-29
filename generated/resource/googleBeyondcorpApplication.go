@@ -106,6 +106,50 @@ const googleBeyondcorpApplication = `{
           "description_kind": "plain"
         },
         "nesting_mode": "single"
+      },
+      "upstreams": {
+        "block": {
+          "block_types": {
+            "egress_policy": {
+              "block": {
+                "attributes": {
+                  "regions": {
+                    "description": "Required. List of regions where the application sends traffic to.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": [
+                      "list",
+                      "string"
+                    ]
+                  }
+                },
+                "description": "Optional. Routing policy information.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "network": {
+              "block": {
+                "attributes": {
+                  "name": {
+                    "description": "Required. Network name is of the format:\n'projects/{project}/global/networks/{network}'",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Network to forward traffic to.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Optional. List of which upstream resource(s) to forward traffic to.",
+          "description_kind": "plain"
+        },
+        "nesting_mode": "list"
       }
     },
     "description_kind": "plain"

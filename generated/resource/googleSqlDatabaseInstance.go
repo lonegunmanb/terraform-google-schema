@@ -38,9 +38,25 @@ const googleSqlDatabaseInstance = `{
       },
       "dns_name": {
         "computed": true,
-        "description": "The dns name of the instance.",
+        "description": "The instance-level dns name of the instance for PSC instances or public IP CAS instances.",
         "description_kind": "plain",
         "type": "string"
+      },
+      "dns_names": {
+        "computed": true,
+        "description": "The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "connection_type": "string",
+              "dns_scope": "string",
+              "name": "string"
+            }
+          ]
+        ]
       },
       "encryption_key_name": {
         "computed": true,
@@ -413,7 +429,8 @@ const googleSqlDatabaseInstance = `{
               "type": "number"
             },
             "disk_type": {
-              "description": "The type of data disk: PD_SSD, PD_HDD, or HYPERDISK_BALANCED. Defaults to PD_SSD.",
+              "computed": true,
+              "description": "The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced ",
               "description_kind": "plain",
               "optional": true,
               "type": "string"

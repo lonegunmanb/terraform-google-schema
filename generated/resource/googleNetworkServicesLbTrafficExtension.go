@@ -118,6 +118,15 @@ const googleNetworkServicesLbTrafficExtension = `{
                       "string"
                     ]
                   },
+                  "metadata": {
+                    "description": "Metadata associated with the extension. This field is used to pass metadata to the extension service.\nYou can set up key value pairs for metadata as you like and need.\nf.e. {\"key\": \"value\", \"key2\": \"value2\"}.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": [
+                      "map",
+                      "string"
+                    ]
+                  },
                   "name": {
                     "description": "The name for this extension. The name is logged as part of the HTTP request logs.\nThe name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,\nand can have a maximum length of 63 characters. Additionally, the first character must be a letter\nand the last a letter or a number.",
                     "description_kind": "plain",
@@ -146,7 +155,7 @@ const googleNetworkServicesLbTrafficExtension = `{
                     "type": "string"
                   }
                 },
-                "description": "A set of extensions to execute for the matching request.\nAt least one extension is required. Up to 3 extensions can be defined for each extension chain for\nLbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.",
+                "description": "A set of extensions to execute for the matching request.\nAt least one extension is required. Up to 3 extensions can be defined for each extension chain for\nLbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.\nFurther documentation to be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain#Extension",
                 "description_kind": "plain"
               },
               "min_items": 1,
@@ -170,7 +179,7 @@ const googleNetworkServicesLbTrafficExtension = `{
               "nesting_mode": "list"
             }
           },
-          "description": "A set of ordered extension chains that contain the match conditions and extensions to execute.\nMatch conditions for each extension chain are evaluated in sequence for a given request.\nThe first extension chain that has a condition that matches the request is executed.\nAny subsequent extension chains do not execute. Limited to 5 extension chains per resource.",
+          "description": "A set of ordered extension chains that contain the match conditions and extensions to execute.\nMatch conditions for each extension chain are evaluated in sequence for a given request.\nThe first extension chain that has a condition that matches the request is executed.\nAny subsequent extension chains do not execute. Limited to 5 extension chains per resource.\nFurther information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain",
           "description_kind": "plain"
         },
         "min_items": 1,

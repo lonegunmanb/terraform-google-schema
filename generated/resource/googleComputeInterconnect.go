@@ -146,9 +146,9 @@ const googleComputeInterconnect = `{
         "type": "string"
       },
       "location": {
-        "description": "URL of the InterconnectLocation object that represents where this connection is to be provisioned.\nSpecifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.",
+        "description": "URL of the InterconnectLocation object that represents where this connection is to be provisioned.\nSpecifies the location inside Google's Networks.",
         "description_kind": "plain",
-        "optional": true,
+        "required": true,
         "type": "string"
       },
       "macsec_enabled": {

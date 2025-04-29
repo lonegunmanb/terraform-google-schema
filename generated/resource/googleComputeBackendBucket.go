@@ -91,21 +91,21 @@ const googleComputeBackendBucket = `{
             },
             "client_ttl": {
               "computed": true,
-              "description": "Specifies the maximum allowed TTL for cached content served by this origin.",
+              "description": "Specifies the maximum allowed TTL for cached content served by this origin. When the\n'cache_mode' is set to \"USE_ORIGIN_HEADERS\", you must omit this field.",
               "description_kind": "plain",
               "optional": true,
               "type": "number"
             },
             "default_ttl": {
               "computed": true,
-              "description": "Specifies the default TTL for cached content served by this origin for responses\nthat do not have an existing valid TTL (max-age or s-max-age).",
+              "description": "Specifies the default TTL for cached content served by this origin for responses\nthat do not have an existing valid TTL (max-age or s-max-age). When the 'cache_mode'\nis set to \"USE_ORIGIN_HEADERS\", you must omit this field.",
               "description_kind": "plain",
               "optional": true,
               "type": "number"
             },
             "max_ttl": {
               "computed": true,
-              "description": "Specifies the maximum allowed TTL for cached content served by this origin.",
+              "description": "Specifies the maximum allowed TTL for cached content served by this origin. When the\n'cache_mode' is set to \"USE_ORIGIN_HEADERS\", you must omit this field.",
               "description_kind": "plain",
               "optional": true,
               "type": "number"

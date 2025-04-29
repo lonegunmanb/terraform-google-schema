@@ -196,7 +196,7 @@ const googleDnsManagedZone = `{
                   "ipv4_address": {
                     "description": "IPv4 address of a target name server.",
                     "description_kind": "plain",
-                    "required": true,
+                    "optional": true,
                     "type": "string"
                   }
                 },

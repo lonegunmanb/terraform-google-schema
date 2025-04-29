@@ -585,6 +585,12 @@ const googleContainerNodePool = `{
             "ephemeral_storage_local_ssd_config": {
               "block": {
                 "attributes": {
+                  "data_cache_count": {
+                    "description": "Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "number"
+                  },
                   "local_ssd_count": {
                     "description": "Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.",
                     "description_kind": "plain",

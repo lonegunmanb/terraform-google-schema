@@ -498,6 +498,12 @@ const googleStorageTransferJob = `{
                     "required": true,
                     "type": "string"
                   },
+                  "managed_private_network": {
+                    "description": "Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  },
                   "path": {
                     "description": "S3 Bucket path in bucket to transfer.",
                     "description_kind": "plain",

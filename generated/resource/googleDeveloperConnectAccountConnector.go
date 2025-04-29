@@ -117,7 +117,7 @@ const googleDeveloperConnectAccountConnector = `{
               ]
             },
             "system_provider_id": {
-              "description": "List of providers that are owned by Developer Connect.\n\nPossible values:\nGITHUB\nGITLAB\nGOOGLE\nSENTRY\nROVO",
+              "description": "List of providers that are owned by Developer Connect.\n\nPossible values:\nGITHUB\nGITLAB\nGOOGLE\nSENTRY\nROVO\nNEW_RELIC\nDATASTAX",
               "description_kind": "plain",
               "optional": true,
               "type": "string"

@@ -33,6 +33,12 @@ const googleComputeRegionDisk = `{
         "optional": true,
         "type": "string"
       },
+      "disk_id": {
+        "computed": true,
+        "description": "The unique identifier for the resource. This identifier is defined by the server.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "effective_labels": {
         "computed": true,
         "description": "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.",

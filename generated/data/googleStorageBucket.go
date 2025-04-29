@@ -300,11 +300,23 @@ const googleStorageBucket = `{
           "string"
         ]
       },
+      "time_created": {
+        "computed": true,
+        "description": "The creation time of the bucket in RFC 3339 format.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "uniform_bucket_level_access": {
         "computed": true,
         "description": "Enables uniform bucket-level access on a bucket.",
         "description_kind": "plain",
         "type": "bool"
+      },
+      "updated": {
+        "computed": true,
+        "description": "The time at which the bucket's metadata or IAM policy was last updated, in RFC 3339 format.",
+        "description_kind": "plain",
+        "type": "string"
       },
       "url": {
         "computed": true,

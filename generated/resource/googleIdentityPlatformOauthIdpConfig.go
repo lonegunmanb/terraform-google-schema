@@ -59,6 +59,28 @@ const googleIdentityPlatformOauthIdpConfig = `{
       }
     },
     "block_types": {
+      "response_type": {
+        "block": {
+          "attributes": {
+            "code": {
+              "description": "If true, authorization code is returned from IdP's authorization endpoint.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
+            "id_token": {
+              "description": "If true, ID token is returned from IdP's authorization endpoint.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            }
+          },
+          "description": "The response type to request for in the OAuth authorization flow.\nYou can set either idToken or code to true, but not both.\nSetting both types to be simultaneously true ({code: true, idToken: true}) is not yet supported.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {

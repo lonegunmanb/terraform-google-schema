@@ -271,6 +271,68 @@ const googleDataplexDatascan = `{
                     },
                     "max_items": 1,
                     "nesting_mode": "list"
+                  },
+                  "notification_report": {
+                    "block": {
+                      "block_types": {
+                        "job_end_trigger": {
+                          "block": {
+                            "description": "This trigger is triggered whenever a scan job run ends, regardless of the result.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
+                        "job_failure_trigger": {
+                          "block": {
+                            "description": "This trigger is triggered when the scan job itself fails, regardless of the result.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
+                        "recipients": {
+                          "block": {
+                            "attributes": {
+                              "emails": {
+                                "description": "The email recipients who will receive the DataQualityScan results report.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": [
+                                  "list",
+                                  "string"
+                                ]
+                              }
+                            },
+                            "description": "The individuals or groups who are designated to receive notifications upon triggers.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "min_items": 1,
+                          "nesting_mode": "list"
+                        },
+                        "score_threshold_trigger": {
+                          "block": {
+                            "attributes": {
+                              "score_threshold": {
+                                "description": "The score range is in [0,100].",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "number"
+                              }
+                            },
+                            "description": "This trigger is triggered when the DQ score in the job result is less than a specified input score.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "The configuration of notification report post scan action.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
                   }
                 },
                 "description": "Actions to take upon job completion.",

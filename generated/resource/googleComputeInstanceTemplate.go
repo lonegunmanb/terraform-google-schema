@@ -380,7 +380,13 @@ const googleComputeInstanceTemplate = `{
                   "kms_key_self_link": {
                     "description": "The self link of the encryption key that is stored in Google Cloud KMS.",
                     "description_kind": "plain",
-                    "required": true,
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "kms_key_service_account": {
+                    "description": "The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.",
+                    "description_kind": "plain",
+                    "optional": true,
                     "type": "string"
                   }
                 },
@@ -394,15 +400,29 @@ const googleComputeInstanceTemplate = `{
               "block": {
                 "attributes": {
                   "kms_key_self_link": {
-                    "description": "The self link of the encryption key that is stored in\nGoogle Cloud KMS.",
+                    "description": "The self link of the encryption key that is stored in\nGoogle Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.",
                     "description_kind": "plain",
-                    "required": true,
+                    "optional": true,
                     "type": "string"
                   },
                   "kms_key_service_account": {
                     "description": "The service account being used for the encryption\nrequest for the given KMS key. If absent, the Compute\nEngine default service account is used.",
                     "description_kind": "plain",
                     "optional": true,
+                    "type": "string"
+                  },
+                  "raw_key": {
+                    "description": "Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "sensitive": true,
+                    "type": "string"
+                  },
+                  "rsa_encrypted_key": {
+                    "description": "Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "sensitive": true,
                     "type": "string"
                   }
                 },
@@ -416,15 +436,29 @@ const googleComputeInstanceTemplate = `{
               "block": {
                 "attributes": {
                   "kms_key_self_link": {
-                    "description": "The self link of the encryption key that is stored in\nGoogle Cloud KMS.",
+                    "description": "The self link of the encryption key that is stored in\nGoogle Cloud KMS. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.",
                     "description_kind": "plain",
-                    "required": true,
+                    "optional": true,
                     "type": "string"
                   },
                   "kms_key_service_account": {
                     "description": "The service account being used for the encryption\nrequest for the given KMS key. If absent, the Compute\nEngine default service account is used.",
                     "description_kind": "plain",
                     "optional": true,
+                    "type": "string"
+                  },
+                  "raw_key": {
+                    "description": "Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "sensitive": true,
+                    "type": "string"
+                  },
+                  "rsa_encrypted_key": {
+                    "description": "Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, rsa_encrypted_key and raw_key may be set.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "sensitive": true,
                     "type": "string"
                   }
                 },

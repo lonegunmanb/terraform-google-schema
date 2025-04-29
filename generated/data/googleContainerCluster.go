@@ -983,6 +983,7 @@ const googleContainerCluster = `{
                 [
                   "object",
                   {
+                    "data_cache_count": "number",
                     "local_ssd_count": "number"
                   }
                 ]
@@ -1422,6 +1423,7 @@ const googleContainerCluster = `{
                       [
                         "object",
                         {
+                          "data_cache_count": "number",
                           "local_ssd_count": "number"
                         }
                       ]

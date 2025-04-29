@@ -53,6 +53,17 @@ const googleSqlDatabaseInstances = `{
               "database_version": "string",
               "deletion_protection": "bool",
               "dns_name": "string",
+              "dns_names": [
+                "list",
+                [
+                  "object",
+                  {
+                    "connection_type": "string",
+                    "dns_scope": "string",
+                    "name": "string"
+                  }
+                ]
+              ],
               "encryption_key_name": "string",
               "first_ip_address": "string",
               "instance_type": "string",
