@@ -119,7 +119,7 @@ const googleComputeForwardingRule = `{
       },
       "load_balancing_scheme": {
         "computed": true,
-        "description": "Specifies the forwarding rule type.\n\nFor more information about forwarding rules, refer to\n[Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts). Default value: \"EXTERNAL\" Possible values: [\"EXTERNAL\", \"EXTERNAL_MANAGED\", \"INTERNAL\", \"INTERNAL_MANAGED\"]",
+        "description": "Specifies the forwarding rule type.\n\nNote that an empty string value ('\"\"') is also supported for some use\ncases, for example PSC (private service connection) regional forwarding\nrules.\n\nFor more information about forwarding rules, refer to\n[Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts). Default value: \"EXTERNAL\" Possible values: [\"EXTERNAL\", \"EXTERNAL_MANAGED\", \"INTERNAL\", \"INTERNAL_MANAGED\"]",
         "description_kind": "plain",
         "type": "string"
       },

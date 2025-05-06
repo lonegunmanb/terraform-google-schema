@@ -76,6 +76,22 @@ const googleNetworkConnectivitySpoke = `{
         "optional": true,
         "type": "string"
       },
+      "reasons": {
+        "computed": true,
+        "description": "The reasons for the current state in the lifecycle",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "code": "string",
+              "message": "string",
+              "user_details": "string"
+            }
+          ]
+        ]
+      },
       "state": {
         "computed": true,
         "description": "Output only. The current lifecycle state of this spoke.",

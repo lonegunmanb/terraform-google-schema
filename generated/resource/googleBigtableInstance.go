@@ -99,6 +99,12 @@ const googleBigtableInstance = `{
               "optional": true,
               "type": "string"
             },
+            "node_scaling_factor": {
+              "description": "The node scaling factor of this cluster. One of \"NodeScalingFactor1X\" or \"NodeScalingFactor2X\". Defaults to \"NodeScalingFactor1X\".",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "num_nodes": {
               "computed": true,
               "description": "The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.",

@@ -256,7 +256,9 @@ const googleCloudRunV2Service = `{
           [
             "object",
             {
-              "min_instance_count": "number"
+              "manual_instance_count": "number",
+              "min_instance_count": "number",
+              "scaling_mode": "string"
             }
           ]
         ]

@@ -66,6 +66,7 @@ func init() {
 	resources["google_apigee_keystores_aliases_self_signed_cert"] = resource.GoogleApigeeKeystoresAliasesSelfSignedCertSchema()  
 	resources["google_apigee_nat_address"] = resource.GoogleApigeeNatAddressSchema()  
 	resources["google_apigee_organization"] = resource.GoogleApigeeOrganizationSchema()  
+	resources["google_apigee_security_profile_v2"] = resource.GoogleApigeeSecurityProfileV2Schema()  
 	resources["google_apigee_sharedflow"] = resource.GoogleApigeeSharedflowSchema()  
 	resources["google_apigee_sharedflow_deployment"] = resource.GoogleApigeeSharedflowDeploymentSchema()  
 	resources["google_apigee_sync_authorization"] = resource.GoogleApigeeSyncAuthorizationSchema()  

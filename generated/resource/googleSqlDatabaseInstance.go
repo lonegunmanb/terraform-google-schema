@@ -430,7 +430,7 @@ const googleSqlDatabaseInstance = `{
             },
             "disk_type": {
               "computed": true,
-              "description": "The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HyperDisk_Balanced ",
+              "description": "The type of supported data disk is tier dependent and can be PD_SSD or PD_HDD or HYPERDISK_BALANCED.",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
@@ -595,6 +595,44 @@ const googleSqlDatabaseInstance = `{
               },
               "max_items": 1,
               "nesting_mode": "list"
+            },
+            "connection_pool_config": {
+              "block": {
+                "attributes": {
+                  "connection_pooling_enabled": {
+                    "description": "Whether Managed Connection Pool is enabled for this instance.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  }
+                },
+                "block_types": {
+                  "flags": {
+                    "block": {
+                      "attributes": {
+                        "name": {
+                          "description": "Name of the flag.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        },
+                        "value": {
+                          "description": "Value of the flag.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "List of connection pool configuration flags",
+                      "description_kind": "plain"
+                    },
+                    "nesting_mode": "set"
+                  }
+                },
+                "description": "The managed connection pool setting for a Cloud SQL instance.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "set"
             },
             "data_cache_config": {
               "block": {

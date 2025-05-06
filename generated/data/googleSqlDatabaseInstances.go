@@ -197,6 +197,25 @@ const googleSqlDatabaseInstances = `{
                       ]
                     ],
                     "collation": "string",
+                    "connection_pool_config": [
+                      "set",
+                      [
+                        "object",
+                        {
+                          "connection_pooling_enabled": "bool",
+                          "flags": [
+                            "set",
+                            [
+                              "object",
+                              {
+                                "name": "string",
+                                "value": "string"
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    ],
                     "connector_enforcement": "string",
                     "data_cache_config": [
                       "list",

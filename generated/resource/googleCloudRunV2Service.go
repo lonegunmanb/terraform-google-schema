@@ -384,11 +384,23 @@ const googleCloudRunV2Service = `{
       "scaling": {
         "block": {
           "attributes": {
+            "manual_instance_count": {
+              "description": "Total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "number"
+            },
             "min_instance_count": {
               "description": "Minimum number of instances for the service, to be divided among all revisions receiving traffic.",
               "description_kind": "plain",
               "optional": true,
               "type": "number"
+            },
+            "scaling_mode": {
+              "description": "The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service. Possible values: [\"AUTOMATIC\", \"MANUAL\"]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
             }
           },
           "description": "Scaling settings that apply to the whole service",
