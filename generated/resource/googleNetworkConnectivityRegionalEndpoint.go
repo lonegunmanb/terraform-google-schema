@@ -97,7 +97,7 @@ const googleNetworkConnectivityRegionalEndpoint = `{
         "type": "string"
       },
       "target_google_api": {
-        "description": "The service endpoint this private regional endpoint connects to. Format: '{apiname}.{region}.p.rep.googleapis.com' Example: \\\"cloudkms.us-central1.p.rep.googleapis.com\\\".",
+        "description": "The service endpoint this private regional endpoint connects to. Format: '{apiname}.{region}.rep.googleapis.com' Example: \\\"cloudkms.us-central1.rep.googleapis.com\\\".",
         "description_kind": "plain",
         "required": true,
         "type": "string"

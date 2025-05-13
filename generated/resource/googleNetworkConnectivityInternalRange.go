@@ -39,6 +39,12 @@ const googleNetworkConnectivityInternalRange = `{
         "optional": true,
         "type": "string"
       },
+      "immutable": {
+        "description": "Immutable ranges cannot have their fields modified, except for labels and description.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "ip_cidr_range": {
         "computed": true,
         "description": "The IP range that this internal range defines.\nNOTE: IPv6 ranges are limited to usage=EXTERNAL_TO_VPC and peering=FOR_SELF\nNOTE: For IPv6 Ranges this field is compulsory, i.e. the address range must be specified explicitly.",

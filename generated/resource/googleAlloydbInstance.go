@@ -290,6 +290,45 @@ const googleAlloydbInstance = `{
             }
           },
           "block_types": {
+            "psc_auto_connections": {
+              "block": {
+                "attributes": {
+                  "consumer_network": {
+                    "description": "The consumer network for the PSC service automation, example:\n\"projects/vpc-host-project/global/networks/default\".\nThe consumer network might be hosted a different project than the\nconsumer project. The API expects the consumer project specified to be\nthe project ID (and not the project number)",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "consumer_network_status": {
+                    "computed": true,
+                    "description": "The status of the service connection policy.",
+                    "description_kind": "plain",
+                    "type": "string"
+                  },
+                  "consumer_project": {
+                    "description": "The consumer project to which the PSC service automation endpoint will\nbe created. The API expects the consumer project to be the project ID(\nand not the project number).",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "ip_address": {
+                    "computed": true,
+                    "description": "The IP address of the PSC service automation endpoint.",
+                    "description_kind": "plain",
+                    "type": "string"
+                  },
+                  "status": {
+                    "computed": true,
+                    "description": "The status of the PSC service automation connection.",
+                    "description_kind": "plain",
+                    "type": "string"
+                  }
+                },
+                "description": "Configurations for setting up PSC service automation.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            },
             "psc_interface_configs": {
               "block": {
                 "attributes": {

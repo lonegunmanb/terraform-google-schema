@@ -70,6 +70,7 @@ const googleComputeRegionInstanceTemplate = `{
           [
             "object",
             {
+              "architecture": "string",
               "auto_delete": "bool",
               "boot": "bool",
               "device_name": "string",
@@ -86,6 +87,10 @@ const googleComputeRegionInstanceTemplate = `{
               "disk_name": "string",
               "disk_size_gb": "number",
               "disk_type": "string",
+              "guest_os_features": [
+                "list",
+                "string"
+              ],
               "interface": "string",
               "labels": [
                 "map",

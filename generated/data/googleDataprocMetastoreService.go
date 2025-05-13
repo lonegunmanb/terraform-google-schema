@@ -294,15 +294,6 @@ const googleDataprocMetastoreService = `{
         "description_kind": "plain",
         "type": "string"
       },
-      "tags": {
-        "computed": true,
-        "description": "A map of resource manager tags.\nResource manager tag keys and values have the same definition as resource manager tags.\nKeys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.",
-        "description_kind": "plain",
-        "type": [
-          "map",
-          "string"
-        ]
-      },
       "telemetry_config": {
         "computed": true,
         "description": "The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.",

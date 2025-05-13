@@ -251,6 +251,13 @@ const googleComputeInstanceTemplate = `{
       "disk": {
         "block": {
           "attributes": {
+            "architecture": {
+              "computed": true,
+              "description": "The architecture of the image. Allowed values are ARM64 or X86_64.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "auto_delete": {
               "description": "Whether or not the disk should be auto-deleted. This defaults to true.",
               "description_kind": "plain",
@@ -290,6 +297,15 @@ const googleComputeInstanceTemplate = `{
               "description_kind": "plain",
               "optional": true,
               "type": "string"
+            },
+            "guest_os_features": {
+              "description": "A list of features to enable on the guest operating system. Applicable only for bootable images.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
             },
             "interface": {
               "computed": true,

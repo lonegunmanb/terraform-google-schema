@@ -132,6 +132,25 @@ const googleNetworkServicesEdgeCacheOrigin = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "flex_shielding": {
+        "block": {
+          "attributes": {
+            "flex_shielding_regions": {
+              "description": "Whenever possible, content will be fetched from origin and cached in or\nnear the specified origin. Best effort.\n\nYou must specify exactly one FlexShieldingRegion. Possible values: [\"AFRICA_SOUTH1\", \"ME_CENTRAL1\"]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
+            }
+          },
+          "description": "The FlexShieldingOptions to be used for all routes to this origin.\n\nIf not set, defaults to a global caching layer in front of the origin.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "origin_override_action": {
         "block": {
           "block_types": {

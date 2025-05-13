@@ -34,6 +34,12 @@ const googleStorageBucketObjectContent = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "content_base64sha512": {
+        "computed": true,
+        "description": "Base64 encoded SHA512 checksum of object content.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "content_disposition": {
         "computed": true,
         "description": "Content-Disposition of the object data.",
@@ -43,6 +49,12 @@ const googleStorageBucketObjectContent = `{
       "content_encoding": {
         "computed": true,
         "description": "Content-Encoding of the object data.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "content_hexsha512": {
+        "computed": true,
+        "description": "Hex encoded SHA512 checksum of object content.",
         "description_kind": "plain",
         "type": "string"
       },

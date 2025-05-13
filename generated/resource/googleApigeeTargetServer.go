@@ -84,6 +84,12 @@ const googleApigeeTargetServer = `{
               "required": true,
               "type": "bool"
             },
+            "enforce": {
+              "description": "If true, TLS is strictly enforced.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
             "ignore_validation_errors": {
               "description": "If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.",
               "description_kind": "plain",

@@ -9,6 +9,12 @@ import (
 const googleNetappBackup = `{
   "block": {
     "attributes": {
+      "backup_region": {
+        "computed": true,
+        "description": "Region in which backup is stored.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "backup_type": {
         "computed": true,
         "description": "Type of backup, manually created or created by a backup policy. Possible Values : [TYPE_UNSPECIFIED, MANUAL, SCHEDULED]",
@@ -106,6 +112,12 @@ const googleNetappBackup = `{
         "description": "Name of the backup vault to store the backup in.",
         "description_kind": "plain",
         "required": true,
+        "type": "string"
+      },
+      "volume_region": {
+        "computed": true,
+        "description": "Region of the volume from which the backup was created.",
+        "description_kind": "plain",
         "type": "string"
       },
       "volume_usage_bytes": {

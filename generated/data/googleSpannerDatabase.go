@@ -24,6 +24,12 @@ const googleSpannerDatabase = `{
           "string"
         ]
       },
+      "default_time_zone": {
+        "computed": true,
+        "description": "The default time zone for the database. The default time zone must be a valid name\nfrom the tz database. Default value is \"America/Los_angeles\".",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "deletion_protection": {
         "computed": true,
         "description": "Whether Terraform will be prevented from destroying the database. Defaults to true.\nWhen a'terraform destroy' or 'terraform apply' would delete the database,\nthe command will fail if this field is not set to false in Terraform state.\nWhen the field is set to true or unset in Terraform state, a 'terraform apply'\nor 'terraform destroy' that would delete the database will fail.\nWhen the field is set to false, deleting the database is allowed.",

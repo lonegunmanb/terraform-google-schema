@@ -9,6 +9,19 @@ import (
 const googleNetappBackupVault = `{
   "block": {
     "attributes": {
+      "backup_region": {
+        "description": "Region in which backup is stored.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
+      "backup_vault_type": {
+        "computed": true,
+        "description": "Type of the backup vault to be created. Default is IN_REGION. Possible values: [\"BACKUP_VAULT_TYPE_UNSPECIFIED\", \"IN_REGION\", \"CROSS_REGION\"]",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "create_time": {
         "computed": true,
         "description": "Create time of the backup vault. A timestamp in RFC3339 UTC \"Zulu\" format. Examples: \"2023-06-22T09:13:01.617Z\".",
@@ -19,6 +32,12 @@ const googleNetappBackupVault = `{
         "description": "An optional description of this resource.",
         "description_kind": "plain",
         "optional": true,
+        "type": "string"
+      },
+      "destination_backup_vault": {
+        "computed": true,
+        "description": "Name of the Backup vault created in backup region.",
+        "description_kind": "plain",
         "type": "string"
       },
       "effective_labels": {
@@ -61,6 +80,18 @@ const googleNetappBackupVault = `{
         "computed": true,
         "description_kind": "plain",
         "optional": true,
+        "type": "string"
+      },
+      "source_backup_vault": {
+        "computed": true,
+        "description": "Name of the Backup vault created in source region.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "source_region": {
+        "computed": true,
+        "description": "Region in which the backup vault is created.",
+        "description_kind": "plain",
         "type": "string"
       },
       "state": {

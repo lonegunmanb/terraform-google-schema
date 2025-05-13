@@ -101,6 +101,12 @@ const googleBigqueryRoutine = `{
         "description_kind": "plain",
         "required": true,
         "type": "string"
+      },
+      "security_mode": {
+        "description": "Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration. Possible values: [\"DEFINER\", \"INVOKER\"]",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
       }
     },
     "block_types": {
