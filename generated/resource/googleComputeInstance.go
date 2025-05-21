@@ -288,6 +288,12 @@ const googleComputeInstance = `{
               "optional": true,
               "type": "string"
             },
+            "force_attach": {
+              "description": "Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
             "kms_key_self_link": {
               "computed": true,
               "description": "The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.",
@@ -354,6 +360,12 @@ const googleComputeInstance = `{
               "description_kind": "plain",
               "optional": true,
               "type": "string"
+            },
+            "force_attach": {
+              "description": "Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error. Setting this parameter cause VM recreation.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
             },
             "guest_os_features": {
               "computed": true,

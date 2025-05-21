@@ -21,6 +21,12 @@ const googleComputeNetworkEndpointGroup = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "generated_id": {
+        "computed": true,
+        "description": "The uniquely generated identifier for the resource. This identifier is defined by the server.",
+        "description_kind": "plain",
+        "type": "number"
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",

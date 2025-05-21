@@ -13,6 +13,7 @@ const googleIamOauthClientCredential = `{
         "computed": true,
         "description": "The system-generated OAuth client secret.\n\nThe client secret must be stored securely. If the client secret is\nleaked, you must delete and re-create the client credential. To learn\nmore, see [OAuth client and credential security risks and\nmitigations](https://cloud.google.com/iam/docs/workforce-oauth-app#security)",
         "description_kind": "plain",
+        "sensitive": true,
         "type": "string"
       },
       "disabled": {

@@ -6,14 +6,18 @@ import (
 	tfjson "github.com/hashicorp/terraform-json"
 )
 
-const googleBigtableLogicalView = `{
+const googleDataplexGlossaryIamBinding = `{
   "block": {
     "attributes": {
-      "deletion_protection": {
-        "description": "Set to true to make the logical view protected against deletion.",
+      "etag": {
+        "computed": true,
         "description_kind": "plain",
-        "optional": true,
-        "type": "bool"
+        "type": "string"
+      },
+      "glossary_id": {
+        "description_kind": "plain",
+        "required": true,
+        "type": "string"
       },
       "id": {
         "computed": true,
@@ -21,23 +25,19 @@ const googleBigtableLogicalView = `{
         "optional": true,
         "type": "string"
       },
-      "instance": {
-        "description": "The name of the instance to create the logical view within.",
+      "location": {
+        "computed": true,
         "description_kind": "plain",
         "optional": true,
         "type": "string"
       },
-      "logical_view_id": {
-        "description": "The unique name of the logical view in the form '[_a-zA-Z0-9][-_.a-zA-Z0-9]*'.",
+      "members": {
         "description_kind": "plain",
         "required": true,
-        "type": "string"
-      },
-      "name": {
-        "computed": true,
-        "description": "The unique name of the requested logical view. Values are of the form 'projects/\u003cproject\u003e/instances/\u003cinstance\u003e/logicalViews/\u003clogicalViewId\u003e'.",
-        "description_kind": "plain",
-        "type": "string"
+        "type": [
+          "set",
+          "string"
+        ]
       },
       "project": {
         "computed": true,
@@ -45,36 +45,36 @@ const googleBigtableLogicalView = `{
         "optional": true,
         "type": "string"
       },
-      "query": {
-        "description": "The logical view's select query.",
+      "role": {
         "description_kind": "plain",
         "required": true,
         "type": "string"
       }
     },
     "block_types": {
-      "timeouts": {
+      "condition": {
         "block": {
           "attributes": {
-            "create": {
+            "description": {
               "description_kind": "plain",
               "optional": true,
               "type": "string"
             },
-            "delete": {
+            "expression": {
               "description_kind": "plain",
-              "optional": true,
+              "required": true,
               "type": "string"
             },
-            "update": {
+            "title": {
               "description_kind": "plain",
-              "optional": true,
+              "required": true,
               "type": "string"
             }
           },
           "description_kind": "plain"
         },
-        "nesting_mode": "single"
+        "max_items": 1,
+        "nesting_mode": "list"
       }
     },
     "description_kind": "plain"
@@ -82,8 +82,8 @@ const googleBigtableLogicalView = `{
   "version": 0
 }`
 
-func GoogleBigtableLogicalViewSchema() *tfjson.Schema {
+func GoogleDataplexGlossaryIamBindingSchema() *tfjson.Schema {
 	var result tfjson.Schema
-	_ = json.Unmarshal([]byte(googleBigtableLogicalView), &result)
+	_ = json.Unmarshal([]byte(googleDataplexGlossaryIamBinding), &result)
 	return &result
 }

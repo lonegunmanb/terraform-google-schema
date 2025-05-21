@@ -30,6 +30,18 @@ const googleComputeGlobalForwardingRule = `{
           "string"
         ]
       },
+      "external_managed_backend_bucket_migration_state": {
+        "description": "Specifies the canary migration state for the backend buckets attached to this forwarding rule.\nPossible values are PREPARE, TEST_BY_PERCENTAGE, and TEST_ALL_TRAFFIC.\n\nTo begin the migration from EXTERNAL to EXTERNAL_MANAGED, the state must be changed to\nPREPARE. The state must be changed to TEST_ALL_TRAFFIC before the loadBalancingScheme can be\nchanged to EXTERNAL_MANAGED. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate\ntraffic to backend buckets attached to this forwarding rule by percentage using\nexternalManagedBackendBucketMigrationTestingPercentage.\n\nRolling back a migration requires the states to be set in reverse order. So changing the\nscheme from EXTERNAL_MANAGED to EXTERNAL requires the state to be set to TEST_ALL_TRAFFIC at\nthe same time. Optionally, the TEST_BY_PERCENTAGE state can be used to migrate some traffic\nback to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL. Possible values: [\"PREPARE\", \"TEST_BY_PERCENTAGE\", \"TEST_ALL_TRAFFIC\"]",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
+      "external_managed_backend_bucket_migration_testing_percentage": {
+        "description": "Determines the fraction of requests to backend buckets that should be processed by the Global\nexternal Application Load Balancer.\n\nThe value of this field must be in the range [0, 100].\n\nThis value can only be set if the loadBalancingScheme in the forwarding rule is set to\nEXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "number"
+      },
       "forwarding_rule_id": {
         "computed": true,
         "description": "The unique identifier number for the resource. This identifier is defined by the server.",

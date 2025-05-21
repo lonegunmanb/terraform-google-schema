@@ -27,6 +27,12 @@ const googleNetappStoragePool = `{
         "required": true,
         "type": "string"
       },
+      "custom_performance_enabled": {
+        "description": "Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "description": {
         "description": "An optional description of this resource.",
         "description_kind": "plain",
@@ -119,6 +125,18 @@ const googleNetappStoragePool = `{
           "map",
           "string"
         ]
+      },
+      "total_iops": {
+        "description": "Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
+      "total_throughput_mibps": {
+        "description": "Optional. Custom Performance Total Throughput of the pool (in MiB/s).",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
       },
       "volume_capacity_gib": {
         "computed": true,

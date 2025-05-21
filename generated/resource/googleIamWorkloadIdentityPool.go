@@ -47,7 +47,7 @@ const googleIamWorkloadIdentityPool = `{
       },
       "state": {
         "computed": true,
-        "description": "The state of the pool.\n* STATE_UNSPECIFIED: State unspecified.\n* ACTIVE: The pool is active, and may be used in Google Cloud policies.\n* DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after\n  approximately 30 days. You can restore a soft-deleted pool using\n  UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted pool until it is\n  permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or\n  use existing tokens to access resources. If the pool is undeleted, existing tokens grant\n  access again.",
+        "description": "The state of the pool.\n* 'STATE_UNSPECIFIED': State unspecified.\n* 'ACTIVE': The pool is active, and may be used in Google Cloud policies.\n* 'DELETED': The pool is soft-deleted. Soft-deleted pools are permanently deleted after\n  approximately 30 days. You can restore a soft-deleted pool using\n  'UndeleteWorkloadIdentityPool'. You cannot reuse the ID of a soft-deleted pool until it is\n  permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or\n  use existing tokens to access resources. If the pool is undeleted, existing tokens grant\n  access again.",
         "description_kind": "plain",
         "type": "string"
       },

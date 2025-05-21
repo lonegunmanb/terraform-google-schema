@@ -44,6 +44,7 @@ const googleFirestoreDatabase = `{
         "type": "string"
       },
       "deletion_policy": {
+        "deprecated": true,
         "description": "Deletion behavior for this database.\nIf the deletion policy is 'ABANDON', the database will be removed from Terraform state but not deleted from Google Cloud upon destruction.\nIf the deletion policy is 'DELETE', the database will both be removed from Terraform state and deleted from Google Cloud upon destruction.\nThe default value is 'ABANDON'.\nSee also 'delete_protection'.",
         "description_kind": "plain",
         "optional": true,

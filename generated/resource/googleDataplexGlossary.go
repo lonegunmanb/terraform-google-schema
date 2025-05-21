@@ -6,25 +6,31 @@ import (
 	tfjson "github.com/hashicorp/terraform-json"
 )
 
-const googleGkeBackupRestoreChannel = `{
+const googleDataplexGlossary = `{
   "block": {
     "attributes": {
+      "category_count": {
+        "computed": true,
+        "description": "The number of categories in the glossary.",
+        "description_kind": "plain",
+        "type": "number"
+      },
+      "create_time": {
+        "computed": true,
+        "description": "The time at which the glossary was created.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "description": {
-        "description": "User specified descriptive string for this RestoreChannel.",
+        "description": "The user-mutable description of the glossary.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
       },
-      "destination_project": {
-        "description": "The project where Backups will be restored.\nThe format is 'projects/{project}'.\n{project} can be project number or project id.",
+      "display_name": {
+        "description": "User friendly display name of the glossary. This is user-mutable. This will be same as the glossaryId, if not specified.",
         "description_kind": "plain",
-        "required": true,
-        "type": "string"
-      },
-      "destination_project_id": {
-        "computed": true,
-        "description": "The project_id where Backups will be restored.\nExample Project ID: \"my-project-id\".",
-        "description_kind": "plain",
+        "optional": true,
         "type": "string"
       },
       "effective_labels": {
@@ -36,10 +42,10 @@ const googleGkeBackupRestoreChannel = `{
           "string"
         ]
       },
-      "etag": {
-        "computed": true,
-        "description": "etag is used for optimistic concurrency control as a way to help prevent simultaneous\nupdates of a restore channel from overwriting each other. It is strongly suggested that\nsystems make use of the 'etag' in the read-modify-write cycle to perform RestoreChannel updates\nin order to avoid race conditions: An etag is returned in the response to restoreChannels.get,\nand systems are expected to put that etag in the request to restoreChannels.patch or\nrestoreChannels.delete to ensure that their change will be applied to the same version of the resource.",
+      "glossary_id": {
+        "description": "The glossary id for creation.",
         "description_kind": "plain",
+        "required": true,
         "type": "string"
       },
       "id": {
@@ -49,7 +55,7 @@ const googleGkeBackupRestoreChannel = `{
         "type": "string"
       },
       "labels": {
-        "description": "Description: A set of custom labels supplied by the user.\nA list of key-\u003evalue pairs.\nExample: { \"name\": \"wrench\", \"mass\": \"1.3kg\", \"count\": \"3\" }.\n\n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
+        "description": "User-defined labels for the Glossary.\n\n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
         "description_kind": "plain",
         "optional": true,
         "type": [
@@ -58,15 +64,15 @@ const googleGkeBackupRestoreChannel = `{
         ]
       },
       "location": {
-        "description": "The region of the Restore Channel.",
+        "description": "The location where the glossary should reside.",
         "description_kind": "plain",
         "required": true,
         "type": "string"
       },
       "name": {
-        "description": "The full name of the RestoreChannel Resource.",
+        "computed": true,
+        "description": "The resource name of the Glossary. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}",
         "description_kind": "plain",
-        "required": true,
         "type": "string"
       },
       "project": {
@@ -74,6 +80,12 @@ const googleGkeBackupRestoreChannel = `{
         "description_kind": "plain",
         "optional": true,
         "type": "string"
+      },
+      "term_count": {
+        "computed": true,
+        "description": "The number of terms in the glossary.",
+        "description_kind": "plain",
+        "type": "number"
       },
       "terraform_labels": {
         "computed": true,
@@ -86,7 +98,13 @@ const googleGkeBackupRestoreChannel = `{
       },
       "uid": {
         "computed": true,
-        "description": "Server generated, unique identifier of UUID format.",
+        "description": "System generated unique id for the Glossary. This ID will be different if the Glossary is deleted and re-created with the same name.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "update_time": {
+        "computed": true,
+        "description": "The time at which the glossary was last updated.",
         "description_kind": "plain",
         "type": "string"
       }
@@ -121,8 +139,8 @@ const googleGkeBackupRestoreChannel = `{
   "version": 0
 }`
 
-func GoogleGkeBackupRestoreChannelSchema() *tfjson.Schema {
+func GoogleDataplexGlossarySchema() *tfjson.Schema {
 	var result tfjson.Schema
-	_ = json.Unmarshal([]byte(googleGkeBackupRestoreChannel), &result)
+	_ = json.Unmarshal([]byte(googleDataplexGlossary), &result)
 	return &result
 }

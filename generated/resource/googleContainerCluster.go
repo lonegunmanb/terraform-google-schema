@@ -136,6 +136,12 @@ const googleContainerCluster = `{
         "optional": true,
         "type": "string"
       },
+      "in_transit_encryption_config": {
+        "description": "Defines the config of in-transit encryption",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "initial_node_count": {
         "description": "The number of nodes to create in this cluster's default node pool. In regional or multi-zonal clusters, this is the number of nodes per zone. Must be set if node_pool is not set. If you're using google_container_node_pool objects with no default node pool, you'll need to set this to a value of at least 1, alongside setting remove_default_node_pool to true.",
         "description_kind": "plain",

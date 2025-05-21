@@ -16,7 +16,7 @@ const googleGkeBackupBackupChannel = `{
         "type": "string"
       },
       "destination_project": {
-        "description": "The project where Backups are allowed to be stored.\nThe format is 'projects/{project}'.\n{project} can only be a project number.",
+        "description": "The project where Backups are allowed to be stored.\nThe format is 'projects/{project}'.\n{project} can be project number or project id.",
         "description_kind": "plain",
         "required": true,
         "type": "string"

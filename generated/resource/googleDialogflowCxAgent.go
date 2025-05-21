@@ -218,6 +218,22 @@ const googleDialogflowCxAgent = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "gen_app_builder_settings": {
+        "block": {
+          "attributes": {
+            "engine": {
+              "description": "The full name of the Gen App Builder engine related to this agent if there is one.\nFormat: projects/{Project ID}/locations/{Location ID}/collections/{Collection ID}/engines/{Engine ID}",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "Gen App Builder-related agent-level settings.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "git_integration_settings": {
         "block": {
           "block_types": {

@@ -48,6 +48,7 @@ const googleComputeInstance = `{
               "disk_encryption_key_rsa": "string",
               "disk_encryption_key_sha256": "string",
               "disk_encryption_service_account": "string",
+              "force_attach": "bool",
               "kms_key_self_link": "string",
               "mode": "string",
               "source": "string"
@@ -70,6 +71,7 @@ const googleComputeInstance = `{
               "disk_encryption_key_rsa": "string",
               "disk_encryption_key_sha256": "string",
               "disk_encryption_service_account": "string",
+              "force_attach": "bool",
               "guest_os_features": [
                 "list",
                 "string"

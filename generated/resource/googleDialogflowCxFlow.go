@@ -213,6 +213,12 @@ const googleDialogflowCxFlow = `{
             "trigger_fulfillment": {
               "block": {
                 "attributes": {
+                  "enable_generative_fallback": {
+                    "description": "If the flag is true, the agent will utilize LLM to generate a text response.\nIf LLM generation fails, the defined responses in the fulfillment will be respected.\nThis flag is only useful for fulfillments associated with no-match event handlers.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  },
                   "return_partial_responses": {
                     "description": "Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.",
                     "description_kind": "plain",
