@@ -128,6 +128,45 @@ const googleStorageBucket = `{
         "optional": true,
         "type": "string"
       },
+      "ip_filter": {
+        "computed": true,
+        "description": "The bucket IP filtering configuration.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "mode": "string",
+              "public_network_source": [
+                "list",
+                [
+                  "object",
+                  {
+                    "allowed_ip_cidr_ranges": [
+                      "list",
+                      "string"
+                    ]
+                  }
+                ]
+              ],
+              "vpc_network_sources": [
+                "list",
+                [
+                  "object",
+                  {
+                    "allowed_ip_cidr_ranges": [
+                      "list",
+                      "string"
+                    ],
+                    "network": "string"
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      },
       "labels": {
         "computed": true,
         "description": "A set of key/value label pairs to assign to the bucket.",

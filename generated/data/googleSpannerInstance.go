@@ -11,7 +11,7 @@ const googleSpannerInstance = `{
     "attributes": {
       "autoscaling_config": {
         "computed": true,
-        "description": "The autoscaling configuration. Autoscaling is enabled if this field is set.\nWhen autoscaling is enabled, num_nodes and processing_units are treated as,\nOUTPUT_ONLY fields and reflect the current compute capacity allocated to\nthe instance.",
+        "description": "The autoscaling configuration. Autoscaling is enabled if this field is set.\nExactly one of either num_nodes, processing_units or autoscaling_config must be\npresent in terraform except when instance_type = FREE_INSTANCE.\nWhen autoscaling is enabled, num_nodes and processing_units are treated as,\nOUTPUT_ONLY fields and reflect the current compute capacity allocated to\nthe instance.",
         "description_kind": "plain",
         "type": [
           "list",
@@ -124,6 +124,12 @@ const googleSpannerInstance = `{
         "optional": true,
         "type": "string"
       },
+      "instance_type": {
+        "computed": true,
+        "description": "The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:\nusage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.\nWhen configured as FREE_INSTANCE, the field 'edition' should not be configured. Possible values: [\"PROVISIONED\", \"FREE_INSTANCE\"]",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "labels": {
         "computed": true,
         "description": "An object containing a list of \"key\": value pairs.\nExample: { \"name\": \"wrench\", \"mass\": \"1.3kg\", \"count\": \"3\" }.\n\n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
@@ -141,13 +147,13 @@ const googleSpannerInstance = `{
       },
       "num_nodes": {
         "computed": true,
-        "description": "The number of nodes allocated to this instance. Exactly one of either node_count or processing_units\nmust be present in terraform.",
+        "description": "The number of nodes allocated to this instance. Exactly one of either num_nodes, processing_units or\nautoscaling_config must be present in terraform except when instance_type = FREE_INSTANCE.",
         "description_kind": "plain",
         "type": "number"
       },
       "processing_units": {
         "computed": true,
-        "description": "The number of processing units allocated to this instance. Exactly one of processing_units\nor node_count must be present in terraform.",
+        "description": "The number of processing units allocated to this instance. Exactly one of either num_nodes,\nprocessing_units or autoscaling_config must be present in terraform except when instance_type = FREE_INSTANCE.",
         "description_kind": "plain",
         "type": "number"
       },

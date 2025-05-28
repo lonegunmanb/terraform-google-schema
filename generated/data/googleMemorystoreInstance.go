@@ -127,9 +127,24 @@ const googleMemorystoreInstance = `{
         "description_kind": "plain",
         "type": "bool"
       },
+      "desired_auto_created_endpoints": {
+        "computed": true,
+        "description": "Immutable. User inputs for the auto-created endpoints connections.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "network": "string",
+              "project_id": "string"
+            }
+          ]
+        ]
+      },
       "desired_psc_auto_connections": {
         "computed": true,
-        "description": "Immutable. User inputs for the auto-created PSC connections.",
+        "description": "'desired_psc_auto_connections' is deprecated  Use 'desired_auto_created_endpoints' instead.",
         "description_kind": "plain",
         "type": [
           "list",

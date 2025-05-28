@@ -382,6 +382,67 @@ const googleNetappVolume = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "hybrid_replication_parameters": {
+        "block": {
+          "attributes": {
+            "cluster_location": {
+              "description": "Optional. Name of source cluster location associated with the Hybrid replication. This is a free-form field for the display purpose only.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "description": {
+              "description": "Optional. Description of the replication.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "labels": {
+              "description": "Optional. Labels to be added to the replication as the key value pairs.\nAn object containing a list of \"key\": value pairs. Example: { \"name\": \"wrench\", \"mass\": \"1.3kg\", \"count\": \"3\" }.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "map",
+                "string"
+              ]
+            },
+            "peer_cluster_name": {
+              "description": "Required. Name of the user's local source cluster to be peered with the destination cluster.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "peer_ip_addresses": {
+              "description": "Required. List of node ip addresses to be peered with.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "peer_svm_name": {
+              "description": "Required. Name of the user's local source vserver svm to be peered with the destination vserver svm.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "peer_volume_name": {
+              "description": "Required. Name of the user's local source volume to be peered with the destination volume.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "replication": {
+              "description": "Required. Desired name for the replication of this volume.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description": "The Hybrid Replication parameters for the volume.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "restore_parameters": {
         "block": {
           "attributes": {

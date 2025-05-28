@@ -36,7 +36,7 @@ const googleApigeeAddonsConfig = `{
                     "type": "bool"
                   }
                 },
-                "description": "Configuration for the Monetization add-on.",
+                "description": "Configuration for the Advanced API Ops add-on.",
                 "description_kind": "plain"
               },
               "max_items": 1,
@@ -46,19 +46,19 @@ const googleApigeeAddonsConfig = `{
               "block": {
                 "attributes": {
                   "enabled": {
-                    "description": "Flag that specifies whether the Advanced API Ops add-on is enabled.",
+                    "description": "Flag that specifies whether the API security add-on is enabled.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "bool"
                   },
                   "expires_at": {
                     "computed": true,
-                    "description": "Flag that specifies whether the Advanced API Ops add-on is enabled.",
+                    "description": "Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.",
                     "description_kind": "plain",
                     "type": "string"
                   }
                 },
-                "description": "Configuration for the Monetization add-on.",
+                "description": "Configuration for the API Security add-on.",
                 "description_kind": "plain"
               },
               "max_items": 1,
@@ -68,14 +68,14 @@ const googleApigeeAddonsConfig = `{
               "block": {
                 "attributes": {
                   "enabled": {
-                    "description": "Flag that specifies whether the Advanced API Ops add-on is enabled.",
+                    "description": "Flag that specifies whether the Connectors Platform add-on is enabled.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "bool"
                   },
                   "expires_at": {
                     "computed": true,
-                    "description": "Flag that specifies whether the Advanced API Ops add-on is enabled.",
+                    "description": "Time at which the Connectors Platform add-on expires in milliseconds since epoch. If unspecified, the add-on will never expire.",
                     "description_kind": "plain",
                     "type": "string"
                   }
@@ -90,13 +90,13 @@ const googleApigeeAddonsConfig = `{
               "block": {
                 "attributes": {
                   "enabled": {
-                    "description": "Flag that specifies whether the Advanced API Ops add-on is enabled.",
+                    "description": "Flag that specifies whether the Integration add-on is enabled.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "bool"
                   }
                 },
-                "description": "Configuration for the Monetization add-on.",
+                "description": "Configuration for the Integration add-on.",
                 "description_kind": "plain"
               },
               "max_items": 1,
@@ -106,7 +106,7 @@ const googleApigeeAddonsConfig = `{
               "block": {
                 "attributes": {
                   "enabled": {
-                    "description": "Flag that specifies whether the Advanced API Ops add-on is enabled.",
+                    "description": "Flag that specifies whether the Monetization add-on is enabled.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "bool"

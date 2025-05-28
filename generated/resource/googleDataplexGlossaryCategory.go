@@ -6,18 +6,29 @@ import (
 	tfjson "github.com/hashicorp/terraform-json"
 )
 
-const googleDatabaseMigrationServicePrivateConnection = `{
+const googleDataplexGlossaryCategory = `{
   "block": {
     "attributes": {
-      "create_without_validation": {
-        "description": "If set to true, will skip validations.",
+      "category_id": {
+        "description": "The category id for creation.",
         "description_kind": "plain",
         "optional": true,
-        "type": "bool"
+        "type": "string"
+      },
+      "create_time": {
+        "computed": true,
+        "description": "The time at which the GlossaryCategory was created.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "description": {
+        "description": "The user-mutable description of the GlossaryCategory.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
       },
       "display_name": {
-        "computed": true,
-        "description": "Display name.",
+        "description": "User friendly display name of the GlossaryCategory. This is user-mutable. This will be same as the categoryId, if not specified.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -31,23 +42,11 @@ const googleDatabaseMigrationServicePrivateConnection = `{
           "string"
         ]
       },
-      "error": {
-        "computed": true,
-        "description": "The PrivateConnection error in case of failure.",
+      "glossary_id": {
+        "description": "The glossary id for creation.",
         "description_kind": "plain",
-        "type": [
-          "list",
-          [
-            "object",
-            {
-              "details": [
-                "map",
-                "string"
-              ],
-              "message": "string"
-            }
-          ]
-        ]
+        "optional": true,
+        "type": "string"
       },
       "id": {
         "computed": true,
@@ -56,7 +55,7 @@ const googleDatabaseMigrationServicePrivateConnection = `{
         "type": "string"
       },
       "labels": {
-        "description": "Labels.\n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
+        "description": "User-defined labels for the GlossaryCategory.\n\n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
         "description_kind": "plain",
         "optional": true,
         "type": [
@@ -65,19 +64,19 @@ const googleDatabaseMigrationServicePrivateConnection = `{
         ]
       },
       "location": {
-        "description": "The name of the location this private connection is located in.",
+        "description": "The location where the glossary category should reside.",
         "description_kind": "plain",
         "required": true,
         "type": "string"
       },
       "name": {
         "computed": true,
-        "description": "The resource's name.",
+        "description": "The resource name of the GlossaryCategory. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/categories/{categoryId}",
         "description_kind": "plain",
         "type": "string"
       },
-      "private_connection_id": {
-        "description": "The private connectivity identifier.",
+      "parent": {
+        "description": "The immediate parent of the GlossaryCategory in the resource-hierarchy. It can either be a Glossary or a Category. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId} OR projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/categories/{categoryId}",
         "description_kind": "plain",
         "required": true,
         "type": "string"
@@ -88,12 +87,6 @@ const googleDatabaseMigrationServicePrivateConnection = `{
         "optional": true,
         "type": "string"
       },
-      "state": {
-        "computed": true,
-        "description": "State of the PrivateConnection.",
-        "description_kind": "plain",
-        "type": "string"
-      },
       "terraform_labels": {
         "computed": true,
         "description": "The combination of labels configured directly on the resource\n and default labels configured on the provider.",
@@ -102,6 +95,18 @@ const googleDatabaseMigrationServicePrivateConnection = `{
           "map",
           "string"
         ]
+      },
+      "uid": {
+        "computed": true,
+        "description": "System generated unique id for the GlossaryCategory. This ID will be different if the GlossaryCategory is deleted and re-created with the same name.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "update_time": {
+        "computed": true,
+        "description": "The time at which the GlossaryCategory was last updated.",
+        "description_kind": "plain",
+        "type": "string"
       }
     },
     "block_types": {
@@ -127,29 +132,6 @@ const googleDatabaseMigrationServicePrivateConnection = `{
           "description_kind": "plain"
         },
         "nesting_mode": "single"
-      },
-      "vpc_peering_config": {
-        "block": {
-          "attributes": {
-            "subnet": {
-              "description": "A free subnet for peering. (CIDR of /29)",
-              "description_kind": "plain",
-              "required": true,
-              "type": "string"
-            },
-            "vpc_name": {
-              "description": "Fully qualified name of the VPC that Database Migration Service will peer to.\nFormat: projects/{project}/global/{networks}/{name}",
-              "description_kind": "plain",
-              "required": true,
-              "type": "string"
-            }
-          },
-          "description": "The VPC Peering configuration is used to create VPC peering\nbetween databasemigrationservice and the consumer's VPC.",
-          "description_kind": "plain"
-        },
-        "max_items": 1,
-        "min_items": 1,
-        "nesting_mode": "list"
       }
     },
     "description_kind": "plain"
@@ -157,8 +139,8 @@ const googleDatabaseMigrationServicePrivateConnection = `{
   "version": 0
 }`
 
-func GoogleDatabaseMigrationServicePrivateConnectionSchema() *tfjson.Schema {
+func GoogleDataplexGlossaryCategorySchema() *tfjson.Schema {
 	var result tfjson.Schema
-	_ = json.Unmarshal([]byte(googleDatabaseMigrationServicePrivateConnection), &result)
+	_ = json.Unmarshal([]byte(googleDataplexGlossaryCategory), &result)
 	return &result
 }

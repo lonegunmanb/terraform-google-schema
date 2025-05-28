@@ -52,6 +52,7 @@ const googleGeminiReleaseChannelSettingBinding = `{
         "type": "string"
       },
       "product": {
+        "computed": true,
         "description": "Product type of the setting binding. Possible values: [\"GEMINI_CLOUD_ASSIST\", \"GEMINI_CODE_ASSIST\"]",
         "description_kind": "plain",
         "optional": true,

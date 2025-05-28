@@ -54,6 +54,32 @@ const googleNetappVolumeReplication = `{
         "description_kind": "plain",
         "type": "bool"
       },
+      "hybrid_peering_details": {
+        "computed": true,
+        "description": "HybridPeeringDetails contains details about the hybrid peering.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "command": "string",
+              "command_expiry_time": "string",
+              "passphrase": "string",
+              "peer_cluster_name": "string",
+              "peer_svm_name": "string",
+              "peer_volume_name": "string",
+              "subnet_ip": "string"
+            }
+          ]
+        ]
+      },
+      "hybrid_replication_type": {
+        "computed": true,
+        "description": "Hybrid replication type.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",

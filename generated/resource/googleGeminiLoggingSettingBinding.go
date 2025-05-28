@@ -58,6 +58,7 @@ const googleGeminiLoggingSettingBinding = `{
         "type": "string"
       },
       "product": {
+        "computed": true,
         "description": "Product type of the setting binding. Possible values: [\"GEMINI_CODE_ASSIST\"]",
         "description_kind": "plain",
         "optional": true,

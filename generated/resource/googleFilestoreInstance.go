@@ -266,7 +266,7 @@ const googleFilestoreInstance = `{
         "block": {
           "attributes": {
             "connect_mode": {
-              "description": "The network connect mode of the Filestore instance.\nIf not provided, the connect mode defaults to\nDIRECT_PEERING. Default value: \"DIRECT_PEERING\" Possible values: [\"DIRECT_PEERING\", \"PRIVATE_SERVICE_ACCESS\"]",
+              "description": "The network connect mode of the Filestore instance.\nIf not provided, the connect mode defaults to\nDIRECT_PEERING. Default value: \"DIRECT_PEERING\" Possible values: [\"DIRECT_PEERING\", \"PRIVATE_SERVICE_ACCESS\", \"PRIVATE_SERVICE_CONNECT\"]",
               "description_kind": "plain",
               "optional": true,
               "type": "string"

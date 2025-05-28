@@ -260,6 +260,67 @@ const googleStorageBucket = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "ip_filter": {
+        "block": {
+          "attributes": {
+            "mode": {
+              "description": "The mode of the IP filter. Valid values are 'Enabled' and 'Disabled'.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "block_types": {
+            "public_network_source": {
+              "block": {
+                "attributes": {
+                  "allowed_ip_cidr_ranges": {
+                    "description": "The list of public IPv4, IPv6 cidr ranges that are allowed to access the bucket.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": [
+                      "list",
+                      "string"
+                    ]
+                  }
+                },
+                "description": "The public network IP address ranges that can access the bucket and its data.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "vpc_network_sources": {
+              "block": {
+                "attributes": {
+                  "allowed_ip_cidr_ranges": {
+                    "description": "The list of public or private IPv4 and IPv6 CIDR ranges that can access the bucket.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": [
+                      "list",
+                      "string"
+                    ]
+                  },
+                  "network": {
+                    "description": "Name of the network. Format: projects/{PROJECT_ID}/global/networks/{NETWORK_NAME}",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "description": "The list of VPC networks that can access the bucket.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            }
+          },
+          "description": "The bucket IP filtering configuration.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "lifecycle_rule": {
         "block": {
           "block_types": {

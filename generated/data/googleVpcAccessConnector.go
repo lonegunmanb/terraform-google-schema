@@ -38,7 +38,7 @@ const googleVpcAccessConnector = `{
       },
       "max_instances": {
         "computed": true,
-        "description": "Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be\nhigher than the value specified by min_instances.",
+        "description": "Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be\nhigher than the value specified by min_instances. Required alongside 'min_instances' if not using 'min_throughput'/'max_throughput'.",
         "description_kind": "plain",
         "type": "number"
       },
@@ -50,7 +50,7 @@ const googleVpcAccessConnector = `{
       },
       "min_instances": {
         "computed": true,
-        "description": "Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be\nlower than the value specified by max_instances.",
+        "description": "Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be\nlower than the value specified by max_instances. Required alongside 'max_instances' if not using 'min_throughput'/'max_throughput'.",
         "description_kind": "plain",
         "type": "number"
       },

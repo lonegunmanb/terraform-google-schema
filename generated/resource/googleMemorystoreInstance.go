@@ -36,6 +36,7 @@ const googleMemorystoreInstance = `{
       },
       "discovery_endpoints": {
         "computed": true,
+        "deprecated": true,
         "description": "Output only. Endpoints clients can connect to the instance through. Currently only one\ndiscovery endpoint is supported.",
         "description_kind": "plain",
         "type": [
@@ -212,6 +213,7 @@ const googleMemorystoreInstance = `{
       },
       "psc_auto_connections": {
         "computed": true,
+        "deprecated": true,
         "description": "Output only. User inputs and resource details of the auto-created PSC connections.",
         "description_kind": "plain",
         "type": [
@@ -452,6 +454,27 @@ const googleMemorystoreInstance = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "desired_auto_created_endpoints": {
+        "block": {
+          "attributes": {
+            "network": {
+              "description": "Required. The consumer network where the IP address resides, in the form of\nprojects/{project_id}/global/networks/{network_id}.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            },
+            "project_id": {
+              "description": "Required. The consumer project_id where the forwarding rule is created from.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "Immutable. User inputs for the auto-created endpoints connections.",
+          "description_kind": "plain"
+        },
+        "nesting_mode": "list"
+      },
       "desired_psc_auto_connections": {
         "block": {
           "attributes": {
@@ -468,7 +491,8 @@ const googleMemorystoreInstance = `{
               "type": "string"
             }
           },
-          "description": "Immutable. User inputs for the auto-created PSC connections.",
+          "deprecated": true,
+          "description": "'desired_psc_auto_connections' is deprecated  Use 'desired_auto_created_endpoints' instead.",
           "description_kind": "plain"
         },
         "nesting_mode": "list"
