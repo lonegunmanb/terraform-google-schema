@@ -1906,6 +1906,20 @@ const googleContainerCluster = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "pod_autoscaling": {
+        "computed": true,
+        "description": "PodAutoscaling is used for configuration of parameters for workload autoscaling",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "hpa_profile": "string"
+            }
+          ]
+        ]
+      },
       "private_cluster_config": {
         "computed": true,
         "description": "Configuration for private clusters, clusters with private nodes.",

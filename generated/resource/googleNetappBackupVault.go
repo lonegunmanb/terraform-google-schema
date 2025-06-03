@@ -111,6 +111,46 @@ const googleNetappBackupVault = `{
       }
     },
     "block_types": {
+      "backup_retention_policy": {
+        "block": {
+          "attributes": {
+            "backup_minimum_enforced_retention_days": {
+              "description": "Minimum retention duration in days for backups in the backup vault.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "number"
+            },
+            "daily_backup_immutable": {
+              "description": "Indicates if the daily backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
+            "manual_backup_immutable": {
+              "description": "Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
+            "monthly_backup_immutable": {
+              "description": "Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
+            "weekly_backup_immutable": {
+              "description": "Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            }
+          },
+          "description": "Backup retention policy defining the retention of the backups.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {

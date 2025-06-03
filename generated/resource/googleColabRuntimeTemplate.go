@@ -281,6 +281,7 @@ const googleColabRuntimeTemplate = `{
                     "type": "string"
                   }
                 },
+                "deprecated": true,
                 "description": "Post startup script config.",
                 "description_kind": "plain"
               },

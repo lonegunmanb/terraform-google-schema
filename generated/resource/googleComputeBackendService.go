@@ -693,7 +693,7 @@ const googleComputeBackendService = `{
               "type": "bool"
             },
             "optional_fields": {
-              "description": "This field can only be specified if logging is enabled for this backend service and \"logConfig.optionalMode\"\nwas set to CUSTOM. Contains a list of optional fields you want to include in the logs.\nFor example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace",
+              "description": "This field can only be specified if logging is enabled for this backend service and \"logConfig.optionalMode\"\nwas set to CUSTOM. Contains a list of optional fields you want to include in the logs.\nFor example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace\nFor example: orca_load_report, tls.protocol",
               "description_kind": "plain",
               "optional": true,
               "type": [

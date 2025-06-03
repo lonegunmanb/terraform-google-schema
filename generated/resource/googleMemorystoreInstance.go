@@ -501,7 +501,7 @@ const googleMemorystoreInstance = `{
         "block": {
           "attributes": {
             "uris": {
-              "description": "URIs of the GCS objects to import.\nExample: gs://bucket1/object1, gs//bucket2/folder2/object2",
+              "description": "URIs of the GCS objects to import.\nExample: gs://bucket1/object1, gs://bucket2/folder2/object2",
               "description_kind": "plain",
               "required": true,
               "type": [
@@ -602,7 +602,7 @@ const googleMemorystoreInstance = `{
         "block": {
           "attributes": {
             "backup": {
-              "description": "Example: //memorystore.googleapis.com/projects/{project}/locations/{location}/backups/{backupId}. In this case, it assumes the backup is under memorystore.googleapis.com.",
+              "description": "Example: 'projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}'.",
               "description_kind": "plain",
               "required": true,
               "type": "string"

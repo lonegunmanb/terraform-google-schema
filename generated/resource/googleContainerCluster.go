@@ -3696,6 +3696,22 @@ const googleContainerCluster = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "pod_autoscaling": {
+        "block": {
+          "attributes": {
+            "hpa_profile": {
+              "description": "\n\t\t\t\t\t\t\t\tHPA Profile is used to configure the Horizontal Pod Autoscaler (HPA) profile for the cluster.\n\t\t\t\t\t\t\t\tAvailable options include:\n\t\t\t\t\t\t\t\t- NONE: Customers explicitly opt-out of HPA profiles.\n\t\t\t\t\t\t\t\t- PERFORMANCE: PERFORMANCE is used when customers opt-in to the performance HPA profile. In this profile we support a higher number of HPAs per cluster and faster metrics collection for workload autoscaling.\n\t\t\t\t\t\t\t",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "PodAutoscaling is used for configuration of parameters for workload autoscaling",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "private_cluster_config": {
         "block": {
           "attributes": {

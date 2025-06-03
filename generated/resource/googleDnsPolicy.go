@@ -79,6 +79,33 @@ const googleDnsPolicy = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "dns64_config": {
+        "block": {
+          "block_types": {
+            "scope": {
+              "block": {
+                "attributes": {
+                  "all_queries": {
+                    "description": "Controls whether DNS64 is enabled globally at the network level.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  }
+                },
+                "description": "The scope to which DNS64 config will be applied to.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "min_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Configurations related to DNS64 for this Policy.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "networks": {
         "block": {
           "attributes": {

@@ -57,6 +57,7 @@ const googleFilestoreInstance = `{
                   "object",
                   {
                     "last_active_sync_time": "string",
+                    "peer_instance": "string",
                     "state": "string",
                     "state_reasons": [
                       "list",
@@ -64,7 +65,8 @@ const googleFilestoreInstance = `{
                     ]
                   }
                 ]
-              ]
+              ],
+              "role": "string"
             }
           ]
         ]
@@ -256,7 +258,7 @@ const googleFilestoreInstance = `{
               "nesting_mode": "list"
             }
           },
-          "description": "Replication configuration, once set, this cannot be updated.\nAddtionally this should be specified on the replica instance only, indicating the active as the peer_instance",
+          "description": "Replication configuration, once set, this cannot be updated.\nAdditionally this should be specified on the replica instance only, indicating the active as the peer_instance",
           "description_kind": "plain"
         },
         "max_items": 1,

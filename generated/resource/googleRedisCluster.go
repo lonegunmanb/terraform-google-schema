@@ -472,7 +472,7 @@ const googleRedisCluster = `{
         "block": {
           "attributes": {
             "backup": {
-              "description": "Example: //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup} A shorter version (without the prefix) of the backup name is also supported,\nlike projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backupId}. In this case, it assumes the backup is under redis.googleapis.com.",
+              "description": "Example: 'projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}'.",
               "description_kind": "plain",
               "required": true,
               "type": "string"

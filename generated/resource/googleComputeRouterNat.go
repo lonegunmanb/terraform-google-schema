@@ -131,6 +131,12 @@ const googleComputeRouterNat = `{
         "required": true,
         "type": "string"
       },
+      "source_subnetwork_ip_ranges_to_nat64": {
+        "description": "Specify the Nat option for NAT64, which can take one of the following values:\nALL_IPV6_SUBNETWORKS: All of the IP ranges in every Subnetwork are allowed to Nat.\nLIST_OF_IPV6_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field nat64Subnetwork below).\nNote that if this field contains NAT64_ALL_V6_SUBNETWORKS no other Router.Nat section in this region can also enable NAT64 for any Subnetworks in this network.\nOther Router.Nat sections can still be present to enable NAT44 only. Possible values: [\"ALL_IPV6_SUBNETWORKS\", \"LIST_OF_IPV6_SUBNETWORKS\"]",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "tcp_established_idle_timeout_sec": {
         "description": "Timeout (in seconds) for TCP established connections.\nDefaults to 1200s if not set.",
         "description_kind": "plain",
@@ -184,6 +190,21 @@ const googleComputeRouterNat = `{
         },
         "max_items": 1,
         "nesting_mode": "list"
+      },
+      "nat64_subnetwork": {
+        "block": {
+          "attributes": {
+            "name": {
+              "description": "Self-link of the subnetwork resource that will use NAT64",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.\nOnly used if 'source_subnetwork_ip_ranges_to_nat64' is set to 'LIST_OF_IPV6_SUBNETWORKS'",
+          "description_kind": "plain"
+        },
+        "nesting_mode": "set"
       },
       "rules": {
         "block": {

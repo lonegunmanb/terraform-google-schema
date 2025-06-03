@@ -104,6 +104,22 @@ const googleDatastreamPrivateConnection = `{
       }
     },
     "block_types": {
+      "psc_interface_config": {
+        "block": {
+          "attributes": {
+            "network_attachment": {
+              "description": "Fully qualified name of the network attachment that Datastream will connect to.\nFormat: projects/{project}/regions/{region}/networkAttachments/{name}\n\nTo get Datastream project for the accepted list:\n'gcloud datastream private-connections create [PC ID] --location=[LOCATION] --network-attachment=[NA URI] --validate-only --display-name=[ANY STRING]'\nAdd Datastream project to the attachment accepted list:\n'gcloud compute network-attachments update [NA URI] --region=[NA region] --producer-accept-list=[TP from prev command]'",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "The PSC Interface configuration is used to create PSC Interface\nbetween Datastream and the consumer's PSC.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {
@@ -147,7 +163,6 @@ const googleDatastreamPrivateConnection = `{
           "description_kind": "plain"
         },
         "max_items": 1,
-        "min_items": 1,
         "nesting_mode": "list"
       }
     },

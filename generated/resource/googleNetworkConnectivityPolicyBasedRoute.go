@@ -127,7 +127,7 @@ const googleNetworkConnectivityPolicyBasedRoute = `{
         "block": {
           "attributes": {
             "dest_range": {
-              "description": "The destination IP range of outgoing packets that this policy-based route applies to. Default is \"0.0.0.0/0\" if protocol version is IPv4.",
+              "description": "The destination IP range of outgoing packets that this policy-based route applies to. Default is \"0.0.0.0/0\".",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
@@ -139,13 +139,13 @@ const googleNetworkConnectivityPolicyBasedRoute = `{
               "type": "string"
             },
             "protocol_version": {
-              "description": "Internet protocol versions this policy-based route applies to. Possible values: [\"IPV4\"]",
+              "description": "Internet protocol versions this policy-based route applies to. Possible values: [\"IPV4\", \"IPV6\"]",
               "description_kind": "plain",
               "required": true,
               "type": "string"
             },
             "src_range": {
-              "description": "The source IP range of outgoing packets that this policy-based route applies to. Default is \"0.0.0.0/0\" if protocol version is IPv4.",
+              "description": "The source IP range of outgoing packets that this policy-based route applies to. Default is \"0.0.0.0/0\".",
               "description_kind": "plain",
               "optional": true,
               "type": "string"

@@ -317,6 +317,12 @@ const googleComputeRegionInstanceTemplate = `{
           ]
         ]
       },
+      "numeric_id": {
+        "computed": true,
+        "description": "The ID of the template in numeric format.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "project": {
         "description": "The ID of the project in which the resource belongs. If it is not provided, the provider project is used.",
         "description_kind": "plain",
