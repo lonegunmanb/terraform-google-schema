@@ -271,6 +271,45 @@ const googlePubsubSubscription = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "message_transforms": {
+        "block": {
+          "attributes": {
+            "disabled": {
+              "description": "Controls whether or not to use this transform. If not set or 'false',\nthe transform will be applied to messages. Default: 'true'.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            }
+          },
+          "block_types": {
+            "javascript_udf": {
+              "block": {
+                "attributes": {
+                  "code": {
+                    "description": "JavaScript code that contains a function 'function_name' with the\nfollowing signature:\n'''\n  /**\n  * Transforms a Pub/Sub message.\n  *\n  * @return {(Object\u003cstring, (string | Object\u003cstring, string\u003e)\u003e|null)} - To\n  * filter a message, return 'null'. To transform a message return a map\n  * with the following keys:\n  *   - (required) 'data' : {string}\n  *   - (optional) 'attributes' : {Object\u003cstring, string\u003e}\n  * Returning empty 'attributes' will remove all attributes from the\n  * message.\n  *\n  * @param  {(Object\u003cstring, (string | Object\u003cstring, string\u003e)\u003e} Pub/Sub\n  * message. Keys:\n  *   - (required) 'data' : {string}\n  *   - (required) 'attributes' : {Object\u003cstring, string\u003e}\n  *\n  * @param  {Object\u003cstring, any\u003e} metadata - Pub/Sub message metadata.\n  * Keys:\n  *   - (required) 'message_id'  : {string}\n  *   - (optional) 'publish_time': {string} YYYY-MM-DDTHH:MM:SSZ format\n  *   - (optional) 'ordering_key': {string}\n  */\n  function \u003cfunction_name\u003e(message, metadata) {\n  }\n'''",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "function_name": {
+                    "description": "Name of the JavaScript function that should be applied to Pub/Sub messages.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,\neach one must have a unique 'function_name'.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Transforms to be applied to messages published to the topic. Transforms are applied in the\norder specified.",
+          "description_kind": "plain"
+        },
+        "nesting_mode": "list"
+      },
       "push_config": {
         "block": {
           "attributes": {

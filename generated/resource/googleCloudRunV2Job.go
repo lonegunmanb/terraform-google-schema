@@ -359,6 +359,15 @@ const googleCloudRunV2Job = `{
                             "string"
                           ]
                         },
+                        "depends_on": {
+                          "description": "Names of the containers that must start before this container.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
+                            "string"
+                          ]
+                        },
                         "image": {
                           "description": "URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images",
                           "description_kind": "plain",
@@ -470,6 +479,128 @@ const googleCloudRunV2Job = `{
                               }
                             },
                             "description": "Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
+                        "startup_probe": {
+                          "block": {
+                            "attributes": {
+                              "failure_threshold": {
+                                "description": "Minimum consecutive failures for the probe to be considered failed after\nhaving succeeded. Defaults to 3. Minimum value is 1.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "number"
+                              },
+                              "initial_delay_seconds": {
+                                "description": "Number of seconds after the container has started before the probe is\ninitiated.\nDefaults to 0 seconds. Minimum value is 0. Maximum value is 240.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "number"
+                              },
+                              "period_seconds": {
+                                "description": "How often (in seconds) to perform the probe.\nDefault to 10 seconds. Minimum value is 1. Maximum value is 240.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "number"
+                              },
+                              "timeout_seconds": {
+                                "description": "Number of seconds after which the probe times out.\nDefaults to 1 second. Minimum value is 1. Maximum value is 3600.\nMust be smaller than periodSeconds.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "number"
+                              }
+                            },
+                            "block_types": {
+                              "grpc": {
+                                "block": {
+                                  "attributes": {
+                                    "port": {
+                                      "computed": true,
+                                      "description": "Port number to access on the container. Number must be in the range 1 to 65535.\nIf not specified, defaults to the same value as container.ports[0].containerPort.",
+                                      "description_kind": "plain",
+                                      "optional": true,
+                                      "type": "number"
+                                    },
+                                    "service": {
+                                      "description": "The name of the service to place in the gRPC HealthCheckRequest\n(see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).\nIf this is not specified, the default behavior is defined by gRPC.",
+                                      "description_kind": "plain",
+                                      "optional": true,
+                                      "type": "string"
+                                    }
+                                  },
+                                  "description": "GRPC specifies an action involving a GRPC port.",
+                                  "description_kind": "plain"
+                                },
+                                "max_items": 1,
+                                "nesting_mode": "list"
+                              },
+                              "http_get": {
+                                "block": {
+                                  "attributes": {
+                                    "path": {
+                                      "description": "Path to access on the HTTP server. If set, it should not be empty string.",
+                                      "description_kind": "plain",
+                                      "optional": true,
+                                      "type": "string"
+                                    },
+                                    "port": {
+                                      "computed": true,
+                                      "description": "Port number to access on the container. Number must be in the range 1 to 65535.\nIf not specified, defaults to the same value as container.ports[0].containerPort.",
+                                      "description_kind": "plain",
+                                      "optional": true,
+                                      "type": "number"
+                                    }
+                                  },
+                                  "block_types": {
+                                    "http_headers": {
+                                      "block": {
+                                        "attributes": {
+                                          "name": {
+                                            "description": "The header field name.",
+                                            "description_kind": "plain",
+                                            "required": true,
+                                            "type": "string"
+                                          },
+                                          "value": {
+                                            "description": "The header field value.",
+                                            "description_kind": "plain",
+                                            "optional": true,
+                                            "type": "string"
+                                          }
+                                        },
+                                        "description": "Custom headers to set in the request. HTTP allows repeated headers.",
+                                        "description_kind": "plain"
+                                      },
+                                      "nesting_mode": "list"
+                                    }
+                                  },
+                                  "description": "HttpGet specifies the http request to perform.",
+                                  "description_kind": "plain"
+                                },
+                                "max_items": 1,
+                                "nesting_mode": "list"
+                              },
+                              "tcp_socket": {
+                                "block": {
+                                  "attributes": {
+                                    "port": {
+                                      "computed": true,
+                                      "description": "Port number to access on the container. Number must be in the range 1 to 65535.\nIf not specified, defaults to the same value as container.ports[0].containerPort.",
+                                      "description_kind": "plain",
+                                      "optional": true,
+                                      "type": "number"
+                                    }
+                                  },
+                                  "description": "TcpSocket specifies an action involving a TCP port.",
+                                  "description_kind": "plain"
+                                },
+                                "max_items": 1,
+                                "nesting_mode": "list"
+                              }
+                            },
+                            "description": "Startup probe of application within the container.\nAll other probes are disabled if a startup probe is provided, until it\nsucceeds. Container will not be added to service endpoints if the probe fails.",
                             "description_kind": "plain"
                           },
                           "max_items": 1,

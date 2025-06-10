@@ -729,6 +729,25 @@ const googleGkeHubFeature = `{
               },
               "max_items": 1,
               "nesting_mode": "list"
+            },
+            "rbacrolebindingactuation": {
+              "block": {
+                "attributes": {
+                  "allowed_custom_roles": {
+                    "description": "The list of allowed custom roles (ClusterRoles). If a custom role is not part of this list, it cannot be used in a fleet scope RBACRoleBinding. If a custom role in this list is in use, it cannot be removed from the list until the scope RBACRolebindings using it are deleted.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": [
+                      "list",
+                      "string"
+                    ]
+                  }
+                },
+                "description": "RBACRolebinding Actuation feature spec.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
             }
           },
           "description": "Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.",

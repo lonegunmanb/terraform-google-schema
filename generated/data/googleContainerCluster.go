@@ -882,6 +882,20 @@ const googleContainerCluster = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "network_performance_config": {
+        "computed": true,
+        "description": "Network bandwidth tier configuration.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "total_egress_bandwidth_tier": "string"
+            }
+          ]
+        ]
+      },
       "network_policy": {
         "computed": true,
         "description": "Configuration options for the NetworkPolicy feature.",
@@ -1003,6 +1017,7 @@ const googleContainerCluster = `{
                   }
                 ]
               ],
+              "flex_start": "bool",
               "gcfs_config": [
                 "list",
                 [
@@ -1443,6 +1458,7 @@ const googleContainerCluster = `{
                         }
                       ]
                     ],
+                    "flex_start": "bool",
                     "gcfs_config": [
                       "list",
                       [

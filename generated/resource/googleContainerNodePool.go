@@ -260,7 +260,7 @@ const googleContainerNodePool = `{
               "block": {
                 "attributes": {
                   "total_egress_bandwidth_tier": {
-                    "description": "Specifies the total network bandwidth tier for the NodePool.",
+                    "description": "Specifies the total network bandwidth tier for the NodePool. [Valid values](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.Tier) include: \"TIER_1\" and \"TIER_UNSPECIFIED\".",
                     "description_kind": "plain",
                     "required": true,
                     "type": "string"
@@ -335,6 +335,12 @@ const googleContainerNodePool = `{
             },
             "enable_confidential_storage": {
               "description": "If enabled boot disks are configured with confidential mode.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
+            "flex_start": {
+              "description": "Enables Flex Start provisioning model for the node pool",
               "description_kind": "plain",
               "optional": true,
               "type": "bool"
@@ -1079,7 +1085,7 @@ const googleContainerNodePool = `{
               "type": "string"
             },
             "tpu_topology": {
-              "description": "TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies",
+              "description": "The TPU topology like \"2x4\" or \"2x2x2\". https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology",
               "description_kind": "plain",
               "optional": true,
               "type": "string"

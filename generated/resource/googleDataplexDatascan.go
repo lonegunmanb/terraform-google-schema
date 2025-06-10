@@ -239,6 +239,12 @@ const googleDataplexDatascan = `{
       "data_quality_spec": {
         "block": {
           "attributes": {
+            "catalog_publishing_enabled": {
+              "description": "If set, the latest DataScan job result will be published to Dataplex Catalog.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
             "row_filter": {
               "description": "A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 \u003e= 0 AND col2 \u003c 10",
               "description_kind": "plain",

@@ -242,6 +242,10 @@ const googleCloudRunV2Job = `{
                             "list",
                             "string"
                           ],
+                          "depends_on": [
+                            "list",
+                            "string"
+                          ],
                           "env": [
                             "set",
                             [
@@ -291,6 +295,57 @@ const googleCloudRunV2Job = `{
                                   "map",
                                   "string"
                                 ]
+                              }
+                            ]
+                          ],
+                          "startup_probe": [
+                            "list",
+                            [
+                              "object",
+                              {
+                                "failure_threshold": "number",
+                                "grpc": [
+                                  "list",
+                                  [
+                                    "object",
+                                    {
+                                      "port": "number",
+                                      "service": "string"
+                                    }
+                                  ]
+                                ],
+                                "http_get": [
+                                  "list",
+                                  [
+                                    "object",
+                                    {
+                                      "http_headers": [
+                                        "list",
+                                        [
+                                          "object",
+                                          {
+                                            "name": "string",
+                                            "value": "string"
+                                          }
+                                        ]
+                                      ],
+                                      "path": "string",
+                                      "port": "number"
+                                    }
+                                  ]
+                                ],
+                                "initial_delay_seconds": "number",
+                                "period_seconds": "number",
+                                "tcp_socket": [
+                                  "list",
+                                  [
+                                    "object",
+                                    {
+                                      "port": "number"
+                                    }
+                                  ]
+                                ],
+                                "timeout_seconds": "number"
                               }
                             ]
                           ],

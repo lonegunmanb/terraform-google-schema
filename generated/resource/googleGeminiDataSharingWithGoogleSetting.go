@@ -30,8 +30,14 @@ const googleGeminiDataSharingWithGoogleSetting = `{
           "string"
         ]
       },
+      "enable_data_sharing": {
+        "description": "Whether data sharing should be enabled in GA products.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "enable_preview_data_sharing": {
-        "description": "Whether preview data sharing should be enabled.",
+        "description": "Whether data sharing should be enabled in Preview products.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"

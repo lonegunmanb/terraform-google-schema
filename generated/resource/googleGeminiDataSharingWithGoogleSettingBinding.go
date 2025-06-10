@@ -59,7 +59,7 @@ const googleGeminiDataSharingWithGoogleSettingBinding = `{
       },
       "product": {
         "computed": true,
-        "description": "Product type of the setting binding. Possible values: [\"GEMINI_CLOUD_ASSIST\"]",
+        "description": "Product type of the setting binding. Values include GEMINI_IN_BIGQUERY, GEMINI_CLOUD_ASSIST, etc. See [product reference](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.dataSharingWithGoogleSettings.settingBindings) for a complete list.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"

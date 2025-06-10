@@ -15,6 +15,12 @@ const googleComputeInterconnectAttachment = `{
         "optional": true,
         "type": "bool"
       },
+      "attachment_group": {
+        "computed": true,
+        "description": "URL of the AttachmentGroup that includes this Attachment.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "bandwidth": {
         "computed": true,
         "description": "Provisioned bandwidth capacity for the interconnect attachment.\nFor attachments of type DEDICATED, the user can set the bandwidth.\nFor attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.\nOutput only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,\nDefaults to BPS_10G Possible values: [\"BPS_50M\", \"BPS_100M\", \"BPS_200M\", \"BPS_300M\", \"BPS_400M\", \"BPS_500M\", \"BPS_1G\", \"BPS_2G\", \"BPS_5G\", \"BPS_10G\", \"BPS_20G\", \"BPS_50G\", \"BPS_100G\"]",

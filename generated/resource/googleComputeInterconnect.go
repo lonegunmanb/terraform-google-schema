@@ -118,6 +118,15 @@ const googleComputeInterconnect = `{
           "string"
         ]
       },
+      "interconnect_groups": {
+        "computed": true,
+        "description": "URLs of InterconnectGroups that include this Interconnect.\nOrder is arbitrary and items are unique.",
+        "description_kind": "plain",
+        "type": [
+          "set",
+          "string"
+        ]
+      },
       "interconnect_type": {
         "description": "Type of interconnect. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.\nCan take one of the following values:\n  - PARTNER: A partner-managed interconnection shared between customers though a partner.\n  - DEDICATED: A dedicated physical interconnection with the customer. Possible values: [\"DEDICATED\", \"PARTNER\", \"IT_PRIVATE\"]",
         "description_kind": "plain",

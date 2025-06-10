@@ -68,6 +68,38 @@ const googleApigeeEnvironment = `{
       }
     },
     "block_types": {
+      "client_ip_resolution_config": {
+        "block": {
+          "block_types": {
+            "header_index_algorithm": {
+              "block": {
+                "attributes": {
+                  "ip_header_index": {
+                    "description": "The index of the ip in the header. Positive indices 0, 1, 2, 3 chooses indices from the left (first ips). Negative indices -1, -2, -3 chooses indices from the right (last ips).",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "number"
+                  },
+                  "ip_header_name": {
+                    "description": "The name of the header to extract the client ip from. We are currently only supporting the X-Forwarded-For header.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Resolves the client ip based on a custom header.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: '{ \"clientIpResolutionConfig\" = {} }' For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "node_config": {
         "block": {
           "attributes": {

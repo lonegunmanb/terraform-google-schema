@@ -225,9 +225,9 @@ const googleEventarcPipeline = `{
               "block": {
                 "attributes": {
                   "network_attachment": {
-                    "description": "Name of the NetworkAttachment that allows access to the consumer VPC.\nFormat:\n'projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}'",
+                    "description": "Name of the NetworkAttachment that allows access to the consumer VPC.\n\nFormat:\n'projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}'\n\nRequired for HTTP endpoint destinations. Must not be specified for\nWorkflows, MessageBus, or Topic destinations.",
                     "description_kind": "plain",
-                    "required": true,
+                    "optional": true,
                     "type": "string"
                   }
                 },

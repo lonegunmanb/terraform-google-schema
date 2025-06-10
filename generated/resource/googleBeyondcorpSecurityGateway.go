@@ -15,6 +15,12 @@ const googleBeyondcorpSecurityGateway = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "delegating_service_account": {
+        "computed": true,
+        "description": "Service account used for operations that involve resources in consumer projects.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "display_name": {
         "description": "Optional. An arbitrary user-provided name for the SecurityGateway.\nCannot exceed 64 characters.",
         "description_kind": "plain",

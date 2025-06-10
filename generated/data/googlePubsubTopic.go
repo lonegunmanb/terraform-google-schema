@@ -171,6 +171,30 @@ const googlePubsubTopic = `{
           ]
         ]
       },
+      "message_transforms": {
+        "computed": true,
+        "description": "Transforms to be applied to messages published to the topic. Transforms are applied in the\norder specified.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "disabled": "bool",
+              "javascript_udf": [
+                "list",
+                [
+                  "object",
+                  {
+                    "code": "string",
+                    "function_name": "string"
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      },
       "name": {
         "description": "Name of the topic.",
         "description_kind": "plain",

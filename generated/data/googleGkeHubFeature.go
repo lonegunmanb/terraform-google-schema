@@ -370,6 +370,18 @@ const googleGkeHubFeature = `{
                     "config_membership": "string"
                   }
                 ]
+              ],
+              "rbacrolebindingactuation": [
+                "list",
+                [
+                  "object",
+                  {
+                    "allowed_custom_roles": [
+                      "list",
+                      "string"
+                    ]
+                  }
+                ]
               ]
             }
           ]

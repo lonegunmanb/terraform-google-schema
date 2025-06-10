@@ -15,6 +15,12 @@ const googleGeminiGeminiGcpEnablementSetting = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "disable_web_grounding": {
+        "description": "Whether web grounding should be disabled.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "effective_labels": {
         "computed": true,
         "description": "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.",

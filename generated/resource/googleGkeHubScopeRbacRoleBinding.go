@@ -121,6 +121,12 @@ const googleGkeHubScopeRbacRoleBinding = `{
       "role": {
         "block": {
           "attributes": {
+            "custom_role": {
+              "description": "CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "predefined_role": {
               "description": "PredefinedRole is an ENUM representation of the default Kubernetes Roles Possible values: [\"UNKNOWN\", \"ADMIN\", \"EDIT\", \"VIEW\"]",
               "description_kind": "plain",
