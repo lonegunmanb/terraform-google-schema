@@ -158,8 +158,24 @@ const googleNetworkConnectivityServiceConnectionPolicy = `{
       "psc_config": {
         "block": {
           "attributes": {
+            "allowed_google_producers_resource_hierarchy_level": {
+              "description": "List of Projects, Folders, or Organizations from where the Producer instance can be within. For example,\na network administrator can provide both 'organizations/foo' and 'projects/bar' as\nallowed_google_producers_resource_hierarchy_levels. This allowlists this network to connect with any Producer\ninstance within the 'foo' organization or the 'bar' project. By default,\nallowedGoogleProducersResourceHierarchyLevel is empty. The format for each\nallowedGoogleProducersResourceHierarchyLevel is / where is one of 'projects', 'folders', or 'organizations'\nand is either the ID or the number of the resource type. Format for each\nallowedGoogleProducersResourceHierarchyLevel value: 'projects/' or 'folders/' or 'organizations/' Eg.\n[projects/my-project-id, projects/567, folders/891, organizations/123]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
+            },
             "limit": {
               "description": "Max number of PSC connections for this policy.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "producer_instance_location": {
+              "computed": true,
+              "description": "ProducerInstanceLocation is used to specify which authorization mechanism to use to determine which projects\nthe Producer instance can be within. Possible values: [\"PRODUCER_INSTANCE_LOCATION_UNSPECIFIED\", \"CUSTOM_RESOURCE_HIERARCHY_LEVELS\"]",
               "description_kind": "plain",
               "optional": true,
               "type": "string"

@@ -36,6 +36,12 @@ const googleComputeTargetHttpsProxy = `{
         "optional": true,
         "type": "string"
       },
+      "fingerprint": {
+        "computed": true,
+        "description": "Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.\nThis field will be ignored when inserting a TargetHttpsProxy. An up-to-date fingerprint must be provided in order to\npatch the TargetHttpsProxy; otherwise, the request will fail with error 412 conditionNotMet.\nTo see the latest fingerprint, make a get() request to retrieve the TargetHttpsProxy.\nA base64-encoded string.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "http_keep_alive_timeout_sec": {
         "description": "Specifies how long to keep a connection open, after completing a response,\nwhile there is no matching traffic (in seconds). If an HTTP keepalive is\nnot specified, a default value will be used. For Global\nexternal HTTP(S) load balancer, the default value is 610 seconds, the\nminimum allowed value is 5 seconds and the maximum allowed value is 1200\nseconds. For cross-region internal HTTP(S) load balancer, the default\nvalue is 600 seconds, the minimum allowed value is 5 seconds, and the\nmaximum allowed value is 600 seconds. For Global external HTTP(S) load\nbalancer (classic), this option is not available publicly.",
         "description_kind": "plain",

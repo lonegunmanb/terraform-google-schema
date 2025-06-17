@@ -95,6 +95,12 @@ const googleVertexAiIndexEndpointDeployedIndex = `{
           ]
         ]
       },
+      "region": {
+        "description": "The region of the index endpoint deployment. eg us-central1",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "reserved_ip_ranges": {
         "description": "A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.\nIf set, we will deploy the index within the provided ip ranges. Otherwise, the index might be deployed to any ip ranges under the provided VPC network.\n\nThe value should be the name of the address (https://cloud.google.com/compute/docs/reference/rest/v1/addresses) Example: ['vertex-ai-ip-range'].\n\nFor more information about subnets and network IP ranges, please see https://cloud.google.com/vpc/docs/subnets#manually_created_subnet_ip_ranges.",
         "description_kind": "plain",

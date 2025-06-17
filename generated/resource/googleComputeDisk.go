@@ -17,6 +17,7 @@ const googleComputeDisk = `{
         "type": "string"
       },
       "architecture": {
+        "description": "The architecture of the disk. Values include 'X86_64', 'ARM64'.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"

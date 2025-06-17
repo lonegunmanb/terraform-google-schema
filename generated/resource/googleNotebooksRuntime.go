@@ -563,6 +563,7 @@ const googleNotebooksRuntime = `{
         "nesting_mode": "list"
       }
     },
+    "deprecated": true,
     "description_kind": "plain"
   },
   "version": 0

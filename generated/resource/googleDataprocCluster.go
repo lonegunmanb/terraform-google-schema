@@ -31,7 +31,7 @@ const googleDataprocCluster = `{
         "type": "string"
       },
       "labels": {
-        "description": "The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.\n\t\t\t\t\n\t\t\t\t**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\n\t\t\t\tPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
+        "description": "The list of the labels (key/value pairs) configured on the resource and to be applied to instances in the cluster.\n\n\t\t\t\t**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\n\t\t\t\tPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
         "description_kind": "plain",
         "optional": true,
         "type": [

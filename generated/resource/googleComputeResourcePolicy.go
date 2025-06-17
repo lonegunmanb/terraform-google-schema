@@ -78,6 +78,12 @@ const googleComputeResourcePolicy = `{
               "optional": true,
               "type": "string"
             },
+            "gpu_topology": {
+              "description": "Specifies the shape of the GPU slice, in slice based GPU families eg. A4X.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "vm_count": {
               "description": "Number of VMs in this placement group. Google does not recommend that you use this field\nunless you use a compact policy and you want your policy to work only if it contains this\nexact number of VMs.",
               "description_kind": "plain",
@@ -335,6 +341,34 @@ const googleComputeResourcePolicy = `{
           "description_kind": "plain"
         },
         "nesting_mode": "single"
+      },
+      "workload_policy": {
+        "block": {
+          "attributes": {
+            "accelerator_topology": {
+              "description": "The accelerator topology. This field can be set only when the workload policy type is HIGH_THROUGHPUT\nand cannot be set if max topology distance is set.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "max_topology_distance": {
+              "description": "The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT\nand cannot be set if accelerator topology is set. Possible values: [\"BLOCK\", \"CLUSTER\", \"SUBBLOCK\"]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "type": {
+              "description": "The type of workload policy. Possible values: [\"HIGH_AVAILABILITY\", \"HIGH_THROUGHPUT\"]",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "Represents the workload policy.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
       }
     },
     "description_kind": "plain"

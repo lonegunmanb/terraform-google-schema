@@ -85,6 +85,31 @@ const googleRedisCluster = `{
           ]
         ]
       },
+      "managed_server_ca": {
+        "computed": true,
+        "description": "Cluster's Certificate Authority. This field will only be populated if Redis Cluster's transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "ca_certs": [
+                "list",
+                [
+                  "object",
+                  {
+                    "certificates": [
+                      "list",
+                      "string"
+                    ]
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      },
       "name": {
         "computed": true,
         "description": "Unique name of the resource in this scope including project and location using the form:\nprojects/{projectId}/locations/{locationId}/clusters/{clusterId}",

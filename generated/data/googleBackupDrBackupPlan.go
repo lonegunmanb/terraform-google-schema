@@ -122,7 +122,7 @@ const googleBackupDrBackupPlan = `{
       },
       "resource_type": {
         "computed": true,
-        "description": "The resource type to which the 'BackupPlan' will be applied. Examples include, \"compute.googleapis.com/Instance\" and \"storage.googleapis.com/Bucket\".",
+        "description": "The resource type to which the 'BackupPlan' will be applied.\nExamples include, \"compute.googleapis.com/Instance\", \"compute.googleapis.com/Disk\", and \"storage.googleapis.com/Bucket\".",
         "description_kind": "plain",
         "type": "string"
       },

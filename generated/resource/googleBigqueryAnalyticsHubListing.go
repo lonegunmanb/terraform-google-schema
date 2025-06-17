@@ -66,6 +66,12 @@ const googleBigqueryAnalyticsHubListing = `{
         "required": true,
         "type": "string"
       },
+      "log_linked_dataset_query_user_email": {
+        "description": "If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "name": {
         "computed": true,
         "description": "The resource name of the listing. e.g. \"projects/myproject/locations/US/dataExchanges/123/listings/456\"",

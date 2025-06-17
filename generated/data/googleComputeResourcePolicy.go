@@ -40,6 +40,7 @@ const googleComputeResourcePolicy = `{
             {
               "availability_domain_count": "number",
               "collocation": "string",
+              "gpu_topology": "string",
               "vm_count": "number"
             }
           ]
@@ -190,6 +191,22 @@ const googleComputeResourcePolicy = `{
                   }
                 ]
               ]
+            }
+          ]
+        ]
+      },
+      "workload_policy": {
+        "computed": true,
+        "description": "Represents the workload policy.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "accelerator_topology": "string",
+              "max_topology_distance": "string",
+              "type": "string"
             }
           ]
         ]

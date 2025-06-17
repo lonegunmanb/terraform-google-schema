@@ -11,7 +11,7 @@ const googleBackupDrBackupPlanAssociation = `{
     "attributes": {
       "backup_plan": {
         "computed": true,
-        "description": "The BP with which resource needs to be created",
+        "description": "The BP with which resource needs to be created\nNote:\n- A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.\n- A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.",
         "description_kind": "plain",
         "type": "string"
       },
@@ -70,7 +70,7 @@ const googleBackupDrBackupPlanAssociation = `{
       },
       "resource_type": {
         "computed": true,
-        "description": "The resource type of workload on which backupplan is applied",
+        "description": "The resource type of workload on which backupplan is applied.\nExamples include, \"compute.googleapis.com/Instance\", \"compute.googleapis.com/Disk\", and \"compute.googleapis.com/RegionDisk\"",
         "description_kind": "plain",
         "type": "string"
       },

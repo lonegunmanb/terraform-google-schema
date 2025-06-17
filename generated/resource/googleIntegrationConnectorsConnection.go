@@ -929,6 +929,13 @@ const googleIntegrationConnectorsConnection = `{
               "description_kind": "plain",
               "required": true,
               "type": "bool"
+            },
+            "level": {
+              "computed": true,
+              "description": "Log configuration level. Possible values: [\"LOG_LEVEL_UNSPECIFIED\", \"ERROR\", \"INFO\", \"DEBUG\"]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
             }
           },
           "description": "Log configuration for the connection.",

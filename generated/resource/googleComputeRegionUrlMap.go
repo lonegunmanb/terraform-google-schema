@@ -541,6 +541,405 @@ const googleComputeRegionUrlMap = `{
             }
           },
           "block_types": {
+            "default_route_action": {
+              "block": {
+                "block_types": {
+                  "cors_policy": {
+                    "block": {
+                      "attributes": {
+                        "allow_credentials": {
+                          "description": "In response to a preflight request, setting this to true indicates that the actual request can include user credentials.\nThis translates to the Access-Control-Allow-Credentials header.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "bool"
+                        },
+                        "allow_headers": {
+                          "description": "Specifies the content for the Access-Control-Allow-Headers header.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
+                            "string"
+                          ]
+                        },
+                        "allow_methods": {
+                          "description": "Specifies the content for the Access-Control-Allow-Methods header.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
+                            "string"
+                          ]
+                        },
+                        "allow_origin_regexes": {
+                          "description": "Specifies the regular expression patterns that match allowed origins. For regular expression grammar\nplease see en.cppreference.com/w/cpp/regex/ecmascript\nAn origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
+                            "string"
+                          ]
+                        },
+                        "allow_origins": {
+                          "description": "Specifies the list of origins that will be allowed to do CORS requests.\nAn origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
+                            "string"
+                          ]
+                        },
+                        "disabled": {
+                          "description": "If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "bool"
+                        },
+                        "expose_headers": {
+                          "description": "Specifies the content for the Access-Control-Expose-Headers header.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
+                            "string"
+                          ]
+                        },
+                        "max_age": {
+                          "description": "Specifies how long results of a preflight request can be cached in seconds.\nThis translates to the Access-Control-Max-Age header.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        }
+                      },
+                      "description": "The specification for allowing client side cross-origin requests. Please see\n[W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "fault_injection_policy": {
+                    "block": {
+                      "block_types": {
+                        "abort": {
+                          "block": {
+                            "attributes": {
+                              "http_status": {
+                                "description": "The HTTP status code used to abort the request.\nThe value must be between 200 and 599 inclusive.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "number"
+                              },
+                              "percentage": {
+                                "description": "The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.\nThe value must be between 0.0 and 100.0 inclusive.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "number"
+                              }
+                            },
+                            "description": "The specification for how client requests are aborted as part of fault injection.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
+                        "delay": {
+                          "block": {
+                            "attributes": {
+                              "percentage": {
+                                "description": "The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.\nThe value must be between 0.0 and 100.0 inclusive.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "number"
+                              }
+                            },
+                            "block_types": {
+                              "fixed_delay": {
+                                "block": {
+                                  "attributes": {
+                                    "nanos": {
+                                      "description": "Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are\nrepresented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.",
+                                      "description_kind": "plain",
+                                      "optional": true,
+                                      "type": "number"
+                                    },
+                                    "seconds": {
+                                      "description": "Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.\nNote: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years",
+                                      "description_kind": "plain",
+                                      "optional": true,
+                                      "type": "string"
+                                    }
+                                  },
+                                  "description": "Specifies the value of the fixed delay interval.",
+                                  "description_kind": "plain"
+                                },
+                                "max_items": 1,
+                                "nesting_mode": "list"
+                              }
+                            },
+                            "description": "The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.\nAs part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a\npercentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted\nby the Loadbalancer for a percentage of requests.\n\ntimeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "max_stream_duration": {
+                    "block": {
+                      "attributes": {
+                        "nanos": {
+                          "description": "Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented\nwith a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "seconds": {
+                          "description": "Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.\nNote: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Specifies the maximum duration (timeout) for streams on the selected route.\nUnlike the 'Timeout' field where the timeout duration starts from the time the request\nhas been fully processed (known as end-of-stream), the duration in this field\nis computed from the beginning of the stream until the response has been processed,\nincluding all retries. A stream that does not complete in this duration is closed.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "request_mirror_policy": {
+                    "block": {
+                      "attributes": {
+                        "backend_service": {
+                          "description": "The full or partial URL to the BackendService resource being mirrored to.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.\nLoadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,\nthe host / authority header is suffixed with -shadow.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "retry_policy": {
+                    "block": {
+                      "attributes": {
+                        "num_retries": {
+                          "description": "Specifies the allowed number retries. This number must be \u003e 0. If not specified, defaults to 1.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "retry_conditions": {
+                          "description": "Specfies one or more conditions when this retry rule applies. Valid values are:\n\n* 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,\n  or if the backend service does not respond at all, example: disconnects, reset, read timeout,\n* connection failure, and refused streams.\n* gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.\n* connect-failure: Loadbalancer will retry on failures connecting to backend services,\n  for example due to connection timeouts.\n* retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.\n  Currently the only retriable error supported is 409.\n* refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.\n  This reset type indicates that it is safe to retry.\n* cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled\n* deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded\n* resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted\n* unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
+                            "string"
+                          ]
+                        }
+                      },
+                      "block_types": {
+                        "per_try_timeout": {
+                          "block": {
+                            "attributes": {
+                              "nanos": {
+                                "description": "Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are\nrepresented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "number"
+                              },
+                              "seconds": {
+                                "description": "Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.\nNote: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "Specifies a non-zero timeout per retry attempt.\n\nIf not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,\nwill use the largest timeout among all backend services associated with the route.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "Specifies the retry policy associated with this route.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "timeout": {
+                    "block": {
+                      "attributes": {
+                        "nanos": {
+                          "description": "Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented\nwith a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "seconds": {
+                          "description": "Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.\nNote: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Specifies the timeout for the selected route. Timeout is computed from the time the request has been\nfully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.\n\nIf not specified, will use the largest timeout among all backend services associated with the route.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "url_rewrite": {
+                    "block": {
+                      "attributes": {
+                        "host_rewrite": {
+                          "description": "Prior to forwarding the request to the selected service, the request's host header is replaced\nwith contents of hostRewrite.\n\nThe value must be between 1 and 255 characters.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "path_prefix_rewrite": {
+                          "description": "Prior to forwarding the request to the selected backend service, the matching portion of the\nrequest's path is replaced by pathPrefixRewrite.\n\nThe value must be between 1 and 1024 characters.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "path_template_rewrite": {
+                          "description": "If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax.\n\nA corresponding pathTemplateMatch must be specified. Any template variables must exist in the pathTemplateMatch field.\n\n* At least one variable must be specified in the pathTemplateMatch field\n* You can omit variables from the rewritten URL\n* The * and ** operators cannot be matched unless they have a corresponding variable name - e.g. {format=*} or {var=**}.\n\nFor example, a pathTemplateMatch of /static/{format=**} could be rewritten as /static/content/{format} to prefix\n/content to the URL. Variables can also be re-ordered in a rewrite, so that /{country}/{format}/{suffix=**} can be\nrewritten as /content/{format}/{country}/{suffix}.\n\nAt least one non-empty routeRules[].matchRules[].path_template_match is required.\n\nOnly one of pathPrefixRewrite or pathTemplateRewrite may be specified.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "The spec to modify the URL of the request, prior to forwarding the request to the matched service.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "weighted_backend_services": {
+                    "block": {
+                      "attributes": {
+                        "backend_service": {
+                          "description": "The full or partial URL to the default BackendService resource. Before forwarding the\nrequest to backendService, the loadbalancer applies any relevant headerActions\nspecified as part of this backendServiceWeight.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "weight": {
+                          "description": "Specifies the fraction of traffic sent to backendService, computed as\nweight / (sum of all weightedBackendService weights in routeAction) .\n\nThe selection of a backend service is determined only for new traffic. Once a user's request\nhas been directed to a backendService, subsequent requests will be sent to the same backendService\nas determined by the BackendService's session affinity policy.\n\nThe value must be between 0 and 1000",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        }
+                      },
+                      "block_types": {
+                        "header_action": {
+                          "block": {
+                            "attributes": {
+                              "request_headers_to_remove": {
+                                "description": "A list of header names for headers that need to be removed from the request prior to\nforwarding the request to the backendService.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": [
+                                  "list",
+                                  "string"
+                                ]
+                              },
+                              "response_headers_to_remove": {
+                                "description": "A list of header names for headers that need to be removed from the response prior to sending the\nresponse back to the client.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": [
+                                  "list",
+                                  "string"
+                                ]
+                              }
+                            },
+                            "block_types": {
+                              "request_headers_to_add": {
+                                "block": {
+                                  "attributes": {
+                                    "header_name": {
+                                      "description": "The name of the header to add.",
+                                      "description_kind": "plain",
+                                      "optional": true,
+                                      "type": "string"
+                                    },
+                                    "header_value": {
+                                      "description": "The value of the header to add.",
+                                      "description_kind": "plain",
+                                      "optional": true,
+                                      "type": "string"
+                                    },
+                                    "replace": {
+                                      "description": "If false, headerValue is appended to any values that already exist for the header.\nIf true, headerValue is set for the header, discarding any values that were set for that header.",
+                                      "description_kind": "plain",
+                                      "optional": true,
+                                      "type": "bool"
+                                    }
+                                  },
+                                  "description": "Headers to add to a matching request prior to forwarding the request to the backendService.",
+                                  "description_kind": "plain"
+                                },
+                                "nesting_mode": "list"
+                              },
+                              "response_headers_to_add": {
+                                "block": {
+                                  "attributes": {
+                                    "header_name": {
+                                      "description": "The name of the header to add.",
+                                      "description_kind": "plain",
+                                      "optional": true,
+                                      "type": "string"
+                                    },
+                                    "header_value": {
+                                      "description": "The value of the header to add.",
+                                      "description_kind": "plain",
+                                      "optional": true,
+                                      "type": "string"
+                                    },
+                                    "replace": {
+                                      "description": "If false, headerValue is appended to any values that already exist for the header.\nIf true, headerValue is set for the header, discarding any values that were set for that header.",
+                                      "description_kind": "plain",
+                                      "optional": true,
+                                      "type": "bool"
+                                    }
+                                  },
+                                  "description": "Headers to add the response prior to sending the response back to the client.",
+                                  "description_kind": "plain"
+                                },
+                                "nesting_mode": "list"
+                              }
+                            },
+                            "description": "Specifies changes to request and response headers that need to take effect for\nthe selected backendService.\n\nheaderAction specified here take effect before headerAction in the enclosing\nHttpRouteRule, PathMatcher and UrlMap.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "A list of weighted backend services to send traffic to when a route match occurs.\nThe weights determine the fraction of traffic that flows to their corresponding backend service.\nIf all traffic needs to go to a single backend service, there must be one weightedBackendService\nwith weight set to a non-zero number.\n\nOnce a backendService is identified and before forwarding the request to the backend service,\nadvanced routing actions like Url rewrites and header transformations are applied depending on\nadditional settings specified in this HttpRouteAction.",
+                      "description_kind": "plain"
+                    },
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs\nadvanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request\nto the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.\nConversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.\n\nOnly one of defaultRouteAction or defaultUrlRedirect must be set.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "default_url_redirect": {
               "block": {
                 "attributes": {

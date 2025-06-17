@@ -2385,6 +2385,18 @@ const googleComputeUrlMap = `{
               "optional": true,
               "type": "string"
             },
+            "expected_output_url": {
+              "description": "The expected output URL evaluated by the load balancer containing the scheme, host, path and query parameters.\n\nFor rules that forward requests to backends, the test passes only when expectedOutputUrl matches the request forwarded by the load balancer to backends. For rules with urlRewrite, the test verifies that the forwarded request matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When service is specified, expectedOutputUrl's scheme is ignored.\n\nFor rules with urlRedirect, the test passes only if expectedOutputUrl matches the URL in the load balancer's redirect response. If urlRedirect specifies httpsRedirect, the test passes only if the scheme in expectedOutputUrl is also set to HTTPS. If urlRedirect specifies stripQuery, the test passes only if expectedOutputUrl does not contain any query parameters.\n\nexpectedOutputUrl is optional when service is specified.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "expected_redirect_response_code": {
+              "description": "For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response.\n\nexpectedRedirectResponseCode cannot be set when service is set.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "number"
+            },
             "host": {
               "description": "Host portion of the URL.",
               "description_kind": "plain",
@@ -2400,8 +2412,31 @@ const googleComputeUrlMap = `{
             "service": {
               "description": "The backend service or backend bucket link that should be matched by this test.",
               "description_kind": "plain",
-              "required": true,
+              "optional": true,
               "type": "string"
+            }
+          },
+          "block_types": {
+            "headers": {
+              "block": {
+                "attributes": {
+                  "name": {
+                    "description": "Header name.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Header value.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "description": "HTTP headers for this request.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
             }
           },
           "description": "The list of expected URL mapping tests. Request to update this UrlMap will\nsucceed only if all of the test cases pass. You can specify a maximum of 100\ntests per UrlMap.",

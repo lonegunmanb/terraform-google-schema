@@ -21,6 +21,12 @@ const googleDialogflowCxAgent = `{
         "required": true,
         "type": "string"
       },
+      "delete_chat_engine_on_destroy": {
+        "description": "If set to 'true', Terraform will delete the chat engine associated with the agent when the agent is destroyed.\nOtherwise, the chat engine will persist.\n\nThis virtual field addresses a critical dependency chain: 'agent' -\u003e 'engine' -\u003e 'data store'. The chat engine is automatically\nprovisioned when a data store is linked to the agent, meaning Terraform doesn't have direct control over its lifecycle as a managed\nresource. This creates a problem when both the agent and data store are managed by Terraform and need to be destroyed. Without\ndelete_chat_engine_on_destroy set to true, the data store's deletion would fail because the unmanaged chat engine would still be\nusing it. This setting ensures that the entire dependency chain can be properly torn down.\nSee 'mmv1/templates/terraform/examples/dialogflowcx_tool_data_store.tf.tmpl' as an example.\n\nData store can be linked to an agent through the 'knowledgeConnectorSettings' field of a [flow](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows#resource:-flow)\nor a [page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#resource:-page)\nor the 'dataStoreSpec' field of a [tool](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#resource:-tool).\nThe ID of the implicitly created engine is stored in the 'genAppBuilderSettings' field of the [agent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#resource:-agent).",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "description": {
         "description": "The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.",
         "description_kind": "plain",
