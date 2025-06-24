@@ -76,6 +76,12 @@ const googleBigqueryAnalyticsHubListingSubscription = `{
         "required": true,
         "type": "string"
       },
+      "log_linked_dataset_query_user_email": {
+        "computed": true,
+        "description": "Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for Listing.",
+        "description_kind": "plain",
+        "type": "bool"
+      },
       "name": {
         "computed": true,
         "description": "The resource name of the subscription. e.g. \"projects/myproject/locations/US/subscriptions/123\"",

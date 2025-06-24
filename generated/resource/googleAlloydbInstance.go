@@ -235,6 +235,12 @@ const googleAlloydbInstance = `{
       "network_config": {
         "block": {
           "attributes": {
+            "allocated_ip_range_override": {
+              "description": "Name of the allocated IP range for the private IP AlloyDB instance, for example: \"google-managed-services-default\".\nIf set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster.\nThe range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "enable_outbound_public_ip": {
               "description": "Enabling outbound public ip for the instance.",
               "description_kind": "plain",

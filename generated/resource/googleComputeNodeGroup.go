@@ -42,7 +42,7 @@ const googleComputeNodeGroup = `{
       "name": {
         "description": "Name of the resource.",
         "description_kind": "plain",
-        "optional": true,
+        "required": true,
         "type": "string"
       },
       "node_template": {

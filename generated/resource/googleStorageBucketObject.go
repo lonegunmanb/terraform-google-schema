@@ -61,6 +61,7 @@ const googleStorageBucketObject = `{
         "type": "string"
       },
       "detect_md5hash": {
+        "deprecated": true,
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -137,6 +138,12 @@ const googleStorageBucketObject = `{
       },
       "source": {
         "description": "A path to the data you want to upload. Must be defined if content is not.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
+      "source_md5hash": {
+        "description": "User-provided md5hash, Base 64 MD5 hash of the object data.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"

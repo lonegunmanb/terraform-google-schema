@@ -932,6 +932,7 @@ const googleContainerCluster = `{
                   "object",
                   {
                     "enable_nested_virtualization": "bool",
+                    "performance_monitoring_unit": "string",
                     "threads_per_core": "number"
                   }
                 ]
@@ -1373,6 +1374,7 @@ const googleContainerCluster = `{
                         "object",
                         {
                           "enable_nested_virtualization": "bool",
+                          "performance_monitoring_unit": "string",
                           "threads_per_core": "number"
                         }
                       ]

@@ -64,6 +64,54 @@ const googleComputeUrlMap = `{
       }
     },
     "block_types": {
+      "default_custom_error_response_policy": {
+        "block": {
+          "attributes": {
+            "error_service": {
+              "description": "The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:\n\nhttps://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket\ncompute/v1/projects/project/global/backendBuckets/myBackendBucket\nglobal/backendBuckets/myBackendBucket\n\nIf errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.\nIf load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "block_types": {
+            "error_response_rule": {
+              "block": {
+                "attributes": {
+                  "match_response_codes": {
+                    "description": "Valid values include:\n- A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.\n- 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.\n- 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.\nValues must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": [
+                      "list",
+                      "string"
+                    ]
+                  },
+                  "override_response_code": {
+                    "description": "The HTTP status code returned with the response containing the custom error content.\nIf overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "number"
+                  },
+                  "path": {
+                    "description": "The full path to a file within backendBucket. For example: /errors/defaultError.html\npath must start with a leading slash. path cannot have trailing slashes.\nIf the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.\nThe value must be from 1 to 1024 characters.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Specifies rules for returning error responses.\nIn a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.\nFor example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).\nIf the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            }
+          },
+          "description": "defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.\n\nThis policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.\n\nFor example, consider a UrlMap with the following configuration:\n\nUrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors\nA RouteRule for /coming_soon/ is configured for the error code 404.\nIf the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.\n\nWhen used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.\n\ndefaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "default_route_action": {
         "block": {
           "block_types": {
@@ -640,6 +688,54 @@ const googleComputeUrlMap = `{
             }
           },
           "block_types": {
+            "default_custom_error_response_policy": {
+              "block": {
+                "attributes": {
+                  "error_service": {
+                    "description": "The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:\nhttps://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket\ncompute/v1/projects/project/global/backendBuckets/myBackendBucket\nglobal/backendBuckets/myBackendBucket\nIf errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.\nIf load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "block_types": {
+                  "error_response_rule": {
+                    "block": {
+                      "attributes": {
+                        "match_response_codes": {
+                          "description": "Valid values include:\n- A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.\n- 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.\n- 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.\nValues must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
+                            "string"
+                          ]
+                        },
+                        "override_response_code": {
+                          "description": "The HTTP status code returned with the response containing the custom error content.\nIf overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "path": {
+                          "description": "The full path to a file within backendBucket . For example: /errors/defaultError.html\npath must start with a leading slash. path cannot have trailing slashes.\nIf the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.\nThe value must be from 1 to 1024 characters",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Specifies rules for returning error responses.\nIn a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.\nFor example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).\nIf the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.",
+                      "description_kind": "plain"
+                    },
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.\n\nThis policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.\n\nFor example, consider a UrlMap with the following configuration:\n\nUrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors\nA RouteRule for /coming_soon/ is configured for the error code 404.\nIf the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.\n\nWhen used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client.\n\ndefaultCustomErrorResponsePolicy is supported only for global external Application Load Balancers.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "default_route_action": {
               "block": {
                 "block_types": {
@@ -1183,6 +1279,54 @@ const googleComputeUrlMap = `{
                   }
                 },
                 "block_types": {
+                  "custom_error_response_policy": {
+                    "block": {
+                      "attributes": {
+                        "error_service": {
+                          "description": "The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:\n\nhttps://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket\ncompute/v1/projects/project/global/backendBuckets/myBackendBucket\nglobal/backendBuckets/myBackendBucket\n\nIf errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.\nIf load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "block_types": {
+                        "error_response_rule": {
+                          "block": {
+                            "attributes": {
+                              "match_response_codes": {
+                                "description": "Valid values include:\n\n- A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.\n- 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.\n- 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.\n\nValues must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": [
+                                  "list",
+                                  "string"
+                                ]
+                              },
+                              "override_response_code": {
+                                "description": "The HTTP status code returned with the response containing the custom error content.\nIf overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "number"
+                              },
+                              "path": {
+                                "description": "The full path to a file within backendBucket . For example: /errors/defaultError.html\npath must start with a leading slash. path cannot have trailing slashes.\nIf the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.\nThe value must be from 1 to 1024 characters",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "Specifies rules for returning error responses.\nIn a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.\nFor example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).\nIf the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.",
+                            "description_kind": "plain"
+                          },
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.\nIf a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.\nFor example, consider a UrlMap with the following configuration:\nUrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors\nA PathRule for /coming_soon/ is configured for the error code 404.\nIf the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect.\ncustomErrorResponsePolicy is supported only for global external Application Load Balancers.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
                   "route_action": {
                     "block": {
                       "block_types": {
@@ -1646,6 +1790,54 @@ const googleComputeUrlMap = `{
                   }
                 },
                 "block_types": {
+                  "custom_error_response_policy": {
+                    "block": {
+                      "attributes": {
+                        "error_service": {
+                          "description": "The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:\n\nhttps://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket\ncompute/v1/projects/project/global/backendBuckets/myBackendBucket\nglobal/backendBuckets/myBackendBucket\n\nIf errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.\nIf load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "block_types": {
+                        "error_response_rule": {
+                          "block": {
+                            "attributes": {
+                              "match_response_codes": {
+                                "description": "Valid values include:\n\n- A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.\n- 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.\n- 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.\n\nValues must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": [
+                                  "list",
+                                  "string"
+                                ]
+                              },
+                              "override_response_code": {
+                                "description": "The HTTP status code returned with the response containing the custom error content.\nIf overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "number"
+                              },
+                              "path": {
+                                "description": "The full path to a file within backendBucket . For example: /errors/defaultError.html\npath must start with a leading slash. path cannot have trailing slashes.\nIf the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.\nThe value must be from 1 to 1024 characters",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "Specifies rules for returning error responses.\nIn a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.\nFor example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).\nIf the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.",
+                            "description_kind": "plain"
+                          },
+                          "nesting_mode": "list"
+                        }
+                      },
+                      "description": "customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
                   "header_action": {
                     "block": {
                       "attributes": {

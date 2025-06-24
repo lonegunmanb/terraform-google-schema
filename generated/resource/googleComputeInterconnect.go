@@ -209,7 +209,7 @@ const googleComputeInterconnect = `{
         "type": "string"
       },
       "requested_features": {
-        "description": "interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (\nIf specified then the connection is created on MACsec capable hardware ports. If not\nspecified, the default value is false, which allocates non-MACsec capable ports first if\navailable). Note that MACSEC is still technically allowed for compatibility reasons, but it\ndoes not work with the API, and will be removed in an upcoming major version. Possible values: [\"MACSEC\", \"IF_MACSEC\"]",
+        "description": "interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (\nIf specified then the connection is created on MACsec capable hardware ports. If not\nspecified, the default value is false, which allocates non-MACsec capable ports first if\navailable). Note that MACSEC is still technically allowed for compatibility reasons, but it\ndoes not work with the API, and will be removed in an upcoming major version. Possible values: [\"MACSEC\", \"CROSS_SITE_NETWORK\", \"IF_MACSEC\"]",
         "description_kind": "plain",
         "optional": true,
         "type": [

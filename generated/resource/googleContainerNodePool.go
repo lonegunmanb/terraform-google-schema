@@ -494,6 +494,12 @@ const googleContainerNodePool = `{
                     "optional": true,
                     "type": "bool"
                   },
+                  "performance_monitoring_unit": {
+                    "description": "Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
                   "threads_per_core": {
                     "description": "The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.",
                     "description_kind": "plain",

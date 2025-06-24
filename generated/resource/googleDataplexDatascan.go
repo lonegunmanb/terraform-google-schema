@@ -135,7 +135,7 @@ const googleDataplexDatascan = `{
               "type": "string"
             },
             "resource": {
-              "description": "The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be:\n(Cloud Storage bucket for DataDiscoveryScan)BigQuery table of type \"TABLE\" for DataProfileScan/DataQualityScan.",
+              "description": "The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be:\nCloud Storage bucket (//storage.googleapis.com/projects/PROJECT_ID/buckets/BUCKET_ID) for DataDiscoveryScan OR BigQuery table of type \"TABLE\" (/bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID) for DataProfileScan/DataQualityScan.",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
@@ -146,6 +146,142 @@ const googleDataplexDatascan = `{
         },
         "max_items": 1,
         "min_items": 1,
+        "nesting_mode": "list"
+      },
+      "data_discovery_spec": {
+        "block": {
+          "block_types": {
+            "bigquery_publishing_config": {
+              "block": {
+                "attributes": {
+                  "connection": {
+                    "description": "The BigQuery connection used to create BigLake tables. Must be in the form 'projects/{projectId}/locations/{locationId}/connections/{connection_id}'.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "location": {
+                    "description": "The location of the BigQuery dataset to publish BigLake external or non-BigLake external tables to.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "project": {
+                    "description": "The project of the BigQuery dataset to publish BigLake external or non-BigLake external tables to. If not specified, the project of the Cloud Storage bucket will be used. The format is \"projects/{project_id_or_number}\".",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "table_type": {
+                    "description": "Determines whether to publish discovered tables as BigLake external tables or non-BigLake external tables. Possible values: [\"TABLE_TYPE_UNSPECIFIED\", \"EXTERNAL\", \"BIGLAKE\"]",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "Configuration for metadata publishing.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
+            "storage_config": {
+              "block": {
+                "attributes": {
+                  "exclude_patterns": {
+                    "description": "Defines the data to exclude during discovery. Provide a list of patterns that identify the data to exclude. For Cloud Storage bucket assets, these patterns are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these patterns are interpreted as patterns to match table names.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": [
+                      "list",
+                      "string"
+                    ]
+                  },
+                  "include_patterns": {
+                    "description": "Defines the data to include during discovery when only a subset of the data should be considered. Provide a list of patterns that identify the data to include. For Cloud Storage bucket assets, these patterns are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these patterns are interpreted as patterns to match table names.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": [
+                      "list",
+                      "string"
+                    ]
+                  }
+                },
+                "block_types": {
+                  "csv_options": {
+                    "block": {
+                      "attributes": {
+                        "delimiter": {
+                          "description": "The delimiter that is used to separate values. The default is ',' (comma).",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "encoding": {
+                          "description": "The character encoding of the data. The default is UTF-8.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "header_rows": {
+                          "description": "The number of rows to interpret as header rows that should be skipped when reading data rows.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
+                        "quote": {
+                          "description": "The character used to quote column values. Accepts '\"' (double quotation mark) or ''' (single quotation mark). If unspecified, defaults to '\"' (double quotation mark).",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "type_inference_disabled": {
+                          "description": "Whether to disable the inference of data types for CSV data. If true, all columns are registered as strings.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "bool"
+                        }
+                      },
+                      "description": "Configuration for CSV data.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "json_options": {
+                    "block": {
+                      "attributes": {
+                        "encoding": {
+                          "description": "The character encoding of the data. The default is UTF-8.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "type_inference_disabled": {
+                          "description": "Whether to disable the inference of data types for JSON data. If true, all columns are registered as their primitive types (strings, number, or boolean).",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "bool"
+                        }
+                      },
+                      "description": "Configuration for JSON data.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "Configurations related to Cloud Storage as the data source.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "DataDiscoveryScan related setting.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
         "nesting_mode": "list"
       },
       "data_profile_spec": {
@@ -363,7 +499,7 @@ const googleDataplexDatascan = `{
                     "type": "string"
                   },
                   "dimension": {
-                    "description": "The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are [\"COMPLETENESS\", \"ACCURACY\", \"CONSISTENCY\", \"VALIDITY\", \"UNIQUENESS\", \"INTEGRITY\"]",
+                    "description": "The dimension name a rule belongs to. Custom dimension name is supported with all uppercase letters and maximum length of 30 characters.",
                     "description_kind": "plain",
                     "required": true,
                     "type": "string"

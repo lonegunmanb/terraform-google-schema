@@ -129,7 +129,6 @@ const googleBigqueryAnalyticsHubListing = `{
           "description_kind": "plain"
         },
         "max_items": 1,
-        "min_items": 1,
         "nesting_mode": "list"
       },
       "data_provider": {
@@ -171,6 +170,31 @@ const googleBigqueryAnalyticsHubListing = `{
             }
           },
           "description": "Details of the publisher who owns the listing and who can share the source data.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "pubsub_topic": {
+        "block": {
+          "attributes": {
+            "data_affinity_regions": {
+              "description": "Region hint on where the data might be published. Data affinity regions are modifiable.\nSee https://cloud.google.com/about/locations for full listing of possible Cloud regions.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "set",
+                "string"
+              ]
+            },
+            "topic": {
+              "description": "Resource name of the Pub/Sub topic source for this listing. e.g. projects/myproject/topics/topicId",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "Pub/Sub topic source.",
           "description_kind": "plain"
         },
         "max_items": 1,

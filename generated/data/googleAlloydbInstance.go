@@ -179,6 +179,7 @@ const googleAlloydbInstance = `{
           [
             "object",
             {
+              "allocated_ip_range_override": "string",
               "authorized_external_networks": [
                 "list",
                 [

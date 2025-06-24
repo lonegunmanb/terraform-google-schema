@@ -98,7 +98,7 @@ const googleComputeServiceAttachment = `{
       },
       "propagated_connection_limit": {
         "computed": true,
-        "description": "The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.\nThis limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.\n\nIf the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.\nIf the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.\n\nIf unspecified, the default propagated connection limit is 250.",
+        "description": "The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.\nThis limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.\n\nIf the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.\nIf the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.\n\nIf unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set 'send_propagated_connection_limit_if_zero = true'.",
         "description_kind": "plain",
         "optional": true,
         "type": "number"
@@ -121,6 +121,12 @@ const googleComputeServiceAttachment = `{
         "computed": true,
         "description_kind": "plain",
         "type": "string"
+      },
+      "send_propagated_connection_limit_if_zero": {
+        "description": "Controls the behavior of propagated_connection_limit.\nWhen false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.\nWhen true, the provider will set propagated_connection_limit to zero.\nDefaults to false.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
       },
       "target_service": {
         "description": "The URL of a service serving the endpoint identified by this service attachment.",

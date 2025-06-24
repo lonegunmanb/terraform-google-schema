@@ -167,6 +167,12 @@ const googleStorageBucketObject = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "source_md5hash": {
+        "computed": true,
+        "description": "User-provided md5hash, Base 64 MD5 hash of the object data.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "storage_class": {
         "computed": true,
         "description": "The StorageClass of the new bucket object. Supported values include: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE. If not provided, this defaults to the bucket's default storage class or to a standard class.",

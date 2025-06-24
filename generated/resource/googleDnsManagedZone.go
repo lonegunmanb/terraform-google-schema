@@ -187,6 +187,12 @@ const googleDnsManagedZone = `{
             "target_name_servers": {
               "block": {
                 "attributes": {
+                  "domain_name": {
+                    "description": "Fully qualified domain name for the forwarding target.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
                   "forwarding_path": {
                     "description": "Forwarding path for this TargetNameServer. If unset or 'default' Cloud DNS will make forwarding\ndecision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go\nto the Internet. When set to 'private', Cloud DNS will always send queries through VPC for this target Possible values: [\"default\", \"private\"]",
                     "description_kind": "plain",
