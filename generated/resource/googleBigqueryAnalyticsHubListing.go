@@ -67,7 +67,7 @@ const googleBigqueryAnalyticsHubListing = `{
         "type": "string"
       },
       "log_linked_dataset_query_user_email": {
-        "description": "If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user.",
+        "description": "If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.",
         "description_kind": "plain",
         "optional": true,
         "type": "bool"

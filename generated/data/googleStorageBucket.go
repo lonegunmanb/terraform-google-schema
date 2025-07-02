@@ -137,6 +137,8 @@ const googleStorageBucket = `{
           [
             "object",
             {
+              "allow_all_service_agent_access": "bool",
+              "allow_cross_org_vpcs": "bool",
               "mode": "string",
               "public_network_source": [
                 "list",

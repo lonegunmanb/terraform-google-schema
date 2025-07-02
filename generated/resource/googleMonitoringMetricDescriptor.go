@@ -12,13 +12,13 @@ const googleMonitoringMetricDescriptor = `{
       "description": {
         "description": "A detailed description of the metric, which can be used in documentation.",
         "description_kind": "plain",
-        "required": true,
+        "optional": true,
         "type": "string"
       },
       "display_name": {
         "description": "A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example \"Request count\".",
         "description_kind": "plain",
-        "required": true,
+        "optional": true,
         "type": "string"
       },
       "id": {

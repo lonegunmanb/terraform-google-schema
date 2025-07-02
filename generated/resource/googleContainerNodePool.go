@@ -516,6 +516,12 @@ const googleContainerNodePool = `{
             "confidential_nodes": {
               "block": {
                 "attributes": {
+                  "confidential_instance_type": {
+                    "description": "Defines the type of technology used by the confidential node.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
                   "enabled": {
                     "description": "Whether Confidential Nodes feature is enabled for all nodes in this pool.",
                     "description_kind": "plain",

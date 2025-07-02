@@ -9,6 +9,12 @@ import (
 const googleComputeRegionDisk = `{
   "block": {
     "attributes": {
+      "access_mode": {
+        "computed": true,
+        "description": "The access mode of the disk.\nFor example:\n  * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.\n  * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.\n  * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.\nThe AccessMode is only valid for Hyperdisk disk types.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "async_primary_disk": {
         "computed": true,
         "description": "A nested object resource.",

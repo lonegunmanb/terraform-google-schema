@@ -140,6 +140,20 @@ const googleComputeInstanceGroupManager = `{
         "optional": true,
         "type": "string"
       },
+      "resource_policies": {
+        "computed": true,
+        "description": "Resource policies for this managed instance group.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "workload_policy": "string"
+            }
+          ]
+        ]
+      },
       "self_link": {
         "description": "The URL of the created resource.",
         "description_kind": "plain",

@@ -226,6 +226,27 @@ const googleComputeFirewallPolicyRule = `{
               },
               "min_items": 1,
               "nesting_mode": "list"
+            },
+            "src_secure_tags": {
+              "block": {
+                "attributes": {
+                  "name": {
+                    "description": "Name of the secure tag, created with TagManager's TagValue API.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "state": {
+                    "computed": true,
+                    "description": "State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.",
+                    "description_kind": "plain",
+                    "type": "string"
+                  }
+                },
+                "description": "List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
             }
           },
           "description": "A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.",
@@ -233,6 +254,27 @@ const googleComputeFirewallPolicyRule = `{
         },
         "max_items": 1,
         "min_items": 1,
+        "nesting_mode": "list"
+      },
+      "target_secure_tags": {
+        "block": {
+          "attributes": {
+            "name": {
+              "description": "Name of the secure tag, created with TagManager's TagValue API.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "state": {
+              "computed": true,
+              "description": "State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.",
+              "description_kind": "plain",
+              "type": "string"
+            }
+          },
+          "description": "A list of secure tags that controls which instances the firewall rule applies to.\nIf targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.\ntargetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target secure tags allowed is 256.",
+          "description_kind": "plain"
+        },
         "nesting_mode": "list"
       },
       "timeouts": {

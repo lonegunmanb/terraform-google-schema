@@ -263,6 +263,12 @@ const googleMemorystoreInstance = `{
         "required": true,
         "type": "string"
       },
+      "kms_key": {
+        "computed": true,
+        "description": "The KMS key used to encrypt the at-rest data of the cluster",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "labels": {
         "computed": true,
         "description": "Optional. Labels to represent user-provided metadata. \n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",

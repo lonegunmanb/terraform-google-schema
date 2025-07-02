@@ -61,6 +61,15 @@ const googleSpannerBackupSchedule = `{
               "description_kind": "plain",
               "optional": true,
               "type": "string"
+            },
+            "kms_key_names": {
+              "description": "Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist\nin the same locations as the Spanner Database.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "list",
+                "string"
+              ]
             }
           },
           "description": "Configuration for the encryption of the backup schedule.",

@@ -9,6 +9,12 @@ import (
 const googleCloudIdentityGroupMembership = `{
   "block": {
     "attributes": {
+      "create_ignore_already_exists": {
+        "description": "If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "create_time": {
         "computed": true,
         "description": "The time when the Membership was created.",

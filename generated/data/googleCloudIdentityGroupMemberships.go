@@ -30,6 +30,7 @@ const googleCloudIdentityGroupMemberships = `{
           [
             "object",
             {
+              "create_ignore_already_exists": "bool",
               "create_time": "string",
               "group": "string",
               "name": "string",

@@ -839,6 +839,12 @@ const googleContainerCluster = `{
       "confidential_nodes": {
         "block": {
           "attributes": {
+            "confidential_instance_type": {
+              "description": "Defines the type of technology used by the confidential node.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
             "enabled": {
               "description": "Whether Confidential Nodes feature is enabled for all nodes in this cluster.",
               "description_kind": "plain",
@@ -1082,6 +1088,22 @@ const googleContainerCluster = `{
             }
           },
           "description": "Configuration for GKE Gateway API controller.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "gke_auto_upgrade_config": {
+        "block": {
+          "attributes": {
+            "patch_mode": {
+              "description": "The selected auto-upgrade patch type. Accepted values are:\n* ACCELERATED: Upgrades to the latest available patch version in a given minor and release channel.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.",
           "description_kind": "plain"
         },
         "max_items": 1,
@@ -1749,6 +1771,12 @@ const googleContainerCluster = `{
             "confidential_nodes": {
               "block": {
                 "attributes": {
+                  "confidential_instance_type": {
+                    "description": "Defines the type of technology used by the confidential node.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
                   "enabled": {
                     "description": "Whether Confidential Nodes feature is enabled for all nodes in this pool.",
                     "description_kind": "plain",
@@ -2793,6 +2821,12 @@ const googleContainerCluster = `{
                   "confidential_nodes": {
                     "block": {
                       "attributes": {
+                        "confidential_instance_type": {
+                          "description": "Defines the type of technology used by the confidential node.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
                         "enabled": {
                           "description": "Whether Confidential Nodes feature is enabled for all nodes in this pool.",
                           "description_kind": "plain",

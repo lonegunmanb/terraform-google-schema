@@ -9,6 +9,13 @@ import (
 const googleComputeRegionDisk = `{
   "block": {
     "attributes": {
+      "access_mode": {
+        "computed": true,
+        "description": "The access mode of the disk.\nFor example:\n  * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.\n  * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.\n  * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.\nThe AccessMode is only valid for Hyperdisk disk types.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "create_snapshot_before_destroy": {
         "description": "If set to true, a snapshot of the disk will be created before it is destroyed.\nIf your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.\nThe name of the snapshot by default will be '{{disk-name}}-YYYYMMDD-HHmm'",
         "description_kind": "plain",

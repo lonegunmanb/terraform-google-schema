@@ -38,6 +38,12 @@ const googleSecretManagerRegionalSecret = `{
           ]
         ]
       },
+      "deletion_protection": {
+        "computed": true,
+        "description": "Whether Terraform will be prevented from destroying the regional secret. Defaults to false.\nWhen the field is set to true in Terraform state, a 'terraform apply'\nor 'terraform destroy' that would delete the federation will fail.",
+        "description_kind": "plain",
+        "type": "bool"
+      },
       "effective_annotations": {
         "computed": true,
         "description": "All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.",

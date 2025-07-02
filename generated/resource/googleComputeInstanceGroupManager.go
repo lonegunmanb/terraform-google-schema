@@ -276,6 +276,22 @@ const googleComputeInstanceGroupManager = `{
         },
         "nesting_mode": "set"
       },
+      "resource_policies": {
+        "block": {
+          "attributes": {
+            "workload_policy": {
+              "description": "The URL of the workload policy that is specified for this managed instance group. It can be a full or partial URL.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description": "Resource policies for this managed instance group.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "standby_policy": {
         "block": {
           "attributes": {

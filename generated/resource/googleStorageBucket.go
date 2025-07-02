@@ -263,6 +263,18 @@ const googleStorageBucket = `{
       "ip_filter": {
         "block": {
           "attributes": {
+            "allow_all_service_agent_access": {
+              "description": "Whether to allow all service agents to access the bucket regardless of the IP filter configuration.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
+            "allow_cross_org_vpcs": {
+              "description": "Whether to allow cross-org VPCs in the bucket's IP filter configuration.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
             "mode": {
               "description": "The mode of the IP filter. Valid values are 'Enabled' and 'Disabled'.",
               "description_kind": "plain",

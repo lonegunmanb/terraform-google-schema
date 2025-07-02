@@ -72,6 +72,12 @@ const googleRedisInstance = `{
           "string"
         ]
       },
+      "effective_reserved_ip_range": {
+        "computed": true,
+        "description": "The CIDR range of internal addresses that are reserved for this\ninstance. If not provided, the service will choose an unused /29\nblock, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be\nunique and non-overlapping with existing subnets in an authorized\nnetwork.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "host": {
         "computed": true,
         "description": "Hostname or IP address of the exposed Redis endpoint used by clients\nto connect to the service.",

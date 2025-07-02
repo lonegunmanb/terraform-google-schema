@@ -317,6 +317,7 @@ const googleContainerCluster = `{
           [
             "object",
             {
+              "confidential_instance_type": "string",
               "enabled": "bool"
             }
           ]
@@ -579,6 +580,20 @@ const googleContainerCluster = `{
             "object",
             {
               "channel": "string"
+            }
+          ]
+        ]
+      },
+      "gke_auto_upgrade_config": {
+        "computed": true,
+        "description": "Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "patch_mode": "string"
             }
           ]
         ]
@@ -943,6 +958,7 @@ const googleContainerCluster = `{
                 [
                   "object",
                   {
+                    "confidential_instance_type": "string",
                     "enabled": "bool"
                   }
                 ]
@@ -1385,6 +1401,7 @@ const googleContainerCluster = `{
                       [
                         "object",
                         {
+                          "confidential_instance_type": "string",
                           "enabled": "bool"
                         }
                       ]

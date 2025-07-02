@@ -54,6 +54,7 @@ const googleSecretManagerRegionalSecrets = `{
                   }
                 ]
               ],
+              "deletion_protection": "bool",
               "effective_annotations": [
                 "map",
                 "string"
