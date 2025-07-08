@@ -24,6 +24,11 @@ const googleSecretManagerSecretVersion = `{
         "description_kind": "plain",
         "type": "bool"
       },
+      "fetch_secret_data": {
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",

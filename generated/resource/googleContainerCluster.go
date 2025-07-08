@@ -535,6 +535,22 @@ const googleContainerCluster = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "anonymous_authentication_config": {
+        "block": {
+          "attributes": {
+            "mode": {
+              "description": "Setting this to LIMITED will restrict authentication of anonymous users to health check endpoints only.\n Accepted values are:\n* ENABLED: Authentication of anonymous users is enabled for all endpoints.\n* LIMITED: Anonymous access is only allowed for health check endpoints.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "description": "AnonymousAuthenticationConfig allows users to restrict or enable anonymous access to the cluster.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "authenticator_groups_config": {
         "block": {
           "attributes": {

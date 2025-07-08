@@ -14,6 +14,11 @@ const googleBillingAccount = `{
         "optional": true,
         "type": "string"
       },
+      "currency_code": {
+        "computed": true,
+        "description_kind": "plain",
+        "type": "string"
+      },
       "display_name": {
         "computed": true,
         "description_kind": "plain",

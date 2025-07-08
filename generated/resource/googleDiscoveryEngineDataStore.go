@@ -57,6 +57,12 @@ const googleDiscoveryEngineDataStore = `{
         "required": true,
         "type": "string"
       },
+      "kms_key_name": {
+        "description": "KMS key resource name which will be used to encrypt resources:\n'/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}'\nThe KMS key to be used to protect this DataStore at creation time. Must be\nset for requests that need to comply with CMEK Org Policy protections.\nIf this field is set and processed successfully, the DataStore will be\nprotected by the KMS key, as indicated in the cmek_config field.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "location": {
         "description": "The geographic location where the data store should reside. The value can\nonly be one of \"global\", \"us\" and \"eu\".",
         "description_kind": "plain",
@@ -170,6 +176,56 @@ const googleDiscoveryEngineDataStore = `{
                   },
                   "layout_parsing_config": {
                     "block": {
+                      "attributes": {
+                        "enable_image_annotation": {
+                          "description": "If true, the LLM based annotation is added to the image during parsing.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "bool"
+                        },
+                        "enable_table_annotation": {
+                          "description": "If true, the LLM based annotation is added to the table during parsing.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "bool"
+                        },
+                        "exclude_html_classes": {
+                          "description": "List of HTML classes to exclude from the parsed content.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
+                            "string"
+                          ]
+                        },
+                        "exclude_html_elements": {
+                          "description": "List of HTML elements to exclude from the parsed content.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
+                            "string"
+                          ]
+                        },
+                        "exclude_html_ids": {
+                          "description": "List of HTML ids to exclude from the parsed content.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
+                            "string"
+                          ]
+                        },
+                        "structured_content_types": {
+                          "description": "Contains the required structure types to extract from the document. Supported values: 'shareholder-structure'.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
+                            "string"
+                          ]
+                        }
+                      },
                       "description": "Configurations applied to layout parser.",
                       "description_kind": "plain"
                     },
@@ -219,6 +275,56 @@ const googleDiscoveryEngineDataStore = `{
                   },
                   "layout_parsing_config": {
                     "block": {
+                      "attributes": {
+                        "enable_image_annotation": {
+                          "description": "If true, the LLM based annotation is added to the image during parsing.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "bool"
+                        },
+                        "enable_table_annotation": {
+                          "description": "If true, the LLM based annotation is added to the table during parsing.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "bool"
+                        },
+                        "exclude_html_classes": {
+                          "description": "List of HTML classes to exclude from the parsed content.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
+                            "string"
+                          ]
+                        },
+                        "exclude_html_elements": {
+                          "description": "List of HTML elements to exclude from the parsed content.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
+                            "string"
+                          ]
+                        },
+                        "exclude_html_ids": {
+                          "description": "List of HTML ids to exclude from the parsed content.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
+                            "string"
+                          ]
+                        },
+                        "structured_content_types": {
+                          "description": "Contains the required structure types to extract from the document. Supported values: 'shareholder-structure'.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": [
+                            "list",
+                            "string"
+                          ]
+                        }
+                      },
                       "description": "Configurations applied to layout parser.",
                       "description_kind": "plain"
                     },

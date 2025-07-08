@@ -516,6 +516,12 @@ const googleDataplexDatascan = `{
                     "optional": true,
                     "type": "string"
                   },
+                  "suspended": {
+                    "description": "Whether the Rule is active or suspended. Default = false.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  },
                   "threshold": {
                     "description": "The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).",
                     "description_kind": "plain",

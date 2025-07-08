@@ -6,12 +6,12 @@ import (
 	tfjson "github.com/hashicorp/terraform-json"
 )
 
-const googleMemorystoreInstance = `{
+const googleRedisCluster = `{
   "block": {
     "attributes": {
       "authorization_mode": {
         "computed": true,
-        "description": "Optional. Immutable. Authorization mode of the instance. Possible values:\n AUTH_DISABLED\nIAM_AUTH",
+        "description": "Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster. Default value: \"AUTH_MODE_DISABLED\" Possible values: [\"AUTH_MODE_UNSPECIFIED\", \"AUTH_MODE_IAM_AUTH\", \"AUTH_MODE_DISABLED\"]",
         "description_kind": "plain",
         "type": "string"
       },
@@ -54,41 +54,41 @@ const googleMemorystoreInstance = `{
       },
       "create_time": {
         "computed": true,
-        "description": "Output only. Creation timestamp of the instance.",
+        "description": "The timestamp associated with the cluster creation request. A timestamp in\nRFC3339 UTC \"Zulu\" format, with nanosecond resolution and up to nine fractional\ndigits. Examples: \"2014-10-02T15:01:23Z\" and \"2014-10-02T15:01:23.045123456Z\".",
         "description_kind": "plain",
         "type": "string"
       },
-      "cross_instance_replication_config": {
+      "cross_cluster_replication_config": {
         "computed": true,
-        "description": "Cross instance replication config",
+        "description": "Cross cluster replication config",
         "description_kind": "plain",
         "type": [
           "list",
           [
             "object",
             {
-              "instance_role": "string",
+              "cluster_role": "string",
               "membership": [
                 "list",
                 [
                   "object",
                   {
-                    "primary_instance": [
+                    "primary_cluster": [
                       "list",
                       [
                         "object",
                         {
-                          "instance": "string",
+                          "cluster": "string",
                           "uid": "string"
                         }
                       ]
                     ],
-                    "secondary_instance": [
+                    "secondary_clusters": [
                       "list",
                       [
                         "object",
                         {
-                          "instance": "string",
+                          "cluster": "string",
                           "uid": "string"
                         }
                       ]
@@ -96,22 +96,22 @@ const googleMemorystoreInstance = `{
                   }
                 ]
               ],
-              "primary_instance": [
+              "primary_cluster": [
                 "list",
                 [
                   "object",
                   {
-                    "instance": "string",
+                    "cluster": "string",
                     "uid": "string"
                   }
                 ]
               ],
-              "secondary_instances": [
+              "secondary_clusters": [
                 "list",
                 [
                   "object",
                   {
-                    "instance": "string",
+                    "cluster": "string",
                     "uid": "string"
                   }
                 ]
@@ -123,43 +123,13 @@ const googleMemorystoreInstance = `{
       },
       "deletion_protection_enabled": {
         "computed": true,
-        "description": "Optional. If set to true deletion of the instance will fail.",
+        "description": "Optional. Indicates if the cluster is deletion protected or not.\nIf the value if set to true, any delete cluster operation will fail.\nDefault value is true.",
         "description_kind": "plain",
         "type": "bool"
       },
-      "desired_auto_created_endpoints": {
-        "computed": true,
-        "description": "Immutable. User inputs for the auto-created endpoints connections.",
-        "description_kind": "plain",
-        "type": [
-          "list",
-          [
-            "object",
-            {
-              "network": "string",
-              "project_id": "string"
-            }
-          ]
-        ]
-      },
-      "desired_psc_auto_connections": {
-        "computed": true,
-        "description": "'desired_psc_auto_connections' is deprecated  Use 'desired_auto_created_endpoints' instead.",
-        "description_kind": "plain",
-        "type": [
-          "list",
-          [
-            "object",
-            {
-              "network": "string",
-              "project_id": "string"
-            }
-          ]
-        ]
-      },
       "discovery_endpoints": {
         "computed": true,
-        "description": "Output only. Endpoints clients can connect to the instance through. Currently only one\ndiscovery endpoint is supported.",
+        "description": "Output only. Endpoints created on each given network,\nfor Redis clients to connect to the cluster.\nCurrently only one endpoint is supported.",
         "description_kind": "plain",
         "type": [
           "list",
@@ -167,51 +137,13 @@ const googleMemorystoreInstance = `{
             "object",
             {
               "address": "string",
-              "network": "string",
-              "port": "number"
-            }
-          ]
-        ]
-      },
-      "effective_labels": {
-        "computed": true,
-        "description": "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.",
-        "description_kind": "plain",
-        "type": [
-          "map",
-          "string"
-        ]
-      },
-      "endpoints": {
-        "computed": true,
-        "description": "Endpoints for the instance.",
-        "description_kind": "plain",
-        "type": [
-          "list",
-          [
-            "object",
-            {
-              "connections": [
+              "port": "number",
+              "psc_config": [
                 "list",
                 [
                   "object",
                   {
-                    "psc_auto_connection": [
-                      "list",
-                      [
-                        "object",
-                        {
-                          "connection_type": "string",
-                          "forwarding_rule": "string",
-                          "ip_address": "string",
-                          "network": "string",
-                          "port": "number",
-                          "project_id": "string",
-                          "psc_connection_id": "string",
-                          "service_attachment": "string"
-                        }
-                      ]
-                    ]
+                    "network": "string"
                   }
                 ]
               ]
@@ -219,24 +151,9 @@ const googleMemorystoreInstance = `{
           ]
         ]
       },
-      "engine_configs": {
-        "computed": true,
-        "description": "Optional. User-provided engine configurations for the instance.",
-        "description_kind": "plain",
-        "type": [
-          "map",
-          "string"
-        ]
-      },
-      "engine_version": {
-        "computed": true,
-        "description": "Optional. Engine version of the instance.",
-        "description_kind": "plain",
-        "type": "string"
-      },
       "gcs_source": {
         "computed": true,
-        "description": "GCS source for the instance.",
+        "description": "Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.",
         "description_kind": "plain",
         "type": [
           "list",
@@ -257,31 +174,10 @@ const googleMemorystoreInstance = `{
         "optional": true,
         "type": "string"
       },
-      "instance_id": {
-        "description": "Required. The ID to use for the instance, which will become the final component of\nthe instance's resource name.\n\nThis value is subject to the following restrictions:\n\n* Must be 4-63 characters in length\n* Must begin with a letter or digit\n* Must contain only lowercase letters, digits, and hyphens\n* Must not end with a hyphen\n* Must be unique within a location",
-        "description_kind": "plain",
-        "required": true,
-        "type": "string"
-      },
       "kms_key": {
         "computed": true,
-        "description": "The KMS key used to encrypt the at-rest data of the cluster",
+        "description": "The KMS key used to encrypt the at-rest data of the cluster.",
         "description_kind": "plain",
-        "type": "string"
-      },
-      "labels": {
-        "computed": true,
-        "description": "Optional. Labels to represent user-provided metadata. \n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
-        "description_kind": "plain",
-        "type": [
-          "map",
-          "string"
-        ]
-      },
-      "location": {
-        "description": "Resource ID segment making up resource 'name'. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type 'memorystore.googleapis.com/CertificateAuthority'.",
-        "description_kind": "plain",
-        "optional": true,
         "type": "string"
       },
       "maintenance_policy": {
@@ -339,7 +235,7 @@ const googleMemorystoreInstance = `{
       },
       "managed_backup_source": {
         "computed": true,
-        "description": "Managed backup source for the instance.",
+        "description": "Backups that generated and managed by memorystore.",
         "description_kind": "plain",
         "type": [
           "list",
@@ -353,7 +249,7 @@ const googleMemorystoreInstance = `{
       },
       "managed_server_ca": {
         "computed": true,
-        "description": "Instance's Certificate Authority. This field will only be populated if instance's transit_encryption_mode is SERVER_AUTHENTICATION",
+        "description": "Cluster's Certificate Authority. This field will only be populated if Redis Cluster's transit_encryption_mode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION",
         "description_kind": "plain",
         "type": [
           "list",
@@ -376,41 +272,21 @@ const googleMemorystoreInstance = `{
           ]
         ]
       },
-      "mode": {
-        "computed": true,
-        "description": "Optional. cluster or cluster-disabled. \n Possible values:\n CLUSTER\n CLUSTER_DISABLED Possible values: [\"CLUSTER\", \"CLUSTER_DISABLED\"]",
-        "description_kind": "plain",
-        "type": "string"
-      },
       "name": {
-        "computed": true,
-        "description": "Identifier. Unique name of the instance.\nFormat: projects/{project}/locations/{location}/instances/{instance}",
+        "description": "Unique name of the resource in this scope including project and location using the form:\nprojects/{projectId}/locations/{locationId}/clusters/{clusterId}",
         "description_kind": "plain",
+        "required": true,
         "type": "string"
-      },
-      "node_config": {
-        "computed": true,
-        "description": "Represents configuration for nodes of the instance.",
-        "description_kind": "plain",
-        "type": [
-          "list",
-          [
-            "object",
-            {
-              "size_gb": "number"
-            }
-          ]
-        ]
       },
       "node_type": {
         "computed": true,
-        "description": "Optional. Machine type for individual nodes of the instance. \n Possible values:\n SHARED_CORE_NANO\nHIGHMEM_MEDIUM\nHIGHMEM_XLARGE\nSTANDARD_SMALL",
+        "description": "The nodeType for the Redis cluster.\nIf not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values: [\"REDIS_SHARED_CORE_NANO\", \"REDIS_HIGHMEM_MEDIUM\", \"REDIS_HIGHMEM_XLARGE\", \"REDIS_STANDARD_SMALL\"]",
         "description_kind": "plain",
         "type": "string"
       },
       "persistence_config": {
         "computed": true,
-        "description": "Represents persistence configuration for a instance.",
+        "description": "Persistence config (RDB, AOF) for the cluster.",
         "description_kind": "plain",
         "type": [
           "list",
@@ -441,14 +317,52 @@ const googleMemorystoreInstance = `{
           ]
         ]
       },
+      "precise_size_gb": {
+        "computed": true,
+        "description": "Output only. Redis memory precise size in GB for the entire cluster.",
+        "description_kind": "plain",
+        "type": "number"
+      },
       "project": {
         "description_kind": "plain",
         "optional": true,
         "type": "string"
       },
-      "psc_attachment_details": {
+      "psc_configs": {
         "computed": true,
-        "description": "Configuration of a service attachment of the cluster, for creating PSC connections.",
+        "description": "Required. Each PscConfig configures the consumer network where two\nnetwork addresses will be designated to the cluster for client access.\nCurrently, only one PscConfig is supported.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "network": "string"
+            }
+          ]
+        ]
+      },
+      "psc_connections": {
+        "computed": true,
+        "description": "Output only. PSC connections for discovery of the cluster topology and accessing the cluster.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "address": "string",
+              "forwarding_rule": "string",
+              "network": "string",
+              "project_id": "string",
+              "psc_connection_id": "string"
+            }
+          ]
+        ]
+      },
+      "psc_service_attachments": {
+        "computed": true,
+        "description": "Service attachment details to configure Psc connections.",
         "description_kind": "plain",
         "type": [
           "list",
@@ -461,49 +375,48 @@ const googleMemorystoreInstance = `{
           ]
         ]
       },
-      "psc_auto_connections": {
+      "redis_configs": {
         "computed": true,
-        "description": "Output only. User inputs and resource details of the auto-created PSC connections.",
+        "description": "Configure Redis Cluster behavior using a subset of native Redis configuration parameters.\nPlease check Memorystore documentation for the list of supported parameters:\nhttps://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations",
         "description_kind": "plain",
         "type": [
-          "list",
-          [
-            "object",
-            {
-              "connection_type": "string",
-              "forwarding_rule": "string",
-              "ip_address": "string",
-              "network": "string",
-              "port": "number",
-              "project_id": "string",
-              "psc_connection_id": "string",
-              "psc_connection_status": "string",
-              "service_attachment": "string"
-            }
-          ]
+          "map",
+          "string"
         ]
+      },
+      "region": {
+        "description": "The name of the region of the Redis cluster.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
       },
       "replica_count": {
         "computed": true,
-        "description": "Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.",
+        "description": "Optional. The number of replica nodes per shard.",
         "description_kind": "plain",
         "type": "number"
       },
       "shard_count": {
         "computed": true,
-        "description": "Required. Number of shards for the instance.",
+        "description": "Required. Number of shards for the Redis cluster.",
+        "description_kind": "plain",
+        "type": "number"
+      },
+      "size_gb": {
+        "computed": true,
+        "description": "Output only. Redis memory size in GB for the entire cluster.",
         "description_kind": "plain",
         "type": "number"
       },
       "state": {
         "computed": true,
-        "description": "Output only. Current state of the instance. \n Possible values:\n CREATING\nACTIVE\nUPDATING\nDELETING",
+        "description": "The current state of this cluster. Can be CREATING, READY, UPDATING, DELETING and SUSPENDED",
         "description_kind": "plain",
         "type": "string"
       },
       "state_info": {
         "computed": true,
-        "description": "Additional information about the state of the instance.",
+        "description": "Output only. Additional information about the current state of the cluster.",
         "description_kind": "plain",
         "type": [
           "list",
@@ -515,8 +428,6 @@ const googleMemorystoreInstance = `{
                 [
                   "object",
                   {
-                    "target_engine_version": "string",
-                    "target_node_type": "string",
                     "target_replica_count": "number",
                     "target_shard_count": "number"
                   }
@@ -526,36 +437,21 @@ const googleMemorystoreInstance = `{
           ]
         ]
       },
-      "terraform_labels": {
-        "computed": true,
-        "description": "The combination of labels configured directly on the resource\n and default labels configured on the provider.",
-        "description_kind": "plain",
-        "type": [
-          "map",
-          "string"
-        ]
-      },
       "transit_encryption_mode": {
         "computed": true,
-        "description": "Optional. Immutable. In-transit encryption mode of the instance. \n Possible values:\n TRANSIT_ENCRYPTION_DISABLED\nSERVER_AUTHENTICATION",
+        "description": "Optional. The in-transit encryption for the Redis cluster.\nIf not provided, encryption is disabled for the cluster. Default value: \"TRANSIT_ENCRYPTION_MODE_DISABLED\" Possible values: [\"TRANSIT_ENCRYPTION_MODE_UNSPECIFIED\", \"TRANSIT_ENCRYPTION_MODE_DISABLED\", \"TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION\"]",
         "description_kind": "plain",
         "type": "string"
       },
       "uid": {
         "computed": true,
-        "description": "Output only. System assigned, unique identifier for the instance.",
-        "description_kind": "plain",
-        "type": "string"
-      },
-      "update_time": {
-        "computed": true,
-        "description": "Output only. Latest update timestamp of the instance.",
+        "description": "System assigned, unique identifier for the cluster.",
         "description_kind": "plain",
         "type": "string"
       },
       "zone_distribution_config": {
         "computed": true,
-        "description": "Zone distribution configuration for allocation of instance resources.",
+        "description": "Immutable. Zone distribution config for Memorystore Redis cluster.",
         "description_kind": "plain",
         "type": [
           "list",
@@ -574,8 +470,8 @@ const googleMemorystoreInstance = `{
   "version": 0
 }`
 
-func GoogleMemorystoreInstanceSchema() *tfjson.Schema {
+func GoogleRedisClusterSchema() *tfjson.Schema {
 	var result tfjson.Schema
-	_ = json.Unmarshal([]byte(googleMemorystoreInstance), &result)
+	_ = json.Unmarshal([]byte(googleRedisCluster), &result)
 	return &result
 }

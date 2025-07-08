@@ -48,6 +48,18 @@ const googleComputeRouterStatus = `{
               "next_hop_origin": "string",
               "next_hop_peering": "string",
               "next_hop_vpn_tunnel": "string",
+              "params": [
+                "list",
+                [
+                  "object",
+                  {
+                    "resource_manager_tags": [
+                      "map",
+                      "string"
+                    ]
+                  }
+                ]
+              ],
               "priority": "number",
               "project": "string",
               "route_status": "string",
@@ -120,6 +132,18 @@ const googleComputeRouterStatus = `{
               "next_hop_origin": "string",
               "next_hop_peering": "string",
               "next_hop_vpn_tunnel": "string",
+              "params": [
+                "list",
+                [
+                  "object",
+                  {
+                    "resource_manager_tags": [
+                      "map",
+                      "string"
+                    ]
+                  }
+                ]
+              ],
               "priority": "number",
               "project": "string",
               "route_status": "string",

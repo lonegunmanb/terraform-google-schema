@@ -6,38 +6,43 @@ import (
 	tfjson "github.com/hashicorp/terraform-json"
 )
 
-const googleIapClient = `{
+const googleKmsKeyHandle = `{
   "block": {
     "attributes": {
-      "brand": {
-        "description": "Identifier of the brand to which this client\nis attached to. The format is\n'projects/{project_number}/brands/{brand_id}'.",
-        "description_kind": "plain",
-        "required": true,
-        "type": "string"
-      },
-      "client_id": {
-        "computed": true,
-        "description": "Output only. Unique identifier of the OAuth client.",
-        "description_kind": "plain",
-        "type": "string"
-      },
-      "display_name": {
-        "description": "Human-friendly name given to the OAuth client.",
-        "description_kind": "plain",
-        "required": true,
-        "type": "string"
-      },
       "id": {
         "computed": true,
         "description_kind": "plain",
         "optional": true,
         "type": "string"
       },
-      "secret": {
+      "kms_key": {
         "computed": true,
-        "description": "Output only. Client secret of the OAuth client.",
+        "description": "A reference to a Cloud KMS CryptoKey that can be used for CMEK in the requested\nproduct/project/location, for example\n'projects/1/locations/us-east1/keyRings/foo/cryptoKeys/bar-ffffff'",
         "description_kind": "plain",
-        "sensitive": true,
+        "type": "string"
+      },
+      "location": {
+        "description": "The location for the KeyHandle.\nA full list of valid locations can be found by running 'gcloud kms locations list'.",
+        "description_kind": "plain",
+        "required": true,
+        "type": "string"
+      },
+      "name": {
+        "description": "The resource name for the KeyHandle.",
+        "description_kind": "plain",
+        "required": true,
+        "type": "string"
+      },
+      "project": {
+        "computed": true,
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
+      "resource_type_selector": {
+        "description": "Selector of the resource type where we want to protect resources.\nFor example, 'storage.googleapis.com/Bucket'.",
+        "description_kind": "plain",
+        "required": true,
         "type": "string"
       }
     },
@@ -61,14 +66,13 @@ const googleIapClient = `{
         "nesting_mode": "single"
       }
     },
-    "deprecated": true,
     "description_kind": "plain"
   },
   "version": 0
 }`
 
-func GoogleIapClientSchema() *tfjson.Schema {
+func GoogleKmsKeyHandleSchema() *tfjson.Schema {
 	var result tfjson.Schema
-	_ = json.Unmarshal([]byte(googleIapClient), &result)
+	_ = json.Unmarshal([]byte(googleKmsKeyHandle), &result)
 	return &result
 }

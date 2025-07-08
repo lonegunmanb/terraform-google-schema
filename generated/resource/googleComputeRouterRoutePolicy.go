@@ -126,10 +126,11 @@ const googleComputeRouterRoutePolicy = `{
                     "type": "string"
                   }
                 },
-                "description": "CEL expression evaluated against a route to determine if this term applies (see Policy Language). When not set, the term applies to all routes.",
+                "description": "CEL expression evaluated against a route to determine if this term applies (see Policy Language).",
                 "description_kind": "plain"
               },
               "max_items": 1,
+              "min_items": 1,
               "nesting_mode": "list"
             }
           },

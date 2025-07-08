@@ -76,6 +76,15 @@ const googleBigqueryTable = `{
         "optional": true,
         "type": "string"
       },
+      "ignore_schema_changes": {
+        "description": "Mention which fields in schema are to be ignored",
+        "description_kind": "plain",
+        "optional": true,
+        "type": [
+          "list",
+          "string"
+        ]
+      },
       "labels": {
         "description": "A mapping of labels to assign to the resource.\n\n\t\t\t\t**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\n\t\t\t\tPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
         "description_kind": "plain",

@@ -6,23 +6,17 @@ import (
 	tfjson "github.com/hashicorp/terraform-json"
 )
 
-const googleIapClient = `{
+const googleKmsAutokeyConfig = `{
   "block": {
     "attributes": {
-      "brand": {
-        "description": "Identifier of the brand to which this client\nis attached to. The format is\n'projects/{project_number}/brands/{brand_id}'.",
-        "description_kind": "plain",
-        "required": true,
-        "type": "string"
-      },
-      "client_id": {
+      "etag": {
         "computed": true,
-        "description": "Output only. Unique identifier of the OAuth client.",
+        "description": "The etag of the AutokeyConfig for optimistic concurrency control.",
         "description_kind": "plain",
         "type": "string"
       },
-      "display_name": {
-        "description": "Human-friendly name given to the OAuth client.",
+      "folder": {
+        "description": "The folder for which to retrieve config.",
         "description_kind": "plain",
         "required": true,
         "type": "string"
@@ -33,11 +27,10 @@ const googleIapClient = `{
         "optional": true,
         "type": "string"
       },
-      "secret": {
-        "computed": true,
-        "description": "Output only. Client secret of the OAuth client.",
+      "key_project": {
+        "description": "The target key project for a given folder where KMS Autokey will provision a\nCryptoKey for any new KeyHandle the Developer creates. Should have the form\n'projects/\u003cproject_id_or_number\u003e'.",
         "description_kind": "plain",
-        "sensitive": true,
+        "optional": true,
         "type": "string"
       }
     },
@@ -54,6 +47,11 @@ const googleIapClient = `{
               "description_kind": "plain",
               "optional": true,
               "type": "string"
+            },
+            "update": {
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
             }
           },
           "description_kind": "plain"
@@ -61,14 +59,13 @@ const googleIapClient = `{
         "nesting_mode": "single"
       }
     },
-    "deprecated": true,
     "description_kind": "plain"
   },
   "version": 0
 }`
 
-func GoogleIapClientSchema() *tfjson.Schema {
+func GoogleKmsAutokeyConfigSchema() *tfjson.Schema {
 	var result tfjson.Schema
-	_ = json.Unmarshal([]byte(googleIapClient), &result)
+	_ = json.Unmarshal([]byte(googleKmsAutokeyConfig), &result)
 	return &result
 }

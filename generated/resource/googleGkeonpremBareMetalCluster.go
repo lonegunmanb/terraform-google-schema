@@ -393,7 +393,7 @@ const googleGkeonpremBareMetalCluster = `{
                           "description": "If true, prevent IP addresses from being automatically assigned.",
                           "description_kind": "plain",
                           "optional": true,
-                          "type": "string"
+                          "type": "bool"
                         },
                         "pool": {
                           "description": "The name of the address pool.",

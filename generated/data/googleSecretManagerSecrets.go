@@ -40,6 +40,7 @@ const googleSecretManagerSecrets = `{
                 "string"
               ],
               "create_time": "string",
+              "deletion_protection": "bool",
               "effective_annotations": [
                 "map",
                 "string"

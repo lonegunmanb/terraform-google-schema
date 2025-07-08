@@ -162,6 +162,31 @@ const googleMemorystoreInstance = `{
           ]
         ]
       },
+      "managed_server_ca": {
+        "computed": true,
+        "description": "Instance's Certificate Authority. This field will only be populated if instance's transit_encryption_mode is SERVER_AUTHENTICATION",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "ca_certs": [
+                "list",
+                [
+                  "object",
+                  {
+                    "certificates": [
+                      "list",
+                      "string"
+                    ]
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      },
       "mode": {
         "computed": true,
         "description": "Optional. cluster or cluster-disabled. \n Possible values:\n CLUSTER\n CLUSTER_DISABLED Possible values: [\"CLUSTER\", \"CLUSTER_DISABLED\"]",

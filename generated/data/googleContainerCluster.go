@@ -164,6 +164,20 @@ const googleContainerCluster = `{
         "description_kind": "plain",
         "type": "bool"
       },
+      "anonymous_authentication_config": {
+        "computed": true,
+        "description": "AnonymousAuthenticationConfig allows users to restrict or enable anonymous access to the cluster.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "mode": "string"
+            }
+          ]
+        ]
+      },
       "authenticator_groups_config": {
         "computed": true,
         "description": "Configuration for the Google Groups for GKE feature.",

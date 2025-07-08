@@ -60,6 +60,12 @@ const googleComputeBackendBucket = `{
         "optional": true,
         "type": "string"
       },
+      "load_balancing_scheme": {
+        "description": "The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.\nIf loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both. Possible values: [\"INTERNAL_MANAGED\"]",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "name": {
         "description": "Name of the resource. Provided by the client when the resource is\ncreated. The name must be 1-63 characters long, and comply with\nRFC1035.  Specifically, the name must be 1-63 characters long and\nmatch the regular expression '[a-z]([-a-z0-9]*[a-z0-9])?' which means\nthe first character must be a lowercase letter, and all following\ncharacters must be a dash, lowercase letter, or digit, except the\nlast character, which cannot be a dash.",
         "description_kind": "plain",
