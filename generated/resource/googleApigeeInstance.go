@@ -94,6 +94,28 @@ const googleApigeeInstance = `{
       }
     },
     "block_types": {
+      "access_logging_config": {
+        "block": {
+          "attributes": {
+            "enabled": {
+              "description": "Boolean flag that specifies whether the customer access log feature is enabled.",
+              "description_kind": "plain",
+              "required": true,
+              "type": "bool"
+            },
+            "filter": {
+              "description": "Ship the access log entries that match the statusCode defined in the filter.\nThe statusCode is the only expected/supported filter field. (Ex: statusCode)\nThe filter will parse it to the Common Expression Language semantics for expression\nevaluation to build the filter condition. (Ex: \"filter\": statusCode \u003e= 200 \u0026\u0026 statusCode \u003c 300 )",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description": "Access logging configuration enables the access logging feature at the instance.\nApigee customers can enable access logging to ship the access logs to their own project's cloud logging.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "timeouts": {
         "block": {
           "attributes": {

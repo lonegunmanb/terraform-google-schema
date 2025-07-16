@@ -83,6 +83,12 @@ const googleStorageBucketObject = `{
         "description_kind": "plain",
         "type": "bool"
       },
+      "force_empty_content_type": {
+        "computed": true,
+        "description": "Flag to set empty Content-Type.",
+        "description_kind": "plain",
+        "type": "bool"
+      },
       "generation": {
         "computed": true,
         "description": "The content generation of this object. Used for object versioning and soft delete.",

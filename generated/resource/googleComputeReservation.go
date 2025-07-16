@@ -21,6 +21,13 @@ const googleComputeReservation = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "delete_at_time": {
+        "computed": true,
+        "description": "Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.\nCannot be used with delete_after_duration.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "description": {
         "description": "An optional description of this resource.",
         "description_kind": "plain",
@@ -70,6 +77,45 @@ const googleComputeReservation = `{
       }
     },
     "block_types": {
+      "delete_after_duration": {
+        "block": {
+          "attributes": {
+            "nanos": {
+              "description": "Number of nanoseconds for the auto-delete duration.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "number"
+            },
+            "seconds": {
+              "description": "Number of seconds for the auto-delete duration.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description": "Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "reservation_sharing_policy": {
+        "block": {
+          "attributes": {
+            "service_share_type": {
+              "computed": true,
+              "description": "Sharing config for all Google Cloud services. Possible values: [\"ALLOW_ALL\", \"DISALLOW_ALL\"]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "description": "Sharing policy for reservations with Google Cloud managed services.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "share_settings": {
         "block": {
           "attributes": {
@@ -123,6 +169,12 @@ const googleComputeReservation = `{
               "description": "How many instances are in use.",
               "description_kind": "plain",
               "type": "number"
+            },
+            "source_instance_template": {
+              "description": "Specifies the instance template to create the reservation. If you use this field, you must exclude the\ninstanceProperties field.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
             }
           },
           "block_types": {
@@ -191,7 +243,6 @@ const googleComputeReservation = `{
                 "description_kind": "plain"
               },
               "max_items": 1,
-              "min_items": 1,
               "nesting_mode": "list"
             }
           },

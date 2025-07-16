@@ -158,6 +158,18 @@ const googleComputeRegionDisk = `{
         "optional": true,
         "type": "string"
       },
+      "provisioned_iops": {
+        "computed": true,
+        "description": "Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second\nthat the disk can handle. Values must be between 10,000 and 120,000.\nFor more details, see the Extreme persistent disk [documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).",
+        "description_kind": "plain",
+        "type": "number"
+      },
+      "provisioned_throughput": {
+        "computed": true,
+        "description": "Indicates how much throughput to provision for the disk. This sets the number of throughput\nmb per second that the disk can handle. Values must be greater than or equal to 1.",
+        "description_kind": "plain",
+        "type": "number"
+      },
       "region": {
         "description": "A reference to the region where the disk resides.",
         "description_kind": "plain",

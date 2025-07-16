@@ -983,6 +983,51 @@ const googleComputeBackendService = `{
           "description_kind": "plain"
         },
         "nesting_mode": "single"
+      },
+      "tls_settings": {
+        "block": {
+          "attributes": {
+            "authentication_config": {
+              "description": "Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.\nCan be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.\nCan only be specified if authenticationMode is not NONE.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "sni": {
+              "description": "Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the\nTLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's\nserver certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it\nregardless of whether the Regional Internet NEG is specified with FQDN or IP address and port.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "block_types": {
+            "subject_alt_names": {
+              "block": {
+                "attributes": {
+                  "dns_name": {
+                    "description": "The SAN specified as a DNS Name.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "uniform_resource_identifier": {
+                    "description": "The SAN specified as a URI.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "description": "A list of Subject Alternative Names (SANs) that the Load Balancer verifies during a TLS handshake with the backend.\nWhen the server presents its X.509 certificate to the Load Balancer, the Load Balancer inspects the certificate's SAN field,\nand requires that at least one SAN match one of the subjectAltNames in the list. This field is limited to 5 entries.\nWhen both sni and subjectAltNames are specified, the load balancer matches the backend certificate's SAN only to\nsubjectAltNames.",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
       }
     },
     "description_kind": "plain"

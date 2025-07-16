@@ -21,6 +21,27 @@ const googleComputeReservation = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "delete_after_duration": {
+        "computed": true,
+        "description": "Duration after which the reservation will be auto-deleted by Compute Engine. Cannot be used with delete_at_time.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "nanos": "number",
+              "seconds": "string"
+            }
+          ]
+        ]
+      },
+      "delete_at_time": {
+        "computed": true,
+        "description": "Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.\nCannot be used with delete_after_duration.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "description": {
         "computed": true,
         "description": "An optional description of this resource.",
@@ -43,6 +64,20 @@ const googleComputeReservation = `{
         "description_kind": "plain",
         "optional": true,
         "type": "string"
+      },
+      "reservation_sharing_policy": {
+        "computed": true,
+        "description": "Sharing policy for reservations with Google Cloud managed services.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "service_share_type": "string"
+            }
+          ]
+        ]
       },
       "self_link": {
         "computed": true,
@@ -113,7 +148,8 @@ const googleComputeReservation = `{
                     "min_cpu_platform": "string"
                   }
                 ]
-              ]
+              ],
+              "source_instance_template": "string"
             }
           ]
         ]

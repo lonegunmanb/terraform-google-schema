@@ -529,6 +529,31 @@ const googleComputeBackendService = `{
         "description": "The backend service timeout has a different meaning depending on the type of load balancer.\nFor more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).\nThe default is 30 seconds.\nThe full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.",
         "description_kind": "plain",
         "type": "number"
+      },
+      "tls_settings": {
+        "computed": true,
+        "description": "Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "authentication_config": "string",
+              "sni": "string",
+              "subject_alt_names": [
+                "list",
+                [
+                  "object",
+                  {
+                    "dns_name": "string",
+                    "uniform_resource_identifier": "string"
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
       }
     },
     "description_kind": "plain"
