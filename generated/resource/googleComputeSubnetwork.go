@@ -225,6 +225,25 @@ const googleComputeSubnetwork = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "params": {
+        "block": {
+          "attributes": {
+            "resource_manager_tags": {
+              "description": "Resource manager tags to be bound to the subnetwork. Tag keys and values have the\nsame definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},\nand values are in the format tagValues/456. The field is ignored when empty.\nThe field is immutable and causes resource replacement when mutated. This field is only\nset at create time and modifying this field after creation will trigger recreation.\nTo apply tags to an existing resource, see the google_tags_tag_binding resource.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "map",
+                "string"
+              ]
+            }
+          },
+          "description": "Additional params passed with the request, but not persisted as part of resource payload",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "secondary_ip_range": {
         "block": {
           "attributes": {

@@ -64,7 +64,7 @@ const googleVmwareengineNetworkPeering = `{
         "type": "string"
       },
       "peer_network_type": {
-        "description": "The type of the network to peer with the VMware Engine network. Possible values: [\"STANDARD\", \"VMWARE_ENGINE_NETWORK\", \"PRIVATE_SERVICES_ACCESS\", \"NETAPP_CLOUD_VOLUMES\", \"THIRD_PARTY_SERVICE\", \"DELL_POWERSCALE\"]",
+        "description": "The type of the network to peer with the VMware Engine network. Possible values: [\"STANDARD\", \"VMWARE_ENGINE_NETWORK\", \"PRIVATE_SERVICES_ACCESS\", \"NETAPP_CLOUD_VOLUMES\", \"THIRD_PARTY_SERVICE\", \"DELL_POWERSCALE\", \"GOOGLE_CLOUD_NETAPP_VOLUMES\"]",
         "description_kind": "plain",
         "required": true,
         "type": "string"

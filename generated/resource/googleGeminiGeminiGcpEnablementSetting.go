@@ -16,6 +16,7 @@ const googleGeminiGeminiGcpEnablementSetting = `{
         "type": "string"
       },
       "disable_web_grounding": {
+        "deprecated": true,
         "description": "Whether web grounding should be disabled.",
         "description_kind": "plain",
         "optional": true,
@@ -88,6 +89,12 @@ const googleGeminiGeminiGcpEnablementSetting = `{
         "computed": true,
         "description": "Update time stamp.",
         "description_kind": "plain",
+        "type": "string"
+      },
+      "web_grounding_type": {
+        "description": "Web grounding type.\nPossible values:\nGROUNDING_WITH_GOOGLE_SEARCH\nWEB_GROUNDING_FOR_ENTERPRISE",
+        "description_kind": "plain",
+        "optional": true,
         "type": "string"
       }
     },

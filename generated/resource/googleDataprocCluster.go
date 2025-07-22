@@ -339,6 +339,7 @@ const googleDataprocCluster = `{
                     "type": "bool"
                   },
                   "metadata": {
+                    "computed": true,
                     "description": "A map of the Compute Engine metadata entries to add to all instances",
                     "description_kind": "plain",
                     "optional": true,
@@ -811,6 +812,25 @@ const googleDataprocCluster = `{
             "security_config": {
               "block": {
                 "block_types": {
+                  "identity_config": {
+                    "block": {
+                      "attributes": {
+                        "user_service_account_mapping": {
+                          "description": "User to service account mappings for multi-tenancy.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": [
+                            "map",
+                            "string"
+                          ]
+                        }
+                      },
+                      "description": "Identity related configuration",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
                   "kerberos_config": {
                     "block": {
                       "attributes": {
@@ -909,7 +929,6 @@ const googleDataprocCluster = `{
                       "description_kind": "plain"
                     },
                     "max_items": 1,
-                    "min_items": 1,
                     "nesting_mode": "list"
                   }
                 },

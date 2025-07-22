@@ -76,6 +76,12 @@ const googleBigqueryTable = `{
         "optional": true,
         "type": "string"
       },
+      "ignore_auto_generated_schema": {
+        "description": "Whether Terraform will prevent implicitly added columns in schema from showing diff.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "ignore_schema_changes": {
         "description": "Mention which fields in schema are to be ignored",
         "description_kind": "plain",

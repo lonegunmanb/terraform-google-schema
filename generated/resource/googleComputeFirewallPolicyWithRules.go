@@ -113,6 +113,16 @@ const googleComputeFirewallPolicyWithRules = `{
                       "list",
                       "string"
                     ],
+                    "src_secure_tag": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "name": "string",
+                          "state": "string"
+                        }
+                      ]
+                    ],
                     "src_threat_intelligences": [
                       "list",
                       "string"
@@ -126,6 +136,16 @@ const googleComputeFirewallPolicyWithRules = `{
               "target_resources": [
                 "list",
                 "string"
+              ],
+              "target_secure_tag": [
+                "list",
+                [
+                  "object",
+                  {
+                    "name": "string",
+                    "state": "string"
+                  }
+                ]
               ],
               "target_service_accounts": [
                 "list",
@@ -358,6 +378,27 @@ const googleComputeFirewallPolicyWithRules = `{
                     },
                     "min_items": 1,
                     "nesting_mode": "list"
+                  },
+                  "src_secure_tag": {
+                    "block": {
+                      "attributes": {
+                        "name": {
+                          "description": "Name of the secure tag, created with TagManager's TagValue API.\n@pattern tagValues/[0-9]+",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "state": {
+                          "computed": true,
+                          "description": "[Output Only] State of the secure tag, either 'EFFECTIVE' or\n'INEFFECTIVE'. A secure tag is 'INEFFECTIVE' when it is deleted\nor its network is deleted.",
+                          "description_kind": "plain",
+                          "type": "string"
+                        }
+                      },
+                      "description": "List of secure tag values, which should be matched at the source\nof the traffic.\nFor INGRESS rule, if all the \u003ccode\u003esrcSecureTag\u003c/code\u003e are INEFFECTIVE,\nand there is no \u003ccode\u003esrcIpRange\u003c/code\u003e, this rule will be ignored.\nMaximum number of source tag values allowed is 256.",
+                      "description_kind": "plain"
+                    },
+                    "nesting_mode": "list"
                   }
                 },
                 "description": "A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.",
@@ -365,6 +406,27 @@ const googleComputeFirewallPolicyWithRules = `{
               },
               "max_items": 1,
               "min_items": 1,
+              "nesting_mode": "list"
+            },
+            "target_secure_tag": {
+              "block": {
+                "attributes": {
+                  "name": {
+                    "description": "Name of the secure tag, created with TagManager's TagValue API.\n@pattern tagValues/[0-9]+",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "state": {
+                    "computed": true,
+                    "description": "[Output Only] State of the secure tag, either 'EFFECTIVE' or\n'INEFFECTIVE'. A secure tag is 'INEFFECTIVE' when it is deleted\nor its network is deleted.",
+                    "description_kind": "plain",
+                    "type": "string"
+                  }
+                },
+                "description": "A list of secure tags that controls which instances the firewall rule\napplies to. If \u003ccode\u003etargetSecureTag\u003c/code\u003e are specified, then the\nfirewall rule applies only to instances in the VPC network that have one\nof those EFFECTIVE secure tags, if all the target_secure_tag are in\nINEFFECTIVE state, then this rule will be ignored.\n\u003ccode\u003etargetSecureTag\u003c/code\u003e may not be set at the same time as\n\u003ccode\u003etargetServiceAccounts\u003c/code\u003e.\nIf neither \u003ccode\u003etargetServiceAccounts\u003c/code\u003e nor\n\u003ccode\u003etargetSecureTag\u003c/code\u003e are specified, the firewall rule applies\nto all instances on the specified network.\nMaximum number of target secure tags allowed is 256.",
+                "description_kind": "plain"
+              },
               "nesting_mode": "list"
             }
           },

@@ -633,6 +633,22 @@ const googleCloudRunV2Job = `{
                     },
                     "nesting_mode": "list"
                   },
+                  "node_selector": {
+                    "block": {
+                      "attributes": {
+                        "accelerator": {
+                          "description": "The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Node Selector describes the hardware requirements of the resources.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
                   "volumes": {
                     "block": {
                       "attributes": {

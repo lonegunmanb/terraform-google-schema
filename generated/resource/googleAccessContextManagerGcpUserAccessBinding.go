@@ -141,9 +141,15 @@ const googleAccessContextManagerGcpUserAccessBinding = `{
                                 "description_kind": "plain",
                                 "optional": true,
                                 "type": "string"
+                              },
+                              "name": {
+                                "description": "The name of the application. Example: \"Cloud Console\"",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
                               }
                             },
-                            "description": "Optional. The application that is subject to this binding's scope.",
+                            "description": "Optional. The application that is subject to this binding's scope. Only one of clientId or name should be specified.",
                             "description_kind": "plain"
                           },
                           "max_items": 1,

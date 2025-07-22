@@ -366,6 +366,15 @@ const googleCloudRunV2Job = `{
                     "encryption_key": "string",
                     "execution_environment": "string",
                     "max_retries": "number",
+                    "node_selector": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "accelerator": "string"
+                        }
+                      ]
+                    ],
                     "service_account": "string",
                     "timeout": "string",
                     "volumes": [

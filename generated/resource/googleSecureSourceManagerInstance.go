@@ -15,6 +15,12 @@ const googleSecureSourceManagerInstance = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "deletion_policy": {
+        "description": "The deletion policy for the instance. Setting 'ABANDON' allows the resource\nto be abandoned, rather than deleted. Setting 'DELETE' deletes the resource\nand all its contents. Setting 'PREVENT' prevents the resource from being deleted.\nDefault is 'DELETE'.  Possible values are:\n  * DELETE\n  * PREVENT\n  * ABANDON",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "effective_labels": {
         "computed": true,
         "description": "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.",
