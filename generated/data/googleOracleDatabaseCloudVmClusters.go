@@ -17,6 +17,7 @@ const googleOracleDatabaseCloudVmClusters = `{
           [
             "object",
             {
+              "backup_odb_subnet": "string",
               "backup_subnet_cidr": "string",
               "cidr": "string",
               "cloud_vm_cluster_id": "string",
@@ -36,6 +37,8 @@ const googleOracleDatabaseCloudVmClusters = `{
               "location": "string",
               "name": "string",
               "network": "string",
+              "odb_network": "string",
+              "odb_subnet": "string",
               "project": "string",
               "properties": [
                 "list",

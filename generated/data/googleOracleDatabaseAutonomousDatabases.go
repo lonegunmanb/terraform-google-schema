@@ -36,6 +36,8 @@ const googleOracleDatabaseAutonomousDatabases = `{
               "location": "string",
               "name": "string",
               "network": "string",
+              "odb_network": "string",
+              "odb_subnet": "string",
               "project": "string",
               "properties": [
                 "list",

@@ -42,6 +42,12 @@ const googleWorkbenchInstance = `{
           "string"
         ]
       },
+      "enable_managed_euc": {
+        "description": "Flag to enable managed end user credentials for the instance.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "enable_third_party_identity": {
         "description": "Flag that specifies that a notebook can be accessed with third party\nidentity provider.",
         "description_kind": "plain",
@@ -386,6 +392,38 @@ const googleWorkbenchInstance = `{
                 "description": "The network interfaces for the VM. Supports only one interface.",
                 "description_kind": "plain"
               },
+              "nesting_mode": "list"
+            },
+            "reservation_affinity": {
+              "block": {
+                "attributes": {
+                  "consume_reservation_type": {
+                    "computed": true,
+                    "description": "Specifies the type of reservation from which this instance can consume resources:\nRESERVATION_ANY (default), RESERVATION_SPECIFIC, or RESERVATION_NONE. Possible values: [\"RESERVATION_NONE\", \"RESERVATION_ANY\", \"RESERVATION_SPECIFIC\"]",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "key": {
+                    "description": "Corresponds to the label key of a reservation resource. To target a\nRESERVATION_SPECIFIC by name, use compute.googleapis.com/reservation-name\nas the key and specify the name of your reservation as its value.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "values": {
+                    "description": "Corresponds to the label values of a reservation resource. This can be\neither a name to a reservation in the same project or\n\"projects/different-project/reservations/some-reservation-name\"\nto target a shared reservation in the same zone but in a different project.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": [
+                      "list",
+                      "string"
+                    ]
+                  }
+                },
+                "description": "Reservations that this instance can consume from.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
               "nesting_mode": "list"
             },
             "service_accounts": {

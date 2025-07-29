@@ -24,7 +24,7 @@ const googleOracleDatabaseAutonomousDatabase = `{
       "cidr": {
         "description": "The subnet CIDR range for the Autonmous Database.",
         "description_kind": "plain",
-        "required": true,
+        "optional": true,
         "type": "string"
       },
       "create_time": {
@@ -97,7 +97,19 @@ const googleOracleDatabaseAutonomousDatabase = `{
       "network": {
         "description": "The name of the VPC network used by the Autonomous Database.\nFormat: projects/{project}/global/networks/{network}",
         "description_kind": "plain",
-        "required": true,
+        "optional": true,
+        "type": "string"
+      },
+      "odb_network": {
+        "description": "The name of the OdbNetwork associated with the Autonomous Database.\nFormat:\nprojects/{project}/locations/{location}/odbNetworks/{odb_network}\nIt is optional but if specified, this should match the parent ODBNetwork of\nthe odb_subnet and backup_odb_subnet.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
+      "odb_subnet": {
+        "description": "The name of the OdbSubnet associated with the Autonomous Database for\nIP allocation. Format:\nprojects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}",
+        "description_kind": "plain",
+        "optional": true,
         "type": "string"
       },
       "project": {

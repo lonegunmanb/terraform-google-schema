@@ -99,6 +99,18 @@ const googleOracleDatabaseAutonomousDatabase = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "odb_network": {
+        "computed": true,
+        "description": "The name of the OdbNetwork associated with the Autonomous Database.\nFormat:\nprojects/{project}/locations/{location}/odbNetworks/{odb_network}\nIt is optional but if specified, this should match the parent ODBNetwork of\nthe odb_subnet and backup_odb_subnet.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "odb_subnet": {
+        "computed": true,
+        "description": "The name of the OdbSubnet associated with the Autonomous Database for\nIP allocation. Format:\nprojects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "project": {
         "description_kind": "plain",
         "optional": true,

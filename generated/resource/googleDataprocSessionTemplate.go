@@ -92,6 +92,12 @@ const googleDataprocSessionTemplate = `{
             "execution_config": {
               "block": {
                 "attributes": {
+                  "idle_ttl": {
+                    "description": "The duration to keep the session alive while it's idling.\nExceeding this threshold causes the session to terminate. Minimum value is 10 minutes; maximum value is 14 day.\nDefaults to 1 hour if not set. If both ttl and idleTtl are specified for an interactive session, the conditions\nare treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or when ttl has\nbeen exceeded, whichever occurs first.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
                   "kms_key": {
                     "description": "The Cloud KMS key to use for encryption.",
                     "description_kind": "plain",
@@ -132,6 +138,24 @@ const googleDataprocSessionTemplate = `{
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"
+                  }
+                },
+                "block_types": {
+                  "authentication_config": {
+                    "block": {
+                      "attributes": {
+                        "user_workload_authentication_type": {
+                          "description": "Authentication type for the user workload running in containers. Possible values: [\"SERVICE_ACCOUNT\", \"END_USER_CREDENTIALS\"]",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Authentication configuration for a workload is used to set the default identity for the workload execution.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
                   }
                 },
                 "description": "Execution configuration for a workload.",

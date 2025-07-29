@@ -9,6 +9,12 @@ import (
 const googleOracleDatabaseCloudVmCluster = `{
   "block": {
     "attributes": {
+      "backup_odb_subnet": {
+        "computed": true,
+        "description": "The name of the backup OdbSubnet associated with the VM Cluster.\nFormat:\nprojects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "backup_subnet_cidr": {
         "computed": true,
         "description": "CIDR range of the backup subnet.",
@@ -96,6 +102,18 @@ const googleOracleDatabaseCloudVmCluster = `{
       "network": {
         "computed": true,
         "description": "The name of the VPC network.\nFormat: projects/{project}/global/networks/{network}",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "odb_network": {
+        "computed": true,
+        "description": "The name of the OdbNetwork associated with the VM Cluster.\nFormat:\nprojects/{project}/locations/{location}/odbNetworks/{odb_network}\nIt is optional but if specified, this should match the parent ODBNetwork of\nthe odb_subnet and backup_odb_subnet.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "odb_subnet": {
+        "computed": true,
+        "description": "The name of the OdbSubnet associated with the VM Cluster for\nIP allocation. Format:\nprojects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}",
         "description_kind": "plain",
         "type": "string"
       },

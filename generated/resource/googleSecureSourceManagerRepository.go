@@ -15,6 +15,12 @@ const googleSecureSourceManagerRepository = `{
         "description_kind": "plain",
         "type": "string"
       },
+      "deletion_policy": {
+        "description": "The deletion policy for the repository. Setting 'ABANDON' allows the resource\nto be abandoned, rather than deleted. Setting 'DELETE' deletes the resource\nand all its contents. Setting 'PREVENT' prevents the resource from accidental deletion\nby erroring out during plan.\nDefault is 'DELETE'.  Possible values are:\n  * DELETE\n  * PREVENT\n  * ABANDON",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "description": {
         "description": "Description of the repository, which cannot exceed 500 characters.",
         "description_kind": "plain",

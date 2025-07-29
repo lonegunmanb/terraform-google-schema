@@ -226,6 +226,24 @@ const googleDataprocBatch = `{
                     "type": "string"
                   }
                 },
+                "block_types": {
+                  "authentication_config": {
+                    "block": {
+                      "attributes": {
+                        "user_workload_authentication_type": {
+                          "description": "Authentication type for the user workload running in containers. Possible values: [\"SERVICE_ACCOUNT\", \"END_USER_CREDENTIALS\"]",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Authentication configuration for a workload is used to set the default identity for the workload execution.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
                 "description": "Execution configuration for a workload.",
                 "description_kind": "plain"
               },

@@ -82,6 +82,10 @@ const googleSecretManagerRegionalSecrets = `{
                 ]
               ],
               "secret_id": "string",
+              "tags": [
+                "map",
+                "string"
+              ],
               "terraform_labels": [
                 "map",
                 "string"

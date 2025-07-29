@@ -135,6 +135,28 @@ const googleNetworkConnectivityInternalRange = `{
       }
     },
     "block_types": {
+      "allocation_options": {
+        "block": {
+          "attributes": {
+            "allocation_strategy": {
+              "description": "Optional. Sets the strategy used to automatically find a free range of a size given by prefixLength. Can be set only when trying to create a reservation that automatically finds the free range to reserve. Possible values: [\"RANDOM\", \"FIRST_AVAILABLE\", \"RANDOM_FIRST_N_AVAILABLE\", \"FIRST_SMALLEST_FITTING\"]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "first_available_ranges_lookup_size": {
+              "description": "Must be set when allocation_strategy is RANDOM_FIRST_N_AVAILABLE, otherwise must remain unset. Defines the size of the set of free ranges from which RANDOM_FIRST_N_AVAILABLE strategy randomy selects one,\nin other words it sets the N in the RANDOM_FIRST_N_AVAILABLE.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "number"
+            }
+          },
+          "description": "Options for automatically allocating a free range with a size given by prefixLength.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "migration": {
         "block": {
           "attributes": {

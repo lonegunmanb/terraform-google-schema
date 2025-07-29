@@ -16,7 +16,7 @@ const googleSecureSourceManagerInstance = `{
         "type": "string"
       },
       "deletion_policy": {
-        "description": "The deletion policy for the instance. Setting 'ABANDON' allows the resource\nto be abandoned, rather than deleted. Setting 'DELETE' deletes the resource\nand all its contents. Setting 'PREVENT' prevents the resource from being deleted.\nDefault is 'DELETE'.  Possible values are:\n  * DELETE\n  * PREVENT\n  * ABANDON",
+        "description": "The deletion policy for the instance. Setting 'ABANDON' allows the resource\nto be abandoned, rather than deleted. Setting 'DELETE' deletes the resource\nand all its contents. Setting 'PREVENT' prevents the resource from accidental\ndeletion by erroring out during plan.\nDefault is 'DELETE'.  Possible values are:\n  * DELETE\n  * PREVENT\n  * ABANDON",
         "description_kind": "plain",
         "optional": true,
         "type": "string"

@@ -159,7 +159,7 @@ const googleMemorystoreInstance = `{
       },
       "discovery_endpoints": {
         "computed": true,
-        "description": "Output only. Endpoints clients can connect to the instance through. Currently only one\ndiscovery endpoint is supported.",
+        "description": "Deprecated. Output only. Endpoints clients can connect to the instance through.",
         "description_kind": "plain",
         "type": [
           "list",
