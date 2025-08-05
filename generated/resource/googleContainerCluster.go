@@ -436,6 +436,28 @@ const googleContainerCluster = `{
               "max_items": 1,
               "nesting_mode": "list"
             },
+            "lustre_csi_driver_config": {
+              "block": {
+                "attributes": {
+                  "enable_legacy_lustre_port": {
+                    "description": "If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.\n\t\t\t\t\t\t\t\t\t\tThis flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  },
+                  "enabled": {
+                    "description": "Whether the Lustre CSI driver is enabled for this cluster.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "bool"
+                  }
+                },
+                "description": "Configuration for the Lustre CSI driver. Defaults to disabled; set enabled = true to enable.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "network_policy_config": {
               "block": {
                 "attributes": {
@@ -1180,6 +1202,30 @@ const googleContainerCluster = `{
             }
           },
           "block_types": {
+            "additional_ip_ranges_config": {
+              "block": {
+                "attributes": {
+                  "pod_ipv4_range_names": {
+                    "description": "List of secondary ranges names within this subnetwork that can be used for pod IPs.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": [
+                      "list",
+                      "string"
+                    ]
+                  },
+                  "subnetwork": {
+                    "description": "Name of the subnetwork. This can be the full path of the subnetwork or just the name.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "description": "AdditionalIPRangesConfig is the configuration for individual additional subnetworks attached to the cluster",
+                "description_kind": "plain"
+              },
+              "nesting_mode": "list"
+            },
             "additional_pod_ranges_config": {
               "block": {
                 "attributes": {
@@ -2525,6 +2571,12 @@ const googleContainerCluster = `{
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"
+                  },
+                  "subnetwork": {
+                    "computed": true,
+                    "description": "The subnetwork path for the node pool. Format: projects/{project}/regions/{region}/subnetworks/{subnetwork} . If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable.",
+                    "description_kind": "plain",
+                    "type": "string"
                   }
                 },
                 "block_types": {
@@ -3868,6 +3920,28 @@ const googleContainerCluster = `{
             }
           },
           "description": "Configuration for private clusters, clusters with private nodes.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "rbac_binding_config": {
+        "block": {
+          "attributes": {
+            "enable_insecure_binding_system_authenticated": {
+              "description": "Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            },
+            "enable_insecure_binding_system_unauthenticated": {
+              "description": "Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:anonymous or system:unauthenticated.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "bool"
+            }
+          },
+          "description": "RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created.",
           "description_kind": "plain"
         },
         "max_items": 1,

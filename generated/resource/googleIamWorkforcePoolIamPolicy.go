@@ -1,4 +1,4 @@
-package data
+package resource
 
 import (
 	"encoding/json"
@@ -6,39 +6,34 @@ import (
 	tfjson "github.com/hashicorp/terraform-json"
 )
 
-const googleServiceAccountKey = `{
+const googleIamWorkforcePoolIamPolicy = `{
   "block": {
     "attributes": {
+      "etag": {
+        "computed": true,
+        "description_kind": "plain",
+        "type": "string"
+      },
       "id": {
         "computed": true,
         "description_kind": "plain",
         "optional": true,
         "type": "string"
       },
-      "key_algorithm": {
+      "location": {
         "computed": true,
         "description_kind": "plain",
+        "optional": true,
         "type": "string"
       },
-      "name": {
+      "policy_data": {
         "description_kind": "plain",
         "required": true,
         "type": "string"
       },
-      "project": {
-        "deprecated": true,
+      "workforce_pool_id": {
         "description_kind": "plain",
-        "optional": true,
-        "type": "string"
-      },
-      "public_key": {
-        "computed": true,
-        "description_kind": "plain",
-        "type": "string"
-      },
-      "public_key_type": {
-        "description_kind": "plain",
-        "optional": true,
+        "required": true,
         "type": "string"
       }
     },
@@ -47,8 +42,8 @@ const googleServiceAccountKey = `{
   "version": 0
 }`
 
-func GoogleServiceAccountKeySchema() *tfjson.Schema {
+func GoogleIamWorkforcePoolIamPolicySchema() *tfjson.Schema {
 	var result tfjson.Schema
-	_ = json.Unmarshal([]byte(googleServiceAccountKey), &result)
+	_ = json.Unmarshal([]byte(googleIamWorkforcePoolIamPolicy), &result)
 	return &result
 }

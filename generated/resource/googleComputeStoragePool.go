@@ -34,6 +34,15 @@ const googleComputeStoragePool = `{
         "optional": true,
         "type": "string"
       },
+      "effective_labels": {
+        "computed": true,
+        "description": "All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.",
+        "description_kind": "plain",
+        "type": [
+          "map",
+          "string"
+        ]
+      },
       "id": {
         "computed": true,
         "description": "The unique identifier for the resource. This identifier is defined by the server.",
@@ -51,6 +60,15 @@ const googleComputeStoragePool = `{
         "description": "The fingerprint used for optimistic locking of this resource.\nUsed internally during updates.",
         "description_kind": "plain",
         "type": "string"
+      },
+      "labels": {
+        "description": "Labels to apply to this storage pool. These can be later modified by the setLabels method.\n\n\n**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.\nPlease refer to the field 'effective_labels' for all of the labels present on the resource.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": [
+          "map",
+          "string"
+        ]
       },
       "name": {
         "description": "Name of the resource. Provided by the client when the resource is created.\nThe name must be 1-63 characters long, and comply with RFC1035.\nSpecifically, the name must be 1-63 characters long and match\nthe regular expression '[a-z]([-a-z0-9]*[a-z0-9])?'\nwhich means the first character must be a lowercase letter,\nand all following characters must be a dash, lowercase letter, or digit,\nexcept the last character, which cannot be a dash.",
@@ -140,6 +158,15 @@ const googleComputeStoragePool = `{
         "description_kind": "plain",
         "required": true,
         "type": "string"
+      },
+      "terraform_labels": {
+        "computed": true,
+        "description": "The combination of labels configured directly on the resource\n and default labels configured on the provider.",
+        "description_kind": "plain",
+        "type": [
+          "map",
+          "string"
+        ]
       },
       "zone": {
         "computed": true,

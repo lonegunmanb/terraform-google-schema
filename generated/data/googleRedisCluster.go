@@ -9,6 +9,12 @@ import (
 const googleRedisCluster = `{
   "block": {
     "attributes": {
+      "allow_fewer_zones_deployment": {
+        "computed": true,
+        "description": "Allows customers to specify if they are okay with deploying a multi-zone\ncluster in less than 3 zones. Once set, if there is a zonal outage during\nthe cluster creation, the cluster will only be deployed in 2 zones, and\nstay within the 2 zones for its lifecycle.",
+        "description_kind": "plain",
+        "type": "bool"
+      },
       "authorization_mode": {
         "computed": true,
         "description": "Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster. Default value: \"AUTH_MODE_DISABLED\" Possible values: [\"AUTH_MODE_UNSPECIFIED\", \"AUTH_MODE_IAM_AUTH\", \"AUTH_MODE_DISABLED\"]",

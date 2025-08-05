@@ -9,6 +9,18 @@ import (
 const googleCloudfunctionsFunction = `{
   "block": {
     "attributes": {
+      "automatic_update_policy": {
+        "computed": true,
+        "description": "Security patches are applied automatically to the runtime without requiring the function to be redeployed.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {}
+          ]
+        ]
+      },
       "available_memory_mb": {
         "computed": true,
         "description": "Memory (in MB), available to the function. Default value is 256. Possible values include 128, 256, 512, 1024, etc.",
@@ -158,6 +170,20 @@ const googleCloudfunctionsFunction = `{
         "description_kind": "plain",
         "required": true,
         "type": "string"
+      },
+      "on_deploy_update_policy": {
+        "computed": true,
+        "description": "Security patches are only applied when a function is redeployed.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "runtime_version": "string"
+            }
+          ]
+        ]
       },
       "project": {
         "description": "Project of the function. If it is not provided, the provider project is used.",

@@ -365,6 +365,7 @@ const googleCloudRunV2Job = `{
                     ],
                     "encryption_key": "string",
                     "execution_environment": "string",
+                    "gpu_zonal_redundancy_disabled": "bool",
                     "max_retries": "number",
                     "node_selector": [
                       "list",

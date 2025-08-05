@@ -9,6 +9,12 @@ import (
 const googleBigqueryAnalyticsHubListing = `{
   "block": {
     "attributes": {
+      "allow_only_metadata_sharing": {
+        "description": "If true, the listing is only available to get the resource metadata. Listing is non subscribable.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "categories": {
         "description": "Categories of the listing. Up to two categories are allowed.",
         "description_kind": "plain",
@@ -18,14 +24,50 @@ const googleBigqueryAnalyticsHubListing = `{
           "string"
         ]
       },
+      "commercial_info": {
+        "computed": true,
+        "description": "Commercial info contains the information about the commercial data products associated with the listing.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "cloud_marketplace": [
+                "list",
+                [
+                  "object",
+                  {
+                    "commercial_state": "string",
+                    "service": "string"
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      },
       "data_exchange_id": {
         "description": "The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.",
         "description_kind": "plain",
         "required": true,
         "type": "string"
       },
+      "delete_commercial": {
+        "description": "If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "description": {
         "description": "Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
+      "discovery_type": {
+        "computed": true,
+        "description": "Specifies the type of discovery on the discovery page. Cannot be set for a restricted listing. Note that this does not control the visibility of the exchange/listing which is defined by IAM permission. Possible values: [\"DISCOVERY_TYPE_PRIVATE\", \"DISCOVERY_TYPE_PUBLIC\"]",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -94,6 +136,12 @@ const googleBigqueryAnalyticsHubListing = `{
         "description": "Email or URL of the request access of the listing. Subscribers can use this reference to request access.",
         "description_kind": "plain",
         "optional": true,
+        "type": "string"
+      },
+      "state": {
+        "computed": true,
+        "description": "Current state of the listing.",
+        "description_kind": "plain",
         "type": "string"
       }
     },

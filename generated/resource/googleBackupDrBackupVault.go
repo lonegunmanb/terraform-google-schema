@@ -42,6 +42,12 @@ const googleBackupDrBackupVault = `{
         "required": true,
         "type": "string"
       },
+      "backup_retention_inheritance": {
+        "description": "How a backup's enforced retention end time is inherited. Default value is 'INHERIT_VAULT_RETENTION' if not provided during creation. Possible values: [\"BACKUP_RETENTION_INHERITANCE_UNSPECIFIED\", \"INHERIT_VAULT_RETENTION\", \"MATCH_BACKUP_EXPIRE_TIME\"]",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "backup_vault_id": {
         "description": "Required. ID of the requesting object.",
         "description_kind": "plain",

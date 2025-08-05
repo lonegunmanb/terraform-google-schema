@@ -42,6 +42,7 @@ const googleComputeSubnetworks = `{
               "ip_cidr_range": "string",
               "name": "string",
               "network": "string",
+              "network_name": "string",
               "network_self_link": "string",
               "private_ip_google_access": "bool",
               "self_link": "string"

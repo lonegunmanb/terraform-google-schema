@@ -316,6 +316,12 @@ const googleCloudRunV2Job = `{
                     "optional": true,
                     "type": "string"
                   },
+                  "gpu_zonal_redundancy_disabled": {
+                    "description": "True if GPU zonal redundancy is disabled on this execution.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
+                  },
                   "max_retries": {
                     "description": "Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.",
                     "description_kind": "plain",

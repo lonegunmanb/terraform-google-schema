@@ -9,6 +9,28 @@ import (
 const googleBigqueryAnalyticsHubListingSubscription = `{
   "block": {
     "attributes": {
+      "commercial_info": {
+        "computed": true,
+        "description": "Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "cloud_marketplace": [
+                "list",
+                [
+                  "object",
+                  {
+                    "order": "string"
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      },
       "creation_time": {
         "computed": true,
         "description": "Timestamp when the subscription was created.",

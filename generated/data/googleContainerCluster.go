@@ -100,6 +100,16 @@ const googleContainerCluster = `{
                   }
                 ]
               ],
+              "lustre_csi_driver_config": [
+                "list",
+                [
+                  "object",
+                  {
+                    "enable_legacy_lustre_port": "bool",
+                    "enabled": "bool"
+                  }
+                ]
+              ],
               "network_policy_config": [
                 "list",
                 [
@@ -653,6 +663,19 @@ const googleContainerCluster = `{
           [
             "object",
             {
+              "additional_ip_ranges_config": [
+                "list",
+                [
+                  "object",
+                  {
+                    "pod_ipv4_range_names": [
+                      "list",
+                      "string"
+                    ],
+                    "subnetwork": "string"
+                  }
+                ]
+              ],
               "additional_pod_ranges_config": [
                 "list",
                 [
@@ -1389,7 +1412,8 @@ const googleContainerCluster = `{
                       ]
                     ],
                     "pod_ipv4_cidr_block": "string",
-                    "pod_range": "string"
+                    "pod_range": "string",
+                    "subnetwork": "string"
                   }
                 ]
               ],
@@ -2009,6 +2033,21 @@ const googleContainerCluster = `{
         "description_kind": "plain",
         "optional": true,
         "type": "string"
+      },
+      "rbac_binding_config": {
+        "computed": true,
+        "description": "RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "enable_insecure_binding_system_authenticated": "bool",
+              "enable_insecure_binding_system_unauthenticated": "bool"
+            }
+          ]
+        ]
       },
       "release_channel": {
         "computed": true,

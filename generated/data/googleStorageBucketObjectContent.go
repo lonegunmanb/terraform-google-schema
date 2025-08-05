@@ -91,6 +91,12 @@ const googleStorageBucketObjectContent = `{
           ]
         ]
       },
+      "deletion_policy": {
+        "computed": true,
+        "description": "The deletion policy for the object. Setting ABANDON allows the resource to be abandoned rather than deleted when removed from your Terraform configuration.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "detect_md5hash": {
         "computed": true,
         "description_kind": "plain",

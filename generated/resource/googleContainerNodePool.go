@@ -204,6 +204,12 @@ const googleContainerNodePool = `{
               "description_kind": "plain",
               "optional": true,
               "type": "string"
+            },
+            "subnetwork": {
+              "computed": true,
+              "description": "The subnetwork path for the node pool. Format: projects/{project}/regions/{region}/subnetworks/{subnetwork} . If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable.",
+              "description_kind": "plain",
+              "type": "string"
             }
           },
           "block_types": {

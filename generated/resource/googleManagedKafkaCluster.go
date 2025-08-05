@@ -193,6 +193,49 @@ const googleManagedKafkaCluster = `{
           "description_kind": "plain"
         },
         "nesting_mode": "single"
+      },
+      "tls_config": {
+        "block": {
+          "attributes": {
+            "ssl_principal_mapping_rules": {
+              "description": "The rules for mapping mTLS certificate Distinguished Names (DNs) to shortened principal names for Kafka ACLs. This field corresponds exactly to the ssl.principal.mapping.rules broker config and matches the format and syntax defined in the Apache Kafka documentation. Setting or modifying this field will trigger a rolling restart of the Kafka brokers to apply the change. An empty string means that the default Kafka behavior is used. Example: 'RULE:^CN=(.?),OU=ServiceUsers.$/$1@example.com/,DEFAULT'",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "block_types": {
+            "trust_config": {
+              "block": {
+                "block_types": {
+                  "cas_configs": {
+                    "block": {
+                      "attributes": {
+                        "ca_pool": {
+                          "description": "The name of the CA pool to pull CA certificates from. The CA pool does not need to be in the same project or location as the Kafka cluster. Must be in the format 'projects/PROJECT_ID/locations/LOCATION/caPools/CA_POOL_ID.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one 'cas_configs' block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional 'cas_configs' blocks.",
+                      "description_kind": "plain"
+                    },
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "The configuration of the broker truststore. If specified, clients can use mTLS for authentication.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty 'tls_config' block.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
       }
     },
     "description_kind": "plain"

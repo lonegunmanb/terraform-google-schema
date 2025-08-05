@@ -227,6 +227,14 @@ const googleCloudfunctionsFunction = `{
       }
     },
     "block_types": {
+      "automatic_update_policy": {
+        "block": {
+          "description": "Security patches are applied automatically to the runtime without requiring the function to be redeployed.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "event_trigger": {
         "block": {
           "attributes": {
@@ -262,6 +270,22 @@ const googleCloudfunctionsFunction = `{
             }
           },
           "description": "A source that fires events in response to a condition in another service. Cannot be used with trigger_http.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
+      "on_deploy_update_policy": {
+        "block": {
+          "attributes": {
+            "runtime_version": {
+              "computed": true,
+              "description": "The runtime version which was used during latest function deployment.",
+              "description_kind": "plain",
+              "type": "string"
+            }
+          },
+          "description": "Security patches are only applied when a function is redeployed.",
           "description_kind": "plain"
         },
         "max_items": 1,

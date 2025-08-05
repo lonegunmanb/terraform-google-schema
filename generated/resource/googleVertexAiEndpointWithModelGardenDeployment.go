@@ -9,6 +9,18 @@ import (
 const googleVertexAiEndpointWithModelGardenDeployment = `{
   "block": {
     "attributes": {
+      "deployed_model_display_name": {
+        "computed": true,
+        "description": "Output only. The display name assigned to the model deployed to the endpoint.\nThis is not required to delete the resource but is used for debug logging.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "deployed_model_id": {
+        "computed": true,
+        "description": "Output only. The unique numeric ID that Vertex AI assigns to the model at the time it is deployed to the endpoint.\nIt is required to undeploy the model from the endpoint during resource deletion as described in\nhttps://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.endpoints/undeployModel.",
+        "description_kind": "plain",
+        "type": "string"
+      },
       "endpoint": {
         "computed": true,
         "description": "Resource ID segment making up resource 'endpoint'. It identifies the resource within its parent collection as described in https://google.aip.dev/122.",

@@ -21,6 +21,13 @@ const googleBigqueryAnalyticsHubDataExchange = `{
         "optional": true,
         "type": "string"
       },
+      "discovery_type": {
+        "computed": true,
+        "description": "Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange. Possible values: [\"DISCOVERY_TYPE_PRIVATE\", \"DISCOVERY_TYPE_PUBLIC\"]",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "display_name": {
         "description": "Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.",
         "description_kind": "plain",
