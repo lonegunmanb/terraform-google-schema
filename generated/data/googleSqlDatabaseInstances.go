@@ -81,6 +81,7 @@ const googleSqlDatabaseInstances = `{
               "maintenance_version": "string",
               "master_instance_name": "string",
               "name": "string",
+              "node_count": "number",
               "private_ip_address": "string",
               "project": "string",
               "psc_service_attachment_link": "string",
@@ -116,7 +117,8 @@ const googleSqlDatabaseInstances = `{
                   "object",
                   {
                     "dr_replica": "bool",
-                    "failover_dr_replica_name": "string"
+                    "failover_dr_replica_name": "string",
+                    "psa_write_endpoint": "string"
                   }
                 ]
               ],
@@ -253,6 +255,7 @@ const googleSqlDatabaseInstances = `{
                     "disk_size": "number",
                     "disk_type": "string",
                     "edition": "string",
+                    "effective_availability_type": "string",
                     "enable_dataplex_integration": "bool",
                     "enable_google_ml_integration": "bool",
                     "insights_config": [
@@ -301,6 +304,7 @@ const googleSqlDatabaseInstances = `{
                                   "set",
                                   "string"
                                 ],
+                                "network_attachment_uri": "string",
                                 "psc_auto_connections": [
                                   "list",
                                   [

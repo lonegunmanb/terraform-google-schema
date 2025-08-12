@@ -546,6 +546,58 @@ const googleComputeRegionBackendService = `{
         "max_items": 1,
         "nesting_mode": "list"
       },
+      "ha_policy": {
+        "block": {
+          "attributes": {
+            "fast_ip_move": {
+              "description": "Specifies whether fast IP move is enabled, and if so, the mechanism to achieve it.\nSupported values are:\n\n* 'DISABLED': Fast IP Move is disabled. You can only use the haPolicy.leader API to\n              update the leader.\n\n* 'GARP_RA': Provides a method to very quickly define a new network endpoint as the\n             leader. This method is faster than updating the leader using the\n             haPolicy.leader API. Fast IP move works as follows: The VM hosting the\n             network endpoint that should become the new leader sends either a\n             Gratuitous ARP (GARP) packet (IPv4) or an ICMPv6 Router Advertisement(RA)\n             packet (IPv6). Google Cloud immediately but temporarily associates the\n             forwarding rule IP address with that VM, and both new and in-flight packets\n             are quickly delivered to that VM. Possible values: [\"DISABLED\", \"GARP_RA\"]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            }
+          },
+          "block_types": {
+            "leader": {
+              "block": {
+                "attributes": {
+                  "backend_group": {
+                    "description": "A fully-qualified URL of the zonal Network Endpoint Group (NEG) that the leader is\nattached to.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  }
+                },
+                "block_types": {
+                  "network_endpoint": {
+                    "block": {
+                      "attributes": {
+                        "instance": {
+                          "description": "The name of the VM instance of the leader network endpoint. The instance must\nalready be attached to the NEG specified in the haPolicy.leader.backendGroup.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "The network endpoint within the leader.backendGroup that is designated as the leader.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  }
+                },
+                "description": "Selects one of the network endpoints attached to the backend NEGs of this service as the\nactive endpoint (the leader) that receives all traffic.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding.\nThe backends of this regional backend service must only specify zonal network endpoint groups\n(NEGs) of type GCE_VM_IP. Note that haPolicy is not for load balancing, and therefore cannot\nbe specified with sessionAffinity, connectionTrackingPolicy, and failoverPolicy. haPolicy\nrequires customers to be responsible for tracking backend endpoint health and electing a\nleader among the healthy endpoints. Therefore, haPolicy cannot be specified with healthChecks.\nhaPolicy can only be specified for External Passthrough Network Load Balancers and Internal\nPassthrough Network Load Balancers.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "iap": {
         "block": {
           "attributes": {

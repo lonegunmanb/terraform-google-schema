@@ -223,6 +223,38 @@ const googleComputeRegionBackendService = `{
         "description_kind": "plain",
         "type": "number"
       },
+      "ha_policy": {
+        "computed": true,
+        "description": "Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding.\nThe backends of this regional backend service must only specify zonal network endpoint groups\n(NEGs) of type GCE_VM_IP. Note that haPolicy is not for load balancing, and therefore cannot\nbe specified with sessionAffinity, connectionTrackingPolicy, and failoverPolicy. haPolicy\nrequires customers to be responsible for tracking backend endpoint health and electing a\nleader among the healthy endpoints. Therefore, haPolicy cannot be specified with healthChecks.\nhaPolicy can only be specified for External Passthrough Network Load Balancers and Internal\nPassthrough Network Load Balancers.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          [
+            "object",
+            {
+              "fast_ip_move": "string",
+              "leader": [
+                "list",
+                [
+                  "object",
+                  {
+                    "backend_group": "string",
+                    "network_endpoint": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "instance": "string"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      },
       "health_checks": {
         "computed": true,
         "description": "The set of URLs to HealthCheck resources for health checking\nthis RegionBackendService. Currently at most one health\ncheck can be specified.\n\nA health check must be specified unless the backend service uses an internet\nor serverless NEG as a backend.",

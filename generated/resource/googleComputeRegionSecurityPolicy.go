@@ -72,6 +72,58 @@ const googleComputeRegionSecurityPolicy = `{
       }
     },
     "block_types": {
+      "advanced_options_config": {
+        "block": {
+          "attributes": {
+            "json_parsing": {
+              "description": "JSON body parsing. Supported values include: \"DISABLED\", \"STANDARD\", \"STANDARD_WITH_GRAPHQL\". Possible values: [\"DISABLED\", \"STANDARD\", \"STANDARD_WITH_GRAPHQL\"]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "log_level": {
+              "description": "Logging level. Supported values include: \"NORMAL\", \"VERBOSE\". Possible values: [\"NORMAL\", \"VERBOSE\"]",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
+            },
+            "user_ip_request_headers": {
+              "description": "An optional list of case-insensitive request header names to use for resolving the callers client IP address.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": [
+                "set",
+                "string"
+              ]
+            }
+          },
+          "block_types": {
+            "json_custom_config": {
+              "block": {
+                "attributes": {
+                  "content_types": {
+                    "description": "A list of custom Content-Type header values to apply the JSON parsing.",
+                    "description_kind": "plain",
+                    "required": true,
+                    "type": [
+                      "set",
+                      "string"
+                    ]
+                  }
+                },
+                "description": "Custom configuration to apply the JSON parsing. Only applicable when JSON parsing is set to STANDARD.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            }
+          },
+          "description": "Advanced Options Config of this security policy.",
+          "description_kind": "plain"
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+      },
       "ddos_protection_config": {
         "block": {
           "attributes": {

@@ -98,7 +98,7 @@ const googleSqlDatabaseInstance = `{
       },
       "instance_type": {
         "computed": true,
-        "description": "The type of the instance. The valid values are:- 'SQL_INSTANCE_TYPE_UNSPECIFIED', 'CLOUD_SQL_INSTANCE', 'ON_PREMISES_INSTANCE' and 'READ_REPLICA_INSTANCE'.",
+        "description": "The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.",
         "description_kind": "plain",
         "type": "string"
       },
@@ -134,6 +134,12 @@ const googleSqlDatabaseInstance = `{
         "description_kind": "plain",
         "required": true,
         "type": "string"
+      },
+      "node_count": {
+        "computed": true,
+        "description": "For a read pool instance, the number of nodes in the read pool.",
+        "description_kind": "plain",
+        "type": "number"
       },
       "private_ip_address": {
         "computed": true,
@@ -209,7 +215,8 @@ const googleSqlDatabaseInstance = `{
             "object",
             {
               "dr_replica": "bool",
-              "failover_dr_replica_name": "string"
+              "failover_dr_replica_name": "string",
+              "psa_write_endpoint": "string"
             }
           ]
         ]
@@ -374,6 +381,7 @@ const googleSqlDatabaseInstance = `{
               "disk_size": "number",
               "disk_type": "string",
               "edition": "string",
+              "effective_availability_type": "string",
               "enable_dataplex_integration": "bool",
               "enable_google_ml_integration": "bool",
               "insights_config": [
@@ -422,6 +430,7 @@ const googleSqlDatabaseInstance = `{
                             "set",
                             "string"
                           ],
+                          "network_attachment_uri": "string",
                           "psc_auto_connections": [
                             "list",
                             [

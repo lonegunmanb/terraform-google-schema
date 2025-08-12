@@ -989,6 +989,18 @@ const googleContainerCluster = `{
                   }
                 ]
               ],
+              "boot_disk": [
+                "list",
+                [
+                  "object",
+                  {
+                    "disk_type": "string",
+                    "provisioned_iops": "number",
+                    "provisioned_throughput": "number",
+                    "size_gb": "number"
+                  }
+                ]
+              ],
               "boot_disk_kms_key": "string",
               "confidential_nodes": [
                 "list",
@@ -1149,7 +1161,8 @@ const googleContainerCluster = `{
                     "image_maximum_gc_age": "string",
                     "image_minimum_gc_age": "string",
                     "insecure_kubelet_readonly_port_enabled": "string",
-                    "pod_pids_limit": "number"
+                    "pod_pids_limit": "number",
+                    "single_process_oom_kill": "bool"
                   }
                 ]
               ],
@@ -1433,6 +1446,18 @@ const googleContainerCluster = `{
                         }
                       ]
                     ],
+                    "boot_disk": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "disk_type": "string",
+                          "provisioned_iops": "number",
+                          "provisioned_throughput": "number",
+                          "size_gb": "number"
+                        }
+                      ]
+                    ],
                     "boot_disk_kms_key": "string",
                     "confidential_nodes": [
                       "list",
@@ -1593,7 +1618,8 @@ const googleContainerCluster = `{
                           "image_maximum_gc_age": "string",
                           "image_minimum_gc_age": "string",
                           "insecure_kubelet_readonly_port_enabled": "string",
-                          "pod_pids_limit": "number"
+                          "pod_pids_limit": "number",
+                          "single_process_oom_kill": "bool"
                         }
                       ]
                     ],

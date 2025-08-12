@@ -78,7 +78,7 @@ const googleSqlDatabaseInstance = `{
       },
       "instance_type": {
         "computed": true,
-        "description": "The type of the instance. The valid values are:- 'SQL_INSTANCE_TYPE_UNSPECIFIED', 'CLOUD_SQL_INSTANCE', 'ON_PREMISES_INSTANCE' and 'READ_REPLICA_INSTANCE'.",
+        "description": "The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -118,6 +118,13 @@ const googleSqlDatabaseInstance = `{
         "description_kind": "plain",
         "optional": true,
         "type": "string"
+      },
+      "node_count": {
+        "computed": true,
+        "description": "For a read pool instance, the number of nodes in the read pool.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "number"
       },
       "private_ip_address": {
         "computed": true,
@@ -340,6 +347,12 @@ const googleSqlDatabaseInstance = `{
               "description_kind": "plain",
               "optional": true,
               "type": "string"
+            },
+            "psa_write_endpoint": {
+              "description": "If set, this field indicates this instance has a private service access (PSA) DNS endpoint that is pointing to the primary instance of the cluster. If this instance is the primary, then the DNS endpoint points to this instance. After a switchover or replica failover operation, this DNS endpoint points to the promoted instance. This is a read-only field, returned to the user as information. This field can exist even if a standalone instance doesn't have a DR replica yet or the DR replica is deleted.",
+              "description_kind": "plain",
+              "optional": true,
+              "type": "string"
             }
           },
           "description": "A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.",
@@ -385,7 +398,7 @@ const googleSqlDatabaseInstance = `{
               "type": "string"
             },
             "availability_type": {
-              "description": "The availability type of the Cloud SQL instance, high availability\n(REGIONAL) or single zone (ZONAL). For all instances, ensure that\nsettings.backup_configuration.enabled is set to true.\nFor MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.\nFor Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled\nis set to true. Defaults to ZONAL.",
+              "description": "The availability type of the Cloud SQL instance, high availability\n(REGIONAL) or single zone (ZONAL). For all instances, ensure that\nsettings.backup_configuration.enabled is set to true.\nFor MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.\nFor Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled\nis set to true. Defaults to ZONAL.\nFor read pool instances, this field is read-only. The availability type is changed by specifying\nthe number of nodes (node_count).",
               "description_kind": "plain",
               "optional": true,
               "type": "string"
@@ -440,6 +453,12 @@ const googleSqlDatabaseInstance = `{
               "description": "The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.",
               "description_kind": "plain",
               "optional": true,
+              "type": "string"
+            },
+            "effective_availability_type": {
+              "computed": true,
+              "description": "The availability type of the Cloud SQL instance, high availability\n(REGIONAL) or single zone (ZONAL). This field always contains the value that is reported by the\nAPI (for read pools, effective_availability_type may differ from availability_type).",
+              "description_kind": "plain",
               "type": "string"
             },
             "enable_dataplex_integration": {
@@ -830,6 +849,12 @@ const googleSqlDatabaseInstance = `{
                             "set",
                             "string"
                           ]
+                        },
+                        "network_attachment_uri": {
+                          "description": "Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: \"projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment\". This is required to enable outbound connection on a PSC instance.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
                         },
                         "psc_enabled": {
                           "description": "Whether PSC connectivity is enabled for this instance.",

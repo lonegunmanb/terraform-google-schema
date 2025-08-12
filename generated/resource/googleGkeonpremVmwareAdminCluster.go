@@ -52,6 +52,7 @@ const googleGkeonpremVmwareAdminCluster = `{
         "computed": true,
         "description": "If set, the advanced cluster feature is enabled.",
         "description_kind": "plain",
+        "optional": true,
         "type": "bool"
       },
       "endpoint": {

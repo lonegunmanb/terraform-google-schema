@@ -9,6 +9,12 @@ import (
 const googleMemorystoreInstance = `{
   "block": {
     "attributes": {
+      "allow_fewer_zones_deployment": {
+        "description": "Allows customers to specify if they are okay with deploying a multi-zone\ninstance in less than 3 zones. Once set, if there is a zonal outage during\nthe instance creation, the instance will only be deployed in 2 zones, and\nstay within the 2 zones for its lifecycle.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "bool"
+      },
       "authorization_mode": {
         "computed": true,
         "description": "Optional. Immutable. Authorization mode of the instance. Possible values:\n AUTH_DISABLED\nIAM_AUTH",

@@ -51,6 +51,12 @@ const googleBackupDrBackupPlan = `{
         "required": true,
         "type": "string"
       },
+      "log_retention_days": {
+        "description": "This is only applicable for CloudSql resource. Days for which logs will be stored. This value should be greater than or equal to minimum enforced log retention duration of the backup vault.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "number"
+      },
       "name": {
         "computed": true,
         "description": "The name of backup plan resource created",
@@ -64,7 +70,7 @@ const googleBackupDrBackupPlan = `{
         "type": "string"
       },
       "resource_type": {
-        "description": "The resource type to which the 'BackupPlan' will be applied.\nExamples include, \"compute.googleapis.com/Instance\", \"compute.googleapis.com/Disk\", and \"storage.googleapis.com/Bucket\".",
+        "description": "The resource type to which the 'BackupPlan' will be applied.\nExamples include, \"compute.googleapis.com/Instance\", \"compute.googleapis.com/Disk\", \"sqladmin.googleapis.com/Instance\" and \"storage.googleapis.com/Bucket\".",
         "description_kind": "plain",
         "required": true,
         "type": "string"

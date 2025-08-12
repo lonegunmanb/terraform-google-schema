@@ -519,6 +519,44 @@ const googleContainerNodePool = `{
               "max_items": 1,
               "nesting_mode": "list"
             },
+            "boot_disk": {
+              "block": {
+                "attributes": {
+                  "disk_type": {
+                    "computed": true,
+                    "description": "Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "provisioned_iops": {
+                    "computed": true,
+                    "description": "Configured IOPs provisioning. Only valid with disk type hyperdisk-balanced.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "number"
+                  },
+                  "provisioned_throughput": {
+                    "computed": true,
+                    "description": "Configured throughput provisioning. Only valid with disk type hyperdisk-balanced.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "number"
+                  },
+                  "size_gb": {
+                    "computed": true,
+                    "description": "Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "number"
+                  }
+                },
+                "description": "Boot disk configuration for node pools nodes.",
+                "description_kind": "plain"
+              },
+              "max_items": 1,
+              "nesting_mode": "list"
+            },
             "confidential_nodes": {
               "block": {
                 "attributes": {
@@ -837,6 +875,12 @@ const googleContainerNodePool = `{
                     "description_kind": "plain",
                     "optional": true,
                     "type": "number"
+                  },
+                  "single_process_oom_kill": {
+                    "description": "Defines whether to enable single process OOM killer.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "bool"
                   }
                 },
                 "description": "Node kubelet configs.",

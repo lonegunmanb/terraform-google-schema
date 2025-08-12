@@ -498,6 +498,12 @@ const googleStorageTransferJob = `{
                     "required": true,
                     "type": "string"
                   },
+                  "cloudfront_domain": {
+                    "description": "The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: https://{id}.cloudfront.net or any valid custom domain. Must begin with https://.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
                   "managed_private_network": {
                     "description": "Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.",
                     "description_kind": "plain",
@@ -558,6 +564,12 @@ const googleStorageTransferJob = `{
                     "required": true,
                     "type": "string"
                   },
+                  "credentials_secret": {
+                    "description": "The Resource name of a secret in Secret Manager containing SAS Credentials in JSON form. Service Agent must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
                   "path": {
                     "computed": true,
                     "description": "Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.",
@@ -588,7 +600,30 @@ const googleStorageTransferJob = `{
                       "description_kind": "plain"
                     },
                     "max_items": 1,
-                    "min_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "federated_identity_config": {
+                    "block": {
+                      "attributes": {
+                        "client_id": {
+                          "description": "The client (application) ID of the application with federated credentials.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "sensitive": true,
+                          "type": "string"
+                        },
+                        "tenant_id": {
+                          "description": "The tenant (directory) ID of the application with federated credentials.",
+                          "description_kind": "plain",
+                          "required": true,
+                          "sensitive": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": " Workload Identity Details used to authenticate API requests to Azure.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
                     "nesting_mode": "list"
                   }
                 },
