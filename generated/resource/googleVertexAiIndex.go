@@ -235,7 +235,7 @@ const googleVertexAiIndex = `{
               "nesting_mode": "list"
             }
           },
-          "description": "An additional information about the Index",
+          "description": "Additional information about the Index.\nAlthough this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.\nAttempts to create an Index without this field will result in an API error.",
           "description_kind": "plain"
         },
         "max_items": 1,

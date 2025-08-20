@@ -65,17 +65,17 @@ const googleSecretManagerSecretVersion = `{
         "type": "string"
       },
       "secret_data_wo": {
-        "description": "The secret data. Must be no larger than 64KiB. For more info see [updating write-only attributes](/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)",
+        "description": "The secret data. Must be no larger than 64KiB. Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)",
         "description_kind": "plain",
         "optional": true,
         "type": "string",
         "write_only": true
       },
       "secret_data_wo_version": {
-        "description": "Triggers update of secret data write-only. For more info see [updating write-only attributes](/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)",
+        "description": "Triggers update of secret_data_wo write-only. For more info see [updating write-only attributes](/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)",
         "description_kind": "plain",
         "optional": true,
-        "type": "number"
+        "type": "string"
       },
       "version": {
         "computed": true,

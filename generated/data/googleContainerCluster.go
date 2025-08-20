@@ -1156,11 +1156,55 @@ const googleContainerCluster = `{
                     "cpu_cfs_quota": "bool",
                     "cpu_cfs_quota_period": "string",
                     "cpu_manager_policy": "string",
+                    "eviction_max_pod_grace_period_seconds": "number",
+                    "eviction_minimum_reclaim": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "imagefs_available": "string",
+                          "imagefs_inodes_free": "string",
+                          "memory_available": "string",
+                          "nodefs_available": "string",
+                          "nodefs_inodes_free": "string",
+                          "pid_available": "string"
+                        }
+                      ]
+                    ],
+                    "eviction_soft": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "imagefs_available": "string",
+                          "imagefs_inodes_free": "string",
+                          "memory_available": "string",
+                          "nodefs_available": "string",
+                          "nodefs_inodes_free": "string",
+                          "pid_available": "string"
+                        }
+                      ]
+                    ],
+                    "eviction_soft_grace_period": [
+                      "list",
+                      [
+                        "object",
+                        {
+                          "imagefs_available": "string",
+                          "imagefs_inodes_free": "string",
+                          "memory_available": "string",
+                          "nodefs_available": "string",
+                          "nodefs_inodes_free": "string",
+                          "pid_available": "string"
+                        }
+                      ]
+                    ],
                     "image_gc_high_threshold_percent": "number",
                     "image_gc_low_threshold_percent": "number",
                     "image_maximum_gc_age": "string",
                     "image_minimum_gc_age": "string",
                     "insecure_kubelet_readonly_port_enabled": "string",
+                    "max_parallel_image_pulls": "number",
                     "pod_pids_limit": "number",
                     "single_process_oom_kill": "bool"
                   }
@@ -1189,7 +1233,9 @@ const googleContainerCluster = `{
                     "sysctls": [
                       "map",
                       "string"
-                    ]
+                    ],
+                    "transparent_hugepage_defrag": "string",
+                    "transparent_hugepage_enabled": "string"
                   }
                 ]
               ],
@@ -1266,6 +1312,7 @@ const googleContainerCluster = `{
                 [
                   "object",
                   {
+                    "min_node_cpus": "number",
                     "node_affinity": [
                       "set",
                       [
@@ -1613,11 +1660,55 @@ const googleContainerCluster = `{
                           "cpu_cfs_quota": "bool",
                           "cpu_cfs_quota_period": "string",
                           "cpu_manager_policy": "string",
+                          "eviction_max_pod_grace_period_seconds": "number",
+                          "eviction_minimum_reclaim": [
+                            "list",
+                            [
+                              "object",
+                              {
+                                "imagefs_available": "string",
+                                "imagefs_inodes_free": "string",
+                                "memory_available": "string",
+                                "nodefs_available": "string",
+                                "nodefs_inodes_free": "string",
+                                "pid_available": "string"
+                              }
+                            ]
+                          ],
+                          "eviction_soft": [
+                            "list",
+                            [
+                              "object",
+                              {
+                                "imagefs_available": "string",
+                                "imagefs_inodes_free": "string",
+                                "memory_available": "string",
+                                "nodefs_available": "string",
+                                "nodefs_inodes_free": "string",
+                                "pid_available": "string"
+                              }
+                            ]
+                          ],
+                          "eviction_soft_grace_period": [
+                            "list",
+                            [
+                              "object",
+                              {
+                                "imagefs_available": "string",
+                                "imagefs_inodes_free": "string",
+                                "memory_available": "string",
+                                "nodefs_available": "string",
+                                "nodefs_inodes_free": "string",
+                                "pid_available": "string"
+                              }
+                            ]
+                          ],
                           "image_gc_high_threshold_percent": "number",
                           "image_gc_low_threshold_percent": "number",
                           "image_maximum_gc_age": "string",
                           "image_minimum_gc_age": "string",
                           "insecure_kubelet_readonly_port_enabled": "string",
+                          "max_parallel_image_pulls": "number",
                           "pod_pids_limit": "number",
                           "single_process_oom_kill": "bool"
                         }
@@ -1646,7 +1737,9 @@ const googleContainerCluster = `{
                           "sysctls": [
                             "map",
                             "string"
-                          ]
+                          ],
+                          "transparent_hugepage_defrag": "string",
+                          "transparent_hugepage_enabled": "string"
                         }
                       ]
                     ],
@@ -1723,6 +1816,7 @@ const googleContainerCluster = `{
                       [
                         "object",
                         {
+                          "min_node_cpus": "number",
                           "node_affinity": [
                             "set",
                             [

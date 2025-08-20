@@ -9,6 +9,15 @@ import (
 const googleFolder = `{
   "block": {
     "attributes": {
+      "configured_capabilities": {
+        "computed": true,
+        "description": "A list of capabilities that are configured for this folder.",
+        "description_kind": "plain",
+        "type": [
+          "list",
+          "string"
+        ]
+      },
       "create_time": {
         "computed": true,
         "description": "Timestamp when the Folder was created. Assigned by the server. A timestamp in RFC3339 UTC \"Zulu\" format, accurate to nanoseconds. Example: \"2014-10-02T15:01:23.045123456Z\".",
@@ -42,6 +51,12 @@ const googleFolder = `{
       "lifecycle_state": {
         "computed": true,
         "description": "The lifecycle state of the folder such as ACTIVE or DELETE_REQUESTED.",
+        "description_kind": "plain",
+        "type": "string"
+      },
+      "management_project": {
+        "computed": true,
+        "description": "The Management Project associated with the folder's configured capabilities.",
         "description_kind": "plain",
         "type": "string"
       },

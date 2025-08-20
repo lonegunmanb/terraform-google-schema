@@ -24,7 +24,7 @@ const googleCloudTasksQueue = `{
       "name": {
         "description": "The queue name.",
         "description_kind": "plain",
-        "optional": true,
+        "required": true,
         "type": "string"
       },
       "project": {

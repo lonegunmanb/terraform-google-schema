@@ -41,6 +41,12 @@ const googleApikeysKey = `{
         "optional": true,
         "type": "string"
       },
+      "service_account_email": {
+        "description": "The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.",
+        "description_kind": "plain",
+        "optional": true,
+        "type": "string"
+      },
       "uid": {
         "computed": true,
         "description": "Output only. Unique id in UUID4 format.",

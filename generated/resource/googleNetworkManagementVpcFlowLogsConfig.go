@@ -11,7 +11,7 @@ const googleNetworkManagementVpcFlowLogsConfig = `{
     "attributes": {
       "aggregation_interval": {
         "computed": true,
-        "description": "Optional. The aggregation interval for the logs. Default value is\nINTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN\"",
+        "description": "Optional. The aggregation interval for the logs. Default value is\nINTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN",
         "description_kind": "plain",
         "optional": true,
         "type": "string"
@@ -107,9 +107,15 @@ const googleNetworkManagementVpcFlowLogsConfig = `{
       },
       "state": {
         "computed": true,
-        "description": "Optional. The state of the VPC Flow Log configuration. Default value\nis ENABLED. When creating a new configuration, it must be enabled.   Possible",
+        "description": "Optional. The state of the VPC Flow Log configuration. Default value\nis ENABLED. When creating a new configuration, it must be enabled.\nPossible values: STATE_UNSPECIFIED ENABLED DISABLED",
         "description_kind": "plain",
         "optional": true,
+        "type": "string"
+      },
+      "target_resource_state": {
+        "computed": true,
+        "description": "Describes the state of the configured target resource for diagnostic\npurposes.\nPossible values:\nTARGET_RESOURCE_STATE_UNSPECIFIED\nTARGET_RESOURCE_EXISTS\nTARGET_RESOURCE_DOES_NOT_EXIST",
+        "description_kind": "plain",
         "type": "string"
       },
       "terraform_labels": {

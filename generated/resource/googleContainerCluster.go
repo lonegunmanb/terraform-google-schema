@@ -2150,6 +2150,12 @@ const googleContainerCluster = `{
                     "optional": true,
                     "type": "string"
                   },
+                  "eviction_max_pod_grace_period_seconds": {
+                    "description": "Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "number"
+                  },
                   "image_gc_high_threshold_percent": {
                     "description": "Defines the percent of disk usage after which image garbage collection is always run.",
                     "description_kind": "plain",
@@ -2181,6 +2187,13 @@ const googleContainerCluster = `{
                     "optional": true,
                     "type": "string"
                   },
+                  "max_parallel_image_pulls": {
+                    "computed": true,
+                    "description": "Set the maximum number of image pulls in parallel.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "number"
+                  },
                   "pod_pids_limit": {
                     "description": "Controls the maximum number of processes allowed to run in a pod.",
                     "description_kind": "plain",
@@ -2192,6 +2205,146 @@ const googleContainerCluster = `{
                     "description_kind": "plain",
                     "optional": true,
                     "type": "bool"
+                  }
+                },
+                "block_types": {
+                  "eviction_minimum_reclaim": {
+                    "block": {
+                      "attributes": {
+                        "imagefs_available": {
+                          "description": "Defines percentage of minimum reclaim for imagefs.available.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "imagefs_inodes_free": {
+                          "description": "Defines percentage of minimum reclaim for imagefs.inodesFree.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "memory_available": {
+                          "description": "Defines percentage of minimum reclaim for memory.available.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "nodefs_available": {
+                          "description": "Defines percentage of minimum reclaim for nodefs.available.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "nodefs_inodes_free": {
+                          "description": "Defines percentage of minimum reclaim for nodefs.inodesFree.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "pid_available": {
+                          "description": "Defines percentage of minimum reclaim for pid.available.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "eviction_soft": {
+                    "block": {
+                      "attributes": {
+                        "imagefs_available": {
+                          "description": "Defines percentage of soft eviction threshold for imagefs.available.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "imagefs_inodes_free": {
+                          "description": "Defines percentage of soft eviction threshold for imagefs.inodesFree.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "memory_available": {
+                          "description": "Defines quantity of soft eviction threshold for memory.available.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "nodefs_available": {
+                          "description": "Defines percentage of soft eviction threshold for nodefs.available.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "nodefs_inodes_free": {
+                          "description": "Defines percentage of soft eviction threshold for nodefs.inodesFree.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "pid_available": {
+                          "description": "Defines percentage of soft eviction threshold for pid.available.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Defines a map of signal names to quantities or percentage that defines soft eviction thresholds.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
+                  },
+                  "eviction_soft_grace_period": {
+                    "block": {
+                      "attributes": {
+                        "imagefs_available": {
+                          "description": "Defines grace period for the imagefs.available soft eviction threshold",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "imagefs_inodes_free": {
+                          "description": "Defines grace period for the imagefs.inodesFree soft eviction threshold.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "memory_available": {
+                          "description": "Defines grace period for the memory.available soft eviction threshold.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "nodefs_available": {
+                          "description": "Defines grace period for the nodefs.available soft eviction threshold.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "nodefs_inodes_free": {
+                          "description": "Defines grace period for the nodefs.inodesFree soft eviction threshold.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "pid_available": {
+                          "description": "Defines grace period for the pid.available soft eviction threshold.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        }
+                      },
+                      "description": "Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period.",
+                      "description_kind": "plain"
+                    },
+                    "max_items": 1,
+                    "nesting_mode": "list"
                   }
                 },
                 "description": "Node kubelet configs.",
@@ -2218,6 +2371,19 @@ const googleContainerCluster = `{
                       "map",
                       "string"
                     ]
+                  },
+                  "transparent_hugepage_defrag": {
+                    "description": "The Linux kernel transparent hugepage defrag setting.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
+                  },
+                  "transparent_hugepage_enabled": {
+                    "computed": true,
+                    "description": "The Linux kernel transparent hugepage setting.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "string"
                   }
                 },
                 "block_types": {
@@ -2343,6 +2509,14 @@ const googleContainerCluster = `{
             },
             "sole_tenant_config": {
               "block": {
+                "attributes": {
+                  "min_node_cpus": {
+                    "description": "Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feature is disabled.",
+                    "description_kind": "plain",
+                    "optional": true,
+                    "type": "number"
+                  }
+                },
                 "block_types": {
                   "node_affinity": {
                     "block": {
@@ -3250,6 +3424,12 @@ const googleContainerCluster = `{
                           "optional": true,
                           "type": "string"
                         },
+                        "eviction_max_pod_grace_period_seconds": {
+                          "description": "Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
                         "image_gc_high_threshold_percent": {
                           "description": "Defines the percent of disk usage after which image garbage collection is always run.",
                           "description_kind": "plain",
@@ -3281,6 +3461,13 @@ const googleContainerCluster = `{
                           "optional": true,
                           "type": "string"
                         },
+                        "max_parallel_image_pulls": {
+                          "computed": true,
+                          "description": "Set the maximum number of image pulls in parallel.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        },
                         "pod_pids_limit": {
                           "description": "Controls the maximum number of processes allowed to run in a pod.",
                           "description_kind": "plain",
@@ -3292,6 +3479,146 @@ const googleContainerCluster = `{
                           "description_kind": "plain",
                           "optional": true,
                           "type": "bool"
+                        }
+                      },
+                      "block_types": {
+                        "eviction_minimum_reclaim": {
+                          "block": {
+                            "attributes": {
+                              "imagefs_available": {
+                                "description": "Defines percentage of minimum reclaim for imagefs.available.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "imagefs_inodes_free": {
+                                "description": "Defines percentage of minimum reclaim for imagefs.inodesFree.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "memory_available": {
+                                "description": "Defines percentage of minimum reclaim for memory.available.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "nodefs_available": {
+                                "description": "Defines percentage of minimum reclaim for nodefs.available.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "nodefs_inodes_free": {
+                                "description": "Defines percentage of minimum reclaim for nodefs.inodesFree.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "pid_available": {
+                                "description": "Defines percentage of minimum reclaim for pid.available.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
+                        "eviction_soft": {
+                          "block": {
+                            "attributes": {
+                              "imagefs_available": {
+                                "description": "Defines percentage of soft eviction threshold for imagefs.available.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "imagefs_inodes_free": {
+                                "description": "Defines percentage of soft eviction threshold for imagefs.inodesFree.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "memory_available": {
+                                "description": "Defines quantity of soft eviction threshold for memory.available.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "nodefs_available": {
+                                "description": "Defines percentage of soft eviction threshold for nodefs.available.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "nodefs_inodes_free": {
+                                "description": "Defines percentage of soft eviction threshold for nodefs.inodesFree.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "pid_available": {
+                                "description": "Defines percentage of soft eviction threshold for pid.available.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "Defines a map of signal names to quantities or percentage that defines soft eviction thresholds.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
+                        },
+                        "eviction_soft_grace_period": {
+                          "block": {
+                            "attributes": {
+                              "imagefs_available": {
+                                "description": "Defines grace period for the imagefs.available soft eviction threshold",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "imagefs_inodes_free": {
+                                "description": "Defines grace period for the imagefs.inodesFree soft eviction threshold.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "memory_available": {
+                                "description": "Defines grace period for the memory.available soft eviction threshold.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "nodefs_available": {
+                                "description": "Defines grace period for the nodefs.available soft eviction threshold.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "nodefs_inodes_free": {
+                                "description": "Defines grace period for the nodefs.inodesFree soft eviction threshold.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              },
+                              "pid_available": {
+                                "description": "Defines grace period for the pid.available soft eviction threshold.",
+                                "description_kind": "plain",
+                                "optional": true,
+                                "type": "string"
+                              }
+                            },
+                            "description": "Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period.",
+                            "description_kind": "plain"
+                          },
+                          "max_items": 1,
+                          "nesting_mode": "list"
                         }
                       },
                       "description": "Node kubelet configs.",
@@ -3318,6 +3645,19 @@ const googleContainerCluster = `{
                             "map",
                             "string"
                           ]
+                        },
+                        "transparent_hugepage_defrag": {
+                          "description": "The Linux kernel transparent hugepage defrag setting.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
+                        },
+                        "transparent_hugepage_enabled": {
+                          "computed": true,
+                          "description": "The Linux kernel transparent hugepage setting.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "string"
                         }
                       },
                       "block_types": {
@@ -3443,6 +3783,14 @@ const googleContainerCluster = `{
                   },
                   "sole_tenant_config": {
                     "block": {
+                      "attributes": {
+                        "min_node_cpus": {
+                          "description": "Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feature is disabled.",
+                          "description_kind": "plain",
+                          "optional": true,
+                          "type": "number"
+                        }
+                      },
                       "block_types": {
                         "node_affinity": {
                           "block": {

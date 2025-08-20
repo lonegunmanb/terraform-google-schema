@@ -9,6 +9,14 @@ import (
 const googleFolder = `{
   "block": {
     "attributes": {
+      "configured_capabilities": {
+        "computed": true,
+        "description_kind": "plain",
+        "type": [
+          "list",
+          "string"
+        ]
+      },
       "create_time": {
         "computed": true,
         "description_kind": "plain",
@@ -49,6 +57,11 @@ const googleFolder = `{
         "description_kind": "plain",
         "optional": true,
         "type": "bool"
+      },
+      "management_project": {
+        "computed": true,
+        "description_kind": "plain",
+        "type": "string"
       },
       "name": {
         "computed": true,
