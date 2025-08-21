@@ -231,14 +231,14 @@ const googleMonitoringUptimeCheckConfig = `{
                     "type": "string"
                   },
                   "password_wo": {
-                    "description": "The password to authenticate. Note: This property is write-only and will not be read from the API. For more info see [updating write-only attributes](/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)",
+                    "description": "The password to authenticate.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string",
                     "write_only": true
                   },
                   "password_wo_version": {
-                    "description": "Triggers update of password_wo write-only. For more info see [updating write-only attributes](/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes)",
+                    "description": "The password write-only version.",
                     "description_kind": "plain",
                     "optional": true,
                     "type": "string"
