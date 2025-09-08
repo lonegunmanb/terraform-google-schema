@@ -1,8 +1,6 @@
 module github.com/lonegunmanb/terraform-google-schema/v6
 
-go 1.23.0
-
-toolchain go1.23.6
+go 1.24.0
 
 require (
 	github.com/ahmetb/go-linq/v3 v3.2.0
@@ -14,7 +12,7 @@ require (
 	github.com/hashicorp/terraform-json v0.25.0
 	github.com/iancoleman/strcase v0.3.0
 	github.com/stretchr/testify v1.10.0
-	golang.org/x/oauth2 v0.30.0
+	golang.org/x/oauth2 v0.31.0
 )
 
 require (
