@@ -21,8 +21,16 @@ const googleBigtableTableIamBinding = `{
         "type": "string"
       },
       "instance": {
+        "computed": true,
+        "deprecated": true,
         "description_kind": "plain",
-        "required": true,
+        "optional": true,
+        "type": "string"
+      },
+      "instance_name": {
+        "computed": true,
+        "description_kind": "plain",
+        "optional": true,
         "type": "string"
       },
       "members": {
